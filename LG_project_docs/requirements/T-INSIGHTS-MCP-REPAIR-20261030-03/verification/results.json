@@ -1,8 +1,8 @@
 {
   "checked_at": "2026-10-29T20:47:46.330050+00:00",
   "result": "Passed",
-  "portal": "https://10.8.61.200:3029/",
-  "endpoint": "https://10.8.61.200:3037/mcp",
+  "portal": "https://192.168.10.20:3029/",
+  "endpoint": "https://192.168.10.20:3037/mcp",
   "strict_ca_verification": true,
   "protocol_version": "2025-11-25",
   "tool_count": 11,

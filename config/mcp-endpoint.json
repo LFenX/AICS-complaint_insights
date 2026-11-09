@@ -1,8 +1,8 @@
 {
-  "url": "https://10.8.61.200:3037/mcp",
+  "url": "https://192.168.10.20:3037/mcp",
   "transport": "streamable-http",
   "allowed_networks": [
-    "10.8.0.0/16"
+    "192.168.10.0/24"
   ],
   "ca_certificate": "mcp-ca.crt",
   "ca_sha256": "6ae4dee46fcebdf1c2d2137973a8c655b871b216aaf6fecb9e6a9ccae053c879",

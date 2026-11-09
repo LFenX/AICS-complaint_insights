@@ -6,9 +6,9 @@
 
 |项目|当前配置|
 |---|---|
-|分享入口|https://10.8.61.200:3029/|
-|MCP endpoint|https://10.8.61.200:3037/mcp|
-|允许网段|10.8.0.0/16|
+|分享入口|https://192.168.10.20:3029/|
+|MCP endpoint|https://192.168.10.20:3037/mcp|
+|允许网段|192.168.10.0/24|
 |传输|Streamable HTTP，HTTPS，JSON-RPC 2.0|
 |响应模式|无状态、JSON响应，不分配Mcp-Session-Id|
 |已验证协商版本|2025-11-25|
@@ -43,8 +43,8 @@
 ```powershell
 Get-FileHash -Algorithm SHA256 -LiteralPath .\mcp-ca.crt
 certutil.exe -user -addstore Root .\mcp-ca.crt
-Test-NetConnection 10.8.61.200 -Port 3029
-Test-NetConnection 10.8.61.200 -Port 3037
+Test-NetConnection 192.168.10.20 -Port 3029
+Test-NetConnection 192.168.10.20 -Port 3037
 ```
 
 当前证书有效期结束：`2027-10-29T09:58:17+00:00`。CA文件SHA-256与服务器叶证书SHA-256不同，不要比较错对象。服务器证书信息与允许网段见 `mcp-endpoint.json`。使用内网IP访问，不能擅自替换为localhost、127.0.0.1或不在证书SAN里的主机名；这两个回环地址在接收方电脑指向接收方自己。

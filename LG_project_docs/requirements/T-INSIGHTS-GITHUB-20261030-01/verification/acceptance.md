@@ -7,7 +7,7 @@
 | 用户原文 | 实现与证据 | 未验项 |
 | --- | --- | --- |
 | [https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库 | 已提交并推送到私有仓库main；提交[d36486b27f1a9a92edb35aa825df09a8dd0edb5b](https://github.com/LFenX/AICS-CCDD/commit/d36486b27f1a9a92edb35aa825df09a8dd0edb5b)；Git引用、GitHub API的commit/tree和30文件清单一致。证据：`.runtime/github-delivery-20261030/remote-verification.json`。 | 没有业务数据的第三方部署需要自行提供授权读取模型，已在仓库README交代。 |
-| 把服务开在内网可访问的地址 | 127.0.0.1与10.8.61.200同时监听3030；仅以太网、Domain/Private、10.8.0.0/16；应用校验真实TCP对端、Host/Origin，HTTP只读。页面、634封数据、详情、附件SHA、ZIP CRC和资源SHA均通过。证据：`.runtime/github-delivery-20261030/lan-verification.json`。 | 没有从第二台电脑发起测试，未证明其他网段的路由和客户端策略。 |
+| 把服务开在内网可访问的地址 | 127.0.0.1与192.168.10.20同时监听3030；仅以太网、Domain/Private、192.168.10.0/24；应用校验真实TCP对端、Host/Origin，HTTP只读。页面、634封数据、详情、附件SHA、ZIP CRC和资源SHA均通过。证据：`.runtime/github-delivery-20261030/lan-verification.json`。 | 没有从第二台电脑发起测试，未证明其他网段的路由和客户端策略。 |
 
 ## 工程验证与边界
 

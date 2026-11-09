@@ -25,7 +25,7 @@
 
 ## 本机部署与远端证明
 
-内网入口：http://10.8.61.200:3030/；GitHub提交：https://github.com/LFenX/AICS-CCDD/commit/d36486b27f1a9a92edb35aa825df09a8dd0edb5b。实际提交/tree/文件清单复核见`.runtime/github-delivery-20261030/remote-verification.json`；内网验证见`.runtime/github-delivery-20261030/lan-verification.json`。私有配置和真实读取产物只保留在本机。
+内网入口：http://192.168.10.20:3030/；GitHub提交：https://github.com/LFenX/AICS-CCDD/commit/d36486b27f1a9a92edb35aa825df09a8dd0edb5b。实际提交/tree/文件清单复核见`.runtime/github-delivery-20261030/remote-verification.json`；内网验证见`.runtime/github-delivery-20261030/lan-verification.json`。私有配置和真实读取产物只保留在本机。
 
 
 ## 后续安全隐私决定（2026-10-30T14:14:06.678441+08:00）

@@ -2,13 +2,15 @@
 
 独立 PostgreSQL 保存邮件和 AI 分类副本，按北京时间日期、分类整理，供 agent 通过 MCP 按需查询。已提供独立客诉日报看板与每日生成 skill；当前生产采集保持隔离，历史副本不代表实时生产数据。
 
+仓库文档和示例配置里的内网地址均为示例：看板与 MCP 使用 `192.168.10.20`，允许网段为 `192.168.10.0/24`，数据库主机为 `192.168.10.155`。本机实际地址只写在未提交的 `.secrets` 中。
+
 | 服务 | 地址 / 标识 |
 |---|---|
 | PostgreSQL | `127.0.0.1:15433/complaint_insights` |
 | 查询 API | `http://127.0.0.1:3036` |
-| 内网 MCP | `https://10.8.61.200:3037/mcp`，HTTPS + 独立 Bearer 令牌 |
-| MCP 接入与令牌门户 | `https://10.8.61.200:3029/`，公开说明下载；独立管理员登录后发放/撤销 |
-| 客诉日报看板 | `http://10.8.61.200:3030/`，同机 `http://127.0.0.1:3030/` |
+| 内网 MCP | `https://192.168.10.20:3037/mcp`，HTTPS + 独立 Bearer 令牌 |
+| MCP 接入与令牌门户 | `https://192.168.10.20:3029/`，公开说明下载；独立管理员登录后发放/撤销 |
+| 客诉日报看板 | `http://192.168.10.20:3030/`，同机 `http://127.0.0.1:3030/` |
 | MCP 接收人推荐来源 | `production-ai-customer`，历史本地副本；采集已暂停，先查同步状态 |
 | 开发来源标识 | `development-local` |
 | 数据库容器 / 卷 | `complaint-insights-postgres` / `complaint-insights-pgdata` |
@@ -40,9 +42,9 @@ powershell.exe -NoProfile -NonInteractive -File scripts/manage.ps1 -Action Stop
 
 ## 给分析 agent 的入口
 
-其他内网电脑使用 [MCP 接入中心](https://10.8.61.200:3029/)。当前 [完整指南](LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md) 覆盖协议、TLS/CA、全部11工具、14表、参数、分页、错误、计数与选源。门户下载的通用包不包含令牌；`.secrets/mcp-handoff.zip` 也已替换为同一无凭据包。管理员须按接收人单独发放令牌，不能转发现有接收人的私有配置。旧foundation交接说明属于历史版本，以本节和当前门户为准。
+其他内网电脑使用 [MCP 接入中心](https://192.168.10.20:3029/)。当前 [完整指南](LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md) 覆盖协议、TLS/CA、全部11工具、14表、参数、分页、错误、计数与选源。门户下载的通用包不包含令牌；`.secrets/mcp-handoff.zip` 也已替换为同一无凭据包。管理员须按接收人单独发放令牌，不能转发现有接收人的私有配置。旧foundation交接说明属于历史版本，以本节和当前门户为准。
 
-3029入口只在 `10.8.61.200` 上以HTTPS运行，实际TCP来源限制为 `10.8.0.0/16`。普通访客只能阅读和下载；MCP Bearer不能登录管理员页面。唯一管理员初始凭据保存在服务器受限 `.secrets/token-desk-initial.json`，不进入客户端包或日志。运维与回滚见 [管理员交接](LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md)。
+3029入口只在 `192.168.10.20` 上以HTTPS运行，实际TCP来源限制为 `192.168.10.0/24`。普通访客只能阅读和下载；MCP Bearer不能登录管理员页面。唯一管理员初始凭据保存在服务器受限 `.secrets/token-desk-initial.json`，不进入客户端包或日志。运维与回滚见 [管理员交接](LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md)。
 
 同机 SQL/HTTP 分析使用下面的入口：
 
@@ -85,7 +87,7 @@ HTTP 请求携带 `Authorization: Bearer <agent.json 中的 api_token>`。所有
 
 ## 客诉日报与每日生成
 
-看板默认选择北京时间前一自然日（例如10月30日打开显示10月29日日报），日期框与标题标注邮件所属日期；“昨天”可返回默认日期。所选日期未生成时显示“日报未生成”，可通过日期框或“已生成日报”切换。历史链接如 `http://10.8.61.200:3030/?date=2026-10-29`。页面继续使用既有白底、配色和布局，详情、附件预览/下载及子问题日志ZIP按相同日期和报告版本读取。
+看板默认选择北京时间前一自然日（例如10月30日打开显示10月29日日报），日期框与标题标注邮件所属日期；“昨天”可返回默认日期。所选日期未生成时显示“日报未生成”，可通过日期框或“已生成日报”切换。历史链接如 `http://192.168.10.20:3030/?date=2026-10-29`。页面继续使用既有白底、配色和布局，详情、附件预览/下载及子问题日志ZIP按相同日期和报告版本读取。
 
 日常方法已安装为 `$complaint-daily-report`，入口在 `C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md`；配套标准、来源索引、审阅契约、基准主类和可执行脚本同目录保存。当前会话的“每日客诉日报生成”自动化每天北京时间00:30调用该skill生成前一天，电脑和Codex桌面应用须运行。
 

@@ -85,7 +85,7 @@
       "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
       "reading": "内网提供令牌服务入口",
       "conditions": [],
-      "previous_observation": "实际3029/3037监听10.8.61.200，当前代码保留HTTPS及实际peer限制；新版门户以隔离夹具验证，运行3029仍是旧UI。",
+      "previous_observation": "实际3029/3037监听192.168.10.20，当前代码保留HTTPS及实际peer限制；新版门户以隔离夹具验证，运行3029仍是旧UI。",
       "verification_basis": [
         "round-5-report.md",
         "tests.log",

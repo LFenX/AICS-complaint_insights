@@ -47,7 +47,7 @@
 - 新增 `insights/datasets.py`、`mcp_server.py`、`mcp_http.py`；API 增加固定白名单的源资料目录与分页查询，权限/能力目录同步。
 - 新增 MCP 客户端、TLS/令牌准备、远程防火墙、交接打包和真实协议验证脚本。进程管理增加单服务控制；新增配置、公开 CA、参数示例和中文交接手册。没有修改既有 SQL migration。
 - 通过官方 SDK 文档和 PyPI/实际包索引核验后固定 `mcp==2.3.0`，增加 `client-dependencies.txt` 并重新生成 UTF-8 `requirements.lock`；依赖仅安装到本项目虚拟环境。
-- 启动本项目 HTTPS MCP `10.8.61.200:3037`；新增本项目所有的 `ComplaintInsights-MCP-3037` Windows 防火墙规则，仅该内网 IP/端口、`10.8.0.0/16`、Domain/Private。数据库和 API 保持回环监听，生产无操作。
+- 启动本项目 HTTPS MCP `192.168.10.20:3037`；新增本项目所有的 `ComplaintInsights-MCP-3037` Windows 防火墙规则，仅该内网 IP/端口、`192.168.10.0/24`、Domain/Private。数据库和 API 保持回环监听，生产无操作。
 - 47 项单元/隔离 PostgreSQL/MCP 契约测试通过；严格 TLS 下发现 11 个只读工具并实际调用 26 次，十四类资料与只读 SQL 逐类核对通过。旧版 initialize、错误令牌/Host/Origin、来源和明文限制、资源读取、stdio 调试入口通过验证。
 - 交接 ZIP 实际解压后运行随包客户端，发现 11 个工具。包有独立 MCP 只读令牌，未包含任何数据库凭据或私钥；仅保存在受限 `.secrets` 中。
 - 首次 TLS 连接失败，原因为证书缺 SKI/AKI；补齐扩展并保持密钥和令牌后重试成功。失败证书与摘要保留在受限 `.runtime/tls-before-repair/`，未关闭 TLS 校验。

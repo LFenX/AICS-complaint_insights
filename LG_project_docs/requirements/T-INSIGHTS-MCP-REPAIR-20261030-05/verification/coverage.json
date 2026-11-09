@@ -442,7 +442,7 @@
       "conditions": [
         "后续内网开放授权成立时采用指定内网HTTPS；仍须拒绝HTTP/非授权实际peer/错误Host和Origin"
       ],
-      "previous_version_observation": "3029只监听10.8.61.200，实际指定内网peer/HTTPS/Host/Origin验证成立，伪造代理头不放行。",
+      "previous_version_observation": "3029只监听192.168.10.20，实际指定内网peer/HTTPS/Host/Origin验证成立，伪造代理头不放行。",
       "previous_version_cases": [
         {
           "condition": 0,

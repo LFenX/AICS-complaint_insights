@@ -1,6 +1,6 @@
 {
   "source_id": "production-ai-customer",
-  "source_url": "postgresql://complaint_analytics_ro:REPLACE_PASSWORD@10.8.45.155:5432/ai_complaint_mail?sslmode=verify-full&sslrootcert=D%3A%2FPRIVATE%2Fserver.crt",
+  "source_url": "postgresql://complaint_analytics_ro:REPLACE_PASSWORD@192.168.10.155:5432/ai_complaint_mail?sslmode=verify-full&sslrootcert=D%3A%2FPRIVATE%2Fserver.crt",
   "target_owner_url": "REUSE_ISOLATED_TARGET_OWNER_URL_FROM_PRIVATE_LOCAL_PROFILE",
   "target_writer_url": "REUSE_ISOLATED_TARGET_WRITER_URL_FROM_PRIVATE_LOCAL_PROFILE",
   "target_reader_url": "REUSE_ISOLATED_TARGET_READER_URL_FROM_PRIVATE_LOCAL_PROFILE",

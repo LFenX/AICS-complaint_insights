@@ -325,7 +325,7 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 > 搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏
 > 另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，
 
-实际：3029指定10.8.61.200严格HTTPS；不是0.0.0.0；后续门户原话明确改为内网分享。
+实际：3029指定192.168.10.20严格HTTPS；不是0.0.0.0；后续门户原话明确改为内网分享。
 差缺：本条未确认实现差缺。
 证据：start.json；firewall.json；live-results.json
 
@@ -496,11 +496,11 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-实际：https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。
+实际：https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。
 差缺：本条未确认实现差缺。
 证据：live-results.json#/groups/portal；browser-native.json
 
-- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
+- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
 
 ### R1-03 · 已实现 · 登录该账号即可生成token
 
@@ -570,11 +570,11 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-实际：https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。
+实际：https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。
 差缺：本条未确认实现差缺。
 证据：live-results.json#/groups/portal；browser-native.json
 
-- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
+- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
 
 ### R2-03 · 已实现 · 登录该账号即可生成token
 
@@ -644,11 +644,11 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-实际：https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。
+实际：https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。
 差缺：本条未确认实现差缺。
 证据：live-results.json#/groups/portal；browser-native.json
 
-- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
+- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
 
 ### R3-03 · 已实现 · 登录该账号即可生成token
 
@@ -718,11 +718,11 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-实际：https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。
+实际：https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。
 差缺：本条未确认实现差缺。
 证据：live-results.json#/groups/portal；browser-native.json
 
-- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
+- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
 
 ### R4-03 · 已实现 · 登录该账号即可生成token
 
@@ -804,11 +804,11 @@ C与D代码各49测试通过。新增187项参数拒绝、11工具全参数有�
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-实际：https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。
+实际：https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。
 差缺：本条未确认实现差缺。
 证据：live-results.json#/groups/portal；browser-native.json
 
-- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
+- Unconditional / Passed：输入 提供登录入口；预期 提供登录入口；实际 https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。。证据 live-results.json#/groups/portal；browser-native.json
 
 ### R5-03 · 已实现 · 登录该账号即可生成token
 

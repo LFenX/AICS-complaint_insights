@@ -136,7 +136,7 @@
               "branch": "Unconditional",
               "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
               "expected": "内网开放令牌服务入口",
-              "actual": "3029仅10.8.61.200 HTTPS监听；防火墙限制10.8.0.0/16 Domain/Private；通过内网IP实际请求成功",
+              "actual": "3029仅192.168.10.20 HTTPS监听；防火墙限制192.168.10.0/24 Domain/Private；通过内网IP实际请求成功",
               "result": "Passed",
               "evidence_refs": [
                 "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/listeners.json",

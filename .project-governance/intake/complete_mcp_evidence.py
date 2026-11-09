@@ -62,7 +62,7 @@ remote=before['clarification']['rounds'][0]['exchanges'][0]['answer']
 requirements.append({'id':'R-04','source':'clarification:r1.e1','quote':remote,
     'reading':'提供内网远程可调用的 HTTPS MCP 入口；接收方电脑实际路由与客户端验收保留未验项',
     'state':'Covered','evidence_refs':proofs,'acceptance_refs':[5],
-    'review':review(hashlib.sha256(remote.encode('utf-8')).hexdigest(),'10.8.61.200:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收')})
+    'review':review(hashlib.sha256(remote.encode('utf-8')).hexdigest(),'192.168.10.20:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收')})
 artifacts=[dict(item) for item in before['artifact_manifest']]
 artifacts[-1]['reason']=f"绑定 {len(manifest['files'])} 个实际公开交付文件的 SHA256；私有凭据与运行缓存不纳入公开清单"
 clarification=dict(before['clarification'])

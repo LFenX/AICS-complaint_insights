@@ -43,8 +43,8 @@
 ```powershell
 Get-FileHash -Algorithm SHA256 -LiteralPath .\mcp-ca.crt
 certutil.exe -user -addstore Root .\mcp-ca.crt
-Test-NetConnection 10.8.61.200 -Port 3029
-Test-NetConnection 10.8.61.200 -Port 3037
+Test-NetConnection 192.168.10.20 -Port 3029
+Test-NetConnection 192.168.10.20 -Port 3037
 ```
 
 当前证书有效期结束：`@@CERT_EXPIRY@@`。CA文件SHA-256与服务器叶证书SHA-256不同，不要比较错对象。服务器证书信息与允许网段见 `mcp-endpoint.json`。使用内网IP访问，不能擅自替换为localhost、127.0.0.1或不在证书SAN里的主机名；这两个回环地址在接收方电脑指向接收方自己。

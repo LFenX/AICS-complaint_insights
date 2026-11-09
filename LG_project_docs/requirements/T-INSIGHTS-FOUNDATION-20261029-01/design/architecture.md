@@ -48,7 +48,7 @@ API 审计仅记请求 ID、路由模板、方法、状态及耗时，不记录 
 
 `mcp_server.py` 只负责工具输入/输出与本地 API 适配；日期、分类、权限目录、参数绑定与版本游标继续由既有 API 和读取模型负责。`datasets.py` 定义十四类原始资料的固定目录，`source-records` 使用受控分析视图，不接受任意 SQL。默认不取 payload，需要时按记录或小页读取完整源 JSON。
 
-`mcp_http.py` 在 SDK 协议处理前核验 HTTPS、真实 TCP 来源网段和独立 Bearer 身份；不信任代理来源头。SDK 同时限制 Host/Origin。服务仅绑定 `10.8.61.200:3037`，允许 `10.8.0.0/16`；Windows 防火墙规则仅该 IP/端口与 Domain/Private 配置文件。MCP 不开放 PostgreSQL 和底层 API 到内网。
+`mcp_http.py` 在 SDK 协议处理前核验 HTTPS、真实 TCP 来源网段和独立 Bearer 身份；不信任代理来源头。SDK 同时限制 Host/Origin。服务仅绑定 `192.168.10.20:3037`，允许 `192.168.10.0/24`；Windows 防火墙规则仅该 IP/端口与 Domain/Private 配置文件。MCP 不开放 PostgreSQL 和底层 API 到内网。
 
 MCP 11 个工具均声明只读，并记录身份、工具名、状态与耗时；HTTP 层另有请求 ID。所有身份当前拥有同一副本的只读范围，没有按邮箱的数据隔离。独立 MCP 令牌和 TLS 私钥保存在受限 `.secrets`，交接包仅含 MCP 只读令牌、公开 CA、客户端和说明，没有任何数据库凭据或私钥。
 

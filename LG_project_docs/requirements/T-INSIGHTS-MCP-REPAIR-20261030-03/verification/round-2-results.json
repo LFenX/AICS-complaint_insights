@@ -120,7 +120,7 @@
         "deployment-listeners-end.json",
         "deployment-firewall.json"
       ],
-      "gap": "3029为10.8.61.200 HTTPS，允许10.8.0.0/16；另一台电脑未实测",
+      "gap": "3029为192.168.10.20 HTTPS，允许192.168.10.0/24；另一台电脑未实测",
       "conditions": []
     },
     {
@@ -220,7 +220,7 @@
         "L03",
         "deployment-listeners-end.json"
       ],
-      "gap": "后续同一用户明确要求内网开放，现只绑定10.8.61.200:3029；没有同时宣称仍只监听localhost",
+      "gap": "后续同一用户明确要求内网开放，现只绑定192.168.10.20:3029；没有同时宣称仍只监听localhost",
       "conditions": []
     },
     {
@@ -294,7 +294,7 @@
         "L03",
         "operator-handoff.md"
       ],
-      "gap": "https://10.8.61.200:3029/admin/login；真实正常表单和独立管理员登录均有证据",
+      "gap": "https://192.168.10.20:3029/admin/login；真实正常表单和独立管理员登录均有证据",
       "conditions": []
     },
     {

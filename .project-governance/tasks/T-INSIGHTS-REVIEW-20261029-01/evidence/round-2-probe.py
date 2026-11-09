@@ -417,7 +417,7 @@ async def remote():
             check('real-mcp-invalid-parameters-and-cursor',all(errors),{'rejected':sum(errors)})
             resource=await client.read_resource('complaint-insights://guide')
             check('real-mcp-guide-resource',json.loads(resource.contents[0].text)['timezone']=='Asia/Shanghai')
-        tests=[('wrong-token',{'Authorization':'Bearer synthetic-wrong-token'}),('api-token-cannot-auth-mcp',{'Authorization':'Bearer '+Settings.load().api_token}),('bad-host',{'Host':'attacker.invalid:3037'}),('bad-origin',{'Origin':'https://attacker.invalid'}),('proxy-host-spoof',{'Host':'attacker.invalid:3037','X-Forwarded-Host':'10.8.61.200:3037'})]
+        tests=[('wrong-token',{'Authorization':'Bearer synthetic-wrong-token'}),('api-token-cannot-auth-mcp',{'Authorization':'Bearer '+Settings.load().api_token}),('bad-host',{'Host':'attacker.invalid:3037'}),('bad-origin',{'Origin':'https://attacker.invalid'}),('proxy-host-spoof',{'Host':'attacker.invalid:3037','X-Forwarded-Host':'192.168.10.20:3037'})]
         status={}
         payload={'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2025-11-25','capabilities':{},'clientInfo':{'name':'r2-synthetic','version':'1'}}}
         for name,headers in tests:
@@ -425,13 +425,13 @@ async def remote():
             status[name]=r.status_code
         check('real-https-token-host-origin-and-proxy-host',status['wrong-token']==401 and status['api-token-cannot-auth-mcp']==401 and all(status[n] in (400,403,421) for n in ['bad-host','bad-origin','proxy-host-spoof']),status)
     async def ok(scope,receive,send): await JSONResponse({'ok':True})(scope,receive,send)
-    settings=MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'r2-synthetic':'x'*48},Path('unused'),Path('unused'),Path('unused'))
+    settings=MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'r2-synthetic':'x'*48},Path('unused'),Path('unused'),Path('unused'))
     middleware=MCPAccessMiddleware(ok,settings)
     auth={'Authorization':'Bearer '+'x'*48}
-    inside=ASGIClient(middleware,base_url='https://10.8.61.200:3037',client=('10.8.9.17',40000))
-    outside=ASGIClient(middleware,base_url='https://10.8.61.200:3037',client=('192.168.4.5',40000))
-    plain=ASGIClient(middleware,base_url='http://10.8.61.200:3037',client=('10.8.9.17',40000))
-    statuses=[inside.post('/mcp',headers=auth).status_code,outside.post('/mcp',headers={**auth,'Forwarded':'for=10.8.9.17;proto=https','X-Forwarded-For':'10.8.9.17','X-Real-IP':'10.8.9.17'}).status_code,plain.post('/mcp',headers={**auth,'X-Forwarded-Proto':'https'}).status_code]
+    inside=ASGIClient(middleware,base_url='https://192.168.10.20:3037',client=('192.168.10.17',40000))
+    outside=ASGIClient(middleware,base_url='https://192.168.10.20:3037',client=('192.168.4.5',40000))
+    plain=ASGIClient(middleware,base_url='http://192.168.10.20:3037',client=('192.168.10.17',40000))
+    statuses=[inside.post('/mcp',headers=auth).status_code,outside.post('/mcp',headers={**auth,'Forwarded':'for=192.168.10.17;proto=https','X-Forwarded-For':'192.168.10.17','X-Real-IP':'192.168.10.17'}).status_code,plain.post('/mcp',headers={**auth,'X-Forwarded-Proto':'https'}).status_code]
     check('actual-peer-and-scheme-asgi-branch-tests',statuses==[200,403,403],statuses)
     async with httpx2.AsyncClient(verify=True,trust_env=False,timeout=10) as untrusted:
         rejected=False

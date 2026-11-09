@@ -270,7 +270,7 @@ class DailyBoundaryTests(unittest.TestCase):
         self.assertEqual(c.get('/data.json').status_code,200)
         self.assertEqual(c.get('/data.json',headers={'Host':'malicious.example'}).status_code,403)
         self.assertEqual(c.get('/data.json',headers={'Origin':'https://malicious.example'}).status_code,403)
-        self.assertEqual(self.client(client=('10.8.61.201',1234)).get('/data.json',headers={'X-Forwarded-For':'127.0.0.1'}).status_code,403)
+        self.assertEqual(self.client(client=('192.168.10.21',1234)).get('/data.json',headers={'X-Forwarded-For':'127.0.0.1'}).status_code,403)
         self.assertEqual(c.post('/data.json').status_code,405)
         with patch.dict('os.environ',{'INSIGHTS_DAILY_BOARD_ENABLED':'0'}):self.assertEqual(c.get('/').status_code,503)
 

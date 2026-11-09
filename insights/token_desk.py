@@ -39,7 +39,7 @@ logger = logging.getLogger('insights.token_desk')
 class DeskSettings:
     host: str
     port: int = PORT
-    allowed_networks: tuple[str, ...] = ('10.8.0.0/16',)
+    allowed_networks: tuple[str, ...] = ('192.168.10.0/24',)
 
     @property
     def origin(self):

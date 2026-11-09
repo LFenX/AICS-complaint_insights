@@ -35,6 +35,7 @@ from insights.syncer import local_related_keys, mirror_relation, related_keys
 from insights.time_rules import SHANGHAI, detect_fallback_skew, received_at
 
 POLICY = ROOT / 'scripts' / 'daily-report-unattended-policy.json'
+SOURCE_PIN = ROOT / '.secrets' / 'source-identity.json'
 FRESH_RESPONSE = '不从本机冻结，每次都要从生产库获取新鲜数据'
 PRESERVED = ('status', 'source_snapshot_at', 'last_sync_at', 'last_aux_at', 'last_reconcile_at', 'last_error_code', 'identity_hash')
 
@@ -57,14 +58,26 @@ def load_policy():
     return policy
 
 
+def load_source_pin():
+    try:
+        pin = json.loads(SOURCE_PIN.read_text(encoding='utf-8'))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        fail('SOURCE_IDENTITY_PIN_MISSING')
+    host, port, dbname = pin.get('host'), pin.get('port'), pin.get('dbname')
+    require(isinstance(host, str) and host and isinstance(port, str) and port.isdigit()
+            and isinstance(dbname, str) and dbname, 'SOURCE_IDENTITY_PIN_INVALID')
+    return host, port, dbname
+
+
 def load_settings():
     config_path = ROOT / '.secrets' / 'production.json'
     before = sha256(config_path.read_bytes()).hexdigest()
     settings = Settings.load(config_path)
     require(settings.allow_production_read is False, 'PERSISTENT_ISOLATION_REQUIRED')
     identity = connection_identity(settings.source_url)
-    require(identity['host'] == '10.8.45.155' and identity['port'] == '5432', 'SOURCE_IDENTITY_MISMATCH')
-    require(identity['dbname'] == 'ai_complaint_mail', 'SOURCE_DATABASE_MISMATCH')
+    host, port, dbname = load_source_pin()
+    require(identity['host'] == host and identity['port'] == port, 'SOURCE_IDENTITY_MISMATCH')
+    require(identity['dbname'] == dbname, 'SOURCE_DATABASE_MISMATCH')
     return config_path, before, settings
 
 

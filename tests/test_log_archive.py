@@ -69,7 +69,7 @@ class LogArchiveTests(unittest.TestCase):
         path.write_bytes(raw)
         self.version = sha256(raw).hexdigest()
         return TestClient(create_app(path), base_url='http://127.0.0.1:3030',
-                          client=('10.8.61.201', 1234) if remote else ('127.0.0.1', 1234))
+                          client=('192.168.10.21', 1234) if remote else ('127.0.0.1', 1234))
 
     def test_version_resource_identity_feature_and_metadata_audit(self):
         client = self.client()

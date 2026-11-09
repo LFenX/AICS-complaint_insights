@@ -50,7 +50,7 @@ U06｜在内网开放token服务入口｜已实现，外部限制保留
 
 > 另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多
 
-来源：portal.request_snapshot。证据：L01-L06；deployment-listeners-end.json；deployment-firewall.json。3029为10.8.61.200 HTTPS，允许10.8.0.0/16；另一台电脑未实测
+来源：portal.request_snapshot。证据：L01-L06；deployment-listeners-end.json；deployment-firewall.json。3029为192.168.10.20 HTTPS，允许192.168.10.0/24；另一台电脑未实测
 
 
 
@@ -106,7 +106,7 @@ U13｜3029端口及原localhost约束的后续演进｜已实现
 
 > 另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，
 
-来源：portal.discovery/survey.md 既有权限原话。证据：L01；L03；deployment-listeners-end.json。后续同一用户明确要求内网开放，现只绑定10.8.61.200:3029；没有同时宣称仍只监听localhost
+来源：portal.discovery/survey.md 既有权限原话。证据：L01；L03；deployment-listeners-end.json。后续同一用户明确要求内网开放，现只绑定192.168.10.20:3029；没有同时宣称仍只监听localhost
 
 
 
@@ -146,7 +146,7 @@ U18｜提供登录入口｜已实现
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-来源：repair.request_snapshot。证据：L03；operator-handoff.md。https://10.8.61.200:3029/admin/login；真实正常表单和独立管理员登录均有证据
+来源：repair.request_snapshot。证据：L03；operator-handoff.md。https://192.168.10.20:3029/admin/login；真实正常表单和独立管理员登录均有证据
 
 
 
@@ -244,7 +244,7 @@ R2-03（P3）非法JSON-RPC信封被错误归类为Invalid params -32602
 
 材料和客户端：7公开下载与发布字节相同；23文件ZIP逐内部SHA256SUMS校验，当前脚本与产品同字节；8查询示例均显式生产历史副本来源；11段指南inputSchema与真实tools/list逐对象相同；指南/离线材料链接无损坏。下载SDK用limit1000完整遍历分类4页，同版本且末页cursor=null；标准库工作流11工具无跳过。独立合成transport验证变版、重复游标、页数上限均拒绝伪完整，正常分页complete=true。新Windows ACL/写入失败反例产生R2-02。
 
-部署/保护：3029/3037实际监听10.8.61.200，3036/15433/3030回环；防火墙为Domain/Private、以太网、10.8.0.0/16、精确本机地址/端口。现场无watch；production.json仅输出allow_production_read=false及target_reader_url的127.0.0.1:15433；未打印完整配置。根部署证据中3030/3036/15433 PID前后不变，本轮起末读取监听PID一致；未重启任何服务。没有连接源10.8.45.155:5432或任何数据库，没有采集、日报/附件/AICS/历史任务操作。
+部署/保护：3029/3037实际监听192.168.10.20，3036/15433/3030回环；防火墙为Domain/Private、以太网、192.168.10.0/24、精确本机地址/端口。现场无watch；production.json仅输出allow_production_read=false及target_reader_url的127.0.0.1:15433；未打印完整配置。根部署证据中3030/3036/15433 PID前后不变，本轮起末读取监听PID一致；未重启任何服务。没有连接源192.168.10.155:5432或任何数据库，没有采集、日报/附件/AICS/历史任务操作。
 
 已复查前轮：R1-01通过F05/F06与现有刷新测试；R1-02通过F11合法JSON损坏形态及现有损坏网页测试；R1-03原错误类型、日期和额外参数拒绝已成立，但R2-01显示合法值在下游仍被改写；R1-04通过F20未知工具顶层-32602。前轮四项原反例已修复，不因其修复就忽略本轮新问题。
 

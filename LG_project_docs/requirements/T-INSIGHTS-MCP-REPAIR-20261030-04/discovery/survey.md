@@ -8,6 +8,6 @@ git fetch与merge --ff-only已取得main的7b63ad65b66a94084db8a40a43838929eabcb
 
 本次只做局部修复与完整原需求复验，不改变结构、命名、业务数据范围、单管理员或既有权限。保留严格同源校验，选择same-origin响应策略恢复原生表单，不放行Origin:null。数字须在SDK强制转换之前保留原始JSON精度并按实际Schema验证；合法整数数值表示仍须支持。复验包含并发反例、无后端调用拒绝、原生浏览器表单、移动长身份和全部原MCP需求。
 
-禁止连接源10.8.45.155:5432及任何数据库，禁止启动watch/采集、修改重启3030/3036/15433/日报/附件/AICS或source.py/syncer.py。真实查询只走现有只读API/MCP。必要时仅部署并重启desk/mcp，保留保护进程PID证据；不重置真实管理员，不在材料/日志写真实令牌口令。人类门禁及用户验收Pending，另一电脑的CA/路由未实测。原Deferred导致官方Offer拒绝的限制保持，不伪造Gate、ManagedByParent或机器Passed。
+禁止连接源192.168.10.155:5432及任何数据库，禁止启动watch/采集、修改重启3030/3036/15433/日报/附件/AICS或source.py/syncer.py。真实查询只走现有只读API/MCP。必要时仅部署并重启desk/mcp，保留保护进程PID证据；不重置真实管理员，不在材料/日志写真实令牌口令。人类门禁及用户验收Pending，另一电脑的CA/路由未实测。原Deferred导致官方Offer拒绝的限制保持，不伪造Gate、ManagedByParent或机器Passed。
 
 本轮返修沿用你已确认的范围和授权，跳过重复提问。没有新增权限、范围或验收未知。

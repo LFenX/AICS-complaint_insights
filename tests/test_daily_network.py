@@ -146,12 +146,12 @@ class FrameAncestorTests(unittest.TestCase):
         (files / '9.bin').write_bytes(b'synthetic log')
         (files / '9.txt').write_bytes(b'synthetic log preview')
         self.path = self.folder / 'network.json'
-        self.base = {'lan_host': '10.8.61.200', 'allowed_networks': ['10.8.0.0/16']}
+        self.base = {'lan_host': '192.168.10.20', 'allowed_networks': ['192.168.10.0/24']}
 
     def write_config(self, value):
         self.path.write_text(json.dumps(value), encoding='utf-8')
 
-    def client(self, network, peer='10.8.20.8', host='10.8.61.200'):
+    def client(self, network, peer='192.168.10.8', host='192.168.10.20'):
         return TestClient(create_app(self.report, network=network),
                           base_url=f'http://{host}:3030', client=(peer, 1234))
 
@@ -171,16 +171,16 @@ class FrameAncestorTests(unittest.TestCase):
         self.assertEqual(header_values(response, 'access-control-allow-origin'), [])
         self.assertEqual(response.headers['cross-origin-resource-policy'], 'same-origin')
         self.assertEqual(self.client(loaded).get(
-            '/', headers={'Origin': 'http://10.8.45.155'}).status_code, 403)
+            '/', headers={'Origin': 'http://192.168.10.155'}).status_code, 403)
 
     def test_configured_parent_is_exact_and_does_not_open_the_network(self):
-        network = BoardNetwork('10.8.61.200', ('10.8.0.0/16',), ('http://10.8.45.155',))
+        network = BoardNetwork('192.168.10.20', ('192.168.10.0/24',), ('http://192.168.10.155',))
         client = self.client(network)
-        allowed = client.get('/', headers={'Origin': 'http://10.8.45.155'})
+        allowed = client.get('/', headers={'Origin': 'http://192.168.10.155'})
         self.assertEqual(allowed.status_code, 200)
         policy = allowed.headers['content-security-policy']
         self.assertEqual(header_values(allowed, 'content-security-policy'), [policy])
-        self.assertIn('frame-ancestors http://10.8.45.155', policy)
+        self.assertIn('frame-ancestors http://192.168.10.155', policy)
         self.assertNotIn("frame-ancestors 'none'", policy)
         self.assertNotIn('*', policy.split('frame-ancestors', 1)[1])
         for directive in PAGE_DIRECTIVES:
@@ -191,39 +191,39 @@ class FrameAncestorTests(unittest.TestCase):
         self.assertEqual(allowed.headers['x-content-type-options'], 'nosniff')
         self.assertEqual(allowed.headers['referrer-policy'], 'no-referrer')
         self.assertEqual(allowed.headers['cross-origin-resource-policy'], 'same-origin')
-        for origin in ['http://10.8.45.155:3025', 'https://10.8.45.155', 'http://10.8.45.156',
-                       'http://10.8.45.155.evil.example', 'http://evil.example/?http://10.8.45.155',
-                       'null', 'http://10.8.45.155/', '*']:
+        for origin in ['http://192.168.10.155:3025', 'https://192.168.10.155', 'http://192.168.10.156',
+                       'http://192.168.10.155.evil.example', 'http://evil.example/?http://192.168.10.155',
+                       'null', 'http://192.168.10.155/', '*']:
             with self.subTest(origin=origin):
                 self.assertEqual(client.get('/data.json', headers={'Origin': origin}).status_code, 403)
         self.assertEqual(self.client(network, peer='203.0.113.9').get(
-            '/', headers={'Origin': 'http://10.8.45.155'}).status_code, 403)
+            '/', headers={'Origin': 'http://192.168.10.155'}).status_code, 403)
         self.assertEqual(client.get('/', headers={'Host': 'evil.example:3030',
-                                                   'Origin': 'http://10.8.45.155'}).status_code, 403)
-        self.assertEqual(client.post('/', headers={'Origin': 'http://10.8.45.155'}).status_code, 405)
+                                                   'Origin': 'http://192.168.10.155'}).status_code, 403)
+        self.assertEqual(client.post('/', headers={'Origin': 'http://192.168.10.155'}).status_code, 405)
         self.assertEqual(client.get('/data.json').status_code, 200)
-        download = client.get('/file/9', headers={'Origin': 'http://10.8.45.155'})
+        download = client.get('/file/9', headers={'Origin': 'http://192.168.10.155'})
         self.assertEqual(header_values(download, 'content-security-policy'), ["default-src 'none'; sandbox"])
         self.assertIn('attachment', download.headers['content-disposition'])
         self.assertEqual(download.headers['cross-origin-resource-policy'], 'same-origin')
 
     def test_default_port_is_the_same_origin_and_other_ports_stay_distinct(self):
-        self.write_config({**self.base, 'frame_ancestor_origins': ['http://10.8.45.155:80']})
+        self.write_config({**self.base, 'frame_ancestor_origins': ['http://192.168.10.155:80']})
         loaded = BoardNetwork.load(self.path)
-        self.assertEqual(loaded.frame_ancestor_origins, ('http://10.8.45.155',))
+        self.assertEqual(loaded.frame_ancestor_origins, ('http://192.168.10.155',))
         client = self.client(loaded)
-        self.assertEqual(client.get('/', headers={'Origin': 'http://10.8.45.155'}).status_code, 200)
-        self.assertEqual(client.get('/', headers={'Origin': 'http://10.8.45.155:3025'}).status_code, 403)
-        explicit = BoardNetwork('10.8.61.200', ('10.8.0.0/16',), ('http://10.8.45.155:3025',))
+        self.assertEqual(client.get('/', headers={'Origin': 'http://192.168.10.155'}).status_code, 200)
+        self.assertEqual(client.get('/', headers={'Origin': 'http://192.168.10.155:3025'}).status_code, 403)
+        explicit = BoardNetwork('192.168.10.20', ('192.168.10.0/24',), ('http://192.168.10.155:3025',))
         self.assertEqual(self.client(explicit).get(
-            '/', headers={'Origin': 'http://10.8.45.155'}).status_code, 403)
+            '/', headers={'Origin': 'http://192.168.10.155'}).status_code, 403)
         self.assertEqual(self.client(explicit).get(
-            '/', headers={'Origin': 'http://10.8.45.155:3025'}).status_code, 200)
+            '/', headers={'Origin': 'http://192.168.10.155:3025'}).status_code, 200)
 
     def test_local_machine_origins_match_only_their_exact_default_port(self):
-        origins = ('http://10.8.45.155', 'http://127.0.0.1', 'http://localhost', 'http://10.8.61.200',
-                   'http://127.0.0.1:3016', 'http://localhost:3016', 'http://10.8.61.200:3016')
-        network = BoardNetwork('10.8.61.200', ('10.8.0.0/16',), origins)
+        origins = ('http://192.168.10.155', 'http://127.0.0.1', 'http://localhost', 'http://192.168.10.20',
+                   'http://127.0.0.1:3016', 'http://localhost:3016', 'http://192.168.10.20:3016')
+        network = BoardNetwork('192.168.10.20', ('192.168.10.0/24',), origins)
         client = self.client(network)
         policy = client.get('/').headers['content-security-policy']
         self.assertIn('frame-ancestors ' + ' '.join(origins), policy)
@@ -231,35 +231,35 @@ class FrameAncestorTests(unittest.TestCase):
         for origin in origins:
             with self.subTest(origin=origin):
                 self.assertEqual(client.get('/', headers={'Origin': origin}).status_code, 200)
-        for origin in ('http://127.0.0.1:3025', 'http://localhost:8080', 'http://10.8.61.201',
-                       'https://127.0.0.1', 'http://10.8.61.200:3030', 'http://10.8.61.200:3017'):
+        for origin in ('http://127.0.0.1:3025', 'http://localhost:8080', 'http://192.168.10.21',
+                       'https://127.0.0.1', 'http://192.168.10.20:3030', 'http://192.168.10.20:3017'):
             with self.subTest(origin=origin):
                 self.assertEqual(self.client(network, peer='127.0.0.1', host='127.0.0.1').get(
                     '/', headers={'Origin': origin}).status_code, 403)
 
     def test_illegal_frame_ancestor_configuration_is_rejected(self):
-        illegal = ['*', 'http://*', 'http://10.8.45.155:*', 'http://10.8.45.155/', 'http://10.8.45.155/board',
-                   'http://10.8.45.155?embed=1', 'http://10.8.45.155#top', 'http://user@10.8.45.155',
-                   '', '10.8.45.155', 'ftp://10.8.45.155', 'http://10.8.45.155:0', 'http://10.8.45.155:65536',
-                   'http://[::1]', 'http://10.8.45.155; default-src *', ' http://10.8.45.155',
-                   'http://*.example.com', 'http://10.8.45.155.']
+        illegal = ['*', 'http://*', 'http://192.168.10.155:*', 'http://192.168.10.155/', 'http://192.168.10.155/board',
+                   'http://192.168.10.155?embed=1', 'http://192.168.10.155#top', 'http://user@192.168.10.155',
+                   '', '192.168.10.155', 'ftp://192.168.10.155', 'http://192.168.10.155:0', 'http://192.168.10.155:65536',
+                   'http://[::1]', 'http://192.168.10.155; default-src *', ' http://192.168.10.155',
+                   'http://*.example.com', 'http://192.168.10.155.']
         for origin in illegal:
             self.write_config({**self.base, 'frame_ancestor_origins': [origin]})
             with self.subTest(origin=origin), self.assertRaises(ValueError) as caught:
                 BoardNetwork.load(self.path)
             self.assertIn('invalid frame ancestor origin', str(caught.exception))
-        for value in [None, 'http://10.8.45.155', {'origin': 'http://10.8.45.155'}, [80]]:
+        for value in [None, 'http://192.168.10.155', {'origin': 'http://192.168.10.155'}, [80]]:
             self.write_config({**self.base, 'frame_ancestor_origins': value})
             with self.subTest(value=value), self.assertRaises(ValueError):
                 BoardNetwork.load(self.path)
-        self.write_config({**self.base, 'frame_ancestor_origins': ['http://10.8.45.155', 'http://10.8.45.155:80']})
+        self.write_config({**self.base, 'frame_ancestor_origins': ['http://192.168.10.155', 'http://192.168.10.155:80']})
         with self.assertRaises(ValueError) as duplicate:
             BoardNetwork.load(self.path)
         self.assertIn('unique', str(duplicate.exception))
         with self.assertRaises(ValueError) as mutable:
-            BoardNetwork('10.8.61.200', ('10.8.0.0/16',), ['http://10.8.45.155'])
+            BoardNetwork('192.168.10.20', ('192.168.10.0/24',), ['http://192.168.10.155'])
         self.assertIn('immutable tuple', str(mutable.exception))
-        self.write_config({**self.base, 'frame_ancestor_origins': ['http://10.8.45.155'], 'proxy': True})
+        self.write_config({**self.base, 'frame_ancestor_origins': ['http://192.168.10.155'], 'proxy': True})
         with self.assertRaises(ValueError) as unknown:
             BoardNetwork.load(self.path)
         self.assertIn('frame_ancestor_origins', str(unknown.exception))

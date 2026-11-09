@@ -30,12 +30,12 @@ class TokenDeskTests(unittest.TestCase):
         self.password = 'test-owner-password-123456'
         configure_admin('owner', self.password, self.admin)
         self.now = 1000.
-        self.settings = DeskSettings('10.8.61.200')
+        self.settings = DeskSettings('192.168.10.20')
         self.app = create_app(self.server, self.registry, self.admin, settings=self.settings, public_path=self.root, clock=lambda:self.now)
         self.client = self.client_for(self.app)
 
-    def client_for(self, app, peer='10.8.61.201', scheme='https'):
-        client = TestClient(app, base_url=f'{scheme}://10.8.61.200:3029', client=(peer,1234), follow_redirects=False)
+    def client_for(self, app, peer='192.168.10.21', scheme='https'):
+        client = TestClient(app, base_url=f'{scheme}://192.168.10.20:3029', client=(peer,1234), follow_redirects=False)
         self.addCleanup(client.close)
         return client
 
@@ -114,7 +114,7 @@ class TokenDeskTests(unittest.TestCase):
     def test_https_peer_host_origin_and_proxy_headers(self):
         self.assertEqual(self.client_for(self.app,scheme='http').get('/').status_code,403)
         external = self.client_for(self.app,peer='203.0.113.12')
-        self.assertEqual(external.get('/',headers={'X-Forwarded-For':'10.8.61.201','X-Forwarded-Proto':'https'}).status_code,403)
+        self.assertEqual(external.get('/',headers={'X-Forwarded-For':'192.168.10.21','X-Forwarded-Proto':'https'}).status_code,403)
         self.assertEqual(self.client.get('/',headers={'Host':'evil.example:3029'}).status_code,421)
         self.assertEqual(self.client.get('/',headers={'Origin':'https://evil.example'}).status_code,403)
 
@@ -154,20 +154,20 @@ class TokenDeskTests(unittest.TestCase):
             page = self.client.get('/admin/login')
             self.assertEqual(page.status_code,200)
             self.assertEqual(self.csrf(page),first)
-        self.assertEqual(self.client_for(self.app,peer='10.8.61.202').get('/admin/login').status_code,200)
+        self.assertEqual(self.client_for(self.app,peer='192.168.10.22').get('/admin/login').status_code,200)
         for _ in range(7):
             self.client.cookies.clear()
             self.assertEqual(self.client.get('/admin/login').status_code,200)
         self.client.cookies.clear()
         self.assertEqual(self.client.get('/admin/login').status_code,429)
-        other = self.client_for(self.app,peer='10.8.61.203')
+        other = self.client_for(self.app,peer='192.168.10.23')
         self.assertEqual(self.login(other).status_code,303)
         self.now += 601
         self.assertEqual(self.client.get('/admin/login').status_code,200)
 
     def test_challenge_is_bound_to_peer_and_not_refreshed_past_expiry(self):
         nonce = self.csrf(self.client.get('/admin/login'))
-        other = self.client_for(self.app,peer='10.8.61.202')
+        other = self.client_for(self.app,peer='192.168.10.22')
         other.cookies.set(PREAUTH,nonce)
         data={'csrf':nonce,'username':'owner','password':self.password}
         self.assertEqual(other.post('/admin/login',data=data,headers={'Origin':self.settings.origin}).status_code,403)
@@ -256,8 +256,8 @@ class TokenDeskTests(unittest.TestCase):
     def test_last_token_revoked_and_reissue_without_mcp_restart(self):
         async def ok(scope,receive,send):
             await JSONResponse({'ok':True})(scope,receive,send)
-        settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'existing-agent':'a'*48},Path('none'),Path('none'),Path('none'),self.server)
-        mcp = TestClient(MCPAccessMiddleware(ok,settings),base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234))
+        settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'existing-agent':'a'*48},Path('none'),Path('none'),Path('none'),self.server)
+        mcp = TestClient(MCPAccessMiddleware(ok,settings),base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234))
         revoke_token('existing-agent',self.server,self.registry)
         self.assertEqual(mcp.get('/mcp',headers={'Authorization':'Bearer '+'a'*48}).status_code,401)
         new = issue_token('new-agent',self.server,self.registry)

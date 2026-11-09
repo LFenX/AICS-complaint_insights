@@ -1,7 +1,7 @@
 {
   "checked_at": "2026-10-29T10:13:10.490058+00:00",
   "result": "Passed",
-  "endpoint": "https://10.8.61.200:3037/mcp",
+  "endpoint": "https://192.168.10.20:3037/mcp",
   "tls": {
     "version": "TLSv1.3",
     "strict_certificate_verification": true,

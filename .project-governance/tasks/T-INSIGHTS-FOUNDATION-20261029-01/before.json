@@ -191,7 +191,7 @@
             "branch": "Unconditional",
             "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
             "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
-            "actual": "10.8.61.200:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
+            "actual": "192.168.10.20:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
             "result": "Passed",
             "evidence_refs": [
               "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
@@ -2797,7 +2797,7 @@
                 "branch": "Unconditional",
                 "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
                 "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
-                "actual": "10.8.61.200:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
+                "actual": "192.168.10.20:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
                 "result": "Passed",
                 "evidence_refs": [
                   "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",

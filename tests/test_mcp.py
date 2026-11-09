@@ -238,7 +238,7 @@ class MCPProtocolTests(unittest.IsolatedAsyncioTestCase):
 class MCPBoundaryTests(unittest.TestCase):
     def test_rate_configuration_rejects_coercion_and_disabled_limits(self):
         for value in [0,-1,60001,True,False,1.0,'6000',None]:
-            settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},
+            settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},
                 Path('none'),Path('none'),Path('none'),tool_calls_per_minute=value)
             with self.assertRaisesRegex(ValueError,'tool_calls_per_minute'):
                 settings.validate()
@@ -253,10 +253,10 @@ class MCPBoundaryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory)/'tokens.json'
             path.write_text(json.dumps({'tokens':{'alice':'a'*48,'bob':'b'*48}}),encoding='utf-8')
-            settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{},Path('none'),Path('none'),Path('none'),path,3)
+            settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{},Path('none'),Path('none'),Path('none'),path,3)
             with patch.object(MCPSettings,'validate',return_value=None):
                 app = create_http_app(settings,api,clock=lambda:now[0])
-            with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+            with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
                 def rpc(name,args=None,token='a'*48):
                     return client.post('/mcp',json={'jsonrpc':'2.0','id':77,'method':'tools/call',
                         'params':{'name':name,'arguments':args or {}}},headers={
@@ -284,11 +284,11 @@ class MCPBoundaryTests(unittest.TestCase):
 
     def test_concurrent_http_calls_cannot_overshoot_identity_quota(self):
         api = FakeAPI()
-        settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},
+        settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},
             Path('none'),Path('none'),Path('none'),tool_calls_per_minute=4)
         with patch.object(MCPSettings,'validate',return_value=None):
             app = create_http_app(settings,api,clock=lambda:0.0)
-        with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+        with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
             def rpc(index):
                 return client.post('/mcp',json={'jsonrpc':'2.0','id':index,'method':'tools/call',
                     'params':{'name':'list_mails','arguments':{}}},headers={
@@ -304,12 +304,12 @@ class MCPBoundaryTests(unittest.TestCase):
 
     def test_raw_number_precision_and_request_context_isolation(self):
         api = FakeAPI()
-        settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
         with patch.object(MCPSettings,'validate',return_value=None):
             app = create_http_app(settings,api)
         headers = {'Authorization':'Bearer '+'x'*48,'Accept':'application/json, text/event-stream',
                    'Content-Type':'application/json','MCP-Protocol-Version':'2025-11-25'}
-        with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+        with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
             def rpc(literal,request_id='71'):
                 body = '{"jsonrpc":"2.0","id":'+request_id+',"method":"tools/call","params":{"name":"list_mails","arguments":{"limit":'+literal+'}}}'
                 response = client.post('/mcp',content=body,headers=headers)
@@ -334,12 +334,12 @@ class MCPBoundaryTests(unittest.TestCase):
         self.assertIsNone(wire_arguments.get())
 
     def test_request_ids_do_not_fall_back_to_notifications(self):
-        settings=MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        settings=MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
         with patch.object(MCPSettings,'validate',return_value=None):
             app=create_http_app(settings,FakeAPI())
         headers={'Authorization':'Bearer '+'x'*48,'Accept':'application/json, text/event-stream',
                  'Content-Type':'application/json','MCP-Protocol-Version':'2025-11-25'}
-        with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+        with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
             for raw_id in ['true','false','null','[]','{}','1.5','1.00000000000000001','1e-9999','1e4300','1e999999999999999999999']:
                 body='{"jsonrpc":"2.0","id":'+raw_id+',"method":"tools/list","params":{"fixture":"do-not-echo"}}'
                 response=client.post('/mcp',content=body,headers=headers)
@@ -368,13 +368,13 @@ class MCPBoundaryTests(unittest.TestCase):
 
     def test_empty_cursor_is_rejected_before_backend_for_all_paged_tools(self):
         api=FakeAPI()
-        settings=MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        settings=MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
         with patch.object(MCPSettings,'validate',return_value=None):
             app=create_http_app(settings,api)
         headers={'Authorization':'Bearer '+'x'*48,'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
         cases={'list_taxonomy':{},'list_mails':{},'query_daily_statistics':{'start':'2026-10-29','end':'2026-10-30'},
                'get_report_context':{'start':'2026-10-29','end':'2026-10-30'},'list_source_records':{'table':'messages'}}
-        with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+        with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
             def rpc(name,args):
                 return client.post('/mcp',json={'jsonrpc':'2.0','id':71,'method':'tools/call','params':{'name':name,'arguments':args}},headers=headers).json()['result']
             for name,args in cases.items():
@@ -387,11 +387,11 @@ class MCPBoundaryTests(unittest.TestCase):
 
     def test_raw_http_schema_validation_and_protocol_error_layer(self):
         api=FakeAPI()
-        settings=MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        settings=MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
         with patch.object(MCPSettings,'validate',return_value=None):
             app=create_http_app(settings,api)
         headers={'Authorization':'Bearer '+'x'*48,'Accept':'application/json, text/event-stream','MCP-Protocol-Version':'2025-11-25'}
-        with TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234)) as client:
+        with TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234)) as client:
             def rpc(name,args):
                 return client.post('/mcp',json={'jsonrpc':'2.0','id':71,'method':'tools/call','params':{'name':name,'arguments':args}},headers=headers)
             listed=client.post('/mcp',json={'jsonrpc':'2.0','id':70,'method':'tools/list','params':{}},headers=headers).json()['result']['tools']
@@ -439,8 +439,8 @@ class MCPBoundaryTests(unittest.TestCase):
     def test_stateless_json_transport_has_no_get_stream_or_delete_session(self):
         async def ok(scope,receive,send):
             await JSONResponse({'ok':True})(scope,receive,send)
-        settings=MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
-        client=TestClient(MCPAccessMiddleware(ok,settings,post_only=True),base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234))
+        settings=MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        client=TestClient(MCPAccessMiddleware(ok,settings,post_only=True),base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234))
         auth={'Authorization':'Bearer '+'x'*48}
         self.assertEqual(client.get('/mcp',headers=auth).status_code,405)
         self.assertEqual(client.delete('/mcp',headers=auth).status_code,405)
@@ -454,9 +454,9 @@ class MCPBoundaryTests(unittest.TestCase):
             await JSONResponse({'ok': True})(scope, receive, send)
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'tokens.json'
-            settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),
+            settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),
                 {'revoked-agent':'r'*48,'active-agent':'a'*48},Path('none'),Path('none'),Path('none'),path)
-            client = TestClient(MCPAccessMiddleware(ok,settings),base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234))
+            client = TestClient(MCPAccessMiddleware(ok,settings),base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234))
             path.write_text(json.dumps({'tokens':{'active-agent':'a'*48}}),encoding='utf-8')
             self.assertEqual(client.get('/mcp',headers={'Authorization':'Bearer '+'r'*48}).status_code,401)
             self.assertEqual(client.get('/mcp',headers={'Authorization':'Bearer '+'a'*48}).status_code,200)
@@ -470,7 +470,7 @@ class MCPBoundaryTests(unittest.TestCase):
             self.assertEqual(client.get('/mcp',headers={'Authorization':'Bearer '+'a'*48}).status_code,200)
 
     def test_backend_must_be_loopback_without_embedded_credentials(self):
-        for url in ['https://127.0.0.1:3036','http://10.8.61.200:3036','http://a:b@127.0.0.1:3036','http://127.0.0.1:3036/leak']:
+        for url in ['https://127.0.0.1:3036','http://192.168.10.20:3036','http://a:b@127.0.0.1:3036','http://127.0.0.1:3036/leak']:
             with self.assertRaises(ValueError): ReadAPI(url,'x'*48,'development-local')
         self.assertNotIn('x'*48,repr(ReadAPI('http://127.0.0.1:3036','x'*48,'development-local')))
 
@@ -487,17 +487,17 @@ class MCPBoundaryTests(unittest.TestCase):
     def test_https_bearer_network_and_proxy_spoofing_boundaries(self):
         async def ok(scope,receive,send):
             await JSONResponse({'ok':True})(scope,receive,send)
-        settings = MCPSettings('10.8.61.200',3037,('10.8.0.0/16',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
+        settings = MCPSettings('192.168.10.20',3037,('192.168.10.0/24',),{'test-agent':'x'*48},Path('none'),Path('none'),Path('none'))
         app = MCPAccessMiddleware(ok,settings)
-        secure = TestClient(app,base_url='https://10.8.61.200:3037',client=('10.8.61.201',1234))
+        secure = TestClient(app,base_url='https://192.168.10.20:3037',client=('192.168.10.21',1234))
         auth = {'Authorization':'Bearer '+'x'*48}
         self.assertEqual(secure.get('/mcp').status_code,401)
         self.assertEqual(secure.get('/mcp',headers={'Authorization':'Bearer wrong'}).status_code,401)
         self.assertEqual(secure.get('/mcp',headers=auth).status_code,200)
-        plain = TestClient(app,base_url='http://10.8.61.200:3037',client=('10.8.61.201',1234))
+        plain = TestClient(app,base_url='http://192.168.10.20:3037',client=('192.168.10.21',1234))
         self.assertEqual(plain.get('/mcp',headers=auth).status_code,403)
-        external = TestClient(app,base_url='https://10.8.61.200:3037',client=('203.0.113.12',1234))
-        self.assertEqual(external.get('/mcp',headers={**auth,'X-Forwarded-For':'10.8.61.201','X-Forwarded-Proto':'https'}).status_code,403)
+        external = TestClient(app,base_url='https://192.168.10.20:3037',client=('203.0.113.12',1234))
+        self.assertEqual(external.get('/mcp',headers={**auth,'X-Forwarded-For':'192.168.10.21','X-Forwarded-Proto':'https'}).status_code,403)
 
 
 class MCPProtocolBodyTests(unittest.IsolatedAsyncioTestCase):
@@ -548,7 +548,7 @@ class MCPClientConfigurationTests(unittest.TestCase):
         self.root=Path(self.temp.name)
         path=self.root/'mcp_client.py'
         path.write_bytes((Path(__file__).resolve().parents[1]/'scripts/mcp_client.py').read_bytes())
-        template={'url':'https://10.8.61.200:3037/mcp','bearer_token':'REPLACE_WITH_MCP_TOKEN','source_id':'production-ai-customer','ca_file':'mcp-ca.crt'}
+        template={'url':'https://192.168.10.20:3037/mcp','bearer_token':'REPLACE_WITH_MCP_TOKEN','source_id':'production-ai-customer','ca_file':'mcp-ca.crt'}
         (self.root/'mcp-client.example.json').write_text(json.dumps(template),encoding='utf-8')
         spec=importlib.util.spec_from_file_location('fixture_mcp_client',path)
         self.module=importlib.util.module_from_spec(spec)

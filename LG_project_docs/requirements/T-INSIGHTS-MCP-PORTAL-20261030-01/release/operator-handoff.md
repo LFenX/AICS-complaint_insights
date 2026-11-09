@@ -1,6 +1,6 @@
 # 管理员与维护交接
 
-分享入口：https://10.8.61.200:3029/ 。管理员登录：https://10.8.61.200:3029/admin/login 。MCP：https://10.8.61.200:3037/mcp 。3029与3037均仅监听该内网IP，允许实际TCP来源10.8.0.0/16，HTTPS私有CA。
+分享入口：https://192.168.10.20:3029/ 。管理员登录：https://192.168.10.20:3029/admin/login 。MCP：https://192.168.10.20:3037/mcp 。3029与3037均仅监听该内网IP，允许实际TCP来源192.168.10.0/24，HTTPS私有CA。
 
 ## 所有者登录与发放
 
@@ -37,7 +37,7 @@ powershell.exe -NoProfile -NonInteractive -File scripts/mcp-firewall.ps1 -Action
 
 工具按身份对全部工具合并限频，默认6000次/60秒滑动窗口。HTTP私有配置 `.secrets/mcp-server.json` 可设 `tool_calls_per_minute` 为1至60000的整数，修改后仅重启mcp生效；没有禁用值。stdio使用默认配额。`get_data_guide.tool_rate_limit` 返回当前实际配额。超过配额在读取后端前返回 `isError=true`，错误内容含 `TOOL_RATE_LIMITED` 与 `retry_after_seconds`；等待后重试，完整分页重新运行从首页开始，版本冲突必须丢弃旧页，不能发布半结果。相同身份重新发放令牌不重置当前进程的窗口；重启MCP后窗口重新计数。
 
-防火墙规则 `ComplaintInsights-Portal-3029` 只在Domain/Private配置文件中对10.8.61.200:3029、以太网接口、10.8.0.0/16放行。3037规则保持独立。未添加开机任务；电脑重启后应先确认本地副本与回环查询API由其维护者正常运行，再按上述命令启动两个服务。
+防火墙规则 `ComplaintInsights-Portal-3029` 只在Domain/Private配置文件中对192.168.10.20:3029、以太网接口、192.168.10.0/24放行。3037规则保持独立。未添加开机任务；电脑重启后应先确认本地副本与回环查询API由其维护者正常运行，再按上述命令启动两个服务。
 
 ## 重建材料与验证
 

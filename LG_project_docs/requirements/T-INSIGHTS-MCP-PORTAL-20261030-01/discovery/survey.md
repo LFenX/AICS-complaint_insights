@@ -12,7 +12,7 @@
 
 ## 已核实事实
 
-- 2026-10-30：本工程Python服务，内网接口10.8.61.200/23；3029只监听回环，3037只监听10.8.61.200；3036与15433仅回环。
+- 2026-10-30：本工程Python服务，内网接口192.168.10.20/24；3029只监听回环，3037只监听192.168.10.20；3036与15433仅回环。
 - 经专用CA严格验证的真实initialize协商2025-11-25，tools/list返回11工具；schema存于.runtime/mcp-portal-survey/tools-list.json。
 - MCP、agent与客户端的默认来源均为production-ai-customer，production.json allow_production_read=false；不连接源生产。
 - token_desk旧实现依赖回环信任、无登录、静态CSRF，无跨进程锁；旧交接包带接收人token且部分例子为development-local。

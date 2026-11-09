@@ -6,4 +6,4 @@
 
 依据：.project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-04.md，review-04/imap-uidvalidity-counterexample.json与imap-controls/summary.json。
 
-跨日实际复验：3030回环连接拒绝，Get-NetTCPConnection没有3030/15433监听；原processes.json的PID是旧记录，主机当前仍有10.8.61.200。服务中断原因未确定。只恢复既有3030看板，不启动watch/MCP/API/数据库等其他服务；不把数据库无法连接说成已验证DEGRADED。
+跨日实际复验：3030回环连接拒绝，Get-NetTCPConnection没有3030/15433监听；原processes.json的PID是旧记录，主机当前仍有192.168.10.20。服务中断原因未确定。只恢复既有3030看板，不启动watch/MCP/API/数据库等其他服务；不把数据库无法连接说成已验证DEGRADED。

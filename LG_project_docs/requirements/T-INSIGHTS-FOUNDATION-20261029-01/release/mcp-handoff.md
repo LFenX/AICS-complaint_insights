@@ -5,11 +5,11 @@
 | 项目 | 当前值 |
 |---|---|
 | 服务名 | `complaint-insights` |
-| MCP 地址 | `https://10.8.61.200:3037/mcp` |
+| MCP 地址 | `https://192.168.10.20:3037/mcp` |
 | 传输 | Streamable HTTP，标准 MCP |
 | 身份认证 | 独立 `Authorization: Bearer` 令牌 |
 | 来源 | `development-local`，开发副本，数据截至 2026-10-22 |
-| 访问网络 | `10.8.0.0/16`；Windows 防火墙仅 Domain/Private 配置文件 |
+| 访问网络 | `192.168.10.0/24`；Windows 防火墙仅 Domain/Private 配置文件 |
 | 查询范围 | 已同步的独立数据库；全部工具只读 |
 | TLS 证书到期 | 2027-10-29；当前精确时间与证书指纹见 `mcp-endpoint.json` |
 
@@ -36,7 +36,7 @@
 ## 接收方：连接到 Agent 客户端
 
 1. 将包解压到接收方电脑的私有目录。
-2. 确认能访问采集电脑 `10.8.61.200:3037`。Windows 可运行 `Test-NetConnection 10.8.61.200 -Port 3037`。
+2. 确认能访问采集电脑 `192.168.10.20:3037`。Windows 可运行 `Test-NetConnection 192.168.10.20 -Port 3037`。
 3. 在客户端配置专用 CA `mcp-ca.crt`。此 CA 的证书 SHA256 应为 `6ae4dee46fcebdf1c2d2137973a8c655b871b216aaf6fecb9e6a9ccae053c879`。它是证书 DER 摘要，不是 PEM 文件的字节摘要。
 4. 将 `mcp-client-config.json` 的服务器项合并到支持远程 MCP、自定义请求头的客户端配置中。不得覆盖客户端其他服务项。该配置示例采用 SDK 文档中的 `mcpServers` 结构；使用其他配置格式的客户端，按其原生设置分别填入 URL 和 Authorization 请求头。[MCP SDK 客户端配置说明](https://py.sdk.modelcontextprotocol.io/get-started/real-host/)
 5. 重新连接，客户端应发现 11 个只读工具；先调用 `get_data_guide`、`get_sync_status`。

@@ -4,8 +4,8 @@
 
 |服务|入口|计划任务|
 |---|---|---|
-|MCP|https://10.8.61.200:3037/mcp|ComplaintInsights-MCP-3037|
-|门户|https://10.8.61.200:3029/|ComplaintInsights-Portal-3029|
+|MCP|https://192.168.10.20:3037/mcp|ComplaintInsights-MCP-3037|
+|门户|https://192.168.10.20:3029/|ComplaintInsights-Portal-3029|
 
 两个任务使用当前Windows账户、S4U和Limited权限，不保存账户密码，不增加SYSTEM权限。任务执行时长不限、允许电池运行、忽略重复实例；开机20秒后启动，每分钟重复触发检查托管器，运行中不重复启动。
 

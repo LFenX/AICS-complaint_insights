@@ -10,6 +10,6 @@
 
 最小CSS在alert继承overflow-wrap:anywhere，保留结构和视觉。维护交接指向本次已保存的报告/结果，冻结清单以正式after.source_snapshot.file_manifest为准，旧task03/task04明确历史。
 
-仅操作MCP源码、测试、静态资源、公开材料与本任务文档。不得连接数据库/生产源10.8.45.155:5432，不启动watch，不修改重启3030/3036/15433/日报/附件/AICS及source.py/syncer.py。真实只读经现有API历史副本；不重置真实管理员。旧正式人类Gate/用户验收Pending，父Deferred使官方Offer登记拒绝的限制保留，不伪造ManagedByParent或机器Passed。另一电脑CA/路由未实测。
+仅操作MCP源码、测试、静态资源、公开材料与本任务文档。不得连接数据库/生产源192.168.10.155:5432，不启动watch，不修改重启3030/3036/15433/日报/附件/AICS及source.py/syncer.py。真实只读经现有API历史副本；不重置真实管理员。旧正式人类Gate/用户验收Pending，父Deferred使官方Offer登记拒绝的限制保留，不伪造ManagedByParent或机器Passed。另一电脑CA/路由未实测。
 
 记录时间2026-10-29T22:59:17.823460+00:00，并非新的用户回答时间；沿用原决策证据。无新增权限、范围或验收未知。

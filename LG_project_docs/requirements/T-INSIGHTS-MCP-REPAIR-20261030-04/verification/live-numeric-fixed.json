@@ -1,6 +1,6 @@
 {
   "strict_ca": true,
-  "endpoint": "https://10.8.61.200:3037/mcp",
+  "endpoint": "https://192.168.10.20:3037/mcp",
   "checks": [
     {
       "literal": "1.0",

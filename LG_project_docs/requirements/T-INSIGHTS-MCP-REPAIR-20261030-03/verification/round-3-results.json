@@ -231,7 +231,7 @@
         "firewall-observed.json",
         "tls-observed.json"
       ],
-      "actual": "3029/3037仅绑定10.8.61.200，实际10.8私网及严格CA可达；规则仅Domain/Private、指定地址/端口/以太网/10.8.0.0/16。",
+      "actual": "3029/3037仅绑定192.168.10.20，实际10.8私网及严格CA可达；规则仅Domain/Private、指定地址/端口/以太网/192.168.10.0/24。",
       "conditions": [],
       "cases": []
     },
@@ -461,7 +461,7 @@
         "live-results.json:anonymous_route",
         "release/operator-handoff.md"
       ],
-      "actual": "https://10.8.61.200:3029/admin/login 严格CA返回200；表单具独立账号/口令输入及登录挑战。",
+      "actual": "https://192.168.10.20:3029/admin/login 严格CA返回200；表单具独立账号/口令输入及登录挑战。",
       "conditions": [],
       "cases": []
     },

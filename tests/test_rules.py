@@ -87,7 +87,7 @@ class RulesTests(unittest.TestCase):
 
     def test_production_profile_is_disabled(self):
         settings=Settings.load()
-        candidate=replace(settings,source_url="postgresql://reader:placeholder@10.8.45.155:5432/ai_complaint_mail",environment="production")
+        candidate=replace(settings,source_url="postgresql://reader:placeholder@192.168.10.155:5432/ai_complaint_mail",environment="production")
         with self.assertRaisesRegex(ValueError,"disabled"): candidate.validate(source=True)
 
     def test_api_cannot_bind_to_lan(self):
@@ -103,7 +103,7 @@ class RulesTests(unittest.TestCase):
 
     def test_libpq_url_destination_overrides_are_rejected(self):
         settings=Settings.load()
-        for option in ("hostaddr=10.8.45.155", "service=unexpected-service"):
+        for option in ("hostaddr=192.168.10.155", "service=unexpected-service"):
             separator="&" if "?" in settings.source_url else "?"
             candidate=replace(settings,source_url=settings.source_url+separator+option)
             with self.assertRaisesRegex(ValueError,"overrides"):

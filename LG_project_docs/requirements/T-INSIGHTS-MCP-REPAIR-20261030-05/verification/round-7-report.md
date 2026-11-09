@@ -186,7 +186,7 @@ R7-002依据固定[官方2025-11-25 Tools](https://modelcontextprotocol.io/speci
 
 > 另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，
 
-3029只监听10.8.61.200，实际指定内网peer/HTTPS/Host/Origin验证成立，伪造代理头不放行。
+3029只监听192.168.10.20，实际指定内网peer/HTTPS/Host/Origin验证成立，伪造代理头不放行。
 
 证据：boundary-results.json
 

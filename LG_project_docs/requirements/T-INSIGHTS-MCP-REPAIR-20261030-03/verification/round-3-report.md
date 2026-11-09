@@ -52,7 +52,7 @@ U06｜在内网开放token服务入口｜已实现，异机限制保留
 
 > 另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多
 
-来源：portal.request_snapshot。证据：live-results.json；listeners-observed.json；firewall-observed.json；tls-observed.json。3029/3037仅绑定10.8.61.200，实际10.8私网及严格CA可达；规则仅Domain/Private、指定地址/端口/以太网/10.8.0.0/16。
+来源：portal.request_snapshot。证据：live-results.json；listeners-observed.json；firewall-observed.json；tls-observed.json。3029/3037仅绑定192.168.10.20，实际10.8私网及严格CA可达；规则仅Domain/Private、指定地址/端口/以太网/192.168.10.0/24。
 
 
 U07｜将使用协议、介绍及方法放在token服务｜已实现
@@ -144,7 +144,7 @@ U18｜提供登录入口｜已实现
 
 > 把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token
 
-来源：repair02.request_snapshot。证据：live-results.json:anonymous_route；release/operator-handoff.md。https://10.8.61.200:3029/admin/login 严格CA返回200；表单具独立账号/口令输入及登录挑战。
+来源：repair02.request_snapshot。证据：live-results.json:anonymous_route；release/operator-handoff.md。https://192.168.10.20:3029/admin/login 严格CA返回200；表单具独立账号/口令输入及登录挑战。
 
 
 U19｜登录该账号即可生成token｜正常路径已实现；边界缺陷列R3-01

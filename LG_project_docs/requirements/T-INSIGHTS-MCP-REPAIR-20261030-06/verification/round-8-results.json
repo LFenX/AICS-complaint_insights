@@ -828,7 +828,7 @@
       "reading": "部署3029；旧localhost被后续明确内网开放替代",
       "kind": "SupersededConstraint",
       "status": "已实现",
-      "actual": "3029指定10.8.61.200严格HTTPS；不是0.0.0.0；后续门户原话明确改为内网分享。",
+      "actual": "3029指定192.168.10.20严格HTTPS；不是0.0.0.0；后续门户原话明确改为内网分享。",
       "evidence_refs": [
         "start.json",
         "firewall.json",
@@ -1393,7 +1393,7 @@
       "reading": "提供登录入口",
       "kind": "Product",
       "status": "已实现",
-      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
       "evidence_refs": [
         "live-results.json#/groups/portal",
         "browser-native.json"
@@ -1408,7 +1408,7 @@
             "branch": "Unconditional",
             "input": "提供登录入口",
             "expected": "提供登录入口",
-            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
             "result": "Passed",
             "evidence_refs": [
               "live-results.json#/groups/portal",
@@ -1636,7 +1636,7 @@
       "reading": "提供登录入口",
       "kind": "Product",
       "status": "已实现",
-      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
       "evidence_refs": [
         "live-results.json#/groups/portal",
         "browser-native.json"
@@ -1651,7 +1651,7 @@
             "branch": "Unconditional",
             "input": "提供登录入口",
             "expected": "提供登录入口",
-            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
             "result": "Passed",
             "evidence_refs": [
               "live-results.json#/groups/portal",
@@ -1879,7 +1879,7 @@
       "reading": "提供登录入口",
       "kind": "Product",
       "status": "已实现",
-      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
       "evidence_refs": [
         "live-results.json#/groups/portal",
         "browser-native.json"
@@ -1894,7 +1894,7 @@
             "branch": "Unconditional",
             "input": "提供登录入口",
             "expected": "提供登录入口",
-            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
             "result": "Passed",
             "evidence_refs": [
               "live-results.json#/groups/portal",
@@ -2122,7 +2122,7 @@
       "reading": "提供登录入口",
       "kind": "Product",
       "status": "已实现",
-      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
       "evidence_refs": [
         "live-results.json#/groups/portal",
         "browser-native.json"
@@ -2137,7 +2137,7 @@
             "branch": "Unconditional",
             "input": "提供登录入口",
             "expected": "提供登录入口",
-            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
             "result": "Passed",
             "evidence_refs": [
               "live-results.json#/groups/portal",
@@ -2402,7 +2402,7 @@
       "reading": "提供登录入口",
       "kind": "Product",
       "status": "已实现",
-      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
       "evidence_refs": [
         "live-results.json#/groups/portal",
         "browser-native.json"
@@ -2417,7 +2417,7 @@
             "branch": "Unconditional",
             "input": "提供登录入口",
             "expected": "提供登录入口",
-            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "actual": "https://192.168.10.20:3029/admin/login可达，匿名admin重定向登录。",
             "result": "Passed",
             "evidence_refs": [
               "live-results.json#/groups/portal",

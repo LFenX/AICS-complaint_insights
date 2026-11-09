@@ -16,7 +16,7 @@ REQUEST = '''另外MCP工具后续我会给其他人使用，MCP工具的介绍�
 
 继续'''
 PRIOR = '另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，'
-PRESENTED = '已核实：MCP 监听 10.8.61.200:3037，令牌页仍只监听 127.0.0.1:3029。旧页面没有登录机制，不能直接开放到内网。我会将普通访客的说明下载入口与管理员的发放权限分开，保留每位接收人独立令牌。'
+PRESENTED = '已核实：MCP 监听 192.168.10.20:3037，令牌页仍只监听 127.0.0.1:3029。旧页面没有登录机制，不能直接开放到内网。我会将普通访客的说明下载入口与管理员的发放权限分开，保留每位接收人独立令牌。'
 SCOPE = ['HTTPS 内网接入门户及单一发放管理员登录、会话、CSRF、审计、发放撤销',
          '原生 MCP 协议说明、全部11工具实际 schema、无令牌客户端包及明确选源',
          '本工程3029/3037部署、权限及真实协议验证；保留生产隔离和撤销失效关闭']
@@ -46,7 +46,7 @@ def main():
 
 ## 已核实事实
 
-- 2026-10-30：本工程Python服务，内网接口10.8.61.200/23；3029只监听回环，3037只监听10.8.61.200；3036与15433仅回环。
+- 2026-10-30：本工程Python服务，内网接口192.168.10.20/24；3029只监听回环，3037只监听192.168.10.20；3036与15433仅回环。
 - 经专用CA严格验证的真实initialize协商2025-11-25，tools/list返回11工具；schema存于.runtime/mcp-portal-survey/tools-list.json。
 - MCP、agent与客户端的默认来源均为production-ai-customer，production.json allow_production_read=false；不连接源生产。
 - token_desk旧实现依赖回环信任、无登录、静态CSRF，无跨进程锁；旧交接包带接收人token且部分例子为development-local。
@@ -126,7 +126,7 @@ def main():
           '--request-snapshot',REQUEST,'--request-language','zh','--development-type','DT-04','--delivery-scenario','DS-01',
           '--risk-level','High','--baseline-inheritance','Revise','--basis',REF,'--authority-reference',REF,'--tailoring-stage','S4',
           '--out-of-scope','多管理员扩展、SSO/OAuth、生产接入、采集、日报3030与AICS代码数据库',
-          '--forbidden-action','连接10.8.45.155或开启生产读取、采集，重启3030或修改日报/源同步文件及旧任务',
+          '--forbidden-action','连接192.168.10.155或开启生产读取、采集，重启3030或修改日报/源同步文件及旧任务',
           '--rollback','仅停止本工程desk/mcp并恢复本次代码备份与防火墙规则；不恢复已撤销token，不动生产和3030']
     for path in ['insights/token_desk.py','insights/mcp_http.py','insights/mcp_server.py','insights/mcp_tokens.py','insights/capabilities.py','scripts/mcp*','scripts/build_mcp_handoff.py','scripts/token_desk_admin.py','config/mcp*','assets/token-desk*','tests/test_mcp*','tests/test_token_desk.py',f'LG_project_docs/requirements/{TASK}/**','LG_project_docs/README.md','README.md',f'.project-governance/tasks/{TASK}/**','.project-governance/intake/mcp-portal/**','.runtime/mcp-portal*/**','.runtime/processes.json','.secrets/token-desk*','.secrets/mcp-server.json','.secrets/mcp-token-registry.json','.secrets/mcp-handoff.zip']:
         args+=['--allowed-path',path]

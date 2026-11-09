@@ -34,7 +34,7 @@ def main():
         'R-01':('完整接收人指南、schema和23文件无凭据包公开下载成功', [f'{REL}/release/client-guide.md',f'{REL}/verification/results.json']),
         'R-02':('真实原生initialize/initialized/tools/list/tools/call通过；下载的标准库、SDK、11工具程序和22页分页运行通过',[f'{REL}/verification/results.json','scripts/mcp_protocol_client.py']),
         'R-03':('25项安全/并发/协议契约测试与真实管理员签发使用撤销链路通过；普通工程复核完成，正式人类门禁仍Pending',['.runtime/mcp-portal-tests-A06.log',f'{REL}/verification/results.json']),
-        'R-04':('3029仅10.8.61.200 HTTPS监听；防火墙限制10.8.0.0/16 Domain/Private；通过内网IP实际请求成功',[f'{REL}/verification/listeners.json',f'{REL}/verification/results.json']),
+        'R-04':('3029仅192.168.10.20 HTTPS监听；防火墙限制192.168.10.0/24 Domain/Private；通过内网IP实际请求成功',[f'{REL}/verification/listeners.json',f'{REL}/verification/results.json']),
         'R-05':('同一3029服务提供可读guide、11工具逐参数文档、协议及全部公共下载，公开包秘密扫描通过',[f'{REL}/release/client-guide.md',f'{REL}/verification/results.json']),
         'R-06':('一个入口链接包含快速开始、CA信任、逐人领令牌、客户端安装与查询、选源、排错及管理员入口；桌面与430窄屏无横向溢出',[f'{REL}/verification/layout-results.json',f'{REL}/release/client-guide.md']),
         'R-07':('本新会话只管理desk/mcp，3030/3036监听进程在部署前后保持195256/151136；无主项目、生产、采集或旧封存任务写入',[f'{REL}/verification/listeners.json','.runtime/mcp-portal-survey/pre-deploy-listeners.json',f'{REL}/discovery/survey.md']),
@@ -76,7 +76,7 @@ def main():
         '- 用户验收Pending；未启动多轮对抗性审查，也未改写原review或Cursor历史。',
         '- 本目录不是Git仓库；交付采用逐文件SHA256清单，不编造commit或整仓差异证明。','',
         '## 登录交付','',
-        '唯一owner登录地址 https://10.8.61.200:3029/admin/login 。初始口令仍保存在服务器受限文件；用户已明确请求本会话交付，口令不进入本报告、公开门户、ZIP、截图或日志。']
+        '唯一owner登录地址 https://192.168.10.20:3029/admin/login 。初始口令仍保存在服务器受限文件；用户已明确请求本会话交付，口令不进入本报告、公开门户、ZIP、截图或日志。']
     (DOCS/'verification/report.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
     incomplete=[{'reason':'另一台内网电脑路由、浏览器CA及接收人客户端未实测','impact':'服务端通过内网IP严格TLS已验证，异机路径仍须接收人复验','owner':'接收人','reentry_condition':'接收人在其电脑按门户快速开始取得11工具与查询结果'},
         {'reason':'independent-review与security-privacy-review尚无真实通过决定','impact':'功能与工程验证已交付，正式门禁保持Pending，结果不得标为门禁通过','owner':'用户或有权独立审查者','reentry_condition':'对当前交付与证据作出真实可核对的独立和安全审查决定'}]
