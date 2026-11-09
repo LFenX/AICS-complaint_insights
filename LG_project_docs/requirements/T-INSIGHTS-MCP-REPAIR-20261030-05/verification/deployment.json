@@ -1,0 +1,57 @@
+{
+  "captured_at": "2026-10-29T23:08:19.661580+00:00",
+  "files": [
+    {
+      "path": "insights/mcp_http.py",
+      "before": "4d2fabbefea595ff271af87781aa8a1252cfc3eab3e1cdce3f8bd39dc2d9e5c8",
+      "after": "714e3033a73bfde57deb5253780dd54e2fce9322e0a11fb0daf5a2a4b7961a51"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "before": "8bbd972ee8387472f851b0d24b4a0c5358a95a3bed97f806fd93716f30a34bf9",
+      "after": "c656064173942f5b2151c1a00699a3f4c666933e47adda7ec7a1de7ba87620d5"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "before": "7ddf7873748d746129494b11109b0c649d05ca2a0290aa8546fc05e61a02447f",
+      "after": "332dbd76790e82b915c9f7a99ca3439ce59c02b90ab6fa494e337e4e6698d54a"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "before": "d2977b9772aa6a224b8ecad8a33561afd3fb15180b3b9e21a45f2824e9bcfce7",
+      "after": "7a208e2e49652c4be65af9e2c8d7d135b8b41ae80d8c32fcd7a7e50e4a44064e"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "before": "8892698448258128f11ee096d587df22ada8b1be2b84f30eb23cdc7eb90d793b",
+      "after": "969f562d1086c3d9b608bc79419f157d67bd4ec03d6123d0b4d9096b266980f4"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "before": "9cda9516a4c5f6045f298e2f283da991ff09bb9faba8d1000132d23412606ac1",
+      "after": "96837db6fd8884cfc42c81a19eb751e04744e4596b4374096330beaf5734d966"
+    },
+    {
+      "path": "tests/test_token_desk.py",
+      "before": "2f07cc964c5aa70dec1ecfd3cf027bdeea56fe22eb1a6ccc69254a6c312972e2",
+      "after": "eeb4ddee746dda12fc730cd6bf58117957f37c673aadf94f04f758d574f3ad9e"
+    }
+  ],
+  "backup": "D:\\LFEN_project\\dev_project\\complaint-insights\\.runtime\\mcp-portal-repair5-backup",
+  "restart_service": "mcp",
+  "protected_services": [
+    3029,
+    3030,
+    3036,
+    15433
+  ],
+  "production_read": false,
+  "protected_listener_pids_unchanged": {
+    "3029": true,
+    "3030": true,
+    "3036": true,
+    "15433": true
+  },
+  "production_connected": false,
+  "watch_started": false
+}

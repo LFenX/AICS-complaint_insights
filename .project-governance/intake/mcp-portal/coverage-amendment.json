@@ -1,0 +1,340 @@
+[
+  {
+    "path": "requirement_items",
+    "value": [
+      {
+        "id": "R-01",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "提供可交付其他人的详细MCP介绍",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "提供可交付其他人的详细MCP介绍",
+              "actual": "完整接收人指南、schema和23文件无凭据包公开下载成功",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-02",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "按MCP原生协议实现说明与可运行程序",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+          "scripts/mcp_protocol_client.py"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "按MCP原生协议实现说明与可运行程序",
+              "actual": "真实原生initialize/initialized/tools/list/tools/call通过；下载的标准库、SDK、11工具程序和22页分页运行通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+                "scripts/mcp_protocol_client.py"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-03",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "优化并复核令牌发放服务",
+        "state": "Covered",
+        "evidence_refs": [
+          ".runtime/mcp-portal-tests-A06.log",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "优化并复核令牌发放服务",
+              "actual": "25项安全/并发/协议契约测试与真实管理员签发使用撤销链路通过；普通工程复核完成，正式人类门禁仍Pending",
+              "result": "Passed",
+              "evidence_refs": [
+                ".runtime/mcp-portal-tests-A06.log",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-04",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "内网开放令牌服务入口",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/listeners.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "内网开放令牌服务入口",
+              "actual": "3029仅10.8.61.200 HTTPS监听；防火墙限制10.8.0.0/16 Domain/Private；通过内网IP实际请求成功",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/listeners.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-05",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "将MCP使用协议、介绍和接入方法放在同一服务",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "将MCP使用协议、介绍和接入方法放在同一服务",
+              "actual": "同一3029服务提供可读guide、11工具逐参数文档、协议及全部公共下载，公开包秘密扫描通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-06",
+        "source": "request_snapshot",
+        "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+        "reading": "一个内网链接供接收人阅读、下载与接入",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/layout-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+              "expected": "一个内网链接供接收人阅读、下载与接入",
+              "actual": "一个入口链接包含快速开始、CA信任、逐人领令牌、客户端安装与查询、选源、排错及管理员入口；桌面与430窄屏无横向溢出",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/layout-results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-07",
+        "source": "request_snapshot",
+        "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+        "reading": "本会话仅处理MCP，保留3030和主会话日报工作",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/listeners.json",
+          ".runtime/mcp-portal-survey/pre-deploy-listeners.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+        ],
+        "acceptance_refs": [
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+              "expected": "本会话仅处理MCP，保留3030和主会话日报工作",
+              "actual": "本新会话只管理desk/mcp，3030/3036监听进程在部署前后保持195256/151136；无主项目、生产、采集或旧封存任务写入",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/listeners.json",
+                ".runtime/mcp-portal-survey/pre-deploy-listeners.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-08",
+        "source": "request_snapshot",
+        "quote": "继续",
+        "reading": "继续已授权的MCP范围；不增加发放管理员",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/prd/portal.md"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          4
+        ],
+        "review": {
+          "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "继续",
+              "expected": "继续已授权的MCP范围；不增加发放管理员",
+              "actual": "依继续指令完成既有MCP范围，保留唯一所有者发放，无额外管理员或匿名签发",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/prd/portal.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-09",
+        "source": "clarification:r1.e1",
+        "quote": "继续",
+        "reading": "延续既有所有者发放规则，不创建额外管理员",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+          ".runtime/mcp-portal-tests-A06.log"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          4
+        ],
+        "review": {
+          "source_sha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+          "conditions": [
+            "只有独立管理员会话和同源CSRF校验通过时，才可发放或撤销"
+          ],
+          "cases": [
+            {
+              "condition": 0,
+              "branch": "Met",
+              "input": "有效owner口令登录及该会话CSRF",
+              "expected": "发放成功，MCP新令牌可用，撤销后旧令牌401",
+              "actual": "真实HTTPS链路全部成立；临时身份已撤销",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+                ".runtime/mcp-portal-tests-A06.log"
+              ]
+            },
+            {
+              "condition": 0,
+              "branch": "NotMet",
+              "input": "无管理会话、仅MCP Bearer、跨会话/缺失/错误CSRF或跨Origin",
+              "expected": "不能发放或撤销",
+              "actual": "真实匿名401/错误CSRF403，契约测试覆盖其余拒绝分支",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+                ".runtime/mcp-portal-tests-A06.log"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

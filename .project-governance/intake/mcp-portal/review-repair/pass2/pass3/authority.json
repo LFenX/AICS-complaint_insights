@@ -1,0 +1,18 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "修复第三轮确认的管理员凭据双读竞态、JSON-RPC请求ID误降级通知和空cursor，回归此前七项边界",
+      "只部署必要desk/mcp进程与实际Schema材料，完整验证原MCP接入和发放需求",
+      "保存新版本并持续用户已授权审查，正式人类门禁与机器登记限制保持原意"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+    ],
+    "verified_at": "2026-10-29T20:32:23.429677+00:00",
+    "expires_at": null
+  }
+]

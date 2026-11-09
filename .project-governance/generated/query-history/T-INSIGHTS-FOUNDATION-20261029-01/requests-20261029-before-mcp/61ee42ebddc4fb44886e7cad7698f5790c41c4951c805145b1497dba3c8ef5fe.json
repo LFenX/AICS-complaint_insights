@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "独立服务实现：只读源连接、隔离副本、事务发布、增量对账、API鉴权、数据隐私和本地容器启动",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "ca3c6541ea1456b8878a8386add1b9fc03ddc75e515f3b9b302af06b21708fdc",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01"
+}

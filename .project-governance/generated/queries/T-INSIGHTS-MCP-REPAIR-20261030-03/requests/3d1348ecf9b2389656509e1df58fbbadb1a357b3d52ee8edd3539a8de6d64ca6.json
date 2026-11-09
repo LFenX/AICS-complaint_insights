@@ -1,0 +1,15 @@
+{
+  "action": "publish_release",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按原用户授权必要重启desk3029与mcp3037，事前后监听快照，捕获真实Schema并构建无凭据包；生产API数据库日报不操作。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S7",
+  "tailoring_resolution_sha256": "2ec25b32887f2ef8ef0cb2273fd50cad7b687963b765dfcf66113c6115f0af67",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03"
+}

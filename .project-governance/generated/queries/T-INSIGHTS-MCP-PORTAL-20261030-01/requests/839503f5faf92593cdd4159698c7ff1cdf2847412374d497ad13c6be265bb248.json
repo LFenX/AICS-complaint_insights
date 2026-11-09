@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "在3029交付内网HTTPS说明下载入口与独立所有者登录令牌管理，不扩大匿名签发权限，不连接生产或操作日报3030",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "47521c3e15eda3a394cb43aba380396ead22f93d6f87db408b3ccacb252fd236",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+}

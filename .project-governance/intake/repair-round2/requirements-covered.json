@@ -1,0 +1,70 @@
+[
+  {
+    "id": "R-01",
+    "source": "request_snapshot",
+    "quote": "先把修复做了呗",
+    "reading": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷，不扩大读取范围，不连接生产",
+    "state": "Covered",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2
+    ],
+    "review": {
+      "source_sha256": "cc130a7863c9e48c94ec21e3c551fc0a12b15e2475a1b9b7d6d05152ad3da2e3",
+      "conditions": [
+        "省略主机、端口或数据库名的连接串在连接前被拒绝",
+        "已写明的主机、端口和数据库名不被 PGHOST、PGPORT、PGDATABASE 改写"
+      ],
+      "cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "省略主机、端口或数据库名，并设置对应环境变量",
+          "expected": "连接前抛出 explicit",
+          "actual": "unittest 中三个省略用例均抛出 explicit",
+          "result": "Passed",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "本地显式 source URL",
+          "expected": "不因缺少目的地被拒绝",
+          "actual": "Settings.validate(source=True) 通过",
+          "result": "Passed",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+          ]
+        },
+        {
+          "condition": 1,
+          "branch": "Met",
+          "input": "显式 URL 加上指向其他地址的 PGHOST、PGPORT、PGDATABASE",
+          "expected": "身份仍为 127.0.0.1:5432/ai_complaint_mail",
+          "actual": "connection_identity 返回该显式身份",
+          "result": "Passed",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+          ]
+        },
+        {
+          "condition": 1,
+          "branch": "NotMet",
+          "input": "显式 URL 且不设置这三个环境变量",
+          "expected": "身份仍来自连接串",
+          "actual": "同一显式 URL 在原环境中通过既有规则测试",
+          "result": "Passed",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+          ]
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "action": "plan_execution",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "独立数据库和只读源同步；原始数据留存、来源隔离、按日期分类聚合、token 鉴权、只读接口与安全隐私验证",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "f07481bb881ace5fbceafae106b6b74bb018ca83507227cd629310137009aaef",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01"
+}

@@ -1,0 +1,156 @@
+{
+  "captured_at": "2026-10-29T19:49:17.171825+00:00",
+  "basis": "完整父request_snapshot及唯一所有者澄清、当前请求和真实开始答复",
+  "requirements": [
+    {
+      "id": "ORIGINAL-R-01",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "可分享的MCP说明与客户端",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-02",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "原生协议与11工具真实Schema",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-03",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "优化并复核安全发放服务",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-04",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "内网HTTPS3029入口",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-05",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "同服务承载协议介绍与方法",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-06",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "request_snapshot",
+      "reading": "一个内网链接接入",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-07",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "source": "request_snapshot",
+      "reading": "仅MCP任务且日报不改",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-08",
+      "quote": "继续",
+      "source": "request_snapshot",
+      "reading": "延续原授权",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "ORIGINAL-R-09",
+      "quote": "继续",
+      "source": "clarification:r1.e1",
+      "reading": "唯一所有者发放",
+      "status": "工程已实现，异机与正式门禁限制保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "公开指南和7项下载200；原生2025-11-25；11工具14表、22页SDK遍历；独立owner登录签发使用撤销退出；匿名管理/MCP拒绝；生产读取false且目标127.0.0.1:15433；3030/3036/15433监听PID前后不变"
+    },
+    {
+      "id": "CURRENT-R-01",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "status": "已实现",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ],
+      "actual": "唯一owner凭据已在当前私聊交付；公开文档、ZIP和日志无密码；真实网页登录/生成/撤销通过"
+    },
+    {
+      "id": "CURRENT-R-02",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "status": "返修完成，后续完整审查进行中",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/round-1-report.md",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/fixes.json"
+      ],
+      "actual": "首轮四项发现已修复复验，尚未取得修复版连续两轮完整无问题；机器登记限制保留"
+    },
+    {
+      "id": "CURRENT-R-03",
+      "quote": "开始审查",
+      "status": "已启动",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/round-1-report.md"
+      ],
+      "actual": "用户明确授权后执行实际审查，无人工Gate批准推断"
+    }
+  ],
+  "different_computer_tested": false,
+  "formal_human_gates": "Pending",
+  "user_decision": "Pending"
+}

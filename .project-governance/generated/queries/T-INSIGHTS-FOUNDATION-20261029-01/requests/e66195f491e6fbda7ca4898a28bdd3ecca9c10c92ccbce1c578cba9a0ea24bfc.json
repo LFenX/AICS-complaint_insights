@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "收尾交付独立数据库和内网 HTTPS MCP；逐条核对完整原话、47 项测试、14 表内容证据、26 次实际工具调用和交接包；真实生产、另一台电脑与安全隐私门禁保留未验，不伪造用户验收",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S6",
+  "tailoring_resolution_sha256": "91c734631c968976c530f81f3b27bb2735bb9025947bb8a60092224e3783c9fe",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01"
+}

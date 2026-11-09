@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存已完成的MCP/门户运行恢复、当前账户Windows独立托管和自动恢复验证；29文件证据冻结，原停止直接触发Unknown、重启/注销及完整回滚未实测明确。用户决定Pending，不补造人工验收或篡改旧账本。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "e274f72666f4259e2d62a215227882e5e37a4143107243ca5d02fcb9ebbd2f42",
+  "task_id": "T-INSIGHTS-MCP-OPS-20261101-01"
+}

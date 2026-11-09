@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "七项原话已逐条Covered且保留15个真实案例，正式保存当前表格与ZIP验证版本，确认required安全隐私门禁仍Pending而非伪造通过。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "54a9811a3de409c89c15ec1ca148687d6d35b0193eec53a824fd690d83074d76",
+  "task_id": "T-INSIGHTS-DAILY-TABLE-20261030-02"
+}

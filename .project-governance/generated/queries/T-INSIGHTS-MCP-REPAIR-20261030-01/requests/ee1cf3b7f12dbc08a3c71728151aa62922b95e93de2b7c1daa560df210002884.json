@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "修复匿名登录挑战独占和registry故障网页撤销不可达；原始工具参数先按公布Schema验证，未知工具返回协议错误",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "20f9dff475e76d0ed074eb54dcf3043792b3dc66155df8c97d4f699a6423db86",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01"
+}

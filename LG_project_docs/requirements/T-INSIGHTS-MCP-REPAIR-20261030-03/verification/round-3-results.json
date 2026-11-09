@@ -1,0 +1,936 @@
+{
+  "round_id": "round-3",
+  "reviewer": "独立只读子Agent /root/mcp_review_round3",
+  "project": "D:\\LFEN_project\\dev_project\\complaint-insights",
+  "delivery_task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+  "started_at": "2026-10-29T20:16:19.182808+00:00",
+  "finished_at": "2026-10-29T20:40:40.677703+00:00",
+  "version_sha256": "974965546ff8c800f6aea4ec1355b5c2443f5a1646345fdbd28d441a66b06930",
+  "subject_sha256": "770988aa2d3d135cd795851cc84784e8f137f5ca7873933515b505ad0a05c369",
+  "manifest_file_count": 46,
+  "all_start_end_hashes_match": false,
+  "coverage": "Incomplete",
+  "coverage_detail": "原始46文件基线的约定产品面逐条全覆盖；审查中capabilities.py外部漂移，新混合工作树未重新定版并完整复验，不能声明同版完整轮次。",
+  "unreviewed_required_product_items": [
+    "capabilities.py外部变更后的新混合工作树需重新定版并完成完整一轮；本轮不将原基线测试当作新字节版本已复验"
+  ],
+  "version_drift": {
+    "path": "insights/capabilities.py",
+    "start_sha256": "72f11bacf9d0343e6bb4691d9bae166fc6770d53639917188b1ca25ba25ec2cb",
+    "end_sha256": "4ba56d2776ec1028b02002878f9ffe88c59bc3acd29687db16c975cfbfc92b60",
+    "observed_file_last_write_utc": "2026-10-29T20:34:39.1355727Z",
+    "content_delta": "新增insights.attachments.logs.export权限与daily_log_archive能力；原MCP token_issue/revoke条目未改。末次已完整阅读新文件，但未重新定版或复验全部新工作树。",
+    "mutation_source": "非本轮工具发起；根确认也未编辑该产品文件；未独立确认具体外部执行者。"
+  },
+  "result": "ConfirmedFindingsAndVersionDrift",
+  "confirmed_finding_count": 4,
+  "clean_round": false,
+  "clean_streak_contribution": 0,
+  "findings": [
+    {
+      "id": "R3-01",
+      "priority": "P2",
+      "summary": "管理员校验数据与会话凭据版本来自两次文件读取，轮换竞态可使旧密码创建新版本有效会话",
+      "location": "insights/token_desk.py:58-64、225-269",
+      "input": "取得有效登录挑战；_admin的read_object读取旧凭据后，另一维护操作用configure_admin原子替换凭据；随后_admin读取新文件字节求版本hash；以旧密码完成POST登录",
+      "expected": "更换后的凭据版本不能给旧密码认证产生持续有效管理会话；同一快照应同时用于校验与版本摘要",
+      "actual": "轮换已实际发生，旧密码登录303，后续/admin200；再正常轮换一次后旧会话303，证明普通重置对照有效",
+      "impact": "在服务器维护者重置管理员口令的并发窗口内，已掌握旧口令的请求仍可签发/撤销令牌。该行为违背交接与指南的凭据更换使旧管理会话失效承诺。",
+      "evidence_refs": [
+        "synthetic_review.py:rotate_after_read",
+        "synthetic-results.json:credential_rotation_between_snapshot_reads",
+        "synthetic-results.json:normal_credential_rotation_control"
+      ],
+      "all_credentials_synthetic": true
+    },
+    {
+      "id": "R3-02",
+      "priority": "P2",
+      "summary": "带非法ID的请求被SDK联合模型回退为通知；整数值数值表示也丢失请求响应",
+      "location": "insights/mcp_http.py:139-196，锁定mcp2.3的原始消息解析边界",
+      "input": {
+        "method": "tools/list",
+        "id_values": [
+          true,
+          false,
+          null,
+          1.5,
+          [],
+          {}
+        ],
+        "integer_valued_number_representations": [
+          "1.0",
+          "1e3"
+        ]
+      },
+      "expected": "布尔/null/非整数/容器ID非法，应-32600；整数值数字请求应按请求处理并返回对应ID；通知只有无ID才可202空体",
+      "actual": "合成环境和真实服务非法ID均202空体；合成1.0/1e3也202空体。合法0、字符串、大整数均200且ID保留；客户端result/error响应合法ID及error id=null均202控制正常。",
+      "impact": "不满足MCP固定版请求ID与通知结构契约；调用方无法按错误码定位非法信封，合法整数数值表示的请求还会丢失应答。",
+      "evidence_refs": [
+        "synthetic-results.json:jsonrpc_id_boundary",
+        "live-results.json:live_invalid_request_id",
+        "protocol-id-additional.json"
+      ],
+      "source": "https://modelcontextprotocol.io/specification/2025-11-25/basic"
+    },
+    {
+      "id": "R3-03",
+      "priority": "P2",
+      "summary": "五个分页工具的显式空字符串cursor静默选择第一页",
+      "location": "insights/mcp_server.py:36（Cursor）；insights/api.py:126-129（既有后端，仅定位不修改）；release/client-guide.template.md:111附近的字符串/默认行为说明",
+      "input": {
+        "tools": [
+          "list_taxonomy",
+          "list_mails",
+          "query_daily_statistics",
+          "get_report_context",
+          "list_source_records"
+        ],
+        "cursor": ""
+      },
+      "expected": "显式字符串不是省略或JSON null；无效游标应INVALID_ARGUMENT，不能成功回到第一页",
+      "actual": "五工具均isError=false，structuredContent逐对象等于省略cursor的第一页；非空非法cursor对照全部isError=true。Schema只有maxLength，没有最小长度，既有page_state用if not cursor判断默认页。",
+      "impact": "错误客户端分页状态被当作成功查询，重读首页或对不完整/重复页进行分析，且违背当前指南的明确默认/游标承诺。可在MCP边界拒绝空串，无需改变3036。",
+      "evidence_refs": [
+        "empty-cursor-independent.json",
+        "live-results.json:empty_cursor_boundary",
+        "insights/mcp_server.py:Cursor",
+        "insights/api.py:page_state"
+      ]
+    },
+    {
+      "id": "R3-04",
+      "priority": "P3",
+      "summary": "当前维护交接页把旧版验证数量写成当前证据",
+      "location": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md:55",
+      "input": "读取本交付清单中的维护交接“当前证据”段，并与当前repair02 after.json和verification/results.json核对",
+      "expected": "当前交接应指向当前验证结果，或明确25项/12组属于历史版本",
+      "actual": "交接仍写“当前证据：25项…真实HTTPS验证12组”；本交付after为36项单测、15组真实检查；本轮又独立重跑36项全部通过。该段没有历史标记。",
+      "impact": "维护者无法仅按当前交接确定此版本的验证基线，数字与工程留档不一致。没有观察到由此引发的功能故障，严重度P3。",
+      "evidence_refs": [
+        "release/operator-handoff.md:55",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+        ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-02/after.json",
+        "existing-tests.log"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "U01",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "供其他人使用",
+      "status": "部分实现",
+      "evidence_refs": [
+        "live-results.json",
+        "client-results.json",
+        "R3-02",
+        "R3-03"
+      ],
+      "actual": "正常11工具与下载客户端能用；非法ID与空游标仍存在协议/查询范围缺陷。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U02",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "提供详细介绍",
+      "status": "已实现",
+      "evidence_refs": [
+        "live-results.json:all_documented_tools",
+        "additional-live-controls.json"
+      ],
+      "actual": "指南全文、11个完整inputSchema、14表、TLS/认证/来源/计数/分页/错误/交接齐全；公共材料与真实schema一致。维护交接当前统计另列R3-04。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U03",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "按MCP本身协议制作文档或程序",
+      "status": "部分实现",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "live-results.json",
+        "protocol-id-additional.json",
+        "R3-02"
+      ],
+      "actual": "正常原生2025-11-25、通知、资源与工具成功；含非法ID的请求被当作通知返回202空体，整数值数值表示1.0/1e3也被丢弃。",
+      "conditions": [
+        "通知无ID与请求有合法ID必须区分；初始化后使用协商版本"
+      ],
+      "cases": [
+        {
+          "input": "合法整数/字符串ID，2025-11-25头",
+          "expected": "200结果保留ID",
+          "actual": "0、字符串、大整数均200且同ID同类型",
+          "result": "Passed"
+        },
+        {
+          "input": "id=true/null/1.5/[]/{}",
+          "expected": "非法信封-32600",
+          "actual": "202空体",
+          "result": "Failed"
+        },
+        {
+          "input": "notifications/initialized无ID",
+          "expected": "202空体",
+          "actual": "202空体",
+          "result": "Passed"
+        },
+        {
+          "input": "协议头2999-01-01",
+          "expected": "HTTP400",
+          "actual": "HTTP400",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "U04",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "接收人拿到材料能够使用MCP",
+      "status": "部分实现",
+      "evidence_refs": [
+        "live-results.json:downloaded_sdk_full_pagination",
+        "client-results.json",
+        "R3-03"
+      ],
+      "actual": "无凭据ZIP、标准库与SDK正常接入成立；完整邮件遍历成功，空字符串游标会静默回首页。异机限制已明示。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U05",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "优化并复核token生成服务",
+      "status": "部分实现",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "existing-tests.log",
+        "R3-01"
+      ],
+      "actual": "独立认证/会话/CSRF、限速、原子存储、并发及失败恢复成立；管理员凭据更换存在双读竞态。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U06",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "在内网开放token服务入口",
+      "status": "已实现，异机限制保留",
+      "evidence_refs": [
+        "live-results.json",
+        "listeners-observed.json",
+        "firewall-observed.json",
+        "tls-observed.json"
+      ],
+      "actual": "3029/3037仅绑定10.8.61.200，实际10.8私网及严格CA可达；规则仅Domain/Private、指定地址/端口/以太网/10.8.0.0/16。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U07",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "将使用协议、介绍及方法放在token服务",
+      "status": "已实现",
+      "evidence_refs": [
+        "live-results.json:download_exact_file",
+        "live-results.json:full_guide_html"
+      ],
+      "actual": "/guide与7项公开下载200；发布字节逐一相同，在线HTML等于完整指南渲染，完整原生协议与运行方法可读。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U08",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "单一内网链接分享全部接入材料",
+      "status": "已实现，已声明外部限制保留",
+      "evidence_refs": [
+        "live-results.json",
+        "additional-live-controls.json"
+      ],
+      "actual": "首页统一入口链接到指南、CA、schema、无凭据客户端和管理登录；离线/在线引用无坏锚点；首次CA信任需可信渠道，未将单一URL误称自动授权。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U09",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "source": "portal.request_snapshot",
+      "reading": "MCP在独立聊天；原聊天继续日报",
+      "status": "本轮已遵守；历史创建由原交付分工证明",
+      "evidence_refs": [
+        "review-plan.json",
+        "listeners-observed.json",
+        "service-processes-observed.json"
+      ],
+      "actual": "当前MCP scratch/独立审查上下文；本轮不创建或发送其它聊天消息，不修改/重启日报、API、数据库或附件。历史创建事件不是本轮重演的动作。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U10",
+      "quote": "继续",
+      "source": "portal.request_snapshot",
+      "reading": "继续原已授权MCP范围",
+      "status": "已遵守",
+      "evidence_refs": [
+        "review-plan.json",
+        "subject-observed.json"
+      ],
+      "actual": "原继续指令未解释成新增管理员、OAuth、生产读取、正式门禁或验收批准。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U11",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md:既有权限原话",
+      "reading": "简单网页发放访问token",
+      "status": "已实现",
+      "evidence_refs": [
+        "synthetic-results.json:full_admin_control",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ],
+      "actual": "合成独立管理员登录后网页签发；根按当前版本执行真实签发/使用/撤销/退出15组验证，本轮核对其脚本和日志，不真实签发。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U12",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md:既有权限原话",
+      "reading": "虽然内网，必须经本人下发的token才能实际访问MCP",
+      "status": "已实现，凭据重置竞态另列",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "live-results.json:mcp_http_boundary",
+        "R3-01"
+      ],
+      "actual": "真实无令牌/错误令牌401，持现有Bearer真实只读成功；合成撤销最后一枚后拒绝、重发后恢复；管理员口令不当Bearer、接收人Bearer不管理。",
+      "conditions": [
+        "有有效独立Bearer才可访问MCP，内网地址本身不授予数据权限"
+      ],
+      "cases": [
+        {
+          "input": "内网+有效现有Bearer",
+          "expected": "只读工具成功",
+          "actual": "11工具/14表成功",
+          "result": "Passed"
+        },
+        {
+          "input": "同内网无Bearer或错误Bearer",
+          "expected": "401",
+          "actual": "401",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "U13",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md:既有权限原话",
+      "reading": "3029端口；localhost限制的后续演进",
+      "status": "已实现",
+      "evidence_refs": [
+        "listeners-observed.json",
+        "tls-observed.json",
+        "portal.request_snapshot"
+      ],
+      "actual": "当前3029仅绑定指定私网IP；后续同一用户明确要求内网开放，覆盖旧localhost-only约束；未同时声称只监听localhost。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U14",
+      "quote": "令牌发放保留哪种管理员范围？普通内网访客均只能阅读文档、下载无凭据客户端；只有登录管理员才能生成或撤销 MCP 令牌。",
+      "source": "portal.clarification:r1.e1.question",
+      "reading": "匿名访客仅阅读文档和下载无凭据客户端",
+      "status": "已实现",
+      "evidence_refs": [
+        "synthetic-results.json:roles_control",
+        "live-results.json",
+        "client-results.json"
+      ],
+      "actual": "匿名文档/下载200，匿名admin重定向、Bearer无管理会话401；ZIP不含现有真实Bearer/私钥/数据库URI。管理员初始口令及后端秘密扫描由根真实验证器证据核对。",
+      "conditions": [
+        "普通访客没有管理员会话"
+      ],
+      "cases": [
+        {
+          "input": "匿名访客读取指南与下载",
+          "expected": "200且无有效凭据",
+          "actual": "7项下载200且内容扫描通过",
+          "result": "Passed"
+        },
+        {
+          "input": "匿名或MCP Bearer尝试管理",
+          "expected": "无法发放撤销/查看身份",
+          "actual": "合成401与真实/admin303",
+          "result": "Passed"
+        },
+        {
+          "input": "合成管理员独立登录",
+          "expected": "进入管理",
+          "actual": "200",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "U15",
+      "quote": "令牌发放保留哪种管理员范围？普通内网访客均只能阅读文档、下载无凭据客户端；只有登录管理员才能生成或撤销 MCP 令牌。",
+      "source": "portal.clarification:r1.e1.question",
+      "reading": "只有登录管理员才能生成或撤销MCP令牌",
+      "status": "部分实现",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "R3-01",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ],
+      "actual": "正常独立登录、同源CSRF及确认撤销门槛成立；轮换竞态允许旧密码获得绑定新凭据版本的管理会话。",
+      "conditions": [
+        "登录管理员且合法同源/CSRF才允许管理；撤销还需确认"
+      ],
+      "cases": [
+        {
+          "input": "合成正确登录+同源CSRF+撤销确认",
+          "expected": "签发200、撤销303",
+          "actual": "200/303",
+          "result": "Passed"
+        },
+        {
+          "input": "无管理会话、错误CSRF/Origin、不确认撤销",
+          "expected": "拒绝",
+          "actual": "401/403/400",
+          "result": "Passed"
+        },
+        {
+          "input": "读取旧凭据后、读取摘要前更换凭据；旧密码登录",
+          "expected": "不得获得新版本有效会话",
+          "actual": "登录303、管理200",
+          "result": "Failed"
+        }
+      ]
+    },
+    {
+      "id": "U16",
+      "quote": "继续",
+      "source": "portal.clarification:r1.e1.answer",
+      "reading": "沿用唯一所有者默认，没有额外管理员",
+      "status": "已遵守",
+      "evidence_refs": [
+        "review-plan.json",
+        "insights/token_desk.py:configure_admin/_admin"
+      ],
+      "actual": "原问题和推荐默认完整保留；真实回答仅“继续”，原需要本人下发及单一凭据对象支持唯一owner，不声称用户选择了多管理员。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U17",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair02.request_snapshot",
+      "reading": "把管理员账号密码给用户",
+      "status": "由根私聊交付；本轮按分工未读取口令",
+      "evidence_refs": [
+        "parent delegation message",
+        "release/operator-handoff.md"
+      ],
+      "actual": "根确认在本轮首次审查开始前的私聊commentary已交付owner/初始口令/登录链接，精确原消息时间不可查。本轮没有亲见口令，不把转述冒称直接独立验证；最终自包含交付仍由根完成。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U18",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair02.request_snapshot",
+      "reading": "提供登录入口",
+      "status": "已实现",
+      "evidence_refs": [
+        "live-results.json:anonymous_route",
+        "release/operator-handoff.md"
+      ],
+      "actual": "https://10.8.61.200:3029/admin/login 严格CA返回200；表单具独立账号/口令输入及登录挑战。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U19",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair02.request_snapshot",
+      "reading": "登录该账号即可生成token",
+      "status": "正常路径已实现；边界缺陷列R3-01",
+      "evidence_refs": [
+        "synthetic-results.json:full_admin_control",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ],
+      "actual": "本轮以自创凭据独立验证登录→发放→一次显示→确认撤销→最后撤销→重发；真实当前链路由根15组检查并有日志，审查者未真实登录签发。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U20",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "source": "repair02.request_snapshot",
+      "reading": "发现问题修复复验，直到同版连续两轮完整无问题",
+      "status": "本轮已执行，发现问题待返修；版本漂移，整体多轮目标尚未完成",
+      "evidence_refs": [
+        "initial-snapshot.json",
+        "final-snapshot.json",
+        "synthetic-results.json",
+        "live-results.json",
+        "report.md"
+      ],
+      "actual": "本轮4项确认问题，不能计为干净轮次；末次发现capabilities.py在审查期间发生非本轮写入的变更，原始基线范围已检查，但新混合工作树没有完成重新定版与整轮复验。正式人类门禁和user_decision仍Pending，原父Deferred使官方Offer登记失败，未伪造机器Passed或ManagedByParent。",
+      "conditions": [],
+      "cases": []
+    },
+    {
+      "id": "U21",
+      "quote": "开始审查",
+      "source": "repair02.request_snapshot",
+      "reading": "明确开始审查",
+      "status": "已遵守",
+      "evidence_refs": [
+        "review-plan.json",
+        "parent delegation message"
+      ],
+      "actual": "用户真实“开始审查”授权后执行本轮同范围只读审查；不额外要求重复授权、不扩大生产/发布/权限。",
+      "conditions": [],
+      "cases": []
+    }
+  ],
+  "prior_original_cases": [
+    {
+      "finding_id": "R1-01",
+      "disposition": "原始反例修复已复核",
+      "evidence_refs": [
+        "existing-tests.log:test_refresh_and_cookie_clearing_cannot_exhaust_other_peer_login",
+        "synthetic-results.json:challenge_capacity_control"
+      ]
+    },
+    {
+      "finding_id": "R1-02",
+      "disposition": "原始反例修复已复核",
+      "evidence_refs": [
+        "existing-tests.log",
+        "synthetic-results.json:bad_metadata_emergency_revoke"
+      ]
+    },
+    {
+      "finding_id": "R1-03",
+      "disposition": "原始反例修复已复核",
+      "evidence_refs": [
+        "existing-tests.log",
+        "synthetic-results.json:tool_schema_boundary"
+      ]
+    },
+    {
+      "finding_id": "R1-04",
+      "disposition": "原始反例修复已复核",
+      "evidence_refs": [
+        "existing-tests.log:test_raw_http_schema_validation_and_protocol_error_layer"
+      ]
+    },
+    {
+      "finding_id": "R2-01",
+      "disposition": "原始反例修复已复核；空串cursor另列R3-03",
+      "evidence_refs": [
+        "synthetic-results.json:literal_value_control",
+        "live-results.json:business_negative_control"
+      ]
+    },
+    {
+      "finding_id": "R2-02",
+      "disposition": "原始反例修复已复核",
+      "evidence_refs": [
+        "client-results.json",
+        "existing-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R2-03",
+      "disposition": "原始非法信封反例已修复；更广ID信封反例R3-02仍失败",
+      "evidence_refs": [
+        "existing-tests.log:test_raw_http_schema_validation_and_protocol_error_layer",
+        "protocol-id-additional.json"
+      ]
+    }
+  ],
+  "not_an_issue": [
+    {
+      "id": "N01",
+      "summary": "Accept仅application/json仍200不是确认缺陷",
+      "actual": "固定版要求客户端声明两种Accept，但没有要求服务端对该兼容子集强制406；本服务JSON响应属于Accept允许范围。夹具406预期过窄。",
+      "evidence_refs": [
+        "live-results.json:mcp_http_boundary",
+        "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports"
+      ],
+      "disposition": "NotAnIssue"
+    },
+    {
+      "id": "N02",
+      "summary": "text/plain返回400不必强制415",
+      "actual": "输入被4xx拒绝；固定传输文档没有要求这一输入必须415。不能把过窄HTTP状态预期计为缺陷。",
+      "evidence_refs": [
+        "live-results.json:mcp_http_boundary",
+        "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports"
+      ],
+      "disposition": "NotAnIssue"
+    },
+    {
+      "id": "N03",
+      "summary": "空mailbox/status/分类参数没有清除过滤",
+      "actual": "5项真实空串筛选均只返回对应字段等于空串的记录；API对这些字段使用is not None。未新增要求这些空字段必须报错，R3-03限定为cursor的明确承诺。",
+      "evidence_refs": [
+        "live-results.json:empty_string_filter_kept",
+        "insights/api.py:taxonomy/read_mails"
+      ],
+      "disposition": "NotAnIssue"
+    },
+    {
+      "id": "N04",
+      "summary": "3张源表为空不是未实现",
+      "actual": "真实目录14表；11表有行，3表空结果合法。空表get_source_record使用合成不存在键验证RECORD_NOT_FOUND；未制造当前行。",
+      "evidence_refs": [
+        "live-results.json:all_table_query_and_detail"
+      ],
+      "disposition": "NotAnIssue"
+    },
+    {
+      "id": "N05",
+      "summary": "error响应id=null不是请求id=null",
+      "actual": "客户端错误响应与请求结构不同；error id=null真实SDK对照202，修复不得对没有method的响应套用请求ID限制。",
+      "evidence_refs": [
+        "protocol-id-additional.json"
+      ],
+      "disposition": "NotAnIssue"
+    }
+  ],
+  "fixture_failures_and_retries": [
+    {
+      "stage": "最初读取",
+      "reason": "scratch尚不存在，进程创建目录错误；已先建立scratch并重试"
+    },
+    {
+      "stage": "拆条计划初次写入",
+      "reason": "把文本实际换行误作字面\\n拆分，引发IndexError；未生成该次文件；改为实际换行重新生成"
+    },
+    {
+      "stage": "synthetic-review.log",
+      "reason": "最小ASGI成功夹具未实现lifespan，TestClient启动断言失败；补齐纯夹具lifespan后复验。"
+    },
+    {
+      "stage": "synthetic-review-retry1.log",
+      "reason": "预期所有ID反例都有JSON正文，但实际202空体触发json.loads；保留失败，改为记录空体后得到R3-02。"
+    },
+    {
+      "stage": "live-results-initial.json public_portal",
+      "reason": "HTTP头名以区分大小写键查找导致假失败；新case统一小写后no-store真实通过。"
+    },
+    {
+      "stage": "live-results-initial.json report_context_control",
+      "reason": "夹具误写字段body_text，当前视图字段为body_plain_text/body_translated；独立修正字段后false/true对照均通过。"
+    },
+    {
+      "stage": "live_review_initial.py source_records全量messages双遍历",
+      "reason": "无业务日期筛选的messages双遍历运行超过约300秒，主动只停止本轮两个已核对命令行的审查Python进程；保留62项已完成结果与初始脚本/日志；未停止任何服务。改为14表首/次页连贯性、mailboxes完整遍历与单日邮件完整双遍历；不声称messages全量遍历已经完成。"
+    }
+  ],
+  "checks": {
+    "existing_tests": 36,
+    "existing_tests_passed": true,
+    "synthetic_checks": 65,
+    "client_failure_checks": 20,
+    "client_failure_checks_passed": true,
+    "live_checks": 109,
+    "real_tools": 11,
+    "real_tables": 14
+  },
+  "scope_and_permissions": {
+    "product_or_service_mutations": false,
+    "real_admin_credentials_read": false,
+    "real_admin_issue_revoke_executed_by_reviewer": false,
+    "database_connections": false,
+    "production_connected": false,
+    "only_scratch_written": true
+  },
+  "verification_split": [
+    "本轮亲自：全部46文件产品/文档/测试/证据，原文与澄清、36项测试、自创65隔离观察、20客户端故障检查、真实授权只读11工具/14表、严格CA公开材料、分页计数、部署监听/防火墙/进程；所有实际ID和客户payload仅内存。",
+    "真实管理员登录→签发→读取→撤销→退出由根在本版本先行执行15组检查，审核者已读验证器全文、当前results和原始摘要日志，另以合成凭据独立验证管理全链路；未运行mcp_portal_verify.py。",
+    "初始口令私聊交付由根确认，本轮未读取或写出口令，精确原消息时间不可查，不冒称亲见。",
+    "现有430/1440 UI预览与布局结果亲自查看，当前CSS/JS/HTML完整读取；没有新增真实管理员浏览器交互或全部浏览器矩阵。"
+  ],
+  "declared_external_limits": [
+    "另一内网电脑路由、CA安装和本人客户端未实测；只证明本机经内网IP严格CA。",
+    "正式independent-review/security-privacy-review与user_decision仍Pending，本轮不代批。",
+    "父Deferred导致官方Offer登记拒绝的原失败由根保留；本轮只写scratch，不声称机器Passed/ManagedByParent。"
+  ],
+  "files_read": [
+    {
+      "path": ".runtime/mcp-portal-public/SHA256SUMS.txt",
+      "sha256": "fb4a3b6064f531ea090f17e48e957e19838e78855d4fdf0e1c604fd3a51d9c4b",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.html",
+      "sha256": "78f57ffe8cb92b3f4a7847fc03f4f3d207bea06e151c5e38e7e28c4e452c51c2",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.md",
+      "sha256": "2d64fdc4bbb3e85d6c1ed922c117e376afce299506082641f2447adbd68961a5",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-ca.crt",
+      "sha256": "b65f85f59835a8277c254a6f41861f7f02ce9302e02c1fa9098dba71e3460d3f",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client-kit.zip",
+      "sha256": "92d900f7681504b23e179cccb3e9f0fd686c34bbd3c5c84b48ca1ac6d999cba7",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client.example.json",
+      "sha256": "f437e0b92f6dc859e4a07815a5b318e50fc972cb4e575f917fcc23e2b5cd8092",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-endpoint.json",
+      "sha256": "e65f3339fc69edfa11c5c5a18b57f345da7b07010d4bca716a8d885d9907b4bc",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/tools-schema.json",
+      "sha256": "7abe4acccd2ed166d9b27869a62f2bec8be11ab808d504880f12a98e54a762ea",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+      "sha256": "2d64fdc4bbb3e85d6c1ed922c117e376afce299506082641f2447adbd68961a5",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.template.md",
+      "sha256": "5d4cf667a1524fafc04d6f957eaf4382753d1e67deef132394b8c7a09ed535c7",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "sha256": "54cc358ed0190008a80722c12c137681c021ebd4fe59df4a0b0e5943474af2bb",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/tools-schema.json",
+      "sha256": "7abe4acccd2ed166d9b27869a62f2bec8be11ab808d504880f12a98e54a762ea",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/design/repair.md",
+      "sha256": "08db5c0c9067d873d1ec1c09691bf5320d38e50679eb93ab49e06557700210a7",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md",
+      "sha256": "515d09989f7fc1c2c3941d5947e04944d2114e5e21b0de189567577e40e2ab12",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/client-acl-results.json",
+      "sha256": "0026e450ab8d8a6599600b5e09c658f5beebb1b2b1b64fb324b4882440ef77c3",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+      "sha256": "504bc36def7f4caa6eee734a74c87821b50e8b34401eb4c04d179574e8fe5f2f",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/fixes.json",
+      "sha256": "858f5fc483fe47d040f24e389d97740d755edf69bb81826387afbfa408a1db11",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/report.md",
+      "sha256": "3428fe23e69dbc25fdacac426f55652c4ed1337249b7d98d42943fc3416ff9ea",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+      "sha256": "31f2981e0cb28391be6bde6425780d6977dbb98babaed4704ce145df40dea25a",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "sha256": "4cc316bffa7248136500b2a1af8bafc9cfc909ac9b701cfe76918f6f57daafdf",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "assets/token-desk.js",
+      "sha256": "0dc1f11f0306b3c09915ef68cb45331027e69c02dffad95ed1096c00c04d41c1",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/ai-records.json",
+      "sha256": "f093231cda54400aee6b20519ce6a8cf23751c2511d53ebacbf5e270f5ec5113",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/context.json",
+      "sha256": "47eaec865ec9397cf021e0ec34ad390beb3c571c30be17c28dd3fa123cd9f67d",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/daily.json",
+      "sha256": "9835aa1d3c6258745f1aabf8c75c6f0e0cb585264fb7579d111fba325d371697",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/mails.json",
+      "sha256": "f5b0754cb8572b9df2e4a34f73381426a23783df6e005b4b36c09b4c13e7b4ff",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/source-records.json",
+      "sha256": "a5fd07baa008e0ba8ea3b52b38ef6afb25a2be3f9d1501db9061ab5b8376ce78",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/status.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/tables.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "config/mcp-queries/taxonomy.json",
+      "sha256": "95fc99a669cafb7fa96963f8766ec1ce991396ee7c524b0505cfbc13787fdfeb",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "insights/capabilities.py",
+      "sha256": "72f11bacf9d0343e6bb4691d9bae166fc6770d53639917188b1ca25ba25ec2cb",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "insights/mcp_http.py",
+      "sha256": "11c6ddb768391d664e8e25d980e1745109632c8dc35d234bfefafefe6fc101b1",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "sha256": "bc140c49604fc173ba298e843f7a87db9958f8fc8fa3ec897160e80c09edc0e8",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "insights/mcp_tokens.py",
+      "sha256": "c4d9f5903d1d2743362991921a98d7a2af25094d580f413ef6ff9ca7486097c0",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "insights/token_desk.py",
+      "sha256": "8d016b5ed7b67dc6f156df85fb861c4c7919aad54484bf0bf6f5776740253b7b",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "d366b516a5ae452e35e26a245f57245bd86aaed291df05260c019da2bd494b47",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/build_mcp_handoff.py",
+      "sha256": "688c120e79d3439ba583ced6590e0fc8a1231556c4f3f38a8514a0cef9ebcbd1",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp-firewall.ps1",
+      "sha256": "73f28188fe42f85905a5fbf6165dfe8ca42de9468955664bd9a0b94084065fa6",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp_client.py",
+      "sha256": "7ebc4f38245f6895ee31952e9d74d8f9234744232bb9cf4c4d4de7aee77dca70",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "sha256": "83c558f2ae54a5481f740843c7008f290b8e10b990ca51e071704663ce6e03b0",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp_portal_verify.py",
+      "sha256": "2265ca6b77e4e135cc0248df80eb03b08edd04a6fd72973a2d2bb42c7a4019cf",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp_protocol_client.py",
+      "sha256": "9b44d68ecfb8619d9fcf81b83a83cc54af78feced8ee41eb5b4bba933d8ef246",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/mcp_workflow.py",
+      "sha256": "4930934c9c752d4f64b39f9742a61757dd9f899e6c7ca17c55af3d18e63c5b10",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/token_desk_admin.py",
+      "sha256": "b7804a1a97eb4ada5f2101d25621545e17f2610ad51f8cbef443c1c0df26a6ff",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "scripts/verify_mcp.py",
+      "sha256": "7b25747980e56e64170c2a2467297769d9b7a0007ff37efda1bd46711adc82d2",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "98a31f14cc127efa901dfd1974ecfc6fb8c42896bba0c346c630157cb7f160ae",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    },
+    {
+      "path": "tests/test_token_desk.py",
+      "sha256": "1d0e234d555783442b092100009d7e5eedbf1c92c4e42087097cf53b2f1e2135",
+      "method": "完整源码/文本阅读，或完整结构解析、渲染/字节/ZIP内部哈希核对；未抽改动点"
+    }
+  ],
+  "evidence_refs": [
+    "review-plan.json",
+    "initial-snapshot.json",
+    "final-snapshot.json",
+    "final-snapshot-first.json",
+    "capabilities-end-observed.py",
+    "subject-observed.json",
+    "synthetic_review.py",
+    "synthetic-results.json",
+    "client_failure_review.py",
+    "client-results.json",
+    "live_review_initial.py",
+    "live_review_tail.py",
+    "live-results-initial.json",
+    "live-results.json",
+    "protocol-id-additional.json",
+    "empty-cursor-independent.json",
+    "additional-live-controls.json",
+    "existing-tests.log",
+    "listeners-observed.json",
+    "firewall-observed.json",
+    "service-processes-observed.json",
+    "tls-observed.json"
+  ]
+}

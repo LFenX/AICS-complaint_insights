@@ -1,0 +1,321 @@
+{
+  "captured_at": "2026-10-29T19:31:55.879513+00:00",
+  "fixture_only": true,
+  "cases": [
+    {
+      "case": "owner_login_control",
+      "actual": 303,
+      "expected": 303
+    },
+    {
+      "case": "management_control",
+      "actual": 200,
+      "expected": 200
+    },
+    {
+      "case": "corrupt_metadata_ui",
+      "expected": "authenticated owner can reach emergency revoke form while metadata is corrupt",
+      "actual_http": 503,
+      "contains_csrf": false,
+      "contains_revoke_action": false,
+      "valid_token_count": 1
+    },
+    {
+      "case": "corrupt_metadata_function_control",
+      "actual_token_count": 0,
+      "expected_token_count": 0
+    },
+    {
+      "case": "public_login_challenge_exhaustion",
+      "input": "512 unauthenticated GET /admin/login from one synthetic peer",
+      "attack_status_counts": {
+        "200": 512
+      },
+      "owner_http": 429,
+      "owner_can_get_form": false,
+      "homepage_http": 200
+    },
+    {
+      "case": "challenge_expiry_control",
+      "owner_http": 200,
+      "expected": 200
+    },
+    {
+      "case": "initialize_control",
+      "http": 200,
+      "top_error": null,
+      "is_error": null,
+      "has_result": true,
+      "negotiated": "2025-11-25",
+      "has_session_header": false
+    },
+    {
+      "case": "initialized_notification_control",
+      "http": 202
+    },
+    {
+      "case": "tool_discovery_control",
+      "http": 200,
+      "top_error": null,
+      "is_error": null,
+      "has_result": true,
+      "count": 11
+    },
+    {
+      "case": "unknown_tool_protocol",
+      "expected": "top-level JSON-RPC protocol error",
+      "http": 200,
+      "top_error": null,
+      "is_error": true,
+      "has_result": true
+    },
+    {
+      "case": "invalid_protocol_header",
+      "http": 400,
+      "top_error": -32602,
+      "is_error": null,
+      "has_result": false
+    },
+    {
+      "case": "missing_accept",
+      "http": 200,
+      "top_error": null,
+      "is_error": null,
+      "has_result": true
+    },
+    {
+      "case": "get_delete_contract",
+      "get": 405,
+      "delete": 405
+    },
+    {
+      "case": "oversize_request",
+      "http": 413
+    },
+    {
+      "case": "schema_input_list_mails",
+      "input": {
+        "limit": "1",
+        "source_id": "fixture-local"
+      },
+      "http": 200,
+      "top_error": null,
+      "is_error": false,
+      "has_result": true,
+      "backend_called": true,
+      "forwarded": {
+        "path": "/v1/mails",
+        "params": {
+          "start": "None",
+          "end": "None",
+          "scope": "primary",
+          "direction": "ALL",
+          "mailbox": null,
+          "level_one": null,
+          "level_two": null,
+          "issue_type_id": null,
+          "limit": 1,
+          "cursor": null,
+          "source_id": "fixture-local"
+        },
+        "types": {
+          "start": "NoneType",
+          "end": "NoneType",
+          "scope": "str",
+          "direction": "str",
+          "mailbox": "NoneType",
+          "level_one": "NoneType",
+          "level_two": "NoneType",
+          "issue_type_id": "NoneType",
+          "limit": "int",
+          "cursor": "NoneType",
+          "source_id": "str"
+        }
+      }
+    },
+    {
+      "case": "schema_input_list_mails",
+      "input": {
+        "limit": true,
+        "source_id": "fixture-local"
+      },
+      "http": 200,
+      "top_error": null,
+      "is_error": false,
+      "has_result": true,
+      "backend_called": true,
+      "forwarded": {
+        "path": "/v1/mails",
+        "params": {
+          "start": "None",
+          "end": "None",
+          "scope": "primary",
+          "direction": "ALL",
+          "mailbox": null,
+          "level_one": null,
+          "level_two": null,
+          "issue_type_id": null,
+          "limit": 1,
+          "cursor": null,
+          "source_id": "fixture-local"
+        },
+        "types": {
+          "start": "NoneType",
+          "end": "NoneType",
+          "scope": "str",
+          "direction": "str",
+          "mailbox": "NoneType",
+          "level_one": "NoneType",
+          "level_two": "NoneType",
+          "issue_type_id": "NoneType",
+          "limit": "int",
+          "cursor": "NoneType",
+          "source_id": "str"
+        }
+      }
+    },
+    {
+      "case": "schema_input_list_source_records",
+      "input": {
+        "table": "messages",
+        "include_payload": "false",
+        "source_id": "fixture-local"
+      },
+      "http": 200,
+      "top_error": null,
+      "is_error": false,
+      "has_result": true,
+      "backend_called": true,
+      "forwarded": {
+        "path": "/v1/source-records",
+        "params": {
+          "table": "messages",
+          "include_deleted": false,
+          "include_payload": false,
+          "limit": 20,
+          "cursor": null,
+          "source_id": "fixture-local"
+        },
+        "types": {
+          "table": "str",
+          "include_deleted": "bool",
+          "include_payload": "bool",
+          "limit": "int",
+          "cursor": "NoneType",
+          "source_id": "str"
+        }
+      }
+    },
+    {
+      "case": "schema_input_get_report_context",
+      "input": {
+        "start": 0,
+        "end": 86400,
+        "source_id": "fixture-local"
+      },
+      "http": 200,
+      "top_error": null,
+      "is_error": false,
+      "has_result": true,
+      "backend_called": true,
+      "forwarded": {
+        "path": "/v1/report-context",
+        "params": {
+          "start": "1970-01-01",
+          "end": "1970-01-02",
+          "scope": "primary",
+          "direction": "RECEIVED",
+          "level_one": null,
+          "level_two": null,
+          "issue_type_id": null,
+          "include_body": false,
+          "limit": 20,
+          "cursor": null,
+          "source_id": "fixture-local"
+        },
+        "types": {
+          "start": "date",
+          "end": "date",
+          "scope": "str",
+          "direction": "str",
+          "level_one": "NoneType",
+          "level_two": "NoneType",
+          "issue_type_id": "NoneType",
+          "include_body": "bool",
+          "limit": "int",
+          "cursor": "NoneType",
+          "source_id": "str"
+        }
+      }
+    },
+    {
+      "case": "schema_input_get_report_context",
+      "input": {
+        "start": "2026-10-29",
+        "end": "2026-10-30",
+        "mailbox": "fixture-filter@example.invalid",
+        "source_id": "fixture-local"
+      },
+      "http": 200,
+      "top_error": null,
+      "is_error": false,
+      "has_result": true,
+      "backend_called": true,
+      "forwarded": {
+        "path": "/v1/report-context",
+        "params": {
+          "start": "2026-10-29",
+          "end": "2026-10-30",
+          "scope": "primary",
+          "direction": "RECEIVED",
+          "level_one": null,
+          "level_two": null,
+          "issue_type_id": null,
+          "include_body": false,
+          "limit": 20,
+          "cursor": null,
+          "source_id": "fixture-local"
+        },
+        "types": {
+          "start": "date",
+          "end": "date",
+          "scope": "str",
+          "direction": "str",
+          "level_one": "NoneType",
+          "level_two": "NoneType",
+          "issue_type_id": "NoneType",
+          "include_body": "bool",
+          "limit": "int",
+          "cursor": "NoneType",
+          "source_id": "str"
+        }
+      }
+    },
+    {
+      "case": "current_schema_matches_captured",
+      "equal": true
+    },
+    {
+      "case": "delivery_hashes",
+      "count": 30,
+      "mismatches": []
+    },
+    {
+      "case": "public_zip_integrity",
+      "entries": 23,
+      "checksum_mismatches": [],
+      "private_key_marker": false,
+      "copied_scripts_match": true
+    },
+    {
+      "case": "offline_guide_links",
+      "local_refs": [
+        "client-guide.html",
+        "client-guide.html#tools",
+        "token-desk.css",
+        "token-desk.js"
+      ],
+      "broken_local_refs": []
+    }
+  ]
+}

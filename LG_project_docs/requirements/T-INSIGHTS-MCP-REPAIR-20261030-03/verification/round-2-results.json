@@ -1,0 +1,499 @@
+{
+  "round_id": "round2",
+  "reviewer": "独立只读子Agent /root/mcp_review_round2",
+  "started_at": "2026-10-29T19:52:03.031470+00:00",
+  "ended_at": "2026-10-29T20:06:09.610942+00:00",
+  "delivery_task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+  "version_sha256": "d5824b26cb3b4ef46360ff83047250be6190c3feb6aaf171b62710fbb670ed7c",
+  "subject_sha256": "54320013394c6bd06bbe598bdbca6aae785cac5c979b180b7d929ba18e9d3b97",
+  "subject_verification": "get_approval_subject.py本轮只读实测返回相同摘要",
+  "files_count": 45,
+  "hashes_start_match": true,
+  "hashes_end_match": true,
+  "manifest_unchanged": true,
+  "coverage": "Complete",
+  "coverage_meaning": "约定产品审查面完整；真实管理员链路采用明确证据分工；已声明异机/正式人类门禁限制单列。发现3项未解决产品问题，不能计为干净轮。",
+  "unreviewed_required_product_items": [],
+  "unresolved_findings": [
+    "R2-01",
+    "R2-02",
+    "R2-03"
+  ],
+  "clean_streak": 0,
+  "governance_written": false,
+  "product_written": false,
+  "formal_user_decision": "Pending",
+  "requirement_sources_sha256": {
+    "portal_request_snapshot": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+    "repair_request_snapshot": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065"
+  },
+  "coverage_items": [
+    {
+      "id": "U01",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "MCP供其他人使用",
+      "status": "部分实现",
+      "evidence": [
+        "L07",
+        "L08",
+        "L13",
+        "L14",
+        "L15",
+        "R2-01",
+        "R2-02"
+      ],
+      "gap": "客户端凭据保护和部分字符串参数仍有缺陷；异机路由为已声明外部限制",
+      "conditions": []
+    },
+    {
+      "id": "U02",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "提供详细介绍",
+      "status": "已实现",
+      "evidence": [
+        "document-checks.json",
+        "L06",
+        "L07"
+      ],
+      "gap": "指南覆盖协议/身份/TLS/全部参数/枚举/分页/来源/统计/错误/交接；所有11段inputSchema逐对象等于真实发现",
+      "conditions": []
+    },
+    {
+      "id": "U03",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "按MCP本身协议制作文档或程序",
+      "status": "部分实现",
+      "evidence": [
+        "F17",
+        "F18",
+        "F20",
+        "F21",
+        "F22",
+        "protocol-edges.json",
+        "R2-01",
+        "R2-03"
+      ],
+      "gap": "合法字符串被二次解析；非法JSON-RPC信封错误码不符合规范",
+      "conditions": []
+    },
+    {
+      "id": "U04",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "接收人拿到材料能够使用MCP",
+      "status": "部分实现",
+      "evidence": [
+        "L13",
+        "L14",
+        "L15",
+        "C01",
+        "C02"
+      ],
+      "gap": "正常接入成功；Windows首次凭据写入与写入异常存在泄漏窗口",
+      "conditions": []
+    },
+    {
+      "id": "U05",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "优化并复核token生成服务",
+      "status": "已实现，本轮新问题在MCP及接收客户端",
+      "evidence": [
+        "F01-F16",
+        "existing-tests.log",
+        "verification/results.json"
+      ],
+      "gap": "本轮未确认新的门户发放/撤销缺陷；完整审查结果仍未通过",
+      "conditions": []
+    },
+    {
+      "id": "U06",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "在内网开放token服务入口",
+      "status": "已实现，外部限制保留",
+      "evidence": [
+        "L01-L06",
+        "deployment-listeners-end.json",
+        "deployment-firewall.json"
+      ],
+      "gap": "3029为10.8.61.200 HTTPS，允许10.8.0.0/16；另一台电脑未实测",
+      "conditions": []
+    },
+    {
+      "id": "U07",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "将MCP使用协议和介绍方法放在token服务",
+      "status": "已实现",
+      "evidence": [
+        "L03",
+        "L06",
+        "document-checks.json"
+      ],
+      "gap": "/guide及7项公开下载与当前发布文件逐字节一致",
+      "conditions": []
+    },
+    {
+      "id": "U08",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source": "portal.request_snapshot",
+      "reading": "可直接分享整个服务的内网链接",
+      "status": "部分实现",
+      "evidence": [
+        "L03",
+        "L06",
+        "L13",
+        "R2-02"
+      ],
+      "gap": "一个入口提供全部接入材料；接收客户端凭据失败恢复仍需修复",
+      "conditions": []
+    },
+    {
+      "id": "U09",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "source": "portal.request_snapshot",
+      "reading": "MCP独立会话；日报看板继续在原会话",
+      "status": "已遵守",
+      "evidence": [
+        "当前聊天工作目录 complaint-insights-mcp",
+        "deployment-listeners-end.json",
+        "deployment-processes.json"
+      ],
+      "gap": "本轮未操作日报、3030、3036、数据库、附件、AICS或历史治理；本轮不能重新证明历史新会话创建事件",
+      "conditions": []
+    },
+    {
+      "id": "U10",
+      "quote": "继续",
+      "source": "portal.request_snapshot",
+      "reading": "继续已授权的MCP范围",
+      "status": "已遵守",
+      "evidence": [
+        "T-INSIGHTS-MCP-PORTAL-20261030-01-original.json authority",
+        "本轮工具记录"
+      ],
+      "gap": "没有从继续推导额外管理员、OAuth、生产读取或人类门禁批准",
+      "conditions": []
+    },
+    {
+      "id": "U11",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md 既有权限原话，原来源T-INSIGHTS-DAILY-20261030-01/before.json",
+      "reading": "简单权限发放网页、生成访问token",
+      "status": "已实现",
+      "evidence": [
+        "F08-F16",
+        "verification/results.json real_owner_issue_use_revoke_and_logout"
+      ],
+      "gap": "本轮真实管理员链路由根执行者先行验证，审查者以隔离夹具独立复核",
+      "conditions": []
+    },
+    {
+      "id": "U12",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md 既有权限原话",
+      "reading": "虽为内网，必须由本人下发token才能访问MCP",
+      "status": "已实现",
+      "evidence": [
+        "L05",
+        "F02",
+        "F12",
+        "F15"
+      ],
+      "gap": "匿名MCP401；接收人Bearer不能管理；撤销和损坏均拒绝后续访问",
+      "conditions": [
+        "持有效MCP Bearer允许只读访问；缺失、撤销或配置损坏则拒绝"
+      ]
+    },
+    {
+      "id": "U13",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source": "portal.discovery/survey.md 既有权限原话",
+      "reading": "3029端口及原localhost约束的后续演进",
+      "status": "已实现",
+      "evidence": [
+        "L01",
+        "L03",
+        "deployment-listeners-end.json"
+      ],
+      "gap": "后续同一用户明确要求内网开放，现只绑定10.8.61.200:3029；没有同时宣称仍只监听localhost",
+      "conditions": []
+    },
+    {
+      "id": "U14",
+      "quote": "令牌发放保留哪种管理员范围？普通内网访客均只能阅读文档、下载无凭据客户端；只有登录管理员才能生成或撤销 MCP 令牌。",
+      "source": "portal.clarification:r1.e1.question",
+      "reading": "普通内网访客只能阅读文档、下载无凭据客户端",
+      "status": "已实现",
+      "evidence": [
+        "F02",
+        "L03",
+        "L05",
+        "L13"
+      ],
+      "gap": "匿名可读公开材料、管理拒绝；包不包含本次允许读取的接收人Bearer/私钥/数据库URL；初始管理员口令由根已有验证器扫描，本审查未读取",
+      "conditions": [
+        "匿名访客只可公开读取；不能列身份、签发、撤销或查询业务数据"
+      ]
+    },
+    {
+      "id": "U15",
+      "quote": "令牌发放保留哪种管理员范围？普通内网访客均只能阅读文档、下载无凭据客户端；只有登录管理员才能生成或撤销 MCP 令牌。",
+      "source": "portal.clarification:r1.e1.question",
+      "reading": "只有登录管理员才能生成或撤销MCP令牌",
+      "status": "已实现",
+      "evidence": [
+        "F02",
+        "F08-F16",
+        "verification/results.json"
+      ],
+      "gap": "独立凭据、会话、同源Origin、CSRF、确认撤销与状态恢复均有正反例",
+      "conditions": [
+        "登录有效+同源CSRF有效才可管理；任一不成立拒绝"
+      ]
+    },
+    {
+      "id": "U16",
+      "quote": "继续",
+      "source": "portal.clarification:r1.e1.answer",
+      "reading": "沿用推荐的唯一所有者，不新增管理员",
+      "status": "已遵守",
+      "evidence": [
+        "token_desk.py configure_admin/_admin",
+        "F08",
+        "operator-handoff.md"
+      ],
+      "gap": "回答仅为继续；唯一所有者依据原“需要我下发”及推荐默认，不声称用户选了多个管理员",
+      "conditions": []
+    },
+    {
+      "id": "U17",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair.request_snapshot",
+      "reading": "把管理员账号密码给用户",
+      "status": "交付事实有来源，本审查未读取口令",
+      "evidence": [
+        "根执行者同一私聊确认",
+        "operator-handoff.md",
+        "verification/results.json"
+      ],
+      "gap": "根执行者确认在本次私聊审查开始前交付owner/口令/登录入口；精确原消息时间不可查。未把此转述冒充本审查亲见口令",
+      "conditions": []
+    },
+    {
+      "id": "U18",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair.request_snapshot",
+      "reading": "提供登录入口",
+      "status": "已实现",
+      "evidence": [
+        "L03",
+        "operator-handoff.md"
+      ],
+      "gap": "https://10.8.61.200:3029/admin/login；真实正常表单和独立管理员登录均有证据",
+      "conditions": []
+    },
+    {
+      "id": "U19",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source": "repair.request_snapshot",
+      "reading": "登录该账号即可生成token",
+      "status": "已实现",
+      "evidence": [
+        "F08",
+        "F10",
+        "F11",
+        "F12",
+        "verification/results.json real_owner_issue_use_revoke_and_logout"
+      ],
+      "gap": "正常管理可签发；无效会话/CSRF/损坏授权拒绝，元数据损坏只保留撤销",
+      "conditions": [
+        "登录且授权存储正常可以签发；无登录或损坏存储不能签发"
+      ]
+    },
+    {
+      "id": "U20",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "source": "repair.request_snapshot",
+      "reading": "多轮审查发现问题修复复验，直至同版本连续两轮完整无问题",
+      "status": "本轮执行完整，发现问题待返修",
+      "evidence": [
+        "fixture-results.json",
+        "client-results.json",
+        "protocol-edges.json",
+        "hash-start.json",
+        "hash-end.json"
+      ],
+      "gap": "本轮3项确认问题，连续干净计数为0；未替代正式人类门禁或用户验收",
+      "conditions": []
+    },
+    {
+      "id": "U21",
+      "quote": "开始审查",
+      "source": "repair.request_snapshot",
+      "reading": "明确开始审查",
+      "status": "已遵守",
+      "evidence": [
+        "repair.request_snapshot",
+        "当前委派消息"
+      ],
+      "gap": "同范围审查获授权；没有重复要求授权或执行真实管理员变更",
+      "conditions": []
+    }
+  ],
+  "findings": [
+    {
+      "id": "R2-01",
+      "priority": "P2",
+      "summary": "合法字符串null在Schema校验后被SDK二次解析为None，清除来源、筛选或游标",
+      "locations": [
+        "insights/mcp_server.py:78-87",
+        "MCP 2.3.0 utilities/func_metadata.py:228-265",
+        "insights/api.py:251-284"
+      ],
+      "reproduction": {
+        "tool": "list_mails",
+        "arguments": {
+          "source_id": "null",
+          "mailbox": "null",
+          "cursor": "null"
+        }
+      },
+      "expected": "符合公布Schema的字符串应保持原值；不存在的来源/无效游标可以返回相应业务错误，但不能静默当作省略参数",
+      "actual": "HTTP200且isError=false；FakeAPI收到source_id=None、mailbox=None、cursor=None。另level_one=\"null\"被转换为None。真实ReadAPI会省略None并选用默认来源，后端不添加对应筛选。",
+      "impact": "查询成功但查询对象或范围发生变化；无效游标null被当作首页而非报错。",
+      "evidence_refs": [
+        "fixture_review.py",
+        "fixture-results.json F19-literal-string-0/1"
+      ],
+      "controls": "record_key=\"null\"、mailbox=\"true\"、mailbox=\"123\"与带引号字符串保持原值；错误JSON类型被Schema正确拒绝，见F18。"
+    },
+    {
+      "id": "R2-02",
+      "priority": "P2",
+      "summary": "Windows客户端在设置受限ACL前写入Bearer，写入异常遗留可读凭据文件",
+      "locations": [
+        "scripts/mcp_client.py:26-37",
+        "下载包mcp_client.py同字节副本",
+        "client-guide.md第4节受限配置承诺"
+      ],
+      "reproduction": "合成父目录仅在scratch授予BUILTIN Users继承读取；下载客户端configure输入合成令牌。正常json.dump前观察ACL；另在json.dump完成写入后注入OSError。",
+      "expected": "第一个凭据字节写入前已建立受限访问；任何写入或保护失败不留下含Bearer的配置。",
+      "actual": "正常写入阶段Users仍有继承读取，成功后才由icacls移除。json.dump抛OSError时文件仍存在，包含完整合成令牌，Users继承读取仍存在。",
+      "impact": "配置位于允许其他账户读取的目录时，正常首次写入存在泄漏窗口；磁盘/编码/写入异常后泄漏持续。当前try仅包住ACL设置，未包住凭据创建/序列化。",
+      "evidence_refs": [
+        "client_review.py",
+        "client-results.json C01/C02"
+      ],
+      "controls": "正常结束后Users访问已移除；仅合成数据，结束已删除合成令牌配置文件。未读取或写入真实接收人配置。"
+    },
+    {
+      "id": "R2-03",
+      "priority": "P3",
+      "summary": "非法JSON-RPC信封被错误归类为Invalid params -32602",
+      "locations": [
+        "insights/mcp_http.py:142使用锁定SDK默认传输",
+        "requirements.txt mcp==2.3.0",
+        "MCP 2.3.0 server/streamable_http.py:587-597"
+      ],
+      "reproduction": [
+        "[]",
+        "{\"jsonrpc\":\"1.0\",\"id\":1,\"method\":\"tools/list\"}",
+        "{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":123}",
+        "{}",
+        "null"
+      ],
+      "expected": "能解析JSON但不是有效JSON-RPC Request的输入返回-32600 Invalid Request；解析错误为-32700，方法参数错误才为-32602。",
+      "actual": "以上均HTTP400、id=null、error.code=-32602。",
+      "impact": "与本服务文档及JSON-RPC2.0错误分类不符，调用方无法按错误码区分信封/版本结构错误和方法参数错误。",
+      "evidence_refs": [
+        "fixture-results.json F22-batch/F22-bad-envelope",
+        "protocol-edges.json"
+      ],
+      "controls": "破损JSON \"{\" 返回-32700；未知协议方法返回-32601且保留id；tools/call缺少name返回-32602且保留id；未知工具当前正确返回-32602。"
+    }
+  ],
+  "not_issues": [
+    {
+      "id": "N01",
+      "observation": "F21曾预期text/plain必须415，实际400",
+      "disposition": "NotAnIssue",
+      "reason": "固定版传输没有要求该输入必须415；请求体同时为无效信封{}。安全中间件已以4xx拒绝，没有错误请求进入后端。不能把本夹具过窄预期作为产品问题。",
+      "evidence_refs": [
+        "fixture-results.json F21",
+        "https://modelcontextprotocol.io/specification/2025-11-25/basic/transports"
+      ]
+    },
+    {
+      "id": "N02",
+      "observation": "L03首次将HTTP头名当作区分大小写，no-store判定失败",
+      "disposition": "NotAnIssue",
+      "reason": "HTTP头名不区分大小写；夹具统一小写后所有实际响应no-store，live-run.log保留原失败、live-run-retry.log保留复验。",
+      "evidence_refs": [
+        "live-run.log",
+        "live-run-retry.log",
+        "live-results.json L03"
+      ]
+    },
+    {
+      "id": "N03",
+      "observation": "首次SDK分类分页limit=1且max_pages=1000触发页数上限",
+      "disposition": "NotAnIssue",
+      "reason": "历史分类超过1000项，客户端按契约拒绝输出不完整汇总。改用公开允许的limit=1000后4页完整且同版本；没有修改产品代码。",
+      "evidence_refs": [
+        "live-run.log",
+        "live-results.json L14",
+        "client-results.json C03-pagination-page-bound"
+      ]
+    },
+    {
+      "id": "N04",
+      "observation": "ACL夹具初次以stream.name当路径，后子PowerShell模块加载失败",
+      "disposition": "HarnessFailure",
+      "reason": "stream.name是文件描述符；修正路径后子PowerShell受继承模块路径影响。最终直接用本机icacls读取ACL完成独立复现。三份原失败日志均保留，未把夹具异常当产品缺陷。",
+      "evidence_refs": [
+        "client-run.log",
+        "client-run-retry.log",
+        "client-run-retry2.log",
+        "client-results.json"
+      ]
+    }
+  ],
+  "declared_external_limits": [
+    "另一台内网电脑的实际路由、CA安装和本人客户端接入未实测，原交付已明确声明；当前只证明本机经内网IP严格CA。",
+    "independent-review、security-privacy-review正式人类门禁与user_decision仍Pending；本审查不能代为批准。",
+    "父工程结果Deferred使官方adversarial_review.py拒绝Offer，失败已由根保留；本轮不写治理记录，不声明机器Passed或ManagedByParent。"
+  ],
+  "verification_partition": [
+    "审查者新增执行：全部隔离反例、现有30测试、严格CA公开与MCP只读、11工具14表、真实SDK4页分类遍历、下载工作流11工具、仅允许字段的生产配置核查、监听/防火墙只读。",
+    "真实唯一管理员登录→签发→调用→撤销→退出由根执行者在本轮开始前按当前版本重跑，证据verification/results.json的13checks和.runtime/mcp-portal-repair-live-A02.log；本审查读取并与验证器实现核对，另以独立合成凭据测试管理全链路。审查者没有真实签发/撤销。",
+    "管理员账号口令私聊交付由根执行者确认；审查者按约束未读取初始口令，精确原消息时间不可查。报告不包含口令。",
+    "服务端破坏性故障、凭据轮换、挑战耗尽和并发写入仅在scratch夹具执行；没有在真实服务故障注入。",
+    "本轮读取现有430/1440预览图、当前HTML/CSS/JS与布局证据；未新增真实管理员浏览器交互或未来浏览器矩阵，此类矩阵不在已约定范围。"
+  ],
+  "evidence_refs": [
+    "hash-start.json",
+    "hash-end.json",
+    "fixture_review.py",
+    "fixture-results.json",
+    "fixture-run.log",
+    "client_review.py",
+    "client-results.json",
+    "client-run-retry2.log",
+    "live_review.py",
+    "live-results.json",
+    "live-run.log",
+    "live-run-retry.log",
+    "existing-tests.log",
+    "document-checks.json",
+    "protocol-edges.json",
+    "deployment-listeners-end.json",
+    "deployment-firewall.json",
+    "deployment-processes.json",
+    "server-credential-acls.json"
+  ]
+}

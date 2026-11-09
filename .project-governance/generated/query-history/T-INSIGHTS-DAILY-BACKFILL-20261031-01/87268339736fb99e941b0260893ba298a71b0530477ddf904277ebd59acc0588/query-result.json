@@ -1,0 +1,1564 @@
+{
+  "blocker_reasons": [],
+  "budget": {
+    "candidate_limit": 80,
+    "escalation_limit": 2,
+    "escalations_used": 1,
+    "omitted_count": 64,
+    "overflow_reason": "P0/P1-source-soft-limit",
+    "profile": "standard",
+    "requested_chars": 12000,
+    "source_limit": 4,
+    "sources_used": 6,
+    "used_chars": 9865
+  },
+  "citations": [
+    {
+      "chunk_sha256": "d81d2e63c1fa4dcd7e3a92e4a0e581ec9b42e599c2be28dba60947bb22475e7a",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 1,
+        "semantic": null
+      },
+      "line_end": 434,
+      "line_start": 434,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:322:d81d2e63",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "1. Delete、Deploy、External Mutation、生产操作、权限变化、不可逆操作和 High/Critical Risk Action 至少为 Approval Required；Prohibited 仍禁止。"
+    },
+    {
+      "chunk_sha256": "f5a1c28da041c6f123b1b8626c66dbbbb40caa846000f14abbe778125158dfe4",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 2,
+        "semantic": null
+      },
+      "line_end": 437,
+      "line_start": 437,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:325:f5a1c28d",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "4. 执行前必须记录 Before Snapshot、影响范围、可恢复性、备份/回滚、幂等策略、观察窗口和验证。"
+    },
+    {
+      "chunk_sha256": "c4bf94d58e24ba41e37dde72d6cc53ce4571180c67ea767fba291aaa4f79a14b",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 3,
+        "semantic": null
+      },
+      "line_end": 439,
+      "line_start": 439,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:327:c4bf94d5",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "6. Deploy 必须引用 C11 Release Configuration、C12 Gate/Approval、窗口、监测、回滚和 Owner。"
+    },
+    {
+      "chunk_sha256": "befa959271b50237127fe128a94b7f68d49b8f0183e8da38f78adf7b9163d832",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 4,
+        "semantic": null
+      },
+      "line_end": 440,
+      "line_start": 440,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:328:befa9592",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "7. “清理”“修复”“格式化”“回滚”“恢复”不得扩大批准目标。"
+    },
+    {
+      "chunk_sha256": "48963d8d09cc9926f8e1eeb92c41be8d27d215363bf2c42c1444c9a10407dcc4",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 19,
+        "fts_word": null,
+        "pinned": 5,
+        "semantic": null
+      },
+      "line_end": 441,
+      "line_start": 441,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:329:48963d8d",
+      "retrieval_reason": [
+        "fts_trigram",
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "8. Retry 高影响 Action 前必须先确认上次 Attempt 的外部副作用和幂等状态。"
+    },
+    {
+      "chunk_sha256": "0e9a1176c3bc133e0b43da0ca6e760516b7932fddae7f483378963650798166d",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 6,
+        "semantic": null
+      },
+      "line_end": 443,
+      "line_start": 443,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:331:0e9a1176",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "10. 操作后必须验证 Actual Effect；只有命令成功但目标状态未知时为 Blocked。"
+    },
+    {
+      "chunk_sha256": "af7a1d0d1a258bd2bcd32cb062b45242d79f22eea8c3d1210d71a0a7c88048e4",
+      "control_types": [
+        "authority",
+        "background",
+        "change",
+        "evidence",
+        "gate",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "2. 目的"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 7,
+        "semantic": null
+      },
+      "line_end": 45,
+      "line_start": 45,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:28e7276d:36:af7a1d0d",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "10. 使 Agent 和自动化工具可以计算、检查和起草，但不能自批高风险输出或风险接受；"
+    },
+    {
+      "chunk_sha256": "edb98f496574b15b8872ef5ddec381dca1d7ac3609b4edb6791c0b1cfcb00975",
+      "control_types": [
+        "applicability",
+        "change",
+        "definition",
+        "gate",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "5. 规范性用语与受控判定",
+        "5.1 中文关键词"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 8,
+        "semantic": null
+      },
+      "line_end": 127,
+      "line_start": 127,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:e1e3a126:100:edb98f49",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "“必须、禁止、应、不应、可以、可选”直接适用 VC-PPG-COM-001 的规范性用语定义；唯一语义以该公共基线为准，本文件不得复制或改写。"
+    },
+    {
+      "chunk_sha256": "6775b2192165b27b14d4bb2a165c143f2fa2c661f654d184d5d473b54c50b7fa",
+      "control_types": [
+        "authority",
+        "change",
+        "data",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "5. 规范性用语与受控判定",
+        "5.1 中文关键词"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 9,
+        "semantic": null
+      },
+      "line_end": 129,
+      "line_start": 129,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:e1e3a126:101:6775b219",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "“必须”和“禁止”规则不得通过普通 EWR 绕过。法律、监管、合同、Safety、Security、Privacy、不可逆数据和明确 Non-waivable Gate 项不得豁免。"
+    },
+    {
+      "chunk_sha256": "8502f89593e77eeeba8075a12f8da763739258867d611348ae768d09e7c7d0eb",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 10,
+        "semantic": null
+      },
+      "line_end": 435,
+      "line_start": 435,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:323:8502f895",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. 目标必须解析为精确仓库、路径、资源、记录、租户、账户、环境和版本。"
+    },
+    {
+      "chunk_sha256": "2a399565ecc24a3da1e20a1f2d6589ea842fd470d65e508dd941c506d79a8c05",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 11,
+        "semantic": null
+      },
+      "line_end": 436,
+      "line_start": 436,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:324:2a399565",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "3. 工作区根、用户主目录、系统根、整个账户/租户、未解析变量、宽泛通配符或计算后未复核目标禁止作为破坏性 Target。"
+    },
+    {
+      "chunk_sha256": "32ce4083442182d1b5e73e25ebdc3ac822c98ea338e3b6d402525c76f1d711c7",
+      "control_types": [
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "records",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 12,
+        "semantic": null
+      },
+      "line_end": 438,
+      "line_start": 438,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:326:32ce4083",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "5. External Mutation 必须使用服务支持的 Idempotency Key 或记录不可幂等及补偿措施。"
+    },
+    {
+      "chunk_sha256": "7404e2137ff77d01d583361ccd699c19a334d790fb805bfddbbf0af561d8646f",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 13,
+        "semantic": null
+      },
+      "line_end": 442,
+      "line_start": 442,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:330:7404e213",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "9. 删除或覆盖前必须识别用户已有、未提交、未跟踪和并行 Agent 变化；未知时 Stop。"
+    },
+    {
+      "chunk_sha256": "3b2cf7dd15e99310a24262bcb8674f30b18a2ec0f5d07418f3a0de7103d24c7d",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "8. 正式产物与唯一事实源",
+        "8.0 V6.3 三阶段修订与生成边界"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 57,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 227,
+      "line_start": 227,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:0c539819:172:3b2cf7dd",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "RunLedger 只追加；更正通过新 Event 引用原 Event。ProjectState 和 DerivedView 由生成器重建，禁止直接编辑或纳入独立变更源。Git Commit/Diff 可作为代码和文档变化的权威证据，但外部副作用、失败、验证环境、批准和决定必须由相应元类型或 AuthorityAsset 保存。"
+    },
+    {
+      "chunk_sha256": "6e5e65e790d88438a260e643598651b3717e1416d01293a5f5d10dd97b105e47",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.13 Failure、Stop 与 Retry"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 44,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 496,
+      "line_start": 496,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C09:6897694e:7c53d277:374:6e5e65e7",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. FER 必须记录失败时间/步骤、症状、Error Evidence、影响、已发生副作用、即时处置、根因状态、升级和关闭条件。"
+    },
+    {
+      "chunk_sha256": "08fad4595893f53d6072858f85afe15511b649db3c92973a4498afa7aa18f3d6",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "freshness",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "C07 人机协作与责任规范",
+        "7. 参与者与职责",
+        "7.2 Agent 角色"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 78,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 189,
+      "line_start": 189,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C07:a1fc4e90:63ef8775:140:08fad459",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C07",
+      "source_sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a",
+      "source_version": "V6.3 Candidate",
+      "text": "| Orchestrator Agent | 在授权范围内分解任务、分派子任务、收集结果和报告冲突 | 子 Agent 授权不得超过自身授权与子任务 Scope 的交集 |"
+    },
+    {
+      "chunk_sha256": "22ddbd6bb5cc9b458b1a7df4eef2dda16196160f16fdad40bec459deb200cc6d",
+      "control_types": [
+        "change",
+        "definition",
+        "evidence",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C05 验收、验证与确认规范",
+        "6. 术语与定义"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 77,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 118,
+      "line_start": 118,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C05:7973bcb4:642a9692:84:22ddbd6b",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C05",
+      "source_sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7",
+      "source_version": "V6.3 Candidate",
+      "text": "| Acceptance Criteria Set | 在同一受控范围内组织 Criterion 的正式产物 | 使用 ACS 身份和 DOC 状态模型 |"
+    },
+    {
+      "chunk_sha256": "a384ae802fadf3f3c750a11d88dc701ae789102fe711e3d8501b281e5a0f3301",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.8 Change Request 创建与分流"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 490,
+      "line_start": 490,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:b4040cfb:358:a384ae80",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "2. `Pre-authorized Standard`：必须已有 Approved 变更模型、范围、步骤、验证、回滚和 Authority；超出任一边界立即转 Normal；"
+    },
+    {
+      "chunk_sha256": "5fcee191843b85010ecadbe75857da9dd41be8d42476fbbf9fad6d3590e7b06b",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "freshness",
+        "gate",
+        "integrity",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.8 Change Request 创建与分流"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 493,
+      "line_start": 493,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:b4040cfb:361:5fcee191",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "5. 未知范围、无 Owner、无原状态或无法识别资产的 CHG 必须 `Blocked`；"
+    },
+    {
+      "chunk_sha256": "aaee730debd699050a19617a0bbe98b7c4b49debb5c81094553461aea5104a4a",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.8 Change Request 创建与分流"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 494,
+      "line_start": 494,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:b4040cfb:362:aaee730d",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "6. 发现实际变化先于 CHG 时，必须创建 C10 UCR 并按 Risk 决定 Stop、隔离、回滚或追认；追认不消除违规事实。"
+    },
+    {
+      "chunk_sha256": "9db49fbeffeb26fd5d0f9a34cfaad90ff6eabc872626aaeaca744c78159a2c6a",
+      "control_types": [
+        "change",
+        "freshness",
+        "prohibition"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.8 Change Request 创建与分流"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 492,
+      "line_start": 492,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:b4040cfb:360:9db49fbe",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "4. CHG 重复时不得删除，必须连接主 CHG 并进入 `Cancelled` 或 `Closed`；"
+    },
+    {
+      "chunk_sha256": "e7515c1db7fff4cc20e8390954eea663e91a35f517ac2e84251b220050e62e9a",
+      "control_types": [
+        "change",
+        "freshness",
+        "records"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.8 Change Request 创建与分流"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 474,
+      "line_start": 474,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:b4040cfb:345:e7515c1d",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "CHG 创建时必须记录："
+    },
+    {
+      "chunk_sha256": "6e929d8ac183540363e19f06e87759924c3148c7573a3556763826bb12d8a65c",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "definition",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "Vibe Coding 公共术语与规范性用语基线 V6.3 Candidate",
+        "12. 任务裁剪与产物实例化术语",
+        "12.1 Task Profile"
+      ],
+      "lane_ranks": {
+        "exact": 1,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 259,
+      "line_start": 259,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+      "priority": "P1",
+      "retrieval_locator": "VC-PPG-COM-001:79fd8f6e:3364a746:192:6e929d8a",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-COM-001",
+      "source_sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0",
+      "source_version": "V6.3 Candidate",
+      "text": "`Execution Permission` 是 TaskContract 执行前 Authority 的受控动作边界，值固定为 `read`、`edit-in-scope`、`validate`、`external-effect`、`rollback`。它只证明计划和记录层权限；工具调用仍必须遵守 `allowed_paths`、`forbidden_actions`、平台权限和 Stop Condition。"
+    },
+    {
+      "chunk_sha256": "7f38c049936d33c3991582060841ad439dddd8d45a7583faef4cad9ac52155e5",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "definition",
+        "evidence",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "Vibe Coding 公共术语与规范性用语基线 V6.3 Candidate",
+        "12. 任务裁剪与产物实例化术语",
+        "12.1 Task Profile"
+      ],
+      "lane_ranks": {
+        "exact": 3,
+        "fts_trigram": null,
+        "fts_word": 37,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 241,
+      "line_start": 241,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-COM-001:79fd8f6e:3364a746:179:7f38c049",
+      "retrieval_reason": [
+        "exact_identifier",
+        "fts_word"
+      ],
+      "source_id": "VC-PPG-COM-001",
+      "source_sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0",
+      "source_version": "V6.3 Candidate",
+      "text": "| Development Type | DT-01 新产品；DT-02 产品族实例化；DT-03 新功能；DT-04 需求澄清；DT-05 需求修订；DT-06 缺陷修复；DT-07 工程变更；DT-08 配置/内容变更；DT-09 迁移/替代/退役 |"
+    },
+    {
+      "chunk_sha256": "a4dd6a88a00078d3a566a31c6bc5047994c582591174dcc50a9f89937346bb0d",
+      "control_types": [
+        "authority",
+        "background",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "9. 生命周期与工作机制",
+        "9.7 Failure、Retry 与 Rollback"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 1,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 313,
+      "line_start": 313,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:00fcee58:229:a4dd6a88",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "任一 Failed/Blocked、非预期副作用、Stop、验证失败或证据缺失必须建立 FER。Retry 或 Rollback 只能在副作用、权限、Plan、风险和新鲜 Context 可判定时执行。"
+    },
+    {
+      "chunk_sha256": "234366cb557b46ceca9fdaf3dd89e789938f457c211f37375b17471ccf58bd7a",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "gate",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C07 人机协作与责任规范",
+        "10. 强制规则",
+        "10.6 Autonomous 操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 3,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 402,
+      "line_start": 402,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C07:a1fc4e90:c8a022bf:291:234366cb",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C07",
+      "source_sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a",
+      "source_version": "V6.3 Candidate",
+      "text": "7. 操作可审计，且不会产生未声明的外部副作用；"
+    },
+    {
+      "chunk_sha256": "ff3aba72f48d6bcb3d3e521fab2d4434af78b88760f70457aa0eea52307a38ef",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "19. 符合性检查",
+        "19.2 强制检查项"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 5,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 1018,
+      "line_start": 1018,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:4fe40d94:770:ff3aba72",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "18. Tool 默认行为、缓存、重试和副作用是否可知；"
+    },
+    {
+      "chunk_sha256": "270985039ef86a6ebe66e3c4ebcc9c4c87d6df1937225c4fb1d9169d71c562e8",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "19. 符合性检查",
+        "19.2 强制检查项"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 6,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 1041,
+      "line_start": 1041,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:4fe40d94:793:27098503",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "41. Retry 是否创建新 Attempt 并检查副作用/幂等；"
+    },
+    {
+      "chunk_sha256": "c81a8d3c70c3ceb5af9b95e87ab25f094776c4fe76bb91f0ed8f0cdeb349b6ac",
+      "control_types": [
+        "change",
+        "data",
+        "evidence",
+        "freshness",
+        "permission",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "10. 配置、版本、基线与变更控制规则",
+        "10.9 Impact Analysis"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 9,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 519,
+      "line_start": 519,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C11:88ec56f7:2470b427:382:c81a8d3c",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "5. 数据删除、Schema 迁移、密钥轮换、模型变化和 Feature Flag 必须评估不可逆副作用；"
+    },
+    {
+      "chunk_sha256": "e3bea0afaf19ebf98218adcb77cccf84f511a9a06eeb36557453cae335343f20",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "14. 质量要求"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 11,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 815,
+      "line_start": 815,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:0d3fa301:617:e3bea0af",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "6. 原子：副作用、权限和失败不可分时拆分 Action/TIL；"
+    },
+    {
+      "chunk_sha256": "ce7dbfdd0c1efa25ebbff6098273ebfed120a252c572a99979a7c8b17fae4480",
+      "control_types": [
+        "change",
+        "gate",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "20. 附录：模板、清单、指标与条款映射",
+        "20.17 标准状态复评清单"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": 12,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 2028,
+      "line_start": 2028,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C12:508ab626:a58a2d53:1217:ce7dbfdd",
+      "retrieval_reason": [
+        "fts_word"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "- [ ] 新 Amendment、Corrigendum 或 Replacement 已检查；"
+    },
+    {
+      "chunk_sha256": "307cd56b26cc8d0181ad0cba9584aba8a1a4599b6731e017e544d3d617aa8438",
+      "control_types": [
+        "authority",
+        "background",
+        "change",
+        "evidence",
+        "gate",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C07 人机协作与责任规范",
+        "2. 目的"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 13,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 39,
+      "line_start": 39,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C07:a1fc4e90:c77e3c5d:30:307cd56b",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C07",
+      "source_sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a",
+      "source_version": "V6.3 Candidate",
+      "text": "5. 使高影响、不可逆、破坏性、跨 Scope、安全、隐私、合规、生产和外部副作用操作获得有权人类批准；"
+    },
+    {
+      "chunk_sha256": "25e39cb36a1003bade9068ddaf6bde97d2ca8873a52223e3cd59657cc5bb08da",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.5 Step、Action 与 Attempt"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 14,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 384,
+      "line_start": 384,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:e40e94e8:281:25e39cb3",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. 每个 Action 只承担一个可独立判定授权、副作用和结果的 Operation。"
+    },
+    {
+      "chunk_sha256": "76d821d474e322f0fd0cc25973924c1aaeb78b59d2552b33f741cdefade0e2c0",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "19. 符合性检查",
+        "19.2 强制检查项"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 15,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 1054,
+      "line_start": 1054,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:4fe40d94:806:76d821d4",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "54. 是否能重建主要副作用、TaskContract Revision、Diff 和验证；"
+    },
+    {
+      "chunk_sha256": "92f7e6ddd120d53d040478cc79feb98c586b4bc0ab37ab04a5f707eaf6e9b0c4",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "15. 评审、批准与 Run 接受",
+        "15.3 RUN Completed 条件"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 16,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 866,
+      "line_start": 866,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:4d4144f4:659:92f7e6dd",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "- 未发生未记录副作用或 Evidence 缺口。"
+    },
+    {
+      "chunk_sha256": "d95f8e3adde05bf4175058bc0a3c270b965d2f65cf4d9bcb41b3b78683ea2c4f",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.7 命令规范"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 17,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 427,
+      "line_start": 427,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:824cdbf7:317:d95f8e3a",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "6. 复合命令若任一部分具有副作用、独立权限或独立失败条件，必须拆分 Action/TIL。"
+    },
+    {
+      "chunk_sha256": "a3f5a43c09c7eee81c6bbe60829dba3fc93bb70d51e470208fcf404a7492739e",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.13 Failure、Stop 与 Retry"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 18,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 501,
+      "line_start": 501,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:7c53d277:379:a3f5a43c",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "7. 非幂等或副作用未知的 Action 禁止自动 Retry。"
+    },
+    {
+      "chunk_sha256": "d80c7578687269ce67e7c382b0daae9287f696fd02f5e0a8310de7f237d52534",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "8. 治理对象与关系",
+        "8.0 V6.3 最小执行记录覆盖规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 20,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 189,
+      "line_start": 189,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:b1dd146f:139:d80c7578",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. RUN 与 TIL 语义进入只追加 RunLedger（`run.jsonl`）。普通读取、目录查看、搜索和未产生重要结果的无副作用调用不记录。"
+    }
+  ],
+  "consistency_report_sha256": "acf4b56cd3a104183aff14466cb061beae4c01bb8c7f26b930ca9af9724998f1",
+  "coverage": {
+    "missing": [],
+    "present": [
+      "change",
+      "definition",
+      "evidence",
+      "permission",
+      "prohibition",
+      "release",
+      "scope",
+      "validation"
+    ],
+    "required": [
+      "change",
+      "definition",
+      "evidence",
+      "permission",
+      "prohibition",
+      "release",
+      "scope",
+      "validation"
+    ]
+  },
+  "event_ref": "query-event:87268339736fb99e941b0260893ba298a71b0530477ddf904277ebd59acc0588:expanded",
+  "fallback": {
+    "heading_path": [
+      "C09 Agent 执行与证据规范",
+      "10. 强制规则"
+    ],
+    "kind": "section",
+    "page": null,
+    "page_count": null,
+    "reason": "P0/P1-soft-budget-expanded",
+    "source_id": "C09"
+  },
+  "index_digest": "6ecc4a89f2c95a0331c2718b576f62e5e5a60131795d61caad8bcd4327a8a94c",
+  "meta_type": "DerivedView",
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_digest": "87268339736fb99e941b0260893ba298a71b0530477ddf904277ebd59acc0588",
+  "schema_version": "6.3-candidate",
+  "status": "Expanded",
+  "tailoring_resolution_sha256": "f09809933948643e13f9d2704083724b16ca1141ce2a8899507daa737ca8e781"
+}

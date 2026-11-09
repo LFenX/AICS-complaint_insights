@@ -1,0 +1,50 @@
+[
+  {
+    "meta_type": "TaskContract",
+    "legacy_kind": null,
+    "action": "Create/Revise",
+    "asset_id": "T-INSIGHTS-REVIEW-20261029-01-before",
+    "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/before.json",
+    "reason": "freeze execution input",
+    "rule_reference": "VC-PPG-PRO-001 §8.1",
+    "owner": "task-initiator",
+    "source_snapshot": "2026-10-29T08:27:18.290309Z",
+    "human_confirmation_refs": []
+  },
+  {
+    "meta_type": "RunLedger",
+    "legacy_kind": null,
+    "action": "Create/Revise",
+    "asset_id": "T-INSIGHTS-REVIEW-20261029-01-run",
+    "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/run.jsonl",
+    "reason": "record material execution events",
+    "rule_reference": "VC-PPG-PRO-001 §8.2",
+    "owner": "execution-agent",
+    "source_snapshot": "2026-10-29T08:27:18.290309Z",
+    "human_confirmation_refs": []
+  },
+  {
+    "meta_type": "TaskOutcome",
+    "legacy_kind": null,
+    "action": "Create/Revise",
+    "asset_id": "T-INSIGHTS-REVIEW-20261029-01-after",
+    "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/after.json",
+    "reason": "record terminal facts and residue",
+    "rule_reference": "VC-PPG-PRO-001 §8.3",
+    "owner": "task-initiator",
+    "source_snapshot": "2026-10-29T08:27:18.290309Z",
+    "human_confirmation_refs": []
+  },
+  {
+    "meta_type": "DerivedView",
+    "legacy_kind": null,
+    "action": "Generate",
+    "asset_id": "T-INSIGHTS-REVIEW-20261029-01-adopted-source-manifest",
+    "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+    "reason": "引用原59个实际交付文件的不可变摘要清单；本次只承接工程，不声明已完成审查",
+    "rule_reference": "C09 execution evidence; C05 verification",
+    "owner": "execution-agent",
+    "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+    "human_confirmation_refs": []
+  }
+]

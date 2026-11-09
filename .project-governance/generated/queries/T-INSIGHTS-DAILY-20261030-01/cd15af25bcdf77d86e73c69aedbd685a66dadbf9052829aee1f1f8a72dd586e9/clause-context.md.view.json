@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-DAILY-20261030-01-CLAUSE-CONTEXT-cd15af25bcdf77d8",
+  "view_kind": "clause-context",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T20:10:04.170729Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "1ec86bd7fd758fc34ae1b3ed9be2f8dc9be12e20e33d35949e5ded3bff652cd9",
+  "sources": [
+    ".project-governance/generated/queries/T-INSIGHTS-DAILY-20261030-01/cd15af25bcdf77d86e73c69aedbd685a66dadbf9052829aee1f1f8a72dd586e9/query-result.json"
+  ],
+  "content_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-20261030-01/cd15af25bcdf77d86e73c69aedbd685a66dadbf9052829aee1f1f8a72dd586e9/clause-context.md",
+  "integrity_status": "Complete"
+}

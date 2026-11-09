@@ -1,0 +1,217 @@
+{
+  "started_at": "2026-10-29T11:16:07.327482+00:00",
+  "checks": [
+    {
+      "name": "initial-unanchored-fixture-correctly-triggered-measured-fallback",
+      "passed": true,
+      "actual": {
+        "fallback_skew_hours": 8,
+        "no_header_shift_hours": 8,
+        "utc_after_correction": "2026-10-01T08:00:00+00:00"
+      }
+    },
+    {
+      "name": "fixture-initial-14-tables",
+      "passed": true,
+      "actual": {
+        "tables": 14
+      }
+    },
+    {
+      "name": "beijing-midnight-and-per-row-legacy-offset",
+      "passed": true
+    },
+    {
+      "name": "all-current-mail-retained-null-date-bigint-and-direction",
+      "passed": true,
+      "actual": {
+        "count": 9
+      }
+    },
+    {
+      "name": "manual-classification-excluded-raw-ai-retained",
+      "passed": true
+    },
+    {
+      "name": "full-original-ai-html-and-attachment-metadata",
+      "passed": true
+    },
+    {
+      "name": "incomplete-ai-keeps-pending-bucket",
+      "passed": true
+    },
+    {
+      "name": "all-issues-parent-dedup-and-exclusive-end",
+      "passed": true,
+      "actual": {
+        "rows": 1,
+        "mail_count": 1,
+        "issue_count": 2
+      }
+    },
+    {
+      "name": "report-date-category-structure-and-explicit-body",
+      "passed": true
+    },
+    {
+      "name": "mails-pagination-null-date-and-bigint-lossless",
+      "passed": true
+    },
+    {
+      "name": "taxonomy-pagination-retains-dynamic-and-legacy",
+      "passed": true,
+      "actual": {
+        "categories": 105
+      }
+    },
+    {
+      "name": "all-14-source-record-pagination-including-orphan-ai",
+      "passed": true
+    },
+    {
+      "name": "all-14-complete-source-record-payloads",
+      "passed": true
+    },
+    {
+      "name": "api-parameter-rejection",
+      "passed": true,
+      "actual": [
+        422,
+        422,
+        422,
+        422,
+        422,
+        422
+      ]
+    },
+    {
+      "name": "api-auth-all-registered-query-types",
+      "passed": true
+    },
+    {
+      "name": "api-no-write-method",
+      "passed": true
+    },
+    {
+      "name": "sql-injection-value-is-data",
+      "passed": true
+    },
+    {
+      "name": "archive-not-double-counted-and-410",
+      "passed": true
+    },
+    {
+      "name": "query-uses-target-with-source-disconnected",
+      "passed": true
+    },
+    {
+      "name": "api-capability-parent-chain-and-disabled-source",
+      "passed": true
+    },
+    {
+      "name": "concurrent-same-source-worker-busy-no-watermark-change",
+      "passed": true
+    },
+    {
+      "name": "new-source-column-kept-in-complete-json-mirror",
+      "passed": true
+    },
+    {
+      "name": "existing-source-id-different-explicit-identity-rejected",
+      "passed": true
+    },
+    {
+      "name": "explicit-delivered-ca-verifies-real-https",
+      "passed": true,
+      "actual": {
+        "http_status": 200
+      }
+    },
+    {
+      "name": "empty-trust-store-rejects-untrusted-server-certificate",
+      "passed": true,
+      "actual": {
+        "error_type": "ConnectError",
+        "verify_mode": 2,
+        "check_hostname": true,
+        "trust_anchors": 0
+      }
+    },
+    {
+      "name": "initial-default-trust-assumption-explained",
+      "passed": false,
+      "actual": {
+        "delivered_ca_present": false,
+        "matching_certificates": 0
+      }
+    },
+    {
+      "name": "explicit-production-disabled-weak-tls-wrong-fingerprint-rejected-offline",
+      "passed": true,
+      "actual": {
+        "cases_rejected": 3,
+        "connections_attempted": 0
+      }
+    },
+    {
+      "name": "complete-existing-dsn-retains-explicit-identity",
+      "passed": true
+    },
+    {
+      "name": "baseline-63-files",
+      "passed": true,
+      "actual": {
+        "files": 63,
+        "mismatches": [],
+        "manifest_sha256": "d798e80d7b0dddcf96f4ed165903024d875c0d29a9a354fd501f83a008043bfb"
+      }
+    }
+  ],
+  "findings": [],
+  "purpose": "原始57项结果不改写；只复核三项错误探针前提，补充当前疑点的条件对照与必要契约。",
+  "initial_date_assumption": {
+    "fallback_skew_hours": 8,
+    "no_header_shift_hours": 8,
+    "utc_after_correction": "2026-10-01T08:00:00+00:00"
+  },
+  "fixture": {
+    "databases": [
+      "complaint_insights_r2_source_test_926262435be0",
+      "complaint_insights_r2_target_test_926262435be0"
+    ],
+    "cluster_role_mutations_skipped": 5,
+    "test_only": true,
+    "destroyed": 2
+  },
+  "anchored_fixture": {
+    "dates": {
+      "10": "2026-10-01",
+      "11": "2026-10-02",
+      "12": "2026-10-02",
+      "13": "2026-10-02",
+      "14": "2026-10-02",
+      "15": "2026-10-02",
+      "16": "2026-10-02",
+      "9007199254740993": "2026-10-02",
+      "17": null
+    },
+    "fallback_skew_hours": 0
+  },
+  "system_ca_store": {
+    "delivered_ca_present": false,
+    "matching_certificates": 0
+  },
+  "baseline": {
+    "files": 63,
+    "mismatches": [],
+    "manifest_sha256": "d798e80d7b0dddcf96f4ed165903024d875c0d29a9a354fd501f83a008043bfb"
+  },
+  "completed_at": "2026-10-29T11:16:12.362725+00:00",
+  "summary": {
+    "checks": 29,
+    "passed": 28,
+    "failed_checks": [
+      "initial-default-trust-assumption-explained"
+    ]
+  }
+}

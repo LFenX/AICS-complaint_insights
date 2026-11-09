@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "构建内网 HTTPS MCP 只读查询工具，独立 Bearer 令牌与网段限制，复用本地 API 鉴权审计和游标；增加十四类源数据按需查询与客户端交接说明；不接生产",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "2bcb5b343289ef92f4624427dc81a936323bd777e64d61a5df72d21f0c81bf39",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01"
+}

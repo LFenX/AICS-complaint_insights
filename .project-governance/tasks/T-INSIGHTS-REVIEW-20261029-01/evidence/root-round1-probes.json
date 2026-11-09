@@ -1,0 +1,41 @@
+{
+  "started_at": "2026-10-29T10:51:24.209628+00:00",
+  "baseline": {
+    "manifest_sha256": "19c303af688be7bdbba39b1e3d8a179e7d0e3f982e5a1c4567f6754749ef1971",
+    "files": 59,
+    "changed": [
+      "LG_project_docs/README.md"
+    ]
+  },
+  "live": {
+    "source_id": "development-local",
+    "data_version": 2,
+    "status": "READY",
+    "seconds_since_last_success": 2.4
+  },
+  "missing_catalog": {
+    "exception": "FileNotFoundError",
+    "expected_status": "DEGRADED",
+    "actual_status": "READY",
+    "version_unchanged": true,
+    "last_error_code": null,
+    "latest_run": {
+      "status": "SUCCEEDED",
+      "error_code": null
+    }
+  },
+  "snapshot_consistency": {
+    "initial": 1,
+    "second": 1,
+    "result": "Passed"
+  },
+  "finished_at": "2026-10-29T10:51:25.489369+00:00",
+  "libpq_hostaddr_validation": {
+    "network_attempted": false,
+    "source_override_accepted": true,
+    "source_identity_unchanged": true,
+    "source_allow_production_read": false,
+    "target_non_loopback_override_accepted": true,
+    "expected": "reject hostaddr overrides before connecting; keep real destination bound to source identity"
+  }
+}

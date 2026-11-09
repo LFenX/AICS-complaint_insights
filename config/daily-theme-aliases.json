@@ -1,0 +1,334 @@
+{
+  "storage": {
+    "id": "storage",
+    "name": "更新或启动提示存储空间不足"
+  },
+  "launch-black-screen": {
+    "id": "launch-black-screen",
+    "name": "启动黑屏，无法进入游戏"
+  },
+  "launch-loading-stuck": {
+    "id": "launch-loading-stuck",
+    "name": "启动加载停滞，无法进入游戏"
+  },
+  "version-check-stuck": {
+    "id": "version-check-stuck",
+    "name": "版本或下载检查界面卡住"
+  },
+  "resource-download-stall": {
+    "id": "download-no-progress",
+    "name": "资源下载零速、停滞或不启动"
+  },
+  "resource-download-not-starting": {
+    "id": "download-no-progress",
+    "name": "资源下载零速、停滞或不启动"
+  },
+  "download-stuck": {
+    "id": "download-no-progress",
+    "name": "资源下载零速、停滞或不启动"
+  },
+  "download-progress-reset": {
+    "id": "download-progress-reset",
+    "name": "更新下载进度丢失或归零"
+  },
+  "download-progress": {
+    "id": "download-progress-reset",
+    "name": "更新下载进度丢失或归零"
+  },
+  "download-progress-inconsistent": {
+    "id": "update-volume-inconsistent",
+    "name": "更新下载量超出标示或持续增加"
+  },
+  "update-size-growth": {
+    "id": "update-volume-inconsistent",
+    "name": "更新下载量超出标示或持续增加"
+  },
+  "launch-screen-unspecified": {
+    "id": "launch-unspecified",
+    "name": "无法进入游戏，具体阻断表现待补充"
+  },
+  "login-issue-unspecified": {
+    "id": "launch-unspecified",
+    "name": "无法进入游戏，具体阻断表现待补充"
+  },
+  "launch-error-unspecified": {
+    "id": "launch-unspecified",
+    "name": "无法进入游戏，具体阻断表现待补充"
+  },
+  "scene-loading-stuck": {
+    "id": "scene-loading-stuck",
+    "name": "切换地图或家园时加载冻结"
+  },
+  "region-loading": {
+    "id": "scene-loading-stuck",
+    "name": "切换地图或家园时加载冻结"
+  },
+  "rv-map-freeze": {
+    "id": "scene-loading-stuck",
+    "name": "切换地图或家园时加载冻结"
+  },
+  "rv-entry-crash": {
+    "id": "scene-entry-crash",
+    "name": "进入房车或特定场景时崩溃"
+  },
+  "scene-crash": {
+    "id": "scene-entry-crash",
+    "name": "进入房车或特定场景时崩溃"
+  },
+  "runtime-freeze": {
+    "id": "runtime-freeze",
+    "name": "游玩中卡顿、冻结或退出"
+  },
+  "runtime-exit": {
+    "id": "runtime-freeze",
+    "name": "游玩中卡顿、冻结或退出"
+  },
+  "performance": {
+    "id": "runtime-freeze",
+    "name": "游玩中卡顿、冻结或退出"
+  },
+  "runtime-crash": {
+    "id": "runtime-crash",
+    "name": "游玩中反复崩溃退出"
+  },
+  "shader-stuck": {
+    "id": "shader-stuck",
+    "name": "启动着色器编译或预热卡住"
+  },
+  "shader-compilation": {
+    "id": "shader-stuck",
+    "name": "启动着色器编译或预热卡住"
+  },
+  "graphics": {
+    "id": "graphics",
+    "name": "更新后画面或贴图渲染异常"
+  },
+  "rendering": {
+    "id": "graphics",
+    "name": "更新后画面或贴图渲染异常"
+  },
+  "interface-black-screen": {
+    "id": "interface-black-screen",
+    "name": "游戏内打开菜单后黑屏或无响应"
+  },
+  "interface-freeze": {
+    "id": "interface-black-screen",
+    "name": "游戏内打开菜单后黑屏或无响应"
+  },
+  "text-display": {
+    "id": "text-display",
+    "name": "界面文案或图标显示代码及异常格式"
+  },
+  "ui-format": {
+    "id": "text-display",
+    "name": "界面文案或图标显示代码及异常格式"
+  },
+  "platform-wrong-account-binding": {
+    "id": "platform-wrong-account-binding",
+    "name": "平台被误建账号占用，主账号无法绑定"
+  },
+  "platform-ghost-account": {
+    "id": "platform-wrong-account-binding",
+    "name": "平台被误建账号占用，主账号无法绑定"
+  },
+  "login-method-merge": {
+    "id": "platform-wrong-account-binding",
+    "name": "平台被误建账号占用，主账号无法绑定"
+  },
+  "cross-platform-profile-mismatch": {
+    "id": "cross-platform-profile",
+    "name": "跨端或重登进入新角色，旧进度未载入"
+  },
+  "cross-platform-progress": {
+    "id": "cross-platform-profile",
+    "name": "跨端或重登进入新角色，旧进度未载入"
+  },
+  "login-new-profile": {
+    "id": "cross-platform-profile",
+    "name": "跨端或重登进入新角色，旧进度未载入"
+  },
+  "platform-unlink-blocked": {
+    "id": "platform-unlink",
+    "name": "第三方平台解绑或更换关联受阻"
+  },
+  "account-unlink": {
+    "id": "platform-unlink",
+    "name": "第三方平台解绑或更换关联受阻"
+  },
+  "cross-platform-link-blocked": {
+    "id": "platform-unlink",
+    "name": "第三方平台解绑或更换关联受阻"
+  },
+  "email-binding-occupied": {
+    "id": "email-binding-occupied",
+    "name": "绑定邮箱仍被旧账号占用"
+  },
+  "link-email-occupied": {
+    "id": "email-binding-occupied",
+    "name": "绑定邮箱仍被旧账号占用"
+  },
+  "link-after-delete": {
+    "id": "email-binding-occupied",
+    "name": "绑定邮箱仍被旧账号占用"
+  },
+  "paid-hair-locked": {
+    "id": "paid-hair-locked",
+    "name": "已购套装发型仍锁定或要求另购"
+  },
+  "paid-hair-entitlement": {
+    "id": "paid-hair-locked",
+    "name": "已购套装发型仍锁定或要求另购"
+  },
+  "paid-missing": {
+    "id": "paid-missing",
+    "name": "已扣费商品未到账或未解锁"
+  },
+  "purchase-delivery": {
+    "id": "paid-missing",
+    "name": "已扣费商品未到账或未解锁"
+  },
+  "event-maintenance": {
+    "id": "event-maintenance",
+    "name": "玩法维护关闭导致赛季成就受阻"
+  },
+  "holo-closure": {
+    "id": "event-maintenance",
+    "name": "玩法维护关闭导致赛季成就受阻"
+  },
+  "event-blueprint": {
+    "id": "event-blueprint-material",
+    "name": "已解锁活动蓝图却无法取得制作材料"
+  },
+  "seasonal-crafting": {
+    "id": "event-blueprint-material",
+    "name": "已解锁活动蓝图却无法取得制作材料"
+  },
+  "level-cap": {
+    "id": "level-cap",
+    "name": "达到突破条件后伊莫等级仍受限"
+  },
+  "level-progress-stuck": {
+    "id": "level-cap",
+    "name": "达到突破条件后伊莫等级仍受限"
+  },
+  "aniimo-level-cap": {
+    "id": "level-cap",
+    "name": "达到突破条件后伊莫等级仍受限"
+  },
+  "potential-effect": {
+    "id": "potential-effect",
+    "name": "伊莫潜能或预期属性提升未生效"
+  },
+  "stat-improvement-missing": {
+    "id": "potential-effect",
+    "name": "伊莫潜能或预期属性提升未生效"
+  },
+  "outfit-dye-restriction": {
+    "id": "outfit-dye",
+    "name": "服装部分部件无法染色"
+  },
+  "clothing-dye": {
+    "id": "outfit-dye",
+    "name": "服装部分部件无法染色"
+  },
+  "gacha-rules": {
+    "id": "gacha-dispute",
+    "name": "外观抽取结果、概率或保底争议"
+  },
+  "draw-probability": {
+    "id": "gacha-dispute",
+    "name": "外观抽取结果、概率或保底争议"
+  },
+  "support-unresponsive": {
+    "id": "support-unresponsive",
+    "name": "客服渠道无响应或工单迟未推进"
+  },
+  "support-delay": {
+    "id": "support-unresponsive",
+    "name": "客服渠道无响应或工单迟未推进"
+  },
+  "download-region": {
+    "id": "download-region",
+    "name": "商店地区限制或游戏不可用"
+  },
+  "region-download-block": {
+    "id": "download-region",
+    "name": "商店地区限制或游戏不可用"
+  },
+  "supporting-material": {
+    "id": "support-materials",
+    "name": "补充身份、订单或排查材料"
+  },
+  "support-materials": {
+    "id": "support-materials",
+    "name": "补充身份、订单或排查材料"
+  },
+  "materials-unspecified": {
+    "id": "support-materials",
+    "name": "补充身份、订单或排查材料"
+  },
+  "support-followup": {
+    "id": "support-materials",
+    "name": "补充身份、订单或排查材料"
+  },
+  "resolved-followup": {
+    "id": "resolved-followup",
+    "name": "明确已解决或撤回诉求的回访"
+  },
+  "resolved-feedback": {
+    "id": "resolved-followup",
+    "name": "明确已解决或撤回诉求的回访"
+  },
+  "thanks-followup": {
+    "id": "thanks-followup",
+    "name": "确认收悉或单纯致谢"
+  },
+  "acknowledgement": {
+    "id": "thanks-followup",
+    "name": "确认收悉或单纯致谢"
+  },
+  "nonplayer": {
+    "id": "creator-inquiry",
+    "name": "创作者或机构合作许可咨询"
+  },
+  "creator-inquiry": {
+    "id": "creator-inquiry",
+    "name": "创作者或机构合作许可咨询"
+  },
+  "business-licensing-inquiry": {
+    "id": "creator-inquiry",
+    "name": "创作者或机构合作许可咨询"
+  },
+  "business-marketing": {
+    "id": "creator-inquiry",
+    "name": "创作者或机构合作许可咨询"
+  },
+  "language-support": {
+    "id": "language-support",
+    "name": "语言支持咨询与建议"
+  },
+  "language-support-inquiry": {
+    "id": "language-support",
+    "name": "语言支持咨询与建议"
+  },
+  "product-feedback": {
+    "id": "product-idea",
+    "name": "剧情、角色或玩法创意建议"
+  },
+  "product-idea": {
+    "id": "product-idea",
+    "name": "剧情、角色或玩法创意建议"
+  },
+  "content-proposal": {
+    "id": "product-idea",
+    "name": "剧情、角色或玩法创意建议"
+  },
+  "fan-creation": {
+    "id": "product-idea",
+    "name": "剧情、角色或玩法创意建议"
+  },
+  "account-service-request": {
+    "id": "account-service-request",
+    "name": "单纯账号注销办理请求"
+  }
+}

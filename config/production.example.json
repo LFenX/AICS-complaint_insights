@@ -1,0 +1,20 @@
+{
+  "source_id": "production-ai-customer",
+  "source_url": "postgresql://complaint_analytics_ro:REPLACE_PASSWORD@10.8.45.155:5432/ai_complaint_mail?sslmode=verify-full&sslrootcert=D%3A%2FPRIVATE%2Fserver.crt",
+  "target_owner_url": "REUSE_ISOLATED_TARGET_OWNER_URL_FROM_PRIVATE_LOCAL_PROFILE",
+  "target_writer_url": "REUSE_ISOLATED_TARGET_WRITER_URL_FROM_PRIVATE_LOCAL_PROFILE",
+  "target_reader_url": "REUSE_ISOLATED_TARGET_READER_URL_FROM_PRIVATE_LOCAL_PROFILE",
+  "api_token": "REUSE_OR_ROTATE_PRIVATE_AGENT_TOKEN",
+  "environment": "production",
+  "allow_production_read": false,
+  "source_schema": "public",
+  "app_schema": "complaint_app",
+  "api_host": "127.0.0.1",
+  "api_port": 3036,
+  "poll_seconds": 30,
+  "auxiliary_seconds": 60,
+  "reconcile_seconds": 3600,
+  "batch_size": 500,
+  "catalog_dir": "assets/taxonomy",
+  "source_certificate_sha256": "7D:A9:1C:FC:69:FA:95:69:AF:3E:FA:BF:10:B8:37:88:70:6F:4B:14:8E:70:44:41:03:BA:7F:D6:7A:64:52:6F"
+}

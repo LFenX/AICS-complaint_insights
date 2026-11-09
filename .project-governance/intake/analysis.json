@@ -1,0 +1,219 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "agent 能通过独立 SQL/API 分析按日期分类的真实开发邮件，并能在接入条件齐备后切换生产来源",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "C2",
+      "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "Docker 和缓存镜像可建立独立实例",
+      "validation": "启动独立容器后运行真实连接与健康检查"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+      "owner": "用户与生产服务器 agent",
+      "resolution_condition": "后续交付凭据和证书并完成连接验收",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "及时增量与最终一致性对账必须同时存在",
+      "derived_from": [
+        "F2"
+      ]
+    },
+    {
+      "id": "P3",
+      "statement": "数据获取与查询必须解耦且发布原子化",
+      "derived_from": [
+        "C2"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "独立 PostgreSQL、Python 同步器与只读 API，日志增量结合内容对账",
+      "status": "Selected",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "tradeoffs": [
+        "新增独立实例及常驻进程；无需变更源表或复制权限"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "保持现状，agent 直接查询现有开发或生产库",
+      "status": "Rejected",
+      "derived_from": [
+        "C1",
+        "C2"
+      ],
+      "tradeoffs": [
+        "没有隔离分析数据和稳定汇总，查询负载回到业务库"
+      ]
+    },
+    {
+      "id": "O3",
+      "description": "使用 PostgreSQL 逻辑复制或 CDC",
+      "status": "Rejected",
+      "derived_from": [
+        "P2",
+        "C1"
+      ],
+      "tradeoffs": [
+        "需要源端复制授权与运行配置变更，超出本期只读边界"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "可追溯全量且来源隔离、无源写入",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "增量可恢复、汇总与明细一致、权限明确",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "建立独立运行环境和数据库",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "实现源读取及原子同步发布",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "实现日期分类读取模型和只读接口",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "导入真实开发数据并执行隔离与接口验证",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "交付运行、切源说明和实际证据",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+  ]
+}

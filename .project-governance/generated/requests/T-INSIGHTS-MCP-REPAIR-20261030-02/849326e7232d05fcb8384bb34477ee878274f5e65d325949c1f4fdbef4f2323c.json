@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存第二返修实际七项关闭证据、36测试15真实检查、原话逐条覆盖与45文件版本；正式人工门禁Pending和机器登记受限，因此Deferred，不伪造两轮收敛或用户验收",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "5b01425fb0e00154ffab1d337ef7d94a40ac163dbd205d48795bd6de9b332ead",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02"
+}

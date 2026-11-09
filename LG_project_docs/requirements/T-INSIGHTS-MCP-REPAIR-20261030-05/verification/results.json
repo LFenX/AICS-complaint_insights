@@ -1,0 +1,127 @@
+{
+  "checked_at": "2026-10-29T23:09:51.561929+00:00",
+  "result": "Passed",
+  "portal": "https://10.8.61.200:3029/",
+  "endpoint": "https://10.8.61.200:3037/mcp",
+  "strict_ca_verification": true,
+  "protocol_version": "2025-11-25",
+  "tool_count": 11,
+  "tool_names": [
+    "get_capabilities",
+    "get_data_guide",
+    "get_mail_detail",
+    "get_report_context",
+    "get_source_record",
+    "get_sync_status",
+    "list_mails",
+    "list_source_records",
+    "list_source_tables",
+    "list_taxonomy",
+    "query_daily_statistics"
+  ],
+  "source_tables": [
+    {
+      "table": "mailboxes",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "folders",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "messages",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "attachments",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "imap_reconcile_archive",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "InboundMail",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "MailAiArtifact",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "MailIssueBinding",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "TaxonomyCandidate",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "IssueTypeProposal",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "TaxonomyCandidateSupport",
+      "record_present": true,
+      "passed": true
+    },
+    {
+      "table": "IssueTypeRegistry",
+      "record_present": false,
+      "passed": true
+    },
+    {
+      "table": "IssueTypeAlias",
+      "record_present": false,
+      "passed": true
+    },
+    {
+      "table": "IssueGroupLifecycle",
+      "record_present": false,
+      "passed": true
+    }
+  ],
+  "checks": {
+    "public_portal": true,
+    "anonymous_admin_denied": true,
+    "host_origin_denied": true,
+    "public_downloads": true,
+    "live_tools_schema_equals_public_schema": true,
+    "all_tools_readonly": true,
+    "no_sse_or_http_sessions": true,
+    "invalid_arguments_are_tool_errors": true,
+    "raw_json_schema_and_unknown_tool_protocol_error": true,
+    "literal_source_string_never_uses_default": true,
+    "jsonrpc_envelope_parse_method_and_parameter_error_layers": true,
+    "request_id_integrity_and_client_message_types": true,
+    "all_five_paged_tools_reject_empty_cursor": true,
+    "real_owner_issue_use_revoke_and_logout": true,
+    "public_kit_and_logs_no_credentials": true,
+    "downloaded_stdlib_sdk_workflow_and_full_pagination": true,
+    "production_isolated_local_reader_only": true
+  },
+  "source": {
+    "source_id": "production-ai-customer",
+    "data_version": 24,
+    "status": "DEGRADED",
+    "source_snapshot_at": "2026-10-29T17:13:42.665806+00:00",
+    "last_sync_at": "2026-10-29T17:14:02.122651+00:00"
+  },
+  "client_pagination_pages": 22,
+  "kit_sha256": "4f6562cdb6ab351a97a440ca025507d7d149b362c9da4101f5d6a9445839be52",
+  "different_computer_tested": false,
+  "production_connected": false,
+  "user_decision": {
+    "outcome": "Pending"
+  }
+}

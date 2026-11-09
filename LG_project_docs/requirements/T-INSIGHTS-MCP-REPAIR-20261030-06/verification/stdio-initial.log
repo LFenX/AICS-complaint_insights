@@ -1,0 +1,8 @@
+test_real_stdio_cli_preserves_integer_argument_precision (tests.test_mcp.MCPStdioTests.test_real_stdio_cli_preserves_integer_argument_precision) ... ok
+test_real_stdio_ids_errors_and_recovery (tests.test_mcp.MCPStdioTests.test_real_stdio_ids_errors_and_recovery) ... ok
+test_stdio_message_context_strings_and_stdout_isolation (tests.test_mcp.MCPStdioTests.test_stdio_message_context_strings_and_stdout_isolation) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.365s
+
+OK

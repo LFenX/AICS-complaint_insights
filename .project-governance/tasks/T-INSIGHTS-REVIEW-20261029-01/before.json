@@ -1,0 +1,2831 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "LOCAL-ANALYTICS-FOUNDATION",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+  "ordinal": 2,
+  "revision": 11,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-29T10:43:57.445277Z",
+  "frozen_at": "2026-10-29T10:55:23.389304Z",
+  "objective": "承接已批准的本地MCP工程、修复预审确认问题并固定后续审查版本",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划\n提供查询不同数据的接口\n并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+    "captured_at": "2026-10-29T10:43:57.328826Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Asked",
+    "notice": "这里缺少的是独立的安全门禁决定。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "rounds": [
+      {
+        "ordinal": 1,
+        "asked_at": "2026-10-29T09:49:25.764883+00:00",
+        "exchanges": [
+          {
+            "question": "MCP 工具需要在哪里调用？这决定连接配置和服务监听方式。",
+            "changes": "Scope",
+            "recommended_default": "先供这台采集电脑上的 Agent 使用，交接本地 stdio 配置",
+            "answer": "需要其他内网电脑的 Agent 直接远程调用",
+            "answer_state": "Answered"
+          }
+        ]
+      },
+      {
+        "ordinal": 2,
+        "asked_at": "2026-10-29T10:43:57.188199+00:00",
+        "exchanges": [
+          {
+            "question": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+            "changes": "Authority",
+            "recommended_default": "暂不启动，先使用工具",
+            "answer": "启动多轮对抗性审查",
+            "answer_state": "Answered"
+          }
+        ]
+      },
+      {
+        "ordinal": 3,
+        "asked_at": "2026-10-29T10:43:57.188199+00:00",
+        "exchanges": [
+          {
+            "question": "审查启动授权已收到。当前正式结果因 security-privacy-review 待审而处于 Deferred，流程工具只接受 Implemented 结果进入对抗审查。是否通过当前本地副本与内网只读 MCP 的安全隐私门禁？已验证源只读、HTTPS、独立令牌、内网限制；门禁材料：D:/LFEN_project/dev_project/complaint-insights/LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+            "changes": "Authority",
+            "recommended_default": "通过本次安全隐私门禁，继续审查",
+            "answer": "通过本次安全隐私门禁，继续审查",
+            "answer_state": "Answered"
+          }
+        ]
+      }
+    ],
+    "basis": "原功能与实际交付、用户的审查及门禁回答已实查明确；旧记录封存，承接同一份字节交付；时间为采集/登记时刻。；Amendment自动重开后重新核对原始审查问题已明确包含发现问题修复复验，当前三项修复不引入新的目标、访问权限、生产影响或未知，沿用既有授权，不伪造新问答。",
+    "reopened_by": [
+      "amendment:scope",
+      "amendment:objective"
+    ]
+  },
+  "requirement_items": [
+    {
+      "id": "R-01",
+      "source": "request_snapshot",
+      "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+      "reading": "本期开发数据库、增量、日期分类读取模型和接口已完成；生产接通后的真实联调仍是未来条件，已预备配置与手册，不能记为已经完成",
+      "state": "Deferred",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/release/production-switch.md"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [
+          "后续生产数据库连接接通"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "生产尚未内网监听，未取得采集端生产连接验证",
+            "expected": "用开发数据交付本地底座并预留生产切换",
+            "actual": "53119 封邮件完整复制；增量/API/MCP 运行；47 项测试及十四表内容核对通过；生产默认关闭",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来真实生产只读连接接通后",
+            "expected": "按独立来源配置完成生产预检、首批导入和实际负载验证",
+            "actual": "仅完成配置、来源隔离测试和切换手册；真实生产连接、导入和负载未执行",
+            "result": "NotRun",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/release/production-switch.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-02",
+      "source": "request_snapshot",
+      "quote": "提供查询不同数据的接口",
+      "reading": "按数据类型提供只读接口",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+      ],
+      "acceptance_refs": [
+        3,
+        5
+      ],
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+            "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+            "actual": "11 个工具覆盖分类、统计、邮件原文/AI、状态及十四类业务副本，真实调用 26 次通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-03",
+      "source": "request_snapshot",
+      "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "reading": "标准 MCP、中文工具说明、配置与按需调用交接",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+      ],
+      "acceptance_refs": [
+        5
+      ],
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+            "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+            "actual": "HTTPS MCP 工具发现/调用、资源、旧版 initialize 通过；含真实只读令牌的交接包解压后客户端发现 11 个工具；文档含参数、分页、口径与故障步骤",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-04",
+      "source": "clarification:r1.e1",
+      "quote": "需要其他内网电脑的 Agent 直接远程调用",
+      "reading": "提供内网远程可调用的 HTTPS MCP 入口；接收方电脑实际路由与客户端验收保留未验项",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+      ],
+      "acceptance_refs": [
+        5
+      ],
+      "review": {
+        "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+            "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+            "actual": "10.8.61.200:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-05",
+      "source": "clarification:r2.e1",
+      "quote": "启动多轮对抗性审查",
+      "reading": "这是后置审查的真实启动授权，审查进度由 adversarial_review 单一字段承载，不伪装成本次基线承接已经完成了两轮审查",
+      "state": "NotARequirement",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ],
+      "acceptance_refs": []
+    },
+    {
+      "id": "R-06",
+      "source": "clarification:r3.e1",
+      "quote": "通过本次安全隐私门禁，继续审查",
+      "reading": "这是当前同一交付版本的真实 Gate 与持续授权，不是生产授权或最终人工验收；用 Gate 账本和后置审查记录承载",
+      "state": "NotARequirement",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ],
+      "acceptance_refs": []
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-REVIEW-PROCEED",
+      "kind": "Proceed",
+      "presented": "原本地与 MCP 工程已保存并提供 47 项测试、真实 HTTPS 证据和交接材料，因安全门禁待审未获正式工程通过；现确认当前版本门禁并继续已授权审查。",
+      "response": "通过本次安全隐私门禁，继续审查",
+      "decided_by": "当前聊天用户",
+      "decided_at": "2026-10-29T10:43:57.188199+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-FOUNDATION-20261029-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T10:43:57.396328Z"
+  },
+  "scope": {
+    "in_scope": [
+      "本地独立数据库与原始邮件、AI 分类副本",
+      "增量同步、补充对账和日期分类读取模型",
+      "agent 只读 SQL/API 及生产源切换准备",
+      "MCP 只读查询工具、数据类型说明和交接配置"
+    ],
+    "out_of_scope": [
+      "生产联调和重启、看板UI、自动周报、改变认证/监听/防火墙或增加查询能力"
+    ],
+    "allowed_paths": [
+      ".project-governance/**",
+      "LG_project_docs/**",
+      "update_log/**",
+      "insights/config.py",
+      "insights/syncer.py",
+      "tests/**",
+      "README.md",
+      "scripts/build_mcp_handoff.py"
+    ],
+    "forbidden_actions": [
+      "改写封存账本、写开发源库、操作生产服务、改变项目结构或命名、扩大远程读取范围"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "本地独立数据库与原始邮件、AI 分类副本",
+          "增量同步、补充对账和日期分类读取模型",
+          "agent 只读 SQL/API 及生产源切换准备",
+          "MCP 只读查询工具、数据类型说明和交接配置"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ],
+        "verified_at": "2026-10-29T10:43:57.188199+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "独立 PostgreSQL 和数据卷运行，仅监听回环地址，源库连接强制只读，原项目不变",
+      "完整导入开发原始邮件、AI 产物、绑定和静态/动态目录，按北京时间日期及分类可追溯原文",
+      "新增、更新、删除、AI 补全、无事件变更和重启续传通过隔离夹具验证，失败不前移水位",
+      "只读 SQL 与鉴权 API 可查询日汇总、分类、分页邮件、全文及同步状态，拒绝未授权访问",
+      "生产配置独立，来源隔离且默认不接触生产；提供切换步骤和未验项",
+      "真实 HTTPS Streamable HTTP MCP 客户端可发现并按需调用只读工具，覆盖分类、汇总、全文和十四类原始业务副本；独立令牌、可信证书、内网限制、参数、分页与权限测试通过，内网客户端配置与中文交接说明齐备"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "完成固定版本预审并记录可复现缺陷",
+      "修复失败状态、hostaddr目的地校验和交接Python版本说明",
+      "运行针对性回归与普通工程验证，重新固定公开交付文件摘要",
+      "登记已有用户审查授权并对最终版本完成两轮完整审查"
+    ],
+    "verification": [
+      "独立 PostgreSQL 和数据卷运行，仅监听回环地址，源库连接强制只读，原项目不变",
+      "完整导入开发原始邮件、AI 产物、绑定和静态/动态目录，按北京时间日期及分类可追溯原文",
+      "新增、更新、删除、AI 补全、无事件变更和重启续传通过隔离夹具验证，失败不前移水位",
+      "只读 SQL 与鉴权 API 可查询日汇总、分类、分页邮件、全文及同步状态，拒绝未授权访问",
+      "生产配置独立，来源隔离且默认不接触生产；提供切换步骤和未验项",
+      "真实 HTTPS Streamable HTTP MCP 客户端可发现并按需调用只读工具，覆盖分类、汇总、全文和十四类原始业务副本；独立令牌、可信证书、内网限制、参数、分页与权限测试通过，内网客户端配置与中文交接说明齐备"
+    ],
+    "rollback": [
+      "本次只增加承接和真实决定记录，无业务或运行配置变更；保留旧结果"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Deep",
+    "outcome": "承接原有工程证据并修复只读预审确认的问题，为已获授权的完整审查固定可复验版本",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "F3",
+        "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+        ]
+      },
+      {
+        "id": "F4",
+        "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+        ]
+      },
+      {
+        "id": "F5",
+        "statement": "只读预审实证：分类文件失败未记DEGRADED，libpq hostaddr覆盖目标未受验证，交接Python最低版本与依赖不符",
+        "evidence_refs": [
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/root-round1-probes.json",
+          ".runtime/review-one-python310"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "C3",
+        "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+        ]
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "A1",
+        "statement": "Docker 和缓存镜像可建立独立实例",
+        "validation": "启动独立容器后运行真实连接与健康检查"
+      }
+    ],
+    "unknowns": [
+      {
+        "id": "U1",
+        "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+        "owner": "用户与生产服务器 agent",
+        "resolution_condition": "后续交付凭据和证书并完成连接验收",
+        "blocking": false
+      }
+    ],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "及时增量与最终一致性对账必须同时存在",
+        "derived_from": [
+          "F2"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "数据获取与查询必须解耦且发布原子化",
+        "derived_from": [
+          "C2"
+        ]
+      },
+      {
+        "id": "P4",
+        "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+        "derived_from": [
+          "F3",
+          "C2",
+          "P3"
+        ]
+      },
+      {
+        "id": "P5",
+        "statement": "原交付已被用户明确通过安全门禁；只读承接同一字节与记录授权不创造新的安全审批对象，不得把登记时间伪造成再次人类决定时间",
+        "derived_from": [
+          "F4",
+          "C1"
+        ]
+      },
+      {
+        "id": "P6",
+        "statement": "只修复已承诺的失败状态、目标校验和依赖说明，保持实际监听、认证、数据读取范围和源只读规则",
+        "derived_from": [
+          "F5",
+          "C1",
+          "C3"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O1",
+        "description": "只读承接同一交付和已发生的用户门禁决定；不改写封存历史、不重复发起门禁，不伪造新的门禁时间",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P3",
+          "F4"
+        ],
+        "tradeoffs": [
+          "增加一份可核对的承接记录，不能改写旧账本"
+        ]
+      },
+      {
+        "id": "O0",
+        "description": "维持原 Deferred 记录",
+        "status": "Rejected",
+        "derived_from": [
+          "F4"
+        ],
+        "tradeoffs": [
+          "真实新决定无法进入封存账本，原审查登记仍不适用"
+        ]
+      },
+      {
+        "id": "O3",
+        "description": "改写原封存账本或伪造此前 Gate 已通过",
+        "status": "Rejected",
+        "derived_from": [
+          "C1",
+          "F4"
+        ],
+        "tradeoffs": [
+          "违反追加式事实记录，不可采用"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "可追溯全量且来源隔离、无源写入",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "增量可恢复、汇总与明细一致、权限明确",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "完成固定版本预审并记录可复现缺陷",
+        "derived_from": [
+          "P5",
+          "P6"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "修复失败状态、hostaddr目的地校验和交接Python版本说明",
+        "derived_from": [
+          "P5",
+          "P6"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "运行针对性回归与普通工程验证，重新固定公开交付文件摘要",
+        "derived_from": [
+          "P5",
+          "P6"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "登记已有用户审查授权并对最终版本完成两轮完整审查",
+        "derived_from": [
+          "P5",
+          "P6"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+      "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-01",
+    "development_types": [
+      "DT-01"
+    ],
+    "primary_development_type": "DT-01",
+    "development_type_scopes": {
+      "DT-01": [
+        "本地独立数据库与原始邮件、AI 分类副本",
+        "增量同步、补充对账和日期分类读取模型",
+        "agent 只读 SQL/API 及生产源切换准备",
+        "MCP 只读查询工具、数据类型说明和交接配置"
+      ]
+    },
+    "change_surfaces": [
+      "Agent/Collaboration",
+      "API/Integration"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Inactive",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ],
+      "E04": [],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Reference"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。",
+      "已获多轮审查和返修授权；本次仅修正已承诺行为，不新增权限、对外监听或数据访问。"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "No",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "No",
+      "formal_knowledge_records": "No",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "Yes"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": null,
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-adopted-source-manifest",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+      "reason": "引用原59个实际交付文件的不可变摘要清单；本次只承接工程，不声明已完成审查",
+      "rule_reference": "C09 execution evidence; C05 verification",
+      "owner": "execution-agent",
+      "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Deep",
+        "outcome": "在不修改业务和封存历史的前提下，承接已通过安全门禁的同一份本地/MCP 工程交付，作为多轮审查基线",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+            ]
+          },
+          {
+            "id": "F4",
+            "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+            ]
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "A1",
+            "statement": "Docker 和缓存镜像可建立独立实例",
+            "validation": "启动独立容器后运行真实连接与健康检查"
+          }
+        ],
+        "unknowns": [
+          {
+            "id": "U1",
+            "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+            "owner": "用户与生产服务器 agent",
+            "resolution_condition": "后续交付凭据和证书并完成连接验收",
+            "blocking": false
+          }
+        ],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "及时增量与最终一致性对账必须同时存在",
+            "derived_from": [
+              "F2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "数据获取与查询必须解耦且发布原子化",
+            "derived_from": [
+              "C2"
+            ]
+          },
+          {
+            "id": "P4",
+            "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+            "derived_from": [
+              "F3",
+              "C2",
+              "P3"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O1",
+            "description": "用新完整任务承接同一份交付和真实新 Gate，保留封存历史，再登记后置审查",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P3",
+              "F4"
+            ],
+            "tradeoffs": [
+              "增加一份可核对的承接记录，不能改写旧账本"
+            ]
+          },
+          {
+            "id": "O0",
+            "description": "维持原 Deferred 记录",
+            "status": "Rejected",
+            "derived_from": [
+              "F4"
+            ],
+            "tradeoffs": [
+              "真实新决定无法进入封存账本，原审查登记仍不适用"
+            ]
+          },
+          {
+            "id": "O3",
+            "description": "改写原封存账本或伪造此前 Gate 已通过",
+            "status": "Rejected",
+            "derived_from": [
+              "C1",
+              "F4"
+            ],
+            "tradeoffs": [
+              "违反追加式事实记录，不可采用"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "可追溯全量且来源隔离、无源写入",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "增量可恢复、汇总与明细一致、权限明确",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "核对原交付字节、原始工程证据和当前运行状态",
+            "derived_from": [
+              "P3",
+              "F4"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "登记真实通过的当前版本安全门禁，保存工程基线",
+            "derived_from": [
+              "P3",
+              "F4"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "在正式基线保存后登记已收到的真实审查同意，执行后置多轮审查",
+            "derived_from": [
+              "P3",
+              "F4"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Deep",
+        "outcome": "在不修改业务和封存历史的前提下，承接已通过安全门禁的同一份本地/MCP 工程交付，作为多轮审查基线",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+            ]
+          },
+          {
+            "id": "F4",
+            "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+            ]
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "A1",
+            "statement": "Docker 和缓存镜像可建立独立实例",
+            "validation": "启动独立容器后运行真实连接与健康检查"
+          }
+        ],
+        "unknowns": [
+          {
+            "id": "U1",
+            "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+            "owner": "用户与生产服务器 agent",
+            "resolution_condition": "后续交付凭据和证书并完成连接验收",
+            "blocking": false
+          }
+        ],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "及时增量与最终一致性对账必须同时存在",
+            "derived_from": [
+              "F2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "数据获取与查询必须解耦且发布原子化",
+            "derived_from": [
+              "C2"
+            ]
+          },
+          {
+            "id": "P4",
+            "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+            "derived_from": [
+              "F3",
+              "C2",
+              "P3"
+            ]
+          },
+          {
+            "id": "P5",
+            "statement": "原交付已被用户明确通过安全门禁；只读承接同一字节与记录授权不创造新的安全审批对象，不得把登记时间伪造成再次人类决定时间",
+            "derived_from": [
+              "F4",
+              "C1"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O1",
+            "description": "只读承接同一交付和已发生的用户门禁决定；不改写封存历史、不重复发起门禁，不伪造新的门禁时间",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P3",
+              "F4"
+            ],
+            "tradeoffs": [
+              "增加一份可核对的承接记录，不能改写旧账本"
+            ]
+          },
+          {
+            "id": "O0",
+            "description": "维持原 Deferred 记录",
+            "status": "Rejected",
+            "derived_from": [
+              "F4"
+            ],
+            "tradeoffs": [
+              "真实新决定无法进入封存账本，原审查登记仍不适用"
+            ]
+          },
+          {
+            "id": "O3",
+            "description": "改写原封存账本或伪造此前 Gate 已通过",
+            "status": "Rejected",
+            "derived_from": [
+              "C1",
+              "F4"
+            ],
+            "tradeoffs": [
+              "违反追加式事实记录，不可采用"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "可追溯全量且来源隔离、无源写入",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "增量可恢复、汇总与明细一致、权限明确",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "核对原交付字节、原始工程证据和当前运行状态",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "登记真实通过的当前版本安全门禁，保存工程基线",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "在正式基线保存后登记已收到的真实审查同意，执行后置多轮审查",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ]
+      },
+      "reason": "本任务只读承接字节和已发生的真实批准，没有新的实现、监听或权限变更；不把后续登记时间伪装为再次 Gate 决定，纠正冗余 Gate 与第一性推导结构",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:48:45.292114Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "authority.required_gates",
+      "old_value": [
+        "security-privacy-review"
+      ],
+      "new_value": [],
+      "reason": "本任务只读承接字节和已发生的真实批准，没有新的实现、监听或权限变更；不把后续登记时间伪装为再次 Gate 决定，纠正冗余 Gate 与第一性推导结构",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:48:45.292172Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "API/Integration",
+          "Data/Schema",
+          "AI/Data Governance",
+          "Architecture/Multi-repo",
+          "Identity/Security/Privacy",
+          "Deploy/Operations"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Inactive",
+          "E02": "Inactive",
+          "E03": "Inactive",
+          "E04": "Inactive",
+          "E05": "Inactive"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "reason": "当前只读证据承接不改变原产品的安全、数据、架构或运行边界，纠正本次变更面和字段数组结构",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:52:45.001412Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Inactive",
+          "E02": "Inactive",
+          "E03": "Inactive",
+          "E04": "Inactive",
+          "E05": "Inactive"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "reason": "只读承接不新增安全和数据影响，但必须加载被审查系统的数据、安全、架构和运行约束",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:54:28.289001Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "scope",
+      "old_value": {
+        "in_scope": [
+          "本地独立数据库与原始邮件、AI 分类副本",
+          "增量同步、补充对账和日期分类读取模型",
+          "agent 只读 SQL/API 及生产源切换准备",
+          "MCP 只读查询工具、数据类型说明和交接配置"
+        ],
+        "out_of_scope": [
+          "生产联调和重启、UI、自动周报、修改当前交付字节；后置返修另建依赖任务"
+        ],
+        "allowed_paths": [
+          ".project-governance/**",
+          "LG_project_docs/**",
+          "update_log/**"
+        ],
+        "forbidden_actions": [
+          "改写封存账本、修改业务代码、写开发源或操作生产服务"
+        ]
+      },
+      "new_value": {
+        "in_scope": [
+          "本地独立数据库与原始邮件、AI 分类副本",
+          "增量同步、补充对账和日期分类读取模型",
+          "agent 只读 SQL/API 及生产源切换准备",
+          "MCP 只读查询工具、数据类型说明和交接配置"
+        ],
+        "out_of_scope": [
+          "生产联调和重启、看板UI、自动周报、改变认证/监听/防火墙或增加查询能力"
+        ],
+        "allowed_paths": [
+          ".project-governance/**",
+          "LG_project_docs/**",
+          "update_log/**",
+          "insights/config.py",
+          "insights/syncer.py",
+          "tests/**",
+          "README.md",
+          "scripts/build_mcp_handoff.py"
+        ],
+        "forbidden_actions": [
+          "改写封存账本、写开发源库、操作生产服务、改变项目结构或命名、扩大远程读取范围"
+        ]
+      },
+      "reason": "用户已明确授权多轮查错、修复和复验；预审找到真实缺陷，将只读承接任务修订为同范围安全收紧与故障状态返修，不新增权限或重启生产",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:56:27.883289Z"
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Deep",
+        "outcome": "在不修改业务和封存历史的前提下，承接已通过安全门禁的同一份本地/MCP 工程交付，作为多轮审查基线",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+            ]
+          },
+          {
+            "id": "F4",
+            "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+            ]
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "A1",
+            "statement": "Docker 和缓存镜像可建立独立实例",
+            "validation": "启动独立容器后运行真实连接与健康检查"
+          }
+        ],
+        "unknowns": [
+          {
+            "id": "U1",
+            "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+            "owner": "用户与生产服务器 agent",
+            "resolution_condition": "后续交付凭据和证书并完成连接验收",
+            "blocking": false
+          }
+        ],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "及时增量与最终一致性对账必须同时存在",
+            "derived_from": [
+              "F2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "数据获取与查询必须解耦且发布原子化",
+            "derived_from": [
+              "C2"
+            ]
+          },
+          {
+            "id": "P4",
+            "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+            "derived_from": [
+              "F3",
+              "C2",
+              "P3"
+            ]
+          },
+          {
+            "id": "P5",
+            "statement": "原交付已被用户明确通过安全门禁；只读承接同一字节与记录授权不创造新的安全审批对象，不得把登记时间伪造成再次人类决定时间",
+            "derived_from": [
+              "F4",
+              "C1"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O1",
+            "description": "只读承接同一交付和已发生的用户门禁决定；不改写封存历史、不重复发起门禁，不伪造新的门禁时间",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P3",
+              "F4"
+            ],
+            "tradeoffs": [
+              "增加一份可核对的承接记录，不能改写旧账本"
+            ]
+          },
+          {
+            "id": "O0",
+            "description": "维持原 Deferred 记录",
+            "status": "Rejected",
+            "derived_from": [
+              "F4"
+            ],
+            "tradeoffs": [
+              "真实新决定无法进入封存账本，原审查登记仍不适用"
+            ]
+          },
+          {
+            "id": "O3",
+            "description": "改写原封存账本或伪造此前 Gate 已通过",
+            "status": "Rejected",
+            "derived_from": [
+              "C1",
+              "F4"
+            ],
+            "tradeoffs": [
+              "违反追加式事实记录，不可采用"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "可追溯全量且来源隔离、无源写入",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "增量可恢复、汇总与明细一致、权限明确",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "核对原交付字节、原始工程证据和当前运行状态",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "登记真实通过的当前版本安全门禁，保存工程基线",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "在正式基线保存后登记已收到的真实审查同意，执行后置多轮审查",
+            "derived_from": [
+              "P3",
+              "P5"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Deep",
+        "outcome": "承接原有工程证据并修复只读预审确认的问题，为已获授权的完整审查固定可复验版本",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+            ]
+          },
+          {
+            "id": "F4",
+            "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+            ]
+          },
+          {
+            "id": "F5",
+            "statement": "只读预审实证：分类文件失败未记DEGRADED，libpq hostaddr覆盖目标未受验证，交接Python最低版本与依赖不符",
+            "evidence_refs": [
+              ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/root-round1-probes.json",
+              ".runtime/review-one-python310"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+            ]
+          }
+        ],
+        "assumptions": [
+          {
+            "id": "A1",
+            "statement": "Docker 和缓存镜像可建立独立实例",
+            "validation": "启动独立容器后运行真实连接与健康检查"
+          }
+        ],
+        "unknowns": [
+          {
+            "id": "U1",
+            "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+            "owner": "用户与生产服务器 agent",
+            "resolution_condition": "后续交付凭据和证书并完成连接验收",
+            "blocking": false
+          }
+        ],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "及时增量与最终一致性对账必须同时存在",
+            "derived_from": [
+              "F2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "数据获取与查询必须解耦且发布原子化",
+            "derived_from": [
+              "C2"
+            ]
+          },
+          {
+            "id": "P4",
+            "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+            "derived_from": [
+              "F3",
+              "C2",
+              "P3"
+            ]
+          },
+          {
+            "id": "P5",
+            "statement": "原交付已被用户明确通过安全门禁；只读承接同一字节与记录授权不创造新的安全审批对象，不得把登记时间伪造成再次人类决定时间",
+            "derived_from": [
+              "F4",
+              "C1"
+            ]
+          },
+          {
+            "id": "P6",
+            "statement": "只修复已承诺的失败状态、目标校验和依赖说明，保持实际监听、认证、数据读取范围和源只读规则",
+            "derived_from": [
+              "F5",
+              "C1",
+              "C3"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O1",
+            "description": "只读承接同一交付和已发生的用户门禁决定；不改写封存历史、不重复发起门禁，不伪造新的门禁时间",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P3",
+              "F4"
+            ],
+            "tradeoffs": [
+              "增加一份可核对的承接记录，不能改写旧账本"
+            ]
+          },
+          {
+            "id": "O0",
+            "description": "维持原 Deferred 记录",
+            "status": "Rejected",
+            "derived_from": [
+              "F4"
+            ],
+            "tradeoffs": [
+              "真实新决定无法进入封存账本，原审查登记仍不适用"
+            ]
+          },
+          {
+            "id": "O3",
+            "description": "改写原封存账本或伪造此前 Gate 已通过",
+            "status": "Rejected",
+            "derived_from": [
+              "C1",
+              "F4"
+            ],
+            "tradeoffs": [
+              "违反追加式事实记录，不可采用"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "可追溯全量且来源隔离、无源写入",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "增量可恢复、汇总与明细一致、权限明确",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "完成固定版本预审并记录可复现缺陷",
+            "derived_from": [
+              "P5",
+              "P6"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "修复失败状态、hostaddr目的地校验和交接Python版本说明",
+            "derived_from": [
+              "P5",
+              "P6"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "运行针对性回归与普通工程验证，重新固定公开交付文件摘要",
+            "derived_from": [
+              "P5",
+              "P6"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "登记已有用户审查授权并对最终版本完成两轮完整审查",
+            "derived_from": [
+              "P5",
+              "P6"
+            ],
+            "supports": [
+              "K1",
+              "K2"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ]
+      },
+      "reason": "用户已明确授权多轮查错、修复和复验；预审找到真实缺陷，将只读承接任务修订为同范围安全收紧与故障状态返修，不新增权限或重启生产",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:56:27.883379Z"
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "path": "plan.steps",
+      "old_value": [
+        "核对原交付字节、原始工程证据和当前运行状态",
+        "登记真实通过的当前版本安全门禁，保存工程基线",
+        "在正式基线保存后登记已收到的真实审查同意，执行后置多轮审查"
+      ],
+      "new_value": [
+        "完成固定版本预审并记录可复现缺陷",
+        "修复失败状态、hostaddr目的地校验和交接Python版本说明",
+        "运行针对性回归与普通工程验证，重新固定公开交付文件摘要",
+        "登记已有用户审查授权并对最终版本完成两轮完整审查"
+      ],
+      "reason": "用户已明确授权多轮查错、修复和复验；预审找到真实缺陷，将只读承接任务修订为同范围安全收紧与故障状态返修，不新增权限或重启生产",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:56:27.883393Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-01",
+        "development_types": [
+          "DT-01"
+        ],
+        "primary_development_type": "DT-01",
+        "development_type_scopes": {
+          "DT-01": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备",
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ]
+        },
+        "change_surfaces": [
+          "Agent/Collaboration",
+          "API/Integration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。",
+          "已获多轮审查和返修授权；本次仅修正已承诺行为，不新增权限、对外监听或数据访问。"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "Yes",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "No",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "reason": "用户已明确授权多轮查错、修复和复验；预审找到真实缺陷，将只读承接任务修订为同范围安全收紧与故障状态返修，不新增权限或重启生产",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:56:27.883420Z"
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "path": "objective",
+      "old_value": "承接已通过安全门禁的本地数据库与 MCP 工程，建立已授权多轮审查的正式基线",
+      "new_value": "承接已批准的本地MCP工程、修复预审确认问题并固定后续审查版本",
+      "reason": "用户已明确授权多轮查错、修复和复验；预审找到真实缺陷，将只读承接任务修订为同范围安全收紧与故障状态返修，不新增权限或重启生产",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+      "changed_at": "2026-10-29T10:56:27.883427Z"
+    },
+    {
+      "from_revision": 10,
+      "to_revision": 11,
+      "path": "clarification",
+      "old_value": {
+        "state": "Open",
+        "mode": "Asked",
+        "notice": "这里缺少的是独立的安全门禁决定。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-10-29T09:49:25.764883+00:00",
+            "exchanges": [
+              {
+                "question": "MCP 工具需要在哪里调用？这决定连接配置和服务监听方式。",
+                "changes": "Scope",
+                "recommended_default": "先供这台采集电脑上的 Agent 使用，交接本地 stdio 配置",
+                "answer": "需要其他内网电脑的 Agent 直接远程调用",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 2,
+            "asked_at": "2026-10-29T10:43:57.188199+00:00",
+            "exchanges": [
+              {
+                "question": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+                "changes": "Authority",
+                "recommended_default": "暂不启动，先使用工具",
+                "answer": "启动多轮对抗性审查",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 3,
+            "asked_at": "2026-10-29T10:43:57.188199+00:00",
+            "exchanges": [
+              {
+                "question": "审查启动授权已收到。当前正式结果因 security-privacy-review 待审而处于 Deferred，流程工具只接受 Implemented 结果进入对抗审查。是否通过当前本地副本与内网只读 MCP 的安全隐私门禁？已验证源只读、HTTPS、独立令牌、内网限制；门禁材料：D:/LFEN_project/dev_project/complaint-insights/LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+                "changes": "Authority",
+                "recommended_default": "通过本次安全隐私门禁，继续审查",
+                "answer": "通过本次安全隐私门禁，继续审查",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "原功能与实际交付、用户的审查及门禁回答已实查明确；旧记录封存，承接同一份字节交付；时间为采集/登记时刻。",
+        "reopened_by": [
+          "amendment:scope",
+          "amendment:objective"
+        ]
+      },
+      "new_value": {
+        "state": "Settled",
+        "mode": "Asked",
+        "notice": "这里缺少的是独立的安全门禁决定。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-10-29T09:49:25.764883+00:00",
+            "exchanges": [
+              {
+                "question": "MCP 工具需要在哪里调用？这决定连接配置和服务监听方式。",
+                "changes": "Scope",
+                "recommended_default": "先供这台采集电脑上的 Agent 使用，交接本地 stdio 配置",
+                "answer": "需要其他内网电脑的 Agent 直接远程调用",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 2,
+            "asked_at": "2026-10-29T10:43:57.188199+00:00",
+            "exchanges": [
+              {
+                "question": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+                "changes": "Authority",
+                "recommended_default": "暂不启动，先使用工具",
+                "answer": "启动多轮对抗性审查",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 3,
+            "asked_at": "2026-10-29T10:43:57.188199+00:00",
+            "exchanges": [
+              {
+                "question": "审查启动授权已收到。当前正式结果因 security-privacy-review 待审而处于 Deferred，流程工具只接受 Implemented 结果进入对抗审查。是否通过当前本地副本与内网只读 MCP 的安全隐私门禁？已验证源只读、HTTPS、独立令牌、内网限制；门禁材料：D:/LFEN_project/dev_project/complaint-insights/LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+                "changes": "Authority",
+                "recommended_default": "通过本次安全隐私门禁，继续审查",
+                "answer": "通过本次安全隐私门禁，继续审查",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "原功能与实际交付、用户的审查及门禁回答已实查明确；旧记录封存，承接同一份字节交付；时间为采集/登记时刻。；Amendment自动重开后重新核对原始审查问题已明确包含发现问题修复复验，当前三项修复不引入新的目标、访问权限、生产影响或未知，沿用既有授权，不伪造新问答。",
+        "reopened_by": [
+          "amendment:scope",
+          "amendment:objective"
+        ]
+      },
+      "reason": "核对真实启动授权已经明确涵盖同范围缺陷修复复验，无新授权或风险未知；保留自动重开的历史",
+      "basis": "clarification:r2.e1 与 clarification:r3.e1",
+      "changed_at": "2026-10-29T10:56:50.887167Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "db7823dd8fe58fd4a6159c972b0e92b01f45f63b744f71d9f816dd627185ae50",
+    "stage": "S5",
+    "applicable_standards": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_review_or_gate=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Reference",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-01",
+      "VC-PPG-TAIL-001:development_types:DT-01",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Inactive",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "7",
+          "9",
+          "10",
+          "13",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C01",
+        "path": "references/02_核心规范/C01_Product_Discovery_Evidence_and_Intent_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C01",
+        "path": "references/02_核心规范/C01_Product_Discovery_Evidence_and_Intent_Standard.md",
+        "sha256": "afd73ffbde490eb2774af346046034692c83093612d0d60e0649cae8744c1773"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 129,
+      "total": 137,
+      "sha256": "a7e09827327715de108c76171ea5a2448a9b0ca9fb178d7457caeb1c91cf43a1"
+    }
+  }
+}

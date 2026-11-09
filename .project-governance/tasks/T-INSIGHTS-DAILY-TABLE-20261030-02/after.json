@@ -1,0 +1,136 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-TABLE-20261030-02",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T21:00:36.909342Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T21:00:36.909658Z"
+  },
+  "established_facts": [
+    "634封现有邮件与真实附件保持不变；3030已提供七项用户原文要求的表格、排序、留白及整组ZIP功能",
+    "用户决定Pending；本版本安全隐私门禁Pending；治理工具活动查询S4/S5校验失败已原样留证"
+  ],
+  "actual_changes": [
+    "删除旧底部说明和时间主键列，UID首列、四类证据优先排序、子问题筛选旁35组86日志预生成ZIP，增加权限Feature资源版本校验审计及说明"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "七项原话逐条核对：底部19.515625px、删除旧footer/时间主键列、UID首列、四种全量634封排序、筛选旁整组日志ZIP",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/verification/requirements-coverage.md",
+        ".runtime/daily-table-20261030/browser-result.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "35个实际HTTP ZIP包含86日志，全部归属、原件字节摘要、清单和安全路径一致，634封源业务字段不变",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/archive-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "106项测试通过，覆盖权限父链、Feature/资源/版本/方法边界、异常原件与审计；两次实际浏览器下载匹配",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/tests.log",
+        ".runtime/daily-table-20261030/browser-result.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "生产读取false、生产连接0、watch为0，3030仅127.0.0.1",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/isolation.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "本版本正式安全隐私门禁尚无人工通过记录",
+      "reason": "security-privacy-review为已声明required Gate，工程测试不能替代人工决定",
+      "impact": "正式结果保留Deferred；本轮本机功能和工程核验已完成，不据此开放网络或接生产",
+      "owner": "task-initiator",
+      "reentry_condition": "授权负责人基于本版本核验材料作出真实安全隐私决定并绑定交付摘要"
+    },
+    {
+      "summary": "正式任务包活动查询阶段校验失败",
+      "reason": "官方S5编译和重新检索后validate_task_package仍报告active query为S4与S5不一致，两次失败原始输出均保留",
+      "impact": "治理包校验未通过，不影响已实际核验的3030功能和原件下载，不宣称正式全部闭环",
+      "owner": "治理工具维护者",
+      "reentry_condition": "修复查询阶段绑定问题后使用官方工具重新校验，保留现有失败证据"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/verification/acceptance.md",
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/release/handoff.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "b04967db67606e797e0fb050396b87f51d0615c18c67ef2a01c4d97b4511724b",
+    "scope_sha256": "021e999a485db48b90034207498acd3fcec911d67a89c3399dd1e0a6818a8408",
+    "delivery_sha256": "192c376694e1ca40deccfafdcdd0b56bf94851e13865b62d740febfd9b363448",
+    "report_sha256": "81c17baf25eec745deb72a18c991642d0fbb231ddf62663ceaffda7d5969d8e6"
+  }
+}

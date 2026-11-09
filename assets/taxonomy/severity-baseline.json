@@ -1,0 +1,489 @@
+{
+  "schemaVersion": "1.0",
+  "status": "CANDIDATE_NOT_APPROVED_NOT_PRODUCTION",
+  "date": "2026-09-23",
+  "note": "51 个三级 ID 的严重度静态属性。受需求方授权代为填写，未经业务逐条确认。完整判定方案见 severity-sabc.md。",
+  "fields": {
+    "coreImpact": {
+      "values": [
+        "BLOCKING",
+        "MAJOR",
+        "MINOR"
+      ],
+      "meaning": "BLOCKING=阻断登录或主流程；MAJOR=明显影响体验或涉及资产；MINOR=不影响核心流程"
+    },
+    "solvability": {
+      "values": [
+        "SOP",
+        "SENIOR",
+        "PROJECT"
+      ],
+      "meaning": "SOP=普通客服照标准答案可解；SENIOR=需高级客服查数据判断；PROJECT=需研发查询或修改数据"
+    },
+    "projectDependency": {
+      "values": [
+        true,
+        false
+      ],
+      "meaning": "是否必须查询或修改研发侧数据"
+    }
+  },
+  "baseRule": {
+    "A": "玩家侧出现异常：数据、资产或权益与应有状态不符，或登录与主流程被阻断",
+    "B": "有标准处理流程的申请类诉求，或不阻断核心流程的缺陷与受理登记",
+    "C": "无需查询玩家数据，FAQ 或知识库即可答复",
+    "S": "不由基线产生。单用户情形按标准最高为 A；S 级要求大范围，只能由运行时升级达到"
+  },
+  "baselines": [
+    {
+      "id": "ADJ-SVC-STATUS-01",
+      "name": "无源头问题的撤回或自行解决",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-ACC-01",
+      "name": "邮箱与平台账号关联失败：目标已被占用",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-ACC-02",
+      "name": "跳过首次关联导致平台绑定到空档案",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-ACC-03",
+      "name": "账号关联流程本身失败",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-ACC-04",
+      "name": "申请解除或更换既有账号关联",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "需身份核验后修改绑定关系 | 降为 B：属申请类而非异常类，需身份核验但流程标准化"
+    },
+    {
+      "id": "ADJ-ACC-05",
+      "name": "申请删除或注销账号",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "不可逆且涉个人数据权利 | 降为 B：属申请类而非异常类，不可逆但有既定注销流程"
+    },
+    {
+      "id": "ADJ-ACC-06",
+      "name": "跨平台账号未能指向同一档案",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-ACC-07",
+      "name": "外部入口查不到游戏角色",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "游戏内正常，只是外部入口读不到，不阻断游玩"
+    },
+    {
+      "id": "ADJ-PAY-01",
+      "name": "已付费权益未到账",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-PAY-02",
+      "name": "奖励邮件未领取即消失",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "需查发放日志判断是否真的发出过"
+    },
+    {
+      "id": "ADJ-PAY-03",
+      "name": "充值货币或充值赠送未到账",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-PAY-04",
+      "name": "申请退款",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "涉财务与平台退款政策 | 降为 B：属申请类而非异常类，涉财务但退款流程标准化"
+    },
+    {
+      "id": "ADJ-PAY-05",
+      "name": "权益发放到错误区服或账号",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "跨账号资产迁移"
+    },
+    {
+      "id": "ADJ-PAY-06",
+      "name": "已付费内容无法使用或未被识别",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-PAY-07",
+      "name": "购买或支付流程失败",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B",
+      "note": "未扣款，多为渠道或环境问题，不涉资产损失"
+    },
+    {
+      "id": "ADJ-EVT-01",
+      "name": "非付费奖励未到账",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A",
+      "note": "标准将活动奖励异常列入 A 级典型问题"
+    },
+    {
+      "id": "ADJ-EVT-02",
+      "name": "奖励可见但无法领取",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-EVT-03",
+      "name": "Twitch 掉落关联或领取失败",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B",
+      "note": "多数可由指引解决，失败在外部关联链路"
+    },
+    {
+      "id": "ADJ-EVT-04",
+      "name": "奖励领取规则或时限咨询",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-EVT-05",
+      "name": "活动进度异常或被重置",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-PROG-01",
+      "name": "非自愿的角色或进度丢失",
+      "coreImpact": "BLOCKING",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "玩家无法继续原有游玩，等同主流程阻断"
+    },
+    {
+      "id": "ADJ-PROG-02",
+      "name": "申请主动重置角色或进度",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "不可逆的数据清除 | 降为 B：属申请类而非异常类，有既定清档流程"
+    },
+    {
+      "id": "ADJ-PROG-03",
+      "name": "选错区服申请跨区迁移",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "降为 B：属申请类而非异常类，有既定跨区迁移流程"
+    },
+    {
+      "id": "ADJ-PROG-04",
+      "name": "创角外观设置异常或未保存",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B",
+      "note": "需研发修缺陷，但不阻断游玩"
+    },
+    {
+      "id": "ADJ-PLAY-01",
+      "name": "任务或剧情卡住无法推进",
+      "coreImpact": "BLOCKING",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "主线推进被阻断，需服务端解卡"
+    },
+    {
+      "id": "ADJ-PLAY-02",
+      "name": "玩法数值或表现不符预期",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "B",
+      "note": "多为设计反馈，转策划判断"
+    },
+    {
+      "id": "ADJ-PLAY-03",
+      "name": "游戏内功能无法使用",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B",
+      "note": "功能级故障，不阻断整体游玩"
+    },
+    {
+      "id": "ADJ-PLAY-04",
+      "name": "游戏内产出或资产未入账",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "涉玩家资产"
+    },
+    {
+      "id": "ADJ-PLAY-05",
+      "name": "捕获或孵化结果不符预期",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "涉已投入道具与产出品质"
+    },
+    {
+      "id": "ADJ-PLAY-06",
+      "name": "捕获物或道具丢失未入库",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "涉玩家资产"
+    },
+    {
+      "id": "ADJ-PLAY-07",
+      "name": "误操作申请补回",
+      "coreImpact": "MAJOR",
+      "solvability": "SENIOR",
+      "projectDependency": true,
+      "base": "B",
+      "note": "需核查日志判定真伪后改数据 | 降为 B：属申请类而非异常类，需核查日志但补回流程标准化"
+    },
+    {
+      "id": "ADJ-PLAY-08",
+      "name": "成长或进化条件不生效",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-CLI-01",
+      "name": "无法登录或连接服务器",
+      "coreImpact": "BLOCKING",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-CLI-02",
+      "name": "启动阶段崩溃或黑屏",
+      "coreImpact": "BLOCKING",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-CLI-03",
+      "name": "进入游戏后在特定场景崩溃",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B",
+      "note": "可进入游戏，限定场景复现"
+    },
+    {
+      "id": "ADJ-CLI-04",
+      "name": "脚本初始化失败无法启动",
+      "coreImpact": "BLOCKING",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "A"
+    },
+    {
+      "id": "ADJ-CLI-05",
+      "name": "性能不佳：卡顿掉帧或设备过热",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-CLI-06",
+      "name": "界面元素缺失或显示异常",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-CLI-07",
+      "name": "场景创建失败无法进入",
+      "coreImpact": "BLOCKING",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "A",
+      "note": "单一明确错误串，疑似单一根因"
+    },
+    {
+      "id": "ADJ-CLI-08",
+      "name": "无法更新到最新版本",
+      "coreImpact": "BLOCKING",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "A",
+      "note": "版本落后即无法进入"
+    },
+    {
+      "id": "ADJ-CLI-09",
+      "name": "画面或贴图渲染异常",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-CLI-10",
+      "name": "输入设备识别或按键无响应",
+      "coreImpact": "MINOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-TRUST-01",
+      "name": "举报外挂、仿冒或侵权",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B",
+      "note": "受理登记并转对应团队，来信人本身非受害当事人"
+    },
+    {
+      "id": "ADJ-TRUST-02",
+      "name": "素材使用与创作授权",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B",
+      "note": "回复具对外承诺性质，需法务或市场口径，不由一线自行答复"
+    },
+    {
+      "id": "ADJ-TRUST-03",
+      "name": "合规与反作弊咨询",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B"
+    },
+    {
+      "id": "ADJ-GEN-01",
+      "name": "客服渠道长时间无响应",
+      "coreImpact": "MINOR",
+      "solvability": "SENIOR",
+      "projectDependency": false,
+      "base": "B",
+      "note": "服务体验问题，原始诉求另行归类"
+    },
+    {
+      "id": "ADJ-GEN-02",
+      "name": "语言支持缺失或本地化建议",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-GEN-03",
+      "name": "对游戏的整体正面评价",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-GEN-04",
+      "name": "客服入口或工单提交故障",
+      "coreImpact": "MAJOR",
+      "solvability": "PROJECT",
+      "projectDependency": true,
+      "base": "B",
+      "note": "入口不通会掩盖其他问题，但玩家已通过邮件触达"
+    },
+    {
+      "id": "ADJ-GEN-05",
+      "name": "功能建议与需求反馈",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-GEN-06",
+      "name": "平台支持、跨端与发售咨询",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    },
+    {
+      "id": "ADJ-GEN-07",
+      "name": "游戏规则与功能咨询",
+      "coreImpact": "MINOR",
+      "solvability": "SOP",
+      "projectDependency": false,
+      "base": "C"
+    }
+  ],
+  "caveats": [
+    "首版基线把「需查玩家数据」当作 A 的判据，导致 84.8% 的问题点落入 A 级，分级失去分诊意义。重读标准后改用「异常 vs 有标准答案的申请」作为 A/B 判据：申请解绑、申请重置、申请退款等虽需改数据但流程标准化，降为 B。",
+    "本表由代为填写，未经技术客服按实际处置流程确认。最可能需要调整的是 solvability 一列——它取决于该团队的工具权限与分工，不是问题本身的属性。",
+    "基线上限为 A。S 级要求大范围，只能由运行时升级达到，任何单个 ID 的基线都不应为 S。",
+    "邮件级修正（hasPaymentImpact / hasDataRisk）在基线之上最多再抬一级，且同样不能抬到 S。",
+    "ADJ-GEN-04 的 coreImpact 标为 MAJOR 但基线定 B，因为玩家既然已发来邮件，说明触达并未完全中断。若后续发现该 ID 掩盖了大量未触达问题，应上调。"
+  ]
+}

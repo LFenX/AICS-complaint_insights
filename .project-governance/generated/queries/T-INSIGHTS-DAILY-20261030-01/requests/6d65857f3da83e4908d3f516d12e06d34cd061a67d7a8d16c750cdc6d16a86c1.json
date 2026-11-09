@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保持生产隔离，修复副本事件和MCP认证，完整逐封分析，只读IMAP附件下载，3030全宽日报",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "f028e072116492852bd6dc5daedcd78057ed61329bfe378d3e9d0cb1160b9095",
+  "task_id": "T-INSIGHTS-DAILY-20261030-01"
+}

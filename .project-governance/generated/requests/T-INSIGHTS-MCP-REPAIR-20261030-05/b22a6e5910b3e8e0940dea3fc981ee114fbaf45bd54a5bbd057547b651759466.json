@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "实际内网3029/3037严格CA复验，完整11工具14表、客户端分页、管理员签发使用撤销退出；核对限频实际配置及保护进程。测试配额仅用合成API，无真实服务压测",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "b2b159aec8e755c17830f2f7575a2465752a7923697e70370317190a85bea6d8",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05"
+}

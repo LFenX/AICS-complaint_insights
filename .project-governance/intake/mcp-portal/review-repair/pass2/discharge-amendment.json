@@ -1,0 +1,114 @@
+[
+  {
+    "path": "requirement_items",
+    "value": [
+      {
+        "id": "R-01",
+        "source": "request_snapshot",
+        "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+        "reading": "交付已核对的唯一管理员凭据和可生成token的登录入口，密码仅在用户本次私聊交付",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+          ".runtime/mcp-portal-repair2-tests-A01.log"
+        ],
+        "acceptance_refs": [
+          1,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+          "conditions": [
+            "独立管理员登录后才能生成token"
+          ],
+          "cases": [
+            {
+              "condition": 0,
+              "branch": "Met",
+              "input": "真实owner独立登录并带同会话CSRF发放",
+              "expected": "生成单次显示token，可查询且可撤销",
+              "actual": "真实登录303、发放200、使用200、撤销后401，用户私聊交付账号口令和入口",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+                ".runtime/mcp-portal-repair2-tests-A01.log"
+              ]
+            },
+            {
+              "condition": 0,
+              "branch": "NotMet",
+              "input": "匿名、仅MCP Bearer或无效CSRF发放",
+              "expected": "拒绝且不改变授权",
+              "actual": "匿名真实401、无效CSRF真实403、Bearer隔离夹具401，均通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+                ".runtime/mcp-portal-repair2-tests-A01.log"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-02",
+        "source": "request_snapshot",
+        "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+        "reading": "依用户明确开始授权，按原需求完整审查、修复及复验，直到同一版本连续两轮完整无问题；保留机器登记限制",
+        "state": "Deferred",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+          ".runtime/mcp-portal-repair2-tests-A01.log"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      {
+        "id": "R-03",
+        "source": "request_snapshot",
+        "quote": "开始审查",
+        "reading": "启动实际审查与同范围返修，不冒称正式人工批准",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+          ".runtime/mcp-portal-repair2-tests-A01.log"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "用户开始审查持续授权",
+              "expected": "实际审查与同范围返修，不推定人工Gate批准",
+              "actual": "两轮独立完整审查7项发现均修复复验；正式人类门禁与验收Pending",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/round-2-report.md",
+                "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/fixes.json"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

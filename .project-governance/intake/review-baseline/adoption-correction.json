@@ -1,0 +1,242 @@
+[
+  {
+    "path": "first_principles_analysis",
+    "value": {
+      "method_version": "first-principles-v1",
+      "depth": "Deep",
+      "outcome": "在不修改业务和封存历史的前提下，承接已通过安全门禁的同一份本地/MCP 工程交付，作为多轮审查基线",
+      "facts": [
+        {
+          "id": "F1",
+          "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "F2",
+          "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "F3",
+          "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+          ]
+        },
+        {
+          "id": "F4",
+          "statement": "原交付59个公开文件有SHA256清单，47项普通测试与真实MCP证据已保存；用户已明确通过当前版本安全门禁并启动审查",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "id": "C1",
+          "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "C2",
+          "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "C3",
+          "statement": "用户指定其他内网电脑远程调用 MCP；监听前必须配置 TLS、独立只读令牌与内网网段限制",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "statement": "Docker 和缓存镜像可建立独立实例",
+          "validation": "启动独立容器后运行真实连接与健康检查"
+        }
+      ],
+      "unknowns": [
+        {
+          "id": "U1",
+          "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+          "owner": "用户与生产服务器 agent",
+          "resolution_condition": "后续交付凭据和证书并完成连接验收",
+          "blocking": false
+        }
+      ],
+      "fundamentals": [
+        {
+          "id": "P1",
+          "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+          "derived_from": [
+            "F1",
+            "C1"
+          ]
+        },
+        {
+          "id": "P2",
+          "statement": "及时增量与最终一致性对账必须同时存在",
+          "derived_from": [
+            "F2"
+          ]
+        },
+        {
+          "id": "P3",
+          "statement": "数据获取与查询必须解耦且发布原子化",
+          "derived_from": [
+            "C2"
+          ]
+        },
+        {
+          "id": "P4",
+          "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+          "derived_from": [
+            "F3",
+            "C2",
+            "P3"
+          ]
+        },
+        {
+          "id": "P5",
+          "statement": "原交付已被用户明确通过安全门禁；只读承接同一字节与记录授权不创造新的安全审批对象，不得把登记时间伪造成再次人类决定时间",
+          "derived_from": [
+            "F4",
+            "C1"
+          ]
+        }
+      ],
+      "causal_links": [
+        {
+          "from_ref": "P1",
+          "to_ref": "O1",
+          "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "from_ref": "P2",
+          "to_ref": "O1",
+          "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        }
+      ],
+      "alternatives": [
+        {
+          "id": "O1",
+          "description": "只读承接同一交付和已发生的用户门禁决定；不改写封存历史、不重复发起门禁，不伪造新的门禁时间",
+          "status": "Selected",
+          "derived_from": [
+            "P1",
+            "P3",
+            "F4"
+          ],
+          "tradeoffs": [
+            "增加一份可核对的承接记录，不能改写旧账本"
+          ]
+        },
+        {
+          "id": "O0",
+          "description": "维持原 Deferred 记录",
+          "status": "Rejected",
+          "derived_from": [
+            "F4"
+          ],
+          "tradeoffs": [
+            "真实新决定无法进入封存账本，原审查登记仍不适用"
+          ]
+        },
+        {
+          "id": "O3",
+          "description": "改写原封存账本或伪造此前 Gate 已通过",
+          "status": "Rejected",
+          "derived_from": [
+            "C1",
+            "F4"
+          ],
+          "tradeoffs": [
+            "违反追加式事实记录，不可采用"
+          ]
+        }
+      ],
+      "decision_criteria": [
+        {
+          "id": "K1",
+          "statement": "可追溯全量且来源隔离、无源写入",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "K2",
+          "statement": "增量可恢复、汇总与明细一致、权限明确",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        }
+      ],
+      "selected_approach": "O1",
+      "derivation": [
+        {
+          "plan_step": "核对原交付字节、原始工程证据和当前运行状态",
+          "derived_from": [
+            "P3",
+            "P5"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "登记真实通过的当前版本安全门禁，保存工程基线",
+          "derived_from": [
+            "P3",
+            "P5"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "在正式基线保存后登记已收到的真实审查同意，执行后置多轮审查",
+          "derived_from": [
+            "P3",
+            "P5"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        }
+      ],
+      "validation_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+      ],
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+      ]
+    }
+  },
+  {
+    "path": "authority.required_gates",
+    "value": []
+  }
+]

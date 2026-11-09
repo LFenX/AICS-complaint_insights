@@ -1,0 +1,107 @@
+{
+  "cases": [
+    {
+      "id": "C01-windows-acl-order",
+      "input": "synthetic token written under a parent with inherited Users read",
+      "expected": "restrict access before first credential byte",
+      "actual": {
+        "broad_users_read_during_write": false,
+        "broad_users_read_after_success": false,
+        "trace": [
+          "credential_write_before_acl"
+        ]
+      },
+      "passed": true
+    },
+    {
+      "id": "C02-config-write-failure",
+      "input": "json.dump writes synthetic credential then raises OSError",
+      "expected": "no residual credential file",
+      "actual": {
+        "residual_file": false,
+        "synthetic_credential_present": false,
+        "inherited_users_read": false
+      },
+      "passed": true
+    },
+    {
+      "id": "C03-pagination-version-change",
+      "input": {
+        "scenario": "version-change",
+        "max_pages": 3
+      },
+      "expected": {
+        "exception": "RuntimeError",
+        "complete": false
+      },
+      "actual": {
+        "error_type": "RuntimeError",
+        "complete": null,
+        "queries": 2,
+        "source_preserved": true,
+        "filter_preserved": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C03-pagination-repeated-cursor",
+      "input": {
+        "scenario": "repeated-cursor",
+        "max_pages": 3
+      },
+      "expected": {
+        "exception": "RuntimeError",
+        "complete": false
+      },
+      "actual": {
+        "error_type": "RuntimeError",
+        "complete": null,
+        "queries": 2,
+        "source_preserved": true,
+        "filter_preserved": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C03-pagination-page-bound",
+      "input": {
+        "scenario": "page-bound",
+        "max_pages": 2
+      },
+      "expected": {
+        "exception": "RuntimeError",
+        "complete": false
+      },
+      "actual": {
+        "error_type": "RuntimeError",
+        "complete": null,
+        "queries": 2,
+        "source_preserved": true,
+        "filter_preserved": true
+      },
+      "passed": true
+    },
+    {
+      "id": "C03-pagination-complete",
+      "input": {
+        "scenario": "complete",
+        "max_pages": 3
+      },
+      "expected": {
+        "exception": null,
+        "complete": true
+      },
+      "actual": {
+        "error_type": null,
+        "complete": true,
+        "queries": 2,
+        "source_preserved": true,
+        "filter_preserved": true
+      },
+      "passed": true
+    }
+  ],
+  "failed": [],
+  "all_credentials_synthetic": true,
+  "synthetic_credential_files_removed": true
+}

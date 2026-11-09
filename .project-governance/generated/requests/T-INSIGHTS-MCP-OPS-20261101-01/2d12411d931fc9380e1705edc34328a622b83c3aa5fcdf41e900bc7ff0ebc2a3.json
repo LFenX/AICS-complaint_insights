@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "同范围A02重试：首次两个S4U计划任务和服务已启动；只修正已在WindowsPowerShell5验证的File.Replace显式NullString参数，重启托管器接管现有监听，不重复注册、不创建重复worker，保留失败日志。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "66c3c22cced2675e54db966e4c3e8eb73106362dba77ac44941bf5f9af464b5e",
+  "task_id": "T-INSIGHTS-MCP-OPS-20261101-01"
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "summary": "真实生产接入未执行",
+    "reason": "尚未接通生产，用户没有授予重启权限",
+    "impact": "当前仅为development-local开发副本",
+    "owner": "用户与生产服务器agent",
+    "reentry_condition": "生产监听、凭据及证书就绪并具备只读接入授权"
+  },
+  {
+    "summary": "另一台内网电脑验收未执行",
+    "reason": "未取得接收方电脑执行环境",
+    "impact": "已验证服务端及通过内网IP的真实HTTPS协议，未证明接收方实际路由",
+    "owner": "接收方",
+    "reentry_condition": "按交接手册在接收方验证网络、CA、令牌与客户端"
+  }
+]

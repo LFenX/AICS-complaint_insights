@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存真实工程Deferred结果；3项修复和全部工程验证完成，待同版两轮独立审查；原人工Gate和机器登记限制不改",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "7d635276fb1867f4519547064aa89696dd414e51da3438bb125ce96678922394",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05"
+}

@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-29T23:45:40.922977+00:00",
+  "files": [
+    {
+      "path": "insights/mcp_http.py",
+      "before": "714e3033a73bfde57deb5253780dd54e2fce9322e0a11fb0daf5a2a4b7961a51",
+      "after": "ab2177988e43d1ee8c82780db4ec990c33ca276c3fce25358cb1043a6f34692f"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "before": "c656064173942f5b2151c1a00699a3f4c666933e47adda7ec7a1de7ba87620d5",
+      "after": "185443d565dec915f22456dbcb516a65b928b79fd82f78a0c5461b06ecc97da5"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "before": "96837db6fd8884cfc42c81a19eb751e04744e4596b4374096330beaf5734d966",
+      "after": "f8c9db2c6fc64ffdd8d519b15ef5d80b8eab5ad5db05f7b663c28772f1de587a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "before": "969f562d1086c3d9b608bc79419f157d67bd4ec03d6123d0b4d9096b266980f4",
+      "after": "8784eed75c158b37fe2729c2650d1c6efd166f85949a9f9dd04741a6daed8a79"
+    }
+  ],
+  "backup": "D:\\LFEN_project\\dev_project\\complaint-insights\\.runtime\\mcp-portal-repair6-backup",
+  "restart_service": "mcp",
+  "protected_services": [
+    3029,
+    3030,
+    3036,
+    15433
+  ],
+  "production_read": false,
+  "protected_listener_pids_unchanged": {
+    "3029": true,
+    "3030": true,
+    "3036": true,
+    "15433": true
+  },
+  "production_connected": false,
+  "watch_started": false
+}

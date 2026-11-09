@@ -1,0 +1,10 @@
+[
+  {
+    "observed_at": "2026-10-29T10:18:02.647212+00:00",
+    "action": "close_task Deferred",
+    "result": "Failed",
+    "error": "TaskOutcome incomplete_items schema requires summary in addition to reason/impact/owner/reentry_condition",
+    "after_written": false,
+    "repair": "Add an accurate summary to each existing incomplete item; no change of decisions or business data"
+  }
+]

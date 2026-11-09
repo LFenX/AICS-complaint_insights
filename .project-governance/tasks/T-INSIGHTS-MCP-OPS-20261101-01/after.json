@@ -1,0 +1,157 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-OPS-20261101",
+  "task_id": "T-INSIGHTS-MCP-OPS-20261101-01",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-31T17:31:51.836765Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-31T17:29:45.270122+00:00",
+    "file_manifest": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/delivery-files.json",
+    "file_manifest_sha256": "4ab877a73163644875425207242fc21493ff56e8aecc1117b8e06823bb1bfba7"
+  },
+  "established_facts": [
+    "MCP3037与门户3029已恢复；现有HTTPS和原密钥使用通过",
+    "两个S4U当前账户任务父链到Windows服务管理器，脱离ChatGPT；受控终止后自动恢复",
+    "停止原因调查已执行；历史证据不足，直接触发Unknown，不计Covered"
+  ],
+  "actual_changes": [
+    "新增scripts/mcp-service-host.ps1、两个命名计划任务、开机与每分钟触发、无限运行及10秒恢复；未改业务接口/依赖/权限",
+    "修复并验证WindowsPowerShell NullString兼容性，保全旧日志与失败证据，新增退出时间/退出码日志和维护说明"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "门户首页/登录/指南200，严格CA原密钥MCP协商、11工具发现、14表目录和邮件样本成功，无密钥401；自动恢复后再次调用通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+      ]
+    },
+    {
+      "result": "Blocked",
+      "summary": "旧日志、系统启动记录、应用事件与Security审计已检查；无独立托管/恢复已确认，直接停止触发证据不足明确Unknown；直接停止原因的核证受历史退出/终止审计缺失阻断，未认定已查明",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "S4U当前账户Limited任务Running，父链到Windows服务；两服务自动恢复，MCP自有worker退出码-1被记录并11.81秒恢复",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "原进程直接停止触发无法追溯",
+      "reason": "旧日志没有退出时间、退出码或明确关停记录；Windows未记录相应进程终止审计",
+      "owner": "系统维护者",
+      "impact": "不把连接重置或ChatGPT会话结束推断为已证实停止原因",
+      "reentry_condition": "取得当时外部进程终止或操作记录后继续追溯"
+    },
+    {
+      "summary": "未执行整机重启或注销验证",
+      "reason": "不影响其它业务服务和当前用户会话；已核对S4U、开机触发、无限执行配置并实测独立父链和服务恢复",
+      "owner": "系统维护者",
+      "impact": "开机与无登录运行已配置，未声明整机重启/注销已实测",
+      "reentry_condition": "明确维护窗口重启或注销后复验"
+    },
+    {
+      "summary": "完整配置回滚未演练",
+      "reason": "保留已恢复服务；旧日志与任务XML保全，维护说明限定停用/回滚目标",
+      "owner": "系统维护者",
+      "impact": "不声称完整禁用/注销回滚已实际执行",
+      "reentry_condition": "维护窗口按说明演练并复验"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/release/runtime-operations.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-OPS-20261101-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-OPS-20261101-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-31T17:00:55.170452Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-OPS-20261101-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-OPS-20261101-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-31T17:00:55.170452Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-OPS-20261101-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-OPS-20261101-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-31T17:00:55.170452Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "VER",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-OPS-20261101-01-verification",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+      "reason": "真实运行恢复和调查证据",
+      "rule_reference": "C05/C09/C12",
+      "owner": "根执行Agent",
+      "source_snapshot": "2026-10-31T17:29:45.270122+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "fcd0b43b72f7226d9260f10e70f79b5e5636a2613efddb7bf8d9544e0a39dd0f",
+    "scope_sha256": "2db3345d8f262da15ebe08b383fe7fe4d98ae82f26e3c02eaf34ba3c1345628a",
+    "delivery_sha256": "b8b0a681f0891837f6a81e2f83627a4a6e5bdfc941b1233a89ab9765f19fc6e2",
+    "report_sha256": "c7e30c545399003e102dd4a445fe2be6183a2f7a5427e2d0f20c9122293cf9fe"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-31T17:13:44.7473297+00:00",
+  "service": "mcp",
+  "before_pid": 64252,
+  "after_pid": 254240,
+  "seconds": 3.42,
+  "automatic_recovery": true,
+  "manual_restart_after_kill": false,
+  "task_state": "Running"
+}

@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "依据用户指定的私有仓库提交看板源码：全部暂存内容安全扫描及独立环境24项测试已通过，git commit并push main到LFenX/AICS-CCDD，不上传真实数据，核对远端SHA并保留普通revert回退依据",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "9e05a933db3ca2d002eab31bd1a7c4f906d957f5cbde94df7d95051482677874",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

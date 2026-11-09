@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "依据revision16契约重绑最终工程核验与46项原话覆盖，保存Deferred结果、真实未验项与用户Pending；不更改业务版本，不自批security-privacy-review或两轮正式审查。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "98178af7749a6f80483ad09004c44809f2d22000c1c6036c542ee8df864ff8d4",
+  "task_id": "T-INSIGHTS-DAILY-20261030-01"
+}

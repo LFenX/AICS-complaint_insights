@@ -1,0 +1,3288 @@
+{
+  "round_id": "round8",
+  "reviewer": "新的只读独立子Agent /root/mcp_review_round8",
+  "started_at": "2026-10-29T23:16:12.8683243Z",
+  "ended_at": "2026-10-29T23:38:44.5222365Z",
+  "delivery_task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+  "git_commit": "88ef76cc582c2cb36eeb51febace6ada57afef00",
+  "version_sha256": "7fb70b2a88eff771a9da327c80ec5c6ca9aad039bfefdcbe616071ae381acb47",
+  "subject_sha256": "9ac2ce33f8235fe2bc1894b2cb4f7950f2b12f89051a5748668771ff6138a609",
+  "subject_check": "本轮只读get_approval_subject.py返回同值；task05已2026-10-29T23:14:35.915100Z保存Deferred",
+  "coverage": "Complete",
+  "coverage_meaning": "全部约定产品领域与原话已逐条核对；Complete表示审查面完整，不表示产品无问题或外部验收通过。",
+  "is_clean_round": false,
+  "review_outcome": "FindingsPresent",
+  "unreviewed_required_product_items": [],
+  "unresolved_findings": [
+    "R8-001",
+    "R8-002"
+  ],
+  "formal_review_status": "NotRegistered: parent Deferred rejects official Offer",
+  "formal_human_gates": "Pending",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "requirement_items": [
+    {
+      "id": "F01",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+      "reading": "先用本地开发数据建立独立数据库与读取模型",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "现有独立副本/回环API可查；本轮未建立或连接任何数据库，只读模型与配置分离代码已核对。",
+      "evidence_refs": [
+        "readmodel-results.json",
+        "live-results.json#/groups/source_state",
+        "runtime-boundaries.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "先用本地开发数据建立独立数据库与读取模型",
+            "expected": "先用本地开发数据建立独立数据库与读取模型",
+            "actual": "现有独立副本/回环API可查；本轮未建立或连接任何数据库，只读模型与配置分离代码已核对。",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "live-results.json#/groups/source_state",
+              "runtime-boundaries.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F02",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+      "reading": "生产接通后的快速切换准备，保留条件",
+      "kind": "ConditionalExternal",
+      "status": "部分实现",
+      "actual": "生产模板与source_id分离已实现；当前allow_production_read=false、watch停止；未来连通分支未执行。",
+      "evidence_refs": [
+        "readmodel-results.json#/source_isolation",
+        "runtime-boundaries.json",
+        "original-sources.json"
+      ],
+      "gap": "本轮禁止连接源库；不能把准备配置等同已完成生产连接验收。",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [
+          "生产连接已获重新授权且接通"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来经授权连接生产",
+            "expected": "可按独立来源切换并核对",
+            "actual": "NotRun：没有进行连接",
+            "result": "NotRun",
+            "evidence_refs": [
+              "runtime-boundaries.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "production且allow_production_read=false",
+            "expected": "连接前拒绝",
+            "actual": "validate(source=True)在连接前抛disabled；watch PID不存在",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "runtime-boundaries.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F03",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "提供查询不同数据的接口",
+      "reading": "提供查询不同数据的接口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "全部11工具、14源表及全文/原始AI行入口可用。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json#/parameters"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供查询不同数据的接口",
+            "expected": "提供查询不同数据的接口",
+            "actual": "全部11工具、14源表及全文/原始AI行入口可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json#/parameters"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F04",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "reading": "接口以MCP形式构建",
+      "kind": "Product",
+      "status": "部分实现",
+      "actual": "真实HTTPS协商2025-11-25；stdio实际CLI可初始化，但R8-001/R8-002存在。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "readmodel-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "stdio数字原值和整数ID处理有缺陷。",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "接口以MCP形式构建",
+            "expected": "接口以MCP形式构建",
+            "actual": "真实HTTPS协商2025-11-25；stdio实际CLI可初始化，但R8-001/R8-002存在。",
+            "result": "Failed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "readmodel-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F05",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "reading": "提供使用说明并支持交接",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "完整中文指南、公开无凭据23文件包、全部schema与运行工具一致。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "readmodel-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供使用说明并支持交接",
+            "expected": "提供使用说明并支持交接",
+            "actual": "完整中文指南、公开无凭据23文件包、全部schema与运行工具一致。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "readmodel-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F06",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "reading": "按需调用所需数据",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "日期分类/来源、正文和payload显式加载、完整分页与版本冲突已独立检查。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "readmodel-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "按需调用所需数据",
+            "expected": "按需调用所需数据",
+            "actual": "日期分类/来源、正文和payload显式加载、完整分页与版本冲突已独立检查。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "readmodel-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "F07",
+      "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+      "source": "clarification:r1.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-FOUNDATION-20261029-01\\before.json",
+      "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+      "quote": "需要其他内网电脑的 Agent 直接远程调用",
+      "reading": "供其他内网电脑的Agent直接远程调用",
+      "kind": "ExternalAcceptance",
+      "status": "部分实现",
+      "actual": "服务监听内网指定IP、严格CA验证成功；另一台电脑环境未实测。",
+      "evidence_refs": [
+        "live-results.json",
+        "firewall.json",
+        "original-sources.json"
+      ],
+      "gap": "已实现远程服务能力；接收方机器的路由、CA安装、本人配置仍须在该机器验收。",
+      "review": {
+        "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+        "conditions": [
+          "接收方已在允许网段、信任正确CA且持本人令牌"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "本机用真实内网IP/正确CA/有效Bearer",
+            "expected": "允许标准MCP查询",
+            "actual": "11工具/14表成功；异机相同前提未实际执行",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "无效Bearer或不在网段；Origin=null/错误Host",
+            "expected": "拒绝",
+            "actual": "49测试中鉴权/真实peer拒绝；真实HTTPS Host421/Origin403",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "D-tests.log",
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H01",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+      "reading": "保留本地独立数据底座",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+      "evidence_refs": [
+        "readmodel-results.json",
+        "live-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "保留本地独立数据底座",
+            "expected": "保留本地独立数据底座",
+            "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "live-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H02",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "提供查询不同数据的接口",
+      "reading": "保留不同数据查询接口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+      "evidence_refs": [
+        "readmodel-results.json",
+        "live-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "保留不同数据查询接口",
+            "expected": "保留不同数据查询接口",
+            "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "live-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H03",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "reading": "保留MCP/说明/按需交接",
+      "kind": "Product",
+      "status": "部分实现",
+      "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+      "evidence_refs": [
+        "readmodel-results.json",
+        "live-results.json",
+        "stdio-results.json"
+      ],
+      "gap": "R8-001/R8-002",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "保留MCP/说明/按需交接",
+            "expected": "保留MCP/说明/按需交接",
+            "actual": "历史同文要求在本版重新对照；本地查询/文档可用，协议stdio缺陷另列。",
+            "result": "Failed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "live-results.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H07",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+      "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+      "reading": "本轮历史任务原话也单独保留生产连通条件，不能用foundation同文替代",
+      "kind": "ConditionalExternal",
+      "status": "部分实现",
+      "actual": "生产准备配置与来源隔离存在；当前重新授权连通前提不成立。",
+      "evidence_refs": [
+        "original-sources.json",
+        "readmodel-results.json",
+        "runtime-boundaries.json"
+      ],
+      "gap": "生产连通后的实际切换/当前线上一致性未执行；没有当前生产权限。",
+      "review": {
+        "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+        "conditions": [
+          "生产连接已获重新授权且接通"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "经重新授权已连通生产",
+            "expected": "可执行独立来源切换及核对",
+            "actual": "NotRun：没有连接生产",
+            "result": "NotRun",
+            "evidence_refs": [
+              "runtime-boundaries.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "生产读取禁止",
+            "expected": "连接前阻止",
+            "actual": "纯函数配置验证disabled；watch停止",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "runtime-boundaries.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H04",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "clarification:r1.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+      "quote": "需要其他内网电脑的 Agent 直接远程调用",
+      "reading": "远程内网调用澄清",
+      "kind": "HistoricalAuthority",
+      "status": "已实现",
+      "actual": "内网HTTPS能力本轮已查；异机验收限制不变。",
+      "evidence_refs": [
+        "original-sources.json",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "远程内网调用澄清",
+            "expected": "远程内网调用澄清",
+            "actual": "内网HTTPS能力本轮已查；异机验收限制不变。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H05",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "clarification:r2.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+      "quote": "启动多轮对抗性审查",
+      "reading": "历史对抗审查授权原话",
+      "kind": "HistoricalAuthority",
+      "status": "已实现",
+      "actual": "原话确为“启动多轮对抗性审查”；本轮另受最新重启授权。",
+      "evidence_refs": [
+        "original-sources.json",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "历史对抗审查授权原话",
+            "expected": "历史对抗审查授权原话",
+            "actual": "原话确为“启动多轮对抗性审查”；本轮另受最新重启授权。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "H06",
+      "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+      "source": "clarification:r3.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-REVIEW-20261029-01\\before.json",
+      "source_sha256": "1e4f14b1ba75383a5f9bf653068c15c2ff67d55b47cab961289f66c8e9ca5cb3",
+      "quote": "通过本次安全隐私门禁，继续审查",
+      "reading": "历史安全隐私Gate答复仅绑定当时对象",
+      "kind": "HistoricalAuthority",
+      "status": "已实现",
+      "actual": "已读取该历史答复；不将该旧对象的回答转作当前task05人类Gate批准。",
+      "evidence_refs": [
+        "original-sources.json",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "1e4f14b1ba75383a5f9bf653068c15c2ff67d55b47cab961289f66c8e9ca5cb3",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "历史安全隐私Gate答复仅绑定当时对象",
+            "expected": "历史安全隐私Gate答复仅绑定当时对象",
+            "actual": "已读取该历史答复；不将该旧对象的回答转作当前task05人类Gate批准。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D01",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "我已经暂停cursor的工作，请隔离生产库，然后做审查并修复问题后，接续cursor的工作，即生成昨天邮件问题的客诉日报看板网页，运行在3030，cursor 的看板做的一塌糊塌，没有严格按照我的要求来，请你严格按照我的标准来完成任务",
+      "reading": "隔离生产库；MCP工作与3030日报分工",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "生产读取false、watch停止；本轮未连库、未改/重启3030/3036/15433或AICS。",
+      "evidence_refs": [
+        "runtime-boundaries.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "隔离生产库；MCP工作与3030日报分工",
+            "expected": "隔离生产库；MCP工作与3030日报分工",
+            "actual": "生产读取false、watch停止；本轮未连库、未改/重启3030/3036/15433或AICS。",
+            "result": "Passed",
+            "evidence_refs": [
+              "runtime-boundaries.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D02",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "你可以把原始数据拿到本机后再做复杂聚合",
+      "reading": "本机副本供复杂聚合",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "查询只使用ReadAPI回环和已发布本地读取模型。",
+      "evidence_refs": [
+        "readmodel-results.json",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "本机副本供复杂聚合",
+            "expected": "本机副本供复杂聚合",
+            "actual": "查询只使用ReadAPI回环和已发布本地读取模型。",
+            "result": "Passed",
+            "evidence_refs": [
+              "readmodel-results.json",
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D03",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏\n另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "测试MCP能完整取出全部数据",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "当日845邮件5页无重复，逐行等于API；14表按白名单可查询，3空表合法；未用一页当总数。",
+      "evidence_refs": [
+        "live-results.json#/groups/full_mails_pagination",
+        "synthetic-results.json#/parameters",
+        "readmodel-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "测试MCP能完整取出全部数据",
+            "expected": "测试MCP能完整取出全部数据",
+            "actual": "当日845邮件5页无重复，逐行等于API；14表按白名单可查询，3空表合法；未用一页当总数。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/full_mails_pagination",
+              "synthetic-results.json#/parameters",
+              "readmodel-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D04",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏\n另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "数据与线上一致无遗漏的证明边界",
+      "kind": "ExternalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "本地历史版本24/DEGRADED，最后成功同步2026-10-30T01:14:02.122651+08:00；当前线上一致性未重验。",
+      "evidence_refs": [
+        "live-results.json#/groups/source_state",
+        "runtime-boundaries.json"
+      ],
+      "gap": "禁止生产连接，不能把MCP/API同副本一致当作当前线上一致。",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [
+          "已允许读取生产并取得可比快照"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "当前生产可比快照",
+            "expected": "逐源核对无遗漏",
+            "actual": "NotRun：禁止连接生产",
+            "result": "NotRun",
+            "evidence_refs": [
+              "runtime-boundaries.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "只读历史副本、生产隔离",
+            "expected": "明确快照/版本/DEGRADED，不宣称实时线上一致",
+            "actual": "真实status与公开指南一致",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D05",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏\n另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "权限网页生成访问token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "真实原生合成表单完成签发/复制/一次显示/撤销；实际owner链路采用task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "权限网页生成访问token",
+            "expected": "权限网页生成访问token",
+            "actual": "真实原生合成表单完成签发/复制/一次显示/撤销；实际owner链路采用task05工程证据。",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json",
+              "synthetic-results.json#/desk",
+              "C-tests.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D06",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏\n另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "只有本人下发token才可实际访问MCP",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "有效Bearer能查询，撤销旧令牌401，管理员会话和Bearer分离。",
+      "evidence_refs": [
+        "C-tests.log",
+        "synthetic-results.json#/rate",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [
+          "持有当前有效接收人Bearer"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "有效Bearer",
+            "expected": "只读查询可达",
+            "actual": "真实11工具成功",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "无效/已撤销Bearer",
+            "expected": "401且无后端查询",
+            "actual": "新合成同名重发旧token401，普通回归无凭据401",
+            "result": "Passed",
+            "evidence_refs": [
+              "synthetic-results.json",
+              "C-tests.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D07",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏\n另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "部署3029；旧localhost被后续明确内网开放替代",
+      "kind": "SupersededConstraint",
+      "status": "已实现",
+      "actual": "3029指定10.8.61.200严格HTTPS；不是0.0.0.0；后续门户原话明确改为内网分享。",
+      "evidence_refs": [
+        "start.json",
+        "firewall.json",
+        "live-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [
+          "后续已明确要求内网开放入口"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "当前门户原话已要求内网开放",
+            "expected": "保持3029并限定内网IP/网段/TLS",
+            "actual": "监听/防火墙/真实TLS一致",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "firewall.json",
+              "live-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "最初localhost阶段",
+            "expected": "仅回环发放",
+            "actual": "历史勘察原件记载旧3029仅回环；本轮不回滚到旧实现",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "Exception",
+            "input": "最新明确内网分享指令",
+            "expected": "使用新授权监听范围",
+            "actual": "按当前入口验证，无新增匿名签发",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D08",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "MCP介绍完整吗",
+      "reading": "完整说明核对",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "11工具逐参数、14表、协议/来源/分页/AI计数/错误/TLS/客户端/发放权限均有当前说明。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "完整说明核对",
+            "expected": "完整说明核对",
+            "actual": "11工具逐参数、14表、协议/来源/分页/AI计数/错误/TLS/客户端/发放权限均有当前说明。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P01",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "其他人可以使用MCP",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "无凭据通用包、两类客户端与本人令牌流程齐全；异机环境限制单列。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "其他人可以使用MCP",
+            "expected": "其他人可以使用MCP",
+            "actual": "无凭据通用包、两类客户端与本人令牌流程齐全；异机环境限制单列。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P02",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "MCP介绍详细",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "完整指南11工具所有参数直接与真实schema相等。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "MCP介绍详细",
+            "expected": "MCP介绍详细",
+            "actual": "完整指南11工具所有参数直接与真实schema相等。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P03",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "按MCP本身协议制作文档或程序",
+      "kind": "Product",
+      "status": "部分实现",
+      "actual": "HTTP正确；实际保留stdio CLI的数字和ID路径出现两项反例。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "R8-001、R8-002未解决。",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "按MCP本身协议制作文档或程序",
+            "expected": "按MCP本身协议制作文档或程序",
+            "actual": "HTTP正确；实际保留stdio CLI的数字和ID路径出现两项反例。",
+            "result": "Failed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P04",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "给接收人材料并使其能够接入",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "23文件ZIP校验和/脚本一致；客户端完整分页和中途失败不输出伪完整。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "给接收人材料并使其能够接入",
+            "expected": "给接收人材料并使其能够接入",
+            "actual": "23文件ZIP校验和/脚本一致；客户端完整分页和中途失败不输出伪完整。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P05",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "优化并复核token生成服务",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "独立管理员、受限挑战/会话、一次显示、确认撤销、损坏恢复及原生移动交互已检查。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "优化并复核token生成服务",
+            "expected": "优化并复核token生成服务",
+            "actual": "独立管理员、受限挑战/会话、一次显示、确认撤销、损坏恢复及原生移动交互已检查。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P06",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "内网开放生成token服务入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "3029内网限定IP，真实TLS、Host/Origin保护和防火墙规则一致。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "内网开放生成token服务入口",
+            "expected": "内网开放生成token服务入口",
+            "actual": "3029内网限定IP，真实TLS、Host/Origin保护和防火墙规则一致。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P07",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "将协议/介绍/方法放到生成token服务上",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "/guide和七个下载真实200，全部与冻结文件一致。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "将协议/介绍/方法放到生成token服务上",
+            "expected": "将协议/介绍/方法放到生成token服务上",
+            "actual": "/guide和七个下载真实200，全部与冻结文件一致。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P08",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "仅需分享整个服务内网链接",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "接入中心包含指南、工具参考、下载和管理员入口；链接不等于数据权限。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "browser-native.json",
+        "stdio-results.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "仅需分享整个服务内网链接",
+            "expected": "仅需分享整个服务内网链接",
+            "actual": "接入中心包含指南、工具参考、下载和管理员入口；链接不等于数据权限。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json",
+              "synthetic-results.json",
+              "browser-native.json",
+              "stdio-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P09",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "reading": "MCP独立会话处理；本会话继续日报，不侵入3030",
+      "kind": "Scope",
+      "status": "已实现",
+      "actual": "原日报澄清明确MCP已由新会话处理；本轮仅MCP审查和round8留证，保护PID不变。",
+      "evidence_refs": [
+        "original-sources.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "MCP独立会话处理；本会话继续日报，不侵入3030",
+            "expected": "MCP独立会话处理；本会话继续日报，不侵入3030",
+            "actual": "原日报澄清明确MCP已由新会话处理；本轮仅MCP审查和round8留证，保护PID不变。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P10",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "继续",
+      "reading": "继续既有范围",
+      "kind": "Authority",
+      "status": "已实现",
+      "actual": "没有新增管理员、生产读取、数据库连接或正式批准。",
+      "evidence_refs": [
+        "original-sources.json",
+        "runtime-boundaries.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "继续既有范围",
+            "expected": "继续既有范围",
+            "actual": "没有新增管理员、生产读取、数据库连接或正式批准。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "runtime-boundaries.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "P11",
+      "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "source": "clarification:r1.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "source_sha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+      "quote": "继续",
+      "reading": "“继续”沿用本人发放的单管理员边界",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "真实答复只有继续；按既有“我下发”执行，不伪造选择多管理员。访客公开只读，独立管理员才能发放/撤销。",
+      "evidence_refs": [
+        "original-sources.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+        "conditions": [
+          "独立管理员已认证且同源CSRF有效"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "有效管理员/Origin/CSRF",
+            "expected": "可发放/确认撤销",
+            "actual": "新原生浏览器和ASGI均成功",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json",
+              "synthetic-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名/Bearer替代会话/Origin缺失或null/CSRF错误",
+            "expected": "401或403且授权文件不变",
+            "actual": "49测试及新合成均拒绝",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-01",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "把管理员账号和密码给本人",
+      "kind": "HistoricalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+      "evidence_refs": [
+        "original-sources.json",
+        "governance-observed.json"
+      ],
+      "gap": "本轮无原始私聊凭据消息可回读；没有再次读取/输出口令，不能冒称本轮重新交付验证。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "把管理员账号和密码给本人",
+            "expected": "把管理员账号和密码给本人",
+            "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-02",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供登录入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "evidence_refs": [
+        "live-results.json#/groups/portal",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供登录入口",
+            "expected": "提供登录入口",
+            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/portal",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-03",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该账号即可生成token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "原生表单签发一次显示、复制、同名拒绝、撤销、退出均正常；真实owner完整链路为task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "正确唯一管理员登录后提交有效身份/Origin/CSRF"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "正确登录后提交合法64字符新身份",
+            "expected": "生成并只显示一次",
+            "actual": "原生POST200；GET重载无token；复制相同",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、错误口令、CSRF/Origin无效、同名身份",
+            "expected": "拒绝且不签发替代令牌",
+            "actual": "匿名401；错误口令401；CSRF/Origin403；同名400",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-04",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "开始审查",
+      "reading": "明确开始多轮审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+      "evidence_refs": [
+        "original-sources.json",
+        "stdio-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "明确开始多轮审查",
+            "expected": "明确开始多轮审查",
+            "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-05",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "发现问题须修复并复验，直到同版连续两轮完整无问题",
+      "kind": "ReviewProcess",
+      "status": "部分实现",
+      "actual": "本轮发现2项新问题，已完整留证并交父执行者后续返修；本轮只读，不修改产品。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "synthetic-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "R8-001/R8-002待返修；未来同版第二轮尚未发生，不得编造Met或审查通过。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "同一保存版本已连续两轮完整审查均无任何问题及未决项"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来同版两轮完整无问题",
+            "expected": "才可结束并由官方机制判定",
+            "actual": "NotRun：本轮发现问题，未达前提",
+            "result": "NotRun",
+            "evidence_refs": [
+              "governance-observed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "当前发现R8-001/R8-002",
+            "expected": "不得声称审查通过；先返修复验",
+            "actual": "报告非干净，正式记录不修改",
+            "result": "Passed",
+            "evidence_refs": [
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R1-06",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-01\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "审查选择不影响现有登录与生成令牌",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+      "evidence_refs": [
+        "start.json",
+        "end.json",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "审查选择不影响现有登录与生成令牌",
+            "expected": "审查选择不影响现有登录与生成令牌",
+            "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "end.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-01",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "把管理员账号和密码给本人",
+      "kind": "HistoricalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+      "evidence_refs": [
+        "original-sources.json",
+        "governance-observed.json"
+      ],
+      "gap": "本轮无原始私聊凭据消息可回读；没有再次读取/输出口令，不能冒称本轮重新交付验证。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "把管理员账号和密码给本人",
+            "expected": "把管理员账号和密码给本人",
+            "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-02",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供登录入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "evidence_refs": [
+        "live-results.json#/groups/portal",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供登录入口",
+            "expected": "提供登录入口",
+            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/portal",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-03",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该账号即可生成token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "原生表单签发一次显示、复制、同名拒绝、撤销、退出均正常；真实owner完整链路为task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "正确唯一管理员登录后提交有效身份/Origin/CSRF"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "正确登录后提交合法64字符新身份",
+            "expected": "生成并只显示一次",
+            "actual": "原生POST200；GET重载无token；复制相同",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、错误口令、CSRF/Origin无效、同名身份",
+            "expected": "拒绝且不签发替代令牌",
+            "actual": "匿名401；错误口令401；CSRF/Origin403；同名400",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-04",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "开始审查",
+      "reading": "明确开始多轮审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+      "evidence_refs": [
+        "original-sources.json",
+        "stdio-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "明确开始多轮审查",
+            "expected": "明确开始多轮审查",
+            "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-05",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "发现问题须修复并复验，直到同版连续两轮完整无问题",
+      "kind": "ReviewProcess",
+      "status": "部分实现",
+      "actual": "本轮发现2项新问题，已完整留证并交父执行者后续返修；本轮只读，不修改产品。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "synthetic-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "R8-001/R8-002待返修；未来同版第二轮尚未发生，不得编造Met或审查通过。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "同一保存版本已连续两轮完整审查均无任何问题及未决项"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来同版两轮完整无问题",
+            "expected": "才可结束并由官方机制判定",
+            "actual": "NotRun：本轮发现问题，未达前提",
+            "result": "NotRun",
+            "evidence_refs": [
+              "governance-observed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "当前发现R8-001/R8-002",
+            "expected": "不得声称审查通过；先返修复验",
+            "actual": "报告非干净，正式记录不修改",
+            "result": "Passed",
+            "evidence_refs": [
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-06",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-02\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "审查选择不影响现有登录与生成令牌",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+      "evidence_refs": [
+        "start.json",
+        "end.json",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "审查选择不影响现有登录与生成令牌",
+            "expected": "审查选择不影响现有登录与生成令牌",
+            "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "end.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-01",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "把管理员账号和密码给本人",
+      "kind": "HistoricalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+      "evidence_refs": [
+        "original-sources.json",
+        "governance-observed.json"
+      ],
+      "gap": "本轮无原始私聊凭据消息可回读；没有再次读取/输出口令，不能冒称本轮重新交付验证。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "把管理员账号和密码给本人",
+            "expected": "把管理员账号和密码给本人",
+            "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-02",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供登录入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "evidence_refs": [
+        "live-results.json#/groups/portal",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供登录入口",
+            "expected": "提供登录入口",
+            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/portal",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-03",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该账号即可生成token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "原生表单签发一次显示、复制、同名拒绝、撤销、退出均正常；真实owner完整链路为task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "正确唯一管理员登录后提交有效身份/Origin/CSRF"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "正确登录后提交合法64字符新身份",
+            "expected": "生成并只显示一次",
+            "actual": "原生POST200；GET重载无token；复制相同",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、错误口令、CSRF/Origin无效、同名身份",
+            "expected": "拒绝且不签发替代令牌",
+            "actual": "匿名401；错误口令401；CSRF/Origin403；同名400",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-04",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "开始审查",
+      "reading": "明确开始多轮审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+      "evidence_refs": [
+        "original-sources.json",
+        "stdio-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "明确开始多轮审查",
+            "expected": "明确开始多轮审查",
+            "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-05",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "发现问题须修复并复验，直到同版连续两轮完整无问题",
+      "kind": "ReviewProcess",
+      "status": "部分实现",
+      "actual": "本轮发现2项新问题，已完整留证并交父执行者后续返修；本轮只读，不修改产品。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "synthetic-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "R8-001/R8-002待返修；未来同版第二轮尚未发生，不得编造Met或审查通过。",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [
+          "同一保存版本已连续两轮完整审查均无任何问题及未决项"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来同版两轮完整无问题",
+            "expected": "才可结束并由官方机制判定",
+            "actual": "NotRun：本轮发现问题，未达前提",
+            "result": "NotRun",
+            "evidence_refs": [
+              "governance-observed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "当前发现R8-001/R8-002",
+            "expected": "不得声称审查通过；先返修复验",
+            "actual": "报告非干净，正式记录不修改",
+            "result": "Passed",
+            "evidence_refs": [
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R3-06",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-03\\before.json",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "审查选择不影响现有登录与生成令牌",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+      "evidence_refs": [
+        "start.json",
+        "end.json",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "审查选择不影响现有登录与生成令牌",
+            "expected": "审查选择不影响现有登录与生成令牌",
+            "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "end.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-01",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "把管理员账号和密码给本人",
+      "kind": "HistoricalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+      "evidence_refs": [
+        "original-sources.json",
+        "governance-observed.json"
+      ],
+      "gap": "本轮无原始私聊凭据消息可回读；没有再次读取/输出口令，不能冒称本轮重新交付验证。",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "把管理员账号和密码给本人",
+            "expected": "把管理员账号和密码给本人",
+            "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-02",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供登录入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "evidence_refs": [
+        "live-results.json#/groups/portal",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供登录入口",
+            "expected": "提供登录入口",
+            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/portal",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-03",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该账号即可生成token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "原生表单签发一次显示、复制、同名拒绝、撤销、退出均正常；真实owner完整链路为task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [
+          "正确唯一管理员登录后提交有效身份/Origin/CSRF"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "正确登录后提交合法64字符新身份",
+            "expected": "生成并只显示一次",
+            "actual": "原生POST200；GET重载无token；复制相同",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、错误口令、CSRF/Origin无效、同名身份",
+            "expected": "拒绝且不签发替代令牌",
+            "actual": "匿名401；错误口令401；CSRF/Origin403；同名400",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-04",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "开始审查",
+      "reading": "明确开始多轮审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+      "evidence_refs": [
+        "original-sources.json",
+        "stdio-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "明确开始多轮审查",
+            "expected": "明确开始多轮审查",
+            "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-05",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "发现问题须修复并复验，直到同版连续两轮完整无问题",
+      "kind": "ReviewProcess",
+      "status": "部分实现",
+      "actual": "本轮发现2项新问题，已完整留证并交父执行者后续返修；本轮只读，不修改产品。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "synthetic-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "R8-001/R8-002待返修；未来同版第二轮尚未发生，不得编造Met或审查通过。",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [
+          "同一保存版本已连续两轮完整审查均无任何问题及未决项"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来同版两轮完整无问题",
+            "expected": "才可结束并由官方机制判定",
+            "actual": "NotRun：本轮发现问题，未达前提",
+            "result": "NotRun",
+            "evidence_refs": [
+              "governance-observed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "当前发现R8-001/R8-002",
+            "expected": "不得声称审查通过；先返修复验",
+            "actual": "报告非干净，正式记录不修改",
+            "result": "Passed",
+            "evidence_refs": [
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-06",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "审查选择不影响现有登录与生成令牌",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+      "evidence_refs": [
+        "start.json",
+        "end.json",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "审查选择不影响现有登录与生成令牌",
+            "expected": "审查选择不影响现有登录与生成令牌",
+            "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "end.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-07",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-04\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "拉取最新代码并重启审查",
+      "reading": "拉取最新代码并重启审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "上游main为7b63ad65；当前88ef76cc为拉取后连续返修交付。新上下文独立完整审查；冻结中不fetch/改产品。",
+      "evidence_refs": [
+        "git-remote.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "拉取最新代码并重启审查",
+            "expected": "拉取最新代码并重启审查",
+            "actual": "上游main为7b63ad65；当前88ef76cc为拉取后连续返修交付。新上下文独立完整审查；冻结中不fetch/改产品。",
+            "result": "Passed",
+            "evidence_refs": [
+              "git-remote.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-01",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "把管理员账号和密码给本人",
+      "kind": "HistoricalEvidenceLimit",
+      "status": "部分实现",
+      "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+      "evidence_refs": [
+        "original-sources.json",
+        "governance-observed.json"
+      ],
+      "gap": "本轮无原始私聊凭据消息可回读；没有再次读取/输出口令，不能冒称本轮重新交付验证。",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "把管理员账号和密码给本人",
+            "expected": "把管理员账号和密码给本人",
+            "actual": "账号owner已有受限配置；父执行者可信上下文说明曾私聊交付随机初始口令且未重置。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-02",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供登录入口",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+      "evidence_refs": [
+        "live-results.json#/groups/portal",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "提供登录入口",
+            "expected": "提供登录入口",
+            "actual": "https://10.8.61.200:3029/admin/login可达，匿名admin重定向登录。",
+            "result": "Passed",
+            "evidence_refs": [
+              "live-results.json#/groups/portal",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-03",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该账号即可生成token",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "原生表单签发一次显示、复制、同名拒绝、撤销、退出均正常；真实owner完整链路为task05工程证据。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk",
+        "C-tests.log"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [
+          "正确唯一管理员登录后提交有效身份/Origin/CSRF"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "正确登录后提交合法64字符新身份",
+            "expected": "生成并只显示一次",
+            "actual": "原生POST200；GET重载无token；复制相同",
+            "result": "Passed",
+            "evidence_refs": [
+              "browser-native.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、错误口令、CSRF/Origin无效、同名身份",
+            "expected": "拒绝且不签发替代令牌",
+            "actual": "匿名401；错误口令401；CSRF/Origin403；同名400",
+            "result": "Passed",
+            "evidence_refs": [
+              "C-tests.log",
+              "synthetic-results.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-04",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "开始审查",
+      "reading": "明确开始多轮审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+      "evidence_refs": [
+        "original-sources.json",
+        "stdio-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "明确开始多轮审查",
+            "expected": "明确开始多轮审查",
+            "actual": "本轮按真实开始/重启授权技术审查；机器Offer拒绝不被隐去。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-05",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "发现问题须修复并复验，直到同版连续两轮完整无问题",
+      "kind": "ReviewProcess",
+      "status": "部分实现",
+      "actual": "本轮发现2项新问题，已完整留证并交父执行者后续返修；本轮只读，不修改产品。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "synthetic-results.json",
+        "governance-observed.json"
+      ],
+      "gap": "R8-001/R8-002待返修；未来同版第二轮尚未发生，不得编造Met或审查通过。",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [
+          "同一保存版本已连续两轮完整审查均无任何问题及未决项"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "未来同版两轮完整无问题",
+            "expected": "才可结束并由官方机制判定",
+            "actual": "NotRun：本轮发现问题，未达前提",
+            "result": "NotRun",
+            "evidence_refs": [
+              "governance-observed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "当前发现R8-001/R8-002",
+            "expected": "不得声称审查通过；先返修复验",
+            "actual": "报告非干净，正式记录不修改",
+            "result": "Passed",
+            "evidence_refs": [
+              "stdio-results.json",
+              "governance-observed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-06",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "审查选择不影响现有登录与生成令牌",
+      "kind": "Product",
+      "status": "已实现",
+      "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+      "evidence_refs": [
+        "start.json",
+        "end.json",
+        "browser-native.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "审查选择不影响现有登录与生成令牌",
+            "expected": "审查选择不影响现有登录与生成令牌",
+            "actual": "审查未停服务、未重置真实管理员或变更真实授权文件；本轮合成表单可用。",
+            "result": "Passed",
+            "evidence_refs": [
+              "start.json",
+              "end.json",
+              "browser-native.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R5-07",
+      "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-REPAIR-20261030-05\\before.json",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "拉取最新代码并重启审查",
+      "reading": "拉取最新代码并重启审查",
+      "kind": "ReviewProcess",
+      "status": "已实现",
+      "actual": "上游main为7b63ad65；当前88ef76cc为拉取后连续返修交付。新上下文独立完整审查；冻结中不fetch/改产品。",
+      "evidence_refs": [
+        "git-remote.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "拉取最新代码并重启审查",
+            "expected": "拉取最新代码并重启审查",
+            "actual": "上游main为7b63ad65；当前88ef76cc为拉取后连续返修交付。新上下文独立完整审查；冻结中不fetch/改产品。",
+            "result": "Passed",
+            "evidence_refs": [
+              "git-remote.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D09",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "MCP门户与独立分工的原始指令",
+      "kind": "Scope",
+      "status": "部分实现",
+      "actual": "与门户后续原话分别绑定；门户/说明/发放已检查，stdio协议缺陷保留。",
+      "evidence_refs": [
+        "original-sources.json",
+        "live-results.json",
+        "stdio-results.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "R8-001/R8-002",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "MCP门户与独立分工的原始指令",
+            "expected": "MCP门户与独立分工的原始指令",
+            "actual": "与门户后续原话分别绑定；门户/说明/发放已检查，stdio协议缺陷保留。",
+            "result": "NotRun",
+            "evidence_refs": [
+              "original-sources.json",
+              "live-results.json",
+              "stdio-results.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D10",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "request_snapshot",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "reading": "MCP门户与独立分工的原始指令",
+      "kind": "Scope",
+      "status": "已实现",
+      "actual": "与门户后续原话分别绑定；门户/说明/发放已检查，stdio协议缺陷保留。",
+      "evidence_refs": [
+        "original-sources.json",
+        "live-results.json",
+        "stdio-results.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "MCP门户与独立分工的原始指令",
+            "expected": "MCP门户与独立分工的原始指令",
+            "actual": "与门户后续原话分别绑定；门户/说明/发放已检查，stdio协议缺陷保留。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "live-results.json",
+              "stdio-results.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "D11",
+      "task_id": "T-INSIGHTS-DAILY-20261030-01",
+      "source": "clarification:r1.e1",
+      "source_file": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-20261030-01\\before.json",
+      "source_sha256": "6d9a497fa5f35f107ccf890a0dce28831417318aa89e12f74d17bb1cc42de0d8",
+      "quote": "按此范围继续（推荐）",
+      "reading": "日报范围继续；MCP由新会话处理的真实澄清",
+      "kind": "Scope",
+      "status": "已实现",
+      "actual": "原问题明确MCP独立分工；本轮未改日报或AICS。",
+      "evidence_refs": [
+        "original-sources.json",
+        "start.json",
+        "end.json"
+      ],
+      "gap": "",
+      "review": {
+        "source_sha256": "6d9a497fa5f35f107ccf890a0dce28831417318aa89e12f74d17bb1cc42de0d8",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "日报范围继续；MCP由新会话处理的真实澄清",
+            "expected": "日报范围继续；MCP由新会话处理的真实澄清",
+            "actual": "原问题明确MCP独立分工；本轮未改日报或AICS。",
+            "result": "Passed",
+            "evidence_refs": [
+              "original-sources.json",
+              "start.json",
+              "end.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "requirement_status_counts": {
+    "已实现": 50,
+    "部分实现": 18
+  },
+  "findings": [
+    {
+      "id": "R8-001",
+      "severity": "P2",
+      "status": "Open",
+      "summary": "保留的stdio CLI在精度丢失后验证工具整数参数，非整数被静默取整并进入后端",
+      "location": [
+        "scripts/mcp_server.py:10",
+        "insights/mcp_server.py:138",
+        "insights/mcp_server.py:139"
+      ],
+      "reproduction": "运行本轮stdio_fixture.py：runpy执行冻结scripts/mcp_server.py，唯一patch为ReadAPI.load返回FakeAPI；完成initialize/initialized后逐条发送probe_stdio.py保存的原始JSON行。",
+      "inputs": [
+        "limit=1.00000000000000001",
+        "limit=200.00000000000000001",
+        "limit=0.99999999999999999"
+      ],
+      "expected": "数学值均非整数，第三项还小于最小值1；应返回isError且后端调用数不增加。1.0和2e0为数学整数，应允许。",
+      "actual": "三个原始反例均isError=false，FakeAPI依次收到limit=1/200/1，backend_calls=1/2/3；2.5/true/字符串1拒绝；1.0/2e0允许。真实HTTP同三反例均isError=true。",
+      "cause": "wire_arguments只由HTTP的MCPProtocolErrors设置。stdio SDK已将原始小数转成binary float，ContractMCPServer退回arguments后无法恢复原值。",
+      "impact": "stdio调用接受公布integer/范围契约不允许的输入并改写查询参数，返回成功；不构成远程鉴权绕过或数据库写入。",
+      "evidence_refs": [
+        "stdio-results.json",
+        "stdio_fixture.py",
+        "probe_stdio.py",
+        "live-results.json#/groups/raw_number_precision"
+      ],
+      "sources": [
+        "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+        "https://json-schema.org/draft/2020-12/json-schema-validation"
+      ]
+    },
+    {
+      "id": "R8-002",
+      "severity": "P2",
+      "status": "Open",
+      "summary": "stdio实际CLI静默丢弃合法整数值的小数/指数形式请求ID",
+      "location": [
+        "scripts/mcp_server.py:10",
+        "insights/mcp_server.py:133",
+        "insights/mcp_http.py:178"
+      ],
+      "reproduction": "同一真实stdio CLI夹具完成初始化；发送tools/list，id依次为701、702.0、703e0、704.00000000000000001、true、字符串string-705；每条单独原始JSON行。",
+      "expected": "701、702.0、703e0与字符串均须收到对应ID的结果；704.00000000000000001和true属于非法请求ID，应按Invalid Request处理，不能要求保留其非法原ID。",
+      "actual": "701和string-705均返回11工具；数学整数702.0和703e0各2秒无响应。两项非法ID也无响应，作为独立非法控制记录。HTTP相同合法表示均200并归一整数ID，非法fraction/bool均400/-32600/id=null。",
+      "cause": "stdio入口直接使用SDK validate_json，未经过HTTP的请求ID原值与整数表示归一保护。锁定SDK的联合模型将702.0/703e0等带ID输入解析为JSONRPCNotification，id丢失，产品没有相应修正边界；原始解析模型实测见stdio-parser.json。",
+      "impact": "使用合法数值ID表示的本机MCP客户端等待到超时；与公开MCP整数ID契约不一致。远程HTTP路径不受本反例影响。",
+      "evidence_refs": [
+        "stdio-results.json#/request_ids",
+        "stdio-parser.json",
+        "stdio_fixture.py",
+        "synthetic-results.json#/parameters/request_id_http_counterparts"
+      ],
+      "sources": [
+        "https://modelcontextprotocol.io/specification/2025-11-25/basic",
+        "https://json-schema.org/draft/2020-12/json-schema-validation"
+      ]
+    }
+  ],
+  "prior_resolutions": [
+    {
+      "finding_id": "R1-01",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "挑战刷新复用、每peer限额与过期恢复；当前49测试重新通过。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R1-02",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "新ASGI损坏元数据仍提供撤销并保留原损坏文件。",
+      "evidence_refs": [
+        "synthetic-results.json#/desk"
+      ]
+    },
+    {
+      "finding_id": "R1-03",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "原HTTP错误类型/额外参数路径已修，187非法输入后端零调用；stdio新精度问题另列R8-001。",
+      "evidence_refs": [
+        "synthetic-results.json#/parameters",
+        "C-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R1-04",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "未知工具顶层-32602/id保留，49回归重新通过。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R2-01",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "NativeJSONArguments保持字符串原值；完整有效参数包含null/[]/{}/引号，49逐字保持测试重跑。",
+      "evidence_refs": [
+        "synthetic-results.json#/parameters",
+        "C-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R2-02",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "真实Windows Users可读合成父目录下首字节前已移除继承；写入/flush/ACL失败清理49测试通过。",
+      "evidence_refs": [
+        "synthetic-results.json#/clients",
+        "C-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R2-03",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "原HTTP非法信封-32600、解析-32700、方法/参数错误分层均49项覆盖；不误报stdio新ID问题已被该HTTP修复覆盖。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R3-01",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "单快照凭据/版本绑定、轮换会话失效当前49测试通过。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R3-02",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "原HTTP请求ID路径已修；新HTTP整数表示/非法fraction/bool对照通过。stdio同类路径仍在R8-002单独登记。",
+      "evidence_refs": [
+        "synthetic-results.json#/parameters/request_id_http_counterparts",
+        "C-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R3-03",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "全部五工具显式空cursor先拒绝；五工具同筛选允许/变筛选422/版本409/来源422新对照通过。",
+      "evidence_refs": [
+        "C-tests.log",
+        "readmodel-results.json"
+      ]
+    },
+    {
+      "finding_id": "R3-04",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "曾在R7复发，当前operator-handoff确指task05/report和results；03/04明确历史。当前报告内容49测试/17组与实际相符。",
+      "evidence_refs": [
+        "documentation-observed.json",
+        "C-tests.log",
+        "live-results.json"
+      ]
+    },
+    {
+      "finding_id": "R5-001",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "同peer成功/失败KDF竞态测试本版C/D均通过，失败返回401。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R5-002",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "原HTTP高精度fraction反例拒绝，1.0允许；本轮同值真HTTPS控制再次成立；stdio新路径另列R8-001。",
+      "evidence_refs": [
+        "live-results.json#/groups/raw_number_precision",
+        "C-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R5-003",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "首页mcp-client.json示例可被JSON解析，C/D49重跑通过。",
+      "evidence_refs": [
+        "C-tests.log",
+        "D-tests.log"
+      ]
+    },
+    {
+      "finding_id": "R5-004",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "新原生浏览器无策略覆写完成签发/撤销/退出，same-origin保留；新ASGI缺失/null/外源Origin均拒绝。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json#/desk"
+      ]
+    },
+    {
+      "finding_id": "R5-005",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "360px真实DOM长身份不撑宽；表格在311px容器内横向滚动，撤销可操作。",
+      "evidence_refs": [
+        "browser-native.json"
+      ]
+    },
+    {
+      "finding_id": "R7-001",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "新长身份签发/同名错误/撤销alert均311=311，document/body345=345。",
+      "evidence_refs": [
+        "browser-native.json",
+        "mobile-duplicate.png",
+        "mobile-revoked.png"
+      ]
+    },
+    {
+      "finding_id": "R7-002",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "低配额假时钟跨工具、隔离身份、重发保留、窗口恢复与24并发仅5后端；实际guide6000/60。",
+      "evidence_refs": [
+        "synthetic-results.json#/rate",
+        "live-results.json#/groups/guide_resource"
+      ]
+    },
+    {
+      "finding_id": "R7-003",
+      "disposition": "Fixed",
+      "scope": "原问题明确复现路径；不概括为所有传输无缺陷",
+      "reason": "当前交接链接task05，旧03/04为历史，与R3-04复发关系保留。",
+      "evidence_refs": [
+        "documentation-observed.json"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "domain": "本地只读/生产隔离",
+      "status": "Checked",
+      "actual": "只经HTTPS或回环API读现有副本；生产false/watch停止；没有数据库连接。",
+      "evidence_refs": [
+        "runtime-boundaries.json",
+        "readmodel-results.json"
+      ]
+    },
+    {
+      "domain": "11工具与guide资源",
+      "status": "Checked",
+      "actual": "实际tools/list与公开schema相等，资源与tool策略相等。",
+      "evidence_refs": [
+        "live-results.json"
+      ]
+    },
+    {
+      "domain": "14白名单/原始追溯",
+      "status": "Checked",
+      "actual": "14表一页及非空表完整行可达，3空表保留合法；无任意SQL。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json"
+      ]
+    },
+    {
+      "domain": "统计/日期/AI规则",
+      "status": "Checked",
+      "actual": "845邮件与primary总数相等；all_issues869交叉不误作去重总数；PEND/人工排除及UTC+8边界。",
+      "evidence_refs": [
+        "live-results.json",
+        "readmodel-results.json"
+      ]
+    },
+    {
+      "domain": "正文/译文/完整AI",
+      "status": "Checked",
+      "actual": "include_raw默认剔除、显式读取完整AI/原始字段；正文开关与API逐对象内存核对，不输出正文。",
+      "evidence_refs": [
+        "live-results.json"
+      ]
+    },
+    {
+      "domain": "全量分页/冲突",
+      "status": "Checked",
+      "actual": "5页845无重复；五工具变筛选/来源/版本冲突；客户端中断无伪完整。",
+      "evidence_refs": [
+        "live-results.json",
+        "readmodel-results.json",
+        "synthetic-results.json"
+      ]
+    },
+    {
+      "domain": "全工具参数/输出",
+      "status": "CheckedWithFindings",
+      "actual": "11工具每个公布参数有有效组合，187非法值后端零调用；stdio精度R8-001。",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "stdio-results.json"
+      ]
+    },
+    {
+      "domain": "协商/JSONRPC/错误",
+      "status": "CheckedWithFindings",
+      "actual": "2025-11-25初始化/通知/资源/错误层级；stdio整数表示ID R8-002。",
+      "evidence_refs": [
+        "live-results.json",
+        "C-tests.log",
+        "stdio-results.json"
+      ]
+    },
+    {
+      "domain": "限频",
+      "status": "Checked",
+      "actual": "严格1..60000，无禁用，按真实身份跨工具合并；同名重发不重置；默认stdio与HTTP均执行。",
+      "evidence_refs": [
+        "synthetic-results.json",
+        "C-tests.log",
+        "live-results.json"
+      ]
+    },
+    {
+      "domain": "单管理员/挑战/会话",
+      "status": "Checked",
+      "actual": "独立凭据hash、peer绑定挑战、失败限额、会话轮换/超时/退出；不重置真实owner。",
+      "evidence_refs": [
+        "C-tests.log",
+        "synthetic-results.json",
+        "browser-native.json"
+      ]
+    },
+    {
+      "domain": "CSRF/Origin/null/权限分离",
+      "status": "Checked",
+      "actual": "所有native表单same-origin，缺失/null/外源Origin和重复csrf拒绝；Bearer不授管理。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json",
+        "C-tests.log"
+      ]
+    },
+    {
+      "domain": "一次显示/重发/撤销/恢复",
+      "status": "Checked",
+      "actual": "同名拒绝、原生复制和重载移除、最后撤销/并发/损坏授权关闭/损坏metadata可撤销。",
+      "evidence_refs": [
+        "browser-native.json",
+        "synthetic-results.json",
+        "C-tests.log"
+      ]
+    },
+    {
+      "domain": "静态UI/窄屏真实表单",
+      "status": "Checked",
+      "actual": "360x800真实cua原生操作；没有改响应策略或注入cookie；合成HTTP不替代TLS证明。",
+      "evidence_refs": [
+        "browser-native.json",
+        "mobile-duplicate.png",
+        "mobile-revoked.png"
+      ]
+    },
+    {
+      "domain": "文档/下载ZIP/秘密/ACL",
+      "status": "Checked",
+      "actual": "7下载一致、23项ZIP内部checksum全匹配；无当前Bearer/API凭据/私钥标记；真实Windows合成ACL。",
+      "evidence_refs": [
+        "live-results.json",
+        "synthetic-results.json",
+        "documentation-observed.json"
+      ]
+    },
+    {
+      "domain": "真实TLS/网络/Host/代理",
+      "status": "Checked",
+      "actual": "实际内网IP正确CA验证；Host421/Origin403；实际peer/代理拒绝在ASGI和当前49中覆盖；外机未实测。",
+      "evidence_refs": [
+        "live-results.json",
+        "firewall.json",
+        "C-tests.log"
+      ]
+    },
+    {
+      "domain": "证据/失败留存/部署边界",
+      "status": "Checked",
+      "actual": "当前task05工程结果与旧阶段隔离；保留本轮夹具失败；125冻结/PID/Git起止核对。",
+      "evidence_refs": [
+        "governance-observed.json",
+        "failure-notes.json",
+        "start.json",
+        "end.json"
+      ]
+    }
+  ],
+  "freeze": {
+    "files": 125,
+    "start_match": true,
+    "end_match": true,
+    "start_end_equal": true,
+    "git_clean_start": true,
+    "git_clean_end": true,
+    "protected_pids_unchanged": true,
+    "start_ref": "start.json",
+    "end_ref": "end.json"
+  },
+  "execution": {
+    "C_regression_tests": 49,
+    "D_regression_tests": 49,
+    "live_readonly_groups": 17,
+    "invalid_parameter_cases": 187,
+    "native_browser_cases": 12,
+    "five_tool_cursor_cases": 30,
+    "synthetic_client_cases": 6,
+    "new_stdio_counterexamples": 2,
+    "product_written": false,
+    "real_token_files_written": false,
+    "services_restarted": false,
+    "database_connected": false
+  },
+  "execution_scope_deviation": {
+    "operation": "first C/D ordinary regression run",
+    "actual": "cwd was round8 and pyc disabled, but TEMP/TMP inherited system Temp; unqualified TemporaryDirectory in existing tests used that path for synthetic data",
+    "cleanup": "TemporaryDirectory context managers completed normally; random paths were not captured, so no retrospective per-path cleanup proof is claimed",
+    "correction": "Original logs preserved; identical 49 tests rerun with TEMP/TMP explicitly inside round8/Ctests/temp and Dtests/temp",
+    "evidence_refs": [
+      "failure-notes.json",
+      "C-tests-first-default-temp.log",
+      "D-tests-first-default-temp.log",
+      "C-tests.log",
+      "D-tests.log"
+    ],
+    "product_or_service_affected": false
+  },
+  "limits": [
+    {
+      "kind": "ExternalAcceptance",
+      "detail": "另一台内网电脑的路由、CA安装、本人客户端未实测；本机真实IP/TLS不能替代。"
+    },
+    {
+      "kind": "HistoricalEvidence",
+      "detail": "历史私聊随机owner口令交付无原始消息可重新读取；不重复交付或输出秘密，不称本轮重验。"
+    },
+    {
+      "kind": "ProductionIsolation",
+      "detail": "线上实时完整性没有重验；版本24/DEGRADED为历史副本，生产连接禁止。"
+    },
+    {
+      "kind": "FormalHumanDecision",
+      "detail": "当前independent-review/security-privacy-review与用户决定Pending；历史其他对象Gate回答不转移到当前版本。"
+    },
+    {
+      "kind": "MachineRecording",
+      "detail": "原父Deferred使官方Offer登记拒绝；本轮仅留真实技术审查证据，不改旧阶段，不伪造ManagedByParent或官方Passed。"
+    },
+    {
+      "kind": "ReviewConvergence",
+      "detail": "本轮2项问题未修复，未来同版第二轮前提未成立；该未来会话条件不是本轮产品领域漏查。"
+    },
+    {
+      "kind": "EvidenceAllocation",
+      "detail": "真实owner签发/使用/撤销链路引用本冻结task05的17组工程结果；本轮独立使用合成管理员和原生浏览器，不运行会签发真实token的verify脚本。"
+    },
+    {
+      "kind": "ExecutionBoundaryDeviation",
+      "detail": "首次C/D回归漏设TEMP/TMP，既有测试的默认TemporaryDirectory写入系统TEMP合成临时文件；测试管理器正常结束清理，随机路径未留存，不声称逐路径事后核验。已保留原日志并在round8内重定向TEMP/TMP复跑相同49项；此偏差不隐去。"
+    }
+  ],
+  "scope_exclusions": [
+    "3030日报、UID/图表/附件文件预览、采集时效改造、AICS源工程、数据库结构/内容及生产同步操作；原daily全文保留，但这些由MCP独立分工明确排除。"
+  ],
+  "original_sources_ref": "original-sources.json",
+  "original_source_sha256": {
+    "T-INSIGHTS-FOUNDATION-20261029-01:request_snapshot": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+    "T-INSIGHTS-FOUNDATION-20261029-01:clarification:r1.e1": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+    "T-INSIGHTS-REVIEW-20261029-01:request_snapshot": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+    "T-INSIGHTS-REVIEW-20261029-01:clarification:r1.e1": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+    "T-INSIGHTS-REVIEW-20261029-01:clarification:r2.e1": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+    "T-INSIGHTS-REVIEW-20261029-01:clarification:r3.e1": "1e4f14b1ba75383a5f9bf653068c15c2ff67d55b47cab961289f66c8e9ca5cb3",
+    "T-INSIGHTS-DAILY-20261030-01:request_snapshot": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+    "T-INSIGHTS-DAILY-20261030-01:clarification:r1.e1": "6d9a497fa5f35f107ccf890a0dce28831417318aa89e12f74d17bb1cc42de0d8",
+    "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+    "T-INSIGHTS-MCP-PORTAL-20261030-01:clarification:r1.e1": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+    "T-INSIGHTS-MCP-REPAIR-20261030-01:request_snapshot": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+    "T-INSIGHTS-MCP-REPAIR-20261030-02:request_snapshot": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+    "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+    "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+    "T-INSIGHTS-MCP-REPAIR-20261030-05:request_snapshot": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38"
+  },
+  "evidence_refs": [
+    "start.json",
+    "end.json",
+    "original-sources.json",
+    "C-tests.log",
+    "D-tests.log",
+    "live-results.json",
+    "synthetic-results.json",
+    "readmodel-results.json",
+    "stdio-results.json",
+    "stdio-first-run.json",
+    "stdio-direct-results.json",
+    "browser-native.json",
+    "mobile-duplicate.png",
+    "mobile-revoked.png",
+    "runtime-boundaries.json",
+    "firewall.json",
+    "git-remote.json",
+    "documentation-observed.json",
+    "governance-observed.json",
+    "failure-notes.json",
+    "stdio-parser.json",
+    "C-tests-first-default-temp.log",
+    "D-tests-first-default-temp.log"
+  ]
+}

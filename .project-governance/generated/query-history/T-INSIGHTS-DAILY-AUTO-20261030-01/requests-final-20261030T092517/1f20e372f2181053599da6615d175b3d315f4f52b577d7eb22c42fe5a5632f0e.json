@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "完成README日报入口、安装skill和每日00:30同会话调度说明、真实测试及生产隔离阻塞记录；按用户完整原文细化覆盖，保留已发生失败和修复，不扩展功能",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "380ec66f1abfcca788168514369c717a0a8a0d68c7a11e1123475678cef6615a",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

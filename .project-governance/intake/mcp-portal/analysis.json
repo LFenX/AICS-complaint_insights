@@ -1,0 +1,206 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "内网访客可阅读全部说明和下载不含秘密的材料；无管理员会话不能发放、撤销或列出身份",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "旧3029无登录，MCP严格HTTPS有11个只读工具",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "生产采集关闭，已发布本地副本可查询",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "保持所有者发放，访客不得匿名签发；秘密不出.secrets",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "C2",
+      "statement": "不连接生产、不采集、不管理3030、其它项目或历史任务",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "当前CA证书覆盖内网IP，可复用3029TLS",
+      "validation": "校验证书SAN、有效期并严格CA验证真实HTTPS"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "接收人另一台电脑路由与CA导入未实测",
+      "owner": "接收人",
+      "resolution_condition": "接收人按下载包执行验证",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "可达性和发放权限分离",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "协议、客户端与来源契约一致",
+      "derived_from": [
+        "F1",
+        "F2",
+        "C2"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "公共说明与独立管理员会话支持分享而不放开签发",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "由真实schema生成参数参考、固定来源例子并通过原生请求验证",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "现有3029升级为HTTPS说明门户与唯一管理员登录",
+      "status": "Selected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "需要独立管理员凭据和CA初始化"
+      ]
+    },
+    {
+      "id": "O0",
+      "description": "保留localhost令牌页",
+      "status": "Rejected",
+      "derived_from": [
+        "P1"
+      ],
+      "tradeoffs": [
+        "无法分享一个内网接入说明入口"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "新增统一身份SSO/OAuth授权服务器",
+      "status": "Rejected",
+      "derived_from": [
+        "P1"
+      ],
+      "tradeoffs": [
+        "组织身份平台和OAuth注册均未授权，不是现有Bearer接入的必要依赖"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "分享入口并保持所有者发放边界",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "严格TLS、真实schema和正确选源；本地副本隔离",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "先保存权限、模块、动作风险、审计、禁用原因与契约的PRD和技术设计",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "实现隔离的管理员认证和安全发放，修复令牌文件与并发、撤销边界",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "按实际schema构建可读协议工具文档、选源示例和无凭据客户端包",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "运行权限与契约测试、部署本项目3029/3037并严格TLS验证11工具及材料",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "按原话逐条保存验证、交接和工程结果，记录Pending与未验项",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+  ]
+}

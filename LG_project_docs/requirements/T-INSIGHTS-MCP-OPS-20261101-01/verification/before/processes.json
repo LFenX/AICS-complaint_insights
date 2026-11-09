@@ -1,0 +1,27 @@
+{
+  "mcp": {
+    "config": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+    "started_at": "2026-10-30T07:46:15.0693653+08:00",
+    "process_id": 252968
+  },
+  "watch": {
+    "config": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+    "started_at": "2026-10-29T21:53:40.3620882+08:00",
+    "process_id": 273268
+  },
+  "serve": {
+    "config": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+    "started_at": "2026-10-29T21:50:49.0913954+08:00",
+    "process_id": 283052
+  },
+  "board": {
+    "process_id": 162956,
+    "config": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\local.json",
+    "started_at": "2026-10-30T18:18:07.0583484+00:00"
+  },
+  "desk": {
+    "config": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+    "process_id": 276068,
+    "started_at": "2026-10-30T06:11:22.3353245+08:00"
+  }
+}

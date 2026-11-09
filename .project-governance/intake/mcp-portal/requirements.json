@@ -1,0 +1,148 @@
+[
+  {
+    "id": "R-01",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "提供可交付其他人的详细MCP介绍",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-02",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "按MCP原生协议实现说明与可运行程序",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-03",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "优化并复核令牌发放服务",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-04",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "内网开放令牌服务入口",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-05",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "将MCP使用协议、介绍和接入方法放在同一服务",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-06",
+    "source": "request_snapshot",
+    "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+    "reading": "一个内网链接供接收人阅读、下载与接入",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-07",
+    "source": "request_snapshot",
+    "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+    "reading": "本会话仅处理MCP，保留3030和主会话日报工作",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": "R-08",
+    "source": "request_snapshot",
+    "quote": "继续",
+    "reading": "继续已授权的MCP范围；不增加发放管理员",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      4
+    ]
+  },
+  {
+    "id": "R-09",
+    "source": "clarification:r1.e1",
+    "quote": "继续",
+    "reading": "延续既有所有者发放规则，不创建额外管理员",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      4
+    ]
+  }
+]

@@ -1,0 +1,183 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "合法JSON字符串原样保留，尤其null不能变为None，日期等合法转换和严格Schema负向边界均保持",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "第二轮独立确认合法字符串重解释、凭据ACL时序及失败残留、非法信封错误码三项反例",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "MCP2.3公开tools构造与元数据接口以及Windows空文件ACL保护机制已核实",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "原权限、保护路径、生产关闭与待人工门禁保持；仅同范围返修",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "assumptions": [],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "异机路由/CA未实测",
+      "owner": "接收人",
+      "resolution_condition": "接收人按公开指南验证",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "类型合格输入的值不能被隐式重解释；秘密首字节写出前访问控制必须成立",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "协议错误与执行错误层次必须一致，正常SDK流程保持",
+      "derived_from": [
+        "F2",
+        "C1"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "自定义工具元数据保留解码值；空文件先限权且失败清理",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "只规范化SDK2.3特定传输信封错误，不重写MCP路由",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "扩展已核实SDK工具元数据、修复配置原子创建和特定传输错误",
+      "status": "Selected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "依赖锁定MCP2.3，升级须回归"
+      ]
+    },
+    {
+      "id": "O0",
+      "description": "保持当前版本",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "三项真实问题保留"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "替换完整协议与客户端实现",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "扩大改动并损失现有验证的兼容性"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "三个新反例和首轮四项均通过且合法路径不回归",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "没有秘密泄漏、范围扩大或虚构批准",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "根据第二轮独立证据保存范围、最小修复设计和原文授权",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "禁用SDK参数预解析，先保护客户端配置再写入，规范化传输信封错误并回归所有发现",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "仅部署desk/mcp并构建真实Schema材料，完整测试与内网真实链路复验",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "保存交付与原话逐条证据，完成后续独立完整审查并按实际结果收口",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md"
+  ]
+}

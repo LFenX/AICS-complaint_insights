@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "备份并更新已授权本机MCP工程实例五个源码静态文件与维护文档，仅重启mcp3037，严格CA验证和保护进程核对；不改变权限或生产服务",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "b2b159aec8e755c17830f2f7575a2465752a7923697e70370317190a85bea6d8",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05"
+}

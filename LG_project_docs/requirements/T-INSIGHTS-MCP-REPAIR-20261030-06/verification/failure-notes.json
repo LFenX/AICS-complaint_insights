@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "symptom": "execution-ready预检先于get_context，报告缺少检索计划/输出",
+      "effect": "无代码或服务副作用",
+      "correction": "完整消费S4上下文后再次execution-ready通过"
+    },
+    {
+      "symptom": "开始后补记前次失败误用旧AttemptID，账本拒绝",
+      "effect": "该事件未写，产品无副作用",
+      "correction": "在当前Attempt保留实际失败并以新Attempt retry推进，未改删账本"
+    }
+  ],
+  "product_regressions_failed": false,
+  "in_scope_authorization_unchanged": true
+}

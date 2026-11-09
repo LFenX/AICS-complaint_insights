@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-FOUNDATION-20261029-01-SCOPE-RECON",
+  "view_kind": "scope-reconciliation",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T10:18:02.800038Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "e8704fe7765018188e113e45306f495ac97f79c2a1933d295b0652332cf68c62",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/before.json"
+  ],
+  "content_ref": ".project-governance/generated/scope-reconciliation/T-INSIGHTS-FOUNDATION-20261029-01.md",
+  "integrity_status": "Complete"
+}

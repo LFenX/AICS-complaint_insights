@@ -1,0 +1,199 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-REPAIR-2",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T20:14:54.872018Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T20:14:54.222387+00:00",
+    "file_manifest": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/delivery-files.json",
+    "file_manifest_sha256": "ca60708aadc03b2ffb55a4203bb6a9f7529d92aeae4ccb4f56f706161950279b"
+  },
+  "established_facts": [
+    "七项确认问题已修复复验，新版本已保存；正式人类门禁Pending，后续独立完整审查另留实际证据"
+  ],
+  "actual_changes": [
+    "保留合法字符串原值；客户端先限权后写且失败清理；非法信封错误-32600且不回显；同步指南/实际Schema/无凭据包"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "36项单测与契约测试通过",
+      "evidence_refs": [
+        ".runtime/mcp-portal-repair2-tests-A01.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "真实严格CA15检查、11工具14表22页和管理员签发撤销通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "Windows真实ACL时序、写入失败和分页恢复对照通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/client-acl-results.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "正式人类门禁Pending",
+      "reason": "independent-review与security-privacy-review没有真实通过决定",
+      "impact": "工程已验证，正式Gate不可标为通过",
+      "owner": "用户或有权审查者",
+      "reentry_condition": "对当前交付给出真实可核对决定"
+    },
+    {
+      "summary": "异机路径未实测",
+      "reason": "另一内网电脑路由和CA安装未测试",
+      "impact": "仅本机经内网IP严格CA已验证",
+      "owner": "接收人",
+      "reentry_condition": "另一电脑按公开指南复验"
+    },
+    {
+      "summary": "修复版后续审查进行中及机器登记受限",
+      "reason": "父Deferred使Offer登记拒绝；两轮共七项均修复，当前新交付的独立完整后续轮次待完成",
+      "impact": "不能宣称官方审查Passed或两轮收敛",
+      "owner": "当前任务执行者",
+      "reentry_condition": "完成同版本两轮真实完整审查；官方登记仍需合法父工程前置状态，不绕过门禁"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:05:05.817097Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T20:05:05.817097Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:05:05.817097Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "PRD",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-prd",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/prd/portal.md",
+      "reason": "返修需求设计验证与交接，原文覆盖为派生视图",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T20:14:54.222387+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "TDS",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-tds",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/design/repair.md",
+      "reason": "返修需求设计验证与交接，原文覆盖为派生视图",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T20:14:54.222387+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "VER",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-ver",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+      "reason": "返修需求设计验证与交接，原文覆盖为派生视图",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T20:14:54.222387+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": "RCR",
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-rcr",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+      "reason": "返修需求设计验证与交接，原文覆盖为派生视图",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T20:14:54.222387+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Generated"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "RLC",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-02-rlc",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "reason": "返修需求设计验证与交接，原文覆盖为派生视图",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T20:14:54.222387+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "f703dd1db0952f51d510c42763b9566e7229e77b4763135c678fcfa9b621050c",
+    "scope_sha256": "6a675370412cbed2dfda832e11fdb324b7f926abeae73fffa595be6fda615d60",
+    "delivery_sha256": "44b769de039f43f51befd7dd3425760a4edef27d8a72cae71ab6925045de6842",
+    "report_sha256": "a8fad819d7b7e865dede8a94be38eeb0eb4fcf7ecd0423e34959526c7e9bb632"
+  }
+}

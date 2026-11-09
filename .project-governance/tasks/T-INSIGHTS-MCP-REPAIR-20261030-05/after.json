@@ -1,0 +1,166 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-REPAIR-5",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T23:14:35.915100Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T23:13:58.941045+00:00",
+    "reviewed_git_root": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP",
+    "reviewed_git_commit": "88ef76cc582c2cb36eeb51febace6ada57afef00",
+    "file_manifest": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/delivery-files.json",
+    "file_manifest_sha256": "b36824bbdd06b3098eaeaa1c397bb6cec072db26bbd5f90a5ffab396e908842d"
+  },
+  "established_facts": [
+    "3个第7轮反例已局部修复复验，工程结果和真实证据保存，人工Gate与用户验收Pending",
+    "3030/3036/15433及3029监听PID未变；watch停止、生产读取false、没有数据库连接或管理员重置"
+  ],
+  "actual_changes": [
+    "共同工具层每身份滑动窗口限频，HTTP严格可配置、stdio默认；耗尽返回可操作错误且不访问后端",
+    "修复长身份alert换行，公开指南补限频并更新维护交接当前证据；同步7个源码/静态/文档/测试文件，仅重启mcp",
+    "原动作名称查询误用、CRLF预检失败与生成路径漏列均保留失败事实及官方路径修订，不隐瞒副作用"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "Git源码和原运行项目均49项回归通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/deployed-tests.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "17组严格CA真实HTTPS覆盖11工具14表及管理员完整链路",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "360px长身份签发/撤销和错误无溢出，实际服务配额及CSS核对",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/browser-fixed.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "正式人类门禁Pending",
+      "reason": "正式独立复核/安全隐私人类Gate与用户验收Pending，不能由Agent批准",
+      "owner": "当前任务用户",
+      "impact": "工程验证不等于正式Gate批准",
+      "reentry_condition": "有权人对当前对象给出真实决定"
+    },
+    {
+      "summary": "异机路径未实测",
+      "reason": "另一内网电脑的路由及CA未实测，已完成本机真实内网地址严格CA复验",
+      "owner": "当前任务用户",
+      "impact": "不能声明另一电脑的环境已经验证",
+      "reentry_condition": "接收人按公开指南在另一电脑复验"
+    },
+    {
+      "summary": "已授权后续审查待开展",
+      "reason": "用户已明确重启；新版本连续两轮完整独立审查须在本工程保存后开展。父Deferred导致官方Offer登记拒绝限制保留",
+      "owner": "根执行Agent",
+      "impact": "尚不能宣称两轮收敛或官方Passed",
+      "reentry_condition": "同一保存版本完成两轮独立完整无问题审查；官方登记仍遵守原机器限制"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/coverage.json",
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/delivery-files.json"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-05-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-05/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T22:59:17.997280Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-05-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-05/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T22:59:17.997280Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-05-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-05/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T22:59:17.997280Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "VER",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-05-ver",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/results.json",
+      "reason": "当前版本实际验证与完整原文对照",
+      "rule_reference": "C05/C09/C12",
+      "owner": "根执行Agent",
+      "source_snapshot": "2026-10-29T23:13:58.941045+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": "RCR",
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-05-rcr",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/coverage.json",
+      "reason": "当前版本实际验证与完整原文对照",
+      "rule_reference": "C05/C09/C12",
+      "owner": "根执行Agent",
+      "source_snapshot": "2026-10-29T23:13:58.941045+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Generated"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "96494814dd2cc987670f3530560bd3fe3b474d1e5ea7cb37b16f3e7205e18a4e",
+    "scope_sha256": "58a9783bd7e933fbfcfc0e30733232ddac328501ec5c426de7989bf916065634",
+    "delivery_sha256": "0c24db5c763c1132acf6629031af64f4a7c8c8e83cd106ec195de85d6b78c0c7",
+    "report_sha256": "4902b2547cd81fe717ccc27c3768f7e07ba2aaac6becf8aa4602e795d7f63ff4"
+  }
+}

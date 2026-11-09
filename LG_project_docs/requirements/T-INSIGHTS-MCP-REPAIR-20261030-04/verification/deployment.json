@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-10-29T22:11:01.937405+00:00",
+  "local_engineering_services": [
+    "desk",
+    "mcp"
+  ],
+  "protected_services_untouched": [
+    3030,
+    3036,
+    15433
+  ],
+  "production_read": false,
+  "backup": "D:\\LFEN_project\\dev_project\\complaint-insights\\.runtime\\mcp-portal-repair4-backup",
+  "files": [
+    {
+      "path": "insights/token_desk.py",
+      "before": "bc6b86a912942d760cc7e7750edb44a4de9d4b23f059bffd67bfe2eee12bd3b7",
+      "after": "2b8c00ca3c6f381c235de147f3f7736bbacd07adef350a65417ec668c1b5b650"
+    },
+    {
+      "path": "insights/mcp_http.py",
+      "before": "4b24541547c14169e6f53aceaa54a64a4446122413bcf9d2a20e3fc942d99c16",
+      "after": "4d2fabbefea595ff271af87781aa8a1252cfc3eab3e1cdce3f8bd39dc2d9e5c8"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "before": "4fb684606b8157b961e4afb690398607132a148e2ed30a4d2a2e86aabe1c6a5a",
+      "after": "8bbd972ee8387472f851b0d24b4a0c5358a95a3bed97f806fd93716f30a34bf9"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "before": "4cc316bffa7248136500b2a1af8bafc9cfc909ac9b701cfe76918f6f57daafdf",
+      "after": "7ddf7873748d746129494b11109b0c649d05ca2a0290aa8546fc05e61a02447f"
+    },
+    {
+      "path": "assets/token-desk.js",
+      "before": "0dc1f11f0306b3c09915ef68cb45331027e69c02dffad95ed1096c00c04d41c1",
+      "after": "307461efb828e4a9a3d947dfa537b3746fdf0b8670ad5a22c14133d23ddc1262"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "before": "83c558f2ae54a5481f740843c7008f290b8e10b990ca51e071704663ce6e03b0",
+      "after": "d2977b9772aa6a224b8ecad8a33561afd3fb15180b3b9e21a45f2824e9bcfce7"
+    }
+  ],
+  "protected_listener_pids_unchanged": {
+    "3030": true,
+    "3036": true,
+    "15433": true
+  },
+  "production_connected": false,
+  "watch_started": false
+}

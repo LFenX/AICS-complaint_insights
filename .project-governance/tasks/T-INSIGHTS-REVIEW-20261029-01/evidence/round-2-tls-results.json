@@ -1,0 +1,35 @@
+{
+  "started_at": "2026-10-29T11:17:52.422119+00:00",
+  "checks": [
+    {
+      "name": "httpx2-default-verification",
+      "peer_response_received": false,
+      "exception_types": [
+        "ConnectError",
+        "ConnectError",
+        "SSLCertVerificationError"
+      ],
+      "passed": true
+    },
+    {
+      "name": "python-default-context",
+      "peer_response_received": false,
+      "exception_types": [
+        "ConnectError",
+        "ConnectError",
+        "SSLCertVerificationError"
+      ],
+      "passed": true
+    },
+    {
+      "name": "delivered-ca-context",
+      "peer_response_received": true,
+      "http_status": 401,
+      "passed": true
+    }
+  ],
+  "contains_credentials": false,
+  "completed_at": "2026-10-29T11:17:52.632393+00:00",
+  "all_passed": true,
+  "resolution": "初版以异常英文文本包含certificate为判据，漏识别底层SSLCertVerificationError；系统CA已信任是假设，后续查询未证实，现撤销。类型链证明默认验证实际拒绝，交付CA验证实际通过。"
+}

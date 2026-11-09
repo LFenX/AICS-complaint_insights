@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存75项测试与旧版归档、原子语义修订、真实页面核验完成的稳定返修版本，归属原父审查，不预填两轮通过或用户验收",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "28c768840e9276cf70550051df6d1bf98f96e42658689ad63f099b8f7d7d833d",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03"
+}

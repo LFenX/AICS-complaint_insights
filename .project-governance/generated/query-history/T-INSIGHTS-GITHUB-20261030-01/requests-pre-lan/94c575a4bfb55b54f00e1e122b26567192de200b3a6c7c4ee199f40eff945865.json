@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "依据用户新指令修订范围和授权，开放3030看板内网访问，保留生产隔离与GitHub源码交付要求",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "5acf4f5dfdb2275af5803b08dc52c8fa1ea25feacb19a7ee80281f64a40cfd61",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

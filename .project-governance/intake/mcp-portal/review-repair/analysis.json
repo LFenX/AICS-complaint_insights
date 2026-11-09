@@ -1,0 +1,183 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "同一匿名来源重复刷新或清除Cookie不能耗尽另一来源登录页；限制有期限且不扩大登录权限",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "第一轮四项反例在隔离夹具确认，当前运行门户及11工具可用",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "SDK2.3预解析JSON字符串，Pydantic字段strict不足以阻止原始错误类型",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "唯一所有者、生产关闭与既有保护范围保持，原人工门禁Pending",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "assumptions": [],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "异机路由/CA未实测",
+      "owner": "接收人",
+      "resolution_condition": "接收人按公开指南验证",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "未认证单来源不能独占全局登录资源，授权撤销不依赖展示元数据",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "执行前输入与错误分层必须符合已发布协议契约",
+      "derived_from": [
+        "F2",
+        "C1"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "按真实peer限额、复用Cookie并保留故障撤销界面",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "公开SDK扩展点在预解析之前校验JSON Schema并区分未知工具",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "保留现有接口并修正四条边界",
+      "status": "Selected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "必须重建Schema和客户端包并回归"
+      ]
+    },
+    {
+      "id": "O0",
+      "description": "保持当前实现",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "四条可复现问题继续存在"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "替换登录和MCP框架",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "超出修复所需范围并增加兼容风险"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "四条反例拒绝且合法链路通过",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "保持范围、真实证据和人工门禁状态",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "保存四项反例、原文与授权，推导最小修复方案",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "实施按来源分配挑战、元数据故障可撤销与Schema/协议错误边界并回归",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "安全重启desk/mcp、捕获实际Schema、重建公共材料并验证真实使用链路",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "保存返修版本和逐条覆盖，再进行独立完整审查直至满足实际停止条件",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+  ]
+}

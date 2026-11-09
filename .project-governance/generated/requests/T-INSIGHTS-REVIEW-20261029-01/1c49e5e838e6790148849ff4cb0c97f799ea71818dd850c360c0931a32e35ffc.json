@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "承接同一份已验证本地/MCP工程，保留旧封存结果，核对59个文件摘要及工程证据，登记用户真实安全门禁，随后开展已同意的后置多轮审查；不改业务、不操作生产",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "5fc2525e5c4c55c6ebb9e4c7418d85fd4b0f0059fbf518d83771f0ccb024a25b",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

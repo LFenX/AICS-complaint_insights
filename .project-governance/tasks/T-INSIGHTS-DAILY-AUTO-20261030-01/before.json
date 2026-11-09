@@ -1,0 +1,1867 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+  "ordinal": 16,
+  "revision": 4,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-30T08:35:53.812391Z",
+  "frozen_at": "2026-10-30T08:36:53.630161Z",
+  "objective": "按日期查看日报并固化高质量日报skill，每日00:30在本会话生成前一天日报",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+    "captured_at": "2026-10-30T08:35:53.729027Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "你的需求已经描述得非常清楚，并且和项目现状一致，本次跳过向你提问的阶段。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+    ],
+    "rounds": [],
+    "basis": "既有副本、源码、原文和用户纠偏确定唯一实现边界；未扩大访问权限或生产操作",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "日期可更改且默认北京时间今天",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "默认URL与日期框切换10月29日",
+            "expected": "默认今天；选择历史日期生效",
+            "actual": "实际默认2026-10-30，切换后634封；前进后退有效",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "未生成日期整页显示日报未生成；已生成日期保留完整报告，不借用旧数据",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json"
+      ],
+      "acceptance_refs": [
+        0,
+        2
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [
+          "所选日期存在已生成报告"
+        ],
+        "cases": [
+          {
+            "branch": "Met",
+            "condition": 0,
+            "input": "2026-10-29",
+            "expected": "634封真实报告",
+            "actual": "634封、三核心指标、排行与原信正常",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "branch": "NotMet",
+            "condition": 0,
+            "input": "2026-10-30及2026-10-28",
+            "expected": "日报未生成且无旧表或图",
+            "actual": "未生成标题、0旧行、0图；日期入口保留",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "主题风格与颜色保持既有白底和最终布局",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "历史报告和今天缺报页",
+            "expected": "白底、原配色、顶部三指标及底部三指标两图",
+            "actual": "白底rgb(255,255,255)，七模块顺序与9列表保持；截图保存",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "将先前全部日报生成要求与用户修订汇总为可执行skill",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+      ],
+      "acceptance_refs": [
+        3,
+        4
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "用户原始source.md、本会话历次纠偏、最终PRD与报告",
+            "expected": "标准、来源、审阅契约、运行方法、基准与脚本完整",
+            "actual": "10文件skill覆盖逐封、粒度、残余、UID、邮箱、译文、附件、ZIP、统计、布局和日期；来源映射已保存",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "安装并装载skill，其他执行者不依赖聊天记忆即可按需续接",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+      ],
+      "acceptance_refs": [
+        5
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "已安装目录与脚本实际调用",
+            "expected": "可发现且脚本运行正确，完整文本可续接",
+            "actual": "quick_validate通过；本Run完整读取入口；安装脚本完整遍历634条索引及30714字符最长正文，历史报告校验通过",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-006",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "每天凌晨00:30生成前一天完整自然日日报；采用用户修正后的时间",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json",
+        ".runtime/daily-automation-20261030/automation.json"
+      ],
+      "acceptance_refs": [
+        6
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "automation_update创建/回读及本地配置",
+            "expected": "ACTIVE每天00:30，前一天，非01:00",
+            "actual": "automation-2为ACTIVE daily 00:30，Windows UTC+08与Asia/Shanghai一致；首次定时尚未到，不声称已自动生成",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              ".runtime/daily-automation-20261030/automation.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-007",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "生成质量对齐10月29日最终版，逐封审阅与证据校验不能降级",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+        ".runtime/daily-automation-20261030/tests-A02.log",
+        ".runtime/daily-automation-20261030/local-source-status.json"
+      ],
+      "acceptance_refs": [
+        3,
+        4,
+        7
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [
+          "本地副本健康且完整覆盖日终、逐封和证据满足发布条件"
+        ],
+        "cases": [
+          {
+            "branch": "Met",
+            "condition": 0,
+            "input": "合成完整已闭日packet、真实10月29日基准及全部附件/ZIP",
+            "expected": "可组装校验并原子发布、同版幂等；历史基准不变",
+            "actual": "合成数据build/publish/幂等测试通过；634/405/35真实源与字节校验通过，历史SHA不变",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+              ".runtime/daily-automation-20261030/tests-A02.log",
+              ".runtime/daily-automation-20261030/local-source-status.json"
+            ]
+          },
+          {
+            "branch": "NotMet",
+            "condition": 0,
+            "input": "水位不足、漏审、错UID/引用、缺质量复核、当前日与当前DEGRADED副本",
+            "expected": "阻断发布而非伪造日报",
+            "actual": "反例测试通过；真实当前副本前置检查LOCAL_REPLICA_NOT_READY；当日CLI返回BUSINESS_DAY_NOT_FINISHED，无新日报发布",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+              ".runtime/daily-automation-20261030/tests-A02.log",
+              ".runtime/daily-automation-20261030/local-source-status.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-008",
+      "source": "request_snapshot",
+      "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "reading": "定时任务接续当前会话，并将最终标准固化以抵抗记忆压缩",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json",
+        ".runtime/daily-automation-20261030/browser-verification.json",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+        ".runtime/daily-automation-20261030/automation.json"
+      ],
+      "acceptance_refs": [
+        6,
+        7
+      ],
+      "review": {
+        "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+        "conditions": [],
+        "cases": [
+          {
+            "branch": "Unconditional",
+            "condition": null,
+            "input": "自动化target_thread_id与安装skill引用",
+            "expected": "绑定本会话，不新开独立日报会话",
+            "actual": "target_thread_id=01a1866c-6ec4-7f83-9aa8-f75c67aebcf8；prompt明确加载SKILL与两份必要参考",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/verification.json",
+              ".runtime/daily-automation-20261030/browser-verification.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+              ".runtime/daily-automation-20261030/automation.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-DAILY-AUTO-PROCEED",
+      "kind": "Proceed",
+      "presented": "按用户本轮原文完成日期、未生成状态、最终工作流skill安装及每日北京时间00:30本会话自动生成前一天日报。",
+      "response": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+      "decided_by": "user",
+      "decided_at": "2026-10-30T08:35:53.596121+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T08:35:53.775124Z"
+  },
+  "scope": {
+    "in_scope": [
+      "3030日报按日期读取与空状态",
+      "日期化本地日报生成与质量校验",
+      "汇总安装客诉日报skill和每日00:30本会话自动化"
+    ],
+    "out_of_scope": [
+      "生产连接与重启、同步watch、MCP令牌服务、GitHub推送、真实新日报伪造与历史报告重写"
+    ],
+    "allowed_paths": [
+      "insights/daily_board.py",
+      "insights/daily_generation.py",
+      "insights/capabilities.py",
+      "assets/daily-board.*",
+      "tests/test_daily_dates.py",
+      "tests/test_daily_generation.py",
+      "README.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+      "LG_project_docs/README.md",
+      "update_log/2026-10-30-daily-automation.md",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+      ".project-governance/generated/**",
+      ".project-governance/README.md",
+      ".runtime/daily-automation-20261030/**",
+      ".runtime/processes.json",
+      ".runtime/board*.log",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+    ],
+    "forbidden_actions": [
+      "打开生产读取、改源数据或邮件状态、修改其他服务、将隐私数据写入skill或GitHub"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate",
+      "external-effect"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "3030日报按日期读取与空状态",
+          "日期化本地日报生成与质量校验",
+          "汇总安装客诉日报skill和每日00:30本会话自动化"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+        ],
+        "verified_at": "2026-10-30T08:35:53.596121+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "北京时间今天默认选中；日期可改；未生成整页显示日报未生成且可切换历史；无旧数据回填和异步串日",
+      "保持白底配色、全宽、顶部三核心指标、排行、原信、底部三补充指标及两图；历史数据与交互不退化",
+      "日期API、详情、附件、预览、ZIP按所选日期隔离；非法日期拒绝；沿用内网身份、权限、只读和审计",
+      "skill完整保存逐封语义归类、粒度、残余复核、UID会话证据、收发邮箱、翻译、附件、ZIP与最新布局标准",
+      "通用日期化流程可冻结本地副本、逐封审阅、校验并原子发布；缺日终覆盖、漏审、缺摘要或证据错绑不能发布",
+      "skill安装到用户skills目录且通过元数据和执行验证；无秘密或真实邮件复制进skill",
+      "每天北京时间00:30的本会话自动化已创建并回读，调用安装skill生成前一天；重复运行安全且不接通生产",
+      "按当前原话及历史纠偏逐项核对，保存实际测试、浏览器、安装及自动化证据；用户验收不冒填"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "保存原文、最终标准和PRD，固定历史基准与隔离边界",
+      "完成日期目录读取、前端选择和未生成状态及日期隔离测试",
+      "编制可复用生成入口与skill，验证10月29日基准和失效场景",
+      "只重启3030核验实际浏览器与内网接口，安装skill并创建回读本会话自动化",
+      "逐条核验原文并保存工程结果、交接说明和日志"
+    ],
+    "verification": [
+      "北京时间今天默认选中；日期可改；未生成整页显示日报未生成且可切换历史；无旧数据回填和异步串日",
+      "保持白底配色、全宽、顶部三核心指标、排行、原信、底部三补充指标及两图；历史数据与交互不退化",
+      "日期API、详情、附件、预览、ZIP按所选日期隔离；非法日期拒绝；沿用内网身份、权限、只读和审计",
+      "skill完整保存逐封语义归类、粒度、残余复核、UID会话证据、收发邮箱、翻译、附件、ZIP与最新布局标准",
+      "通用日期化流程可冻结本地副本、逐封审阅、校验并原子发布；缺日终覆盖、漏审、缺摘要或证据错绑不能发布",
+      "skill安装到用户skills目录且通过元数据和执行验证；无秘密或真实邮件复制进skill",
+      "每天北京时间00:30的本会话自动化已创建并回读，调用安装skill生成前一天；重复运行安全且不接通生产",
+      "按当前原话及历史纠偏逐项核对，保存实际测试、浏览器、安装及自动化证据；用户验收不冒填"
+    ],
+    "rollback": [
+      "恢复本轮业务备份并只重启board；停用本轮自动化并撤回本轮新增skill；保留全部历史报告和生产隔离"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "用户按日期查阅真实日报，机器按最终标准每天生成前一天的可追溯报告",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "当前报告及历史生成器固定在10月29日；既有最终证据与读取模型可复用",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "默认今天、缺失不替代、原风格、00:30前一天；生产隔离和内网边界保持",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "日期是数据与文件的同一命名空间，发布以逐封证据和质量校验为准",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "生成规则必须可脱离聊天记忆执行；调度时区与报告业务日期必须一致",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "日期目录和原子发布避免串日及未完成内容；skill保存不依赖聊天压缩的真实标准",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "维持固定10月29日报",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "无需修改",
+          "不满足日期和定时要求"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "复用现有页面与读取模型，补日期目录、生成器、skill和本会话heartbeat",
+        "status": "Selected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "局部变更并保留证据",
+          "需要通用生成与校验契约"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "为每日复制一套静态页面并新建独立定时会话",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "每日页面相互独立",
+          "样式易漂移且分散会话上下文"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "北京时间今天默认选中；日期可改；未生成整页显示日报未生成且可切换历史；无旧数据回填和异步串日",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "保持白底配色、全宽、顶部三核心指标、排行、原信、底部三补充指标及两图；历史数据与交互不退化",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "日期API、详情、附件、预览、ZIP按所选日期隔离；非法日期拒绝；沿用内网身份、权限、只读和审计",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "skill完整保存逐封语义归类、粒度、残余复核、UID会话证据、收发邮箱、翻译、附件、ZIP与最新布局标准",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K5",
+        "statement": "通用日期化流程可冻结本地副本、逐封审阅、校验并原子发布；缺日终覆盖、漏审、缺摘要或证据错绑不能发布",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K6",
+        "statement": "skill安装到用户skills目录且通过元数据和执行验证；无秘密或真实邮件复制进skill",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K7",
+        "statement": "每天北京时间00:30的本会话自动化已创建并回读，调用安装skill生成前一天；重复运行安全且不接通生产",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K8",
+        "statement": "按当前原话及历史纠偏逐项核对，保存实际测试、浏览器、安装及自动化证据；用户验收不冒填",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "保存原文、最终标准和PRD，固定历史基准与隔离边界",
+        "derived_from": [
+          "P1"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7",
+          "K8"
+        ]
+      },
+      {
+        "plan_step": "完成日期目录读取、前端选择和未生成状态及日期隔离测试",
+        "derived_from": [
+          "P1"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7",
+          "K8"
+        ]
+      },
+      {
+        "plan_step": "编制可复用生成入口与skill，验证10月29日基准和失效场景",
+        "derived_from": [
+          "P1"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7",
+          "K8"
+        ]
+      },
+      {
+        "plan_step": "只重启3030核验实际浏览器与内网接口，安装skill并创建回读本会话自动化",
+        "derived_from": [
+          "P1"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7",
+          "K8"
+        ]
+      },
+      {
+        "plan_step": "逐条核验原文并保存工程结果、交接说明和日志",
+        "derived_from": [
+          "P1"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7",
+          "K8"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "北京时间今天默认选中；日期可改；未生成整页显示日报未生成且可切换历史；无旧数据回填和异步串日",
+      "保持白底配色、全宽、顶部三核心指标、排行、原信、底部三补充指标及两图；历史数据与交互不退化",
+      "日期API、详情、附件、预览、ZIP按所选日期隔离；非法日期拒绝；沿用内网身份、权限、只读和审计",
+      "skill完整保存逐封语义归类、粒度、残余复核、UID会话证据、收发邮箱、翻译、附件、ZIP与最新布局标准",
+      "通用日期化流程可冻结本地副本、逐封审阅、校验并原子发布；缺日终覆盖、漏审、缺摘要或证据错绑不能发布",
+      "skill安装到用户skills目录且通过元数据和执行验证；无秘密或真实邮件复制进skill",
+      "每天北京时间00:30的本会话自动化已创建并回读，调用安装skill生成前一天；重复运行安全且不接通生产",
+      "按当前原话及历史纠偏逐项核对，保存实际测试、浏览器、安装及自动化证据；用户验收不冒填"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "3030日报按日期读取与空状态",
+        "日期化本地日报生成与质量校验",
+        "汇总安装客诉日报skill和每日00:30本会话自动化"
+      ]
+    },
+    "change_surfaces": [
+      "UI/UX",
+      "API/Integration",
+      "AI/Data Governance",
+      "Agent/Collaboration",
+      "Deploy/Operations"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+      ],
+      "E04": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+      ],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "Yes",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "3030日报按日期读取与空状态",
+            "日期化本地日报生成与质量校验",
+            "汇总安装客诉日报skill和每日00:30本会话自动化"
+          ]
+        },
+        "change_surfaces": [
+          "UI/UX",
+          "API/Integration",
+          "AI/Data Governance",
+          "Agent/Collaboration",
+          "Deploy/Operations"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Revise"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "3030日报按日期读取与空状态",
+            "日期化本地日报生成与质量校验",
+            "汇总安装客诉日报skill和每日00:30本会话自动化"
+          ]
+        },
+        "change_surfaces": [
+          "UI/UX",
+          "API/Integration",
+          "AI/Data Governance",
+          "Agent/Collaboration",
+          "Deploy/Operations"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Revise"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "技能承载正式可复用知识，按已申报事实启用E04，不改变用户范围与授权",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+      "changed_at": "2026-10-30T08:36:18.194224Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "scope.allowed_paths",
+      "old_value": [
+        "insights/daily_board.py",
+        "insights/daily_generation.py",
+        "insights/capabilities.py",
+        "assets/daily-board.*",
+        "tests/test_daily_dates.py",
+        "tests/test_daily_generation.py",
+        "README.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-daily-automation.md",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        ".runtime/processes.json",
+        ".runtime/board*.log",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/**"
+      ],
+      "new_value": [
+        "insights/daily_board.py",
+        "insights/daily_generation.py",
+        "insights/capabilities.py",
+        "assets/daily-board.*",
+        "tests/test_daily_dates.py",
+        "tests/test_daily_generation.py",
+        "README.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-daily-automation.md",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        ".runtime/processes.json",
+        ".runtime/board*.log",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+      ],
+      "reason": "按守卫支持的绝对目录前缀修正同一已授权安装目录，不扩大用户授权或修改范围",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/source.md",
+      "changed_at": "2026-10-30T08:53:03.739825Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "完整实现日期默认今天、缺报空状态、原风格、最终质量工作流skill安装和00:30生成前一天并接续本会话",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "日期可更改且默认北京时间今天",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "默认URL与日期框切换10月29日",
+                "expected": "默认今天；选择历史日期生效",
+                "actual": "实际默认2026-10-30，切换后634封；前进后退有效",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "未生成日期整页显示日报未生成；已生成日期保留完整报告，不借用旧数据",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json"
+          ],
+          "acceptance_refs": [
+            0,
+            2
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [
+              "所选日期存在已生成报告"
+            ],
+            "cases": [
+              {
+                "branch": "Met",
+                "condition": 0,
+                "input": "2026-10-29",
+                "expected": "634封真实报告",
+                "actual": "634封、三核心指标、排行与原信正常",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "branch": "NotMet",
+                "condition": 0,
+                "input": "2026-10-30及2026-10-28",
+                "expected": "日报未生成且无旧表或图",
+                "actual": "未生成标题、0旧行、0图；日期入口保留",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "主题风格与颜色保持既有白底和最终布局",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "历史报告和今天缺报页",
+                "expected": "白底、原配色、顶部三指标及底部三指标两图",
+                "actual": "白底rgb(255,255,255)，七模块顺序与9列表保持；截图保存",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "将先前全部日报生成要求与用户修订汇总为可执行skill",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+          ],
+          "acceptance_refs": [
+            3,
+            4
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "用户原始source.md、本会话历次纠偏、最终PRD与报告",
+                "expected": "标准、来源、审阅契约、运行方法、基准与脚本完整",
+                "actual": "10文件skill覆盖逐封、粒度、残余、UID、邮箱、译文、附件、ZIP、统计、布局和日期；来源映射已保存",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "安装并装载skill，其他执行者不依赖聊天记忆即可按需续接",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+          ],
+          "acceptance_refs": [
+            5
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "已安装目录与脚本实际调用",
+                "expected": "可发现且脚本运行正确，完整文本可续接",
+                "actual": "quick_validate通过；本Run完整读取入口；安装脚本完整遍历634条索引及30714字符最长正文，历史报告校验通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "每天凌晨00:30生成前一天完整自然日日报；采用用户修正后的时间",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json",
+            ".runtime/daily-automation-20261030/automation.json"
+          ],
+          "acceptance_refs": [
+            6
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "automation_update创建/回读及本地配置",
+                "expected": "ACTIVE每天00:30，前一天，非01:00",
+                "actual": "automation-2为ACTIVE daily 00:30，Windows UTC+08与Asia/Shanghai一致；首次定时尚未到，不声称已自动生成",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  ".runtime/daily-automation-20261030/automation.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-007",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "生成质量对齐10月29日最终版，逐封审阅与证据校验不能降级",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+            ".runtime/daily-automation-20261030/tests-A02.log",
+            ".runtime/daily-automation-20261030/local-source-status.json"
+          ],
+          "acceptance_refs": [
+            3,
+            4,
+            7
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [
+              "本地副本健康且完整覆盖日终、逐封和证据满足发布条件"
+            ],
+            "cases": [
+              {
+                "branch": "Met",
+                "condition": 0,
+                "input": "合成完整已闭日packet、真实10月29日基准及全部附件/ZIP",
+                "expected": "可组装校验并原子发布、同版幂等；历史基准不变",
+                "actual": "合成数据build/publish/幂等测试通过；634/405/35真实源与字节校验通过，历史SHA不变",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+                  ".runtime/daily-automation-20261030/tests-A02.log",
+                  ".runtime/daily-automation-20261030/local-source-status.json"
+                ]
+              },
+              {
+                "branch": "NotMet",
+                "condition": 0,
+                "input": "水位不足、漏审、错UID/引用、缺质量复核、当前日与当前DEGRADED副本",
+                "expected": "阻断发布而非伪造日报",
+                "actual": "反例测试通过；真实当前副本前置检查LOCAL_REPLICA_NOT_READY；当日CLI返回BUSINESS_DAY_NOT_FINISHED，无新日报发布",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+                  ".runtime/daily-automation-20261030/tests-A02.log",
+                  ".runtime/daily-automation-20261030/local-source-status.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-008",
+          "source": "request_snapshot",
+          "quote": "请让这个2026年10月29的课书日报这个日期可以被更改，然后默认展示今天的，默认展示今天的。但是今天的日报还没有制作嘛，所以我需要你做一件事情是什么呢？首先把这个日期选择器给它做好，然后默认展示今天。今天没有出来就显示整个页面显示日报未生成，这样好了。主题风格、颜色配色还是跟原来一致。然后把之前我们所有对日报生成的要求，以及你在上述执行过程中我修改的细节，到最终我们产生这版我满意的这个日报整个的这个工作流汇总成一个 skill，汇总成一个 skill。对，然后汇总成一个 skill 以后呢，把这个 skill装载起来。然后每天，就是每个每天的凌晨一点钟起一个这样的定时任务，每天的凌晨一点钟去将上一天的日报给生成，去将上一天的日报给生成。十二点半嘛，不要一点钟，十二点半嘛，好吧。对，最重要的是这个日报生成的质量嘛，所以说要像我们这个第一版十月二十九号靠齐嘛。然后所以说你这个 skill 的制作非常关键，skill 的制作极其关键，尤为关键。甚至后面看能不能把定时任务发送到本会话，因为本会话存了相关记忆，记忆可能全一点。看怎么处理吧，看你怎么处理。",
+          "reading": "定时任务接续当前会话，并将最终标准固化以抵抗记忆压缩",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/verification.json",
+            ".runtime/daily-automation-20261030/browser-verification.json",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+            ".runtime/daily-automation-20261030/automation.json"
+          ],
+          "acceptance_refs": [
+            6,
+            7
+          ],
+          "review": {
+            "source_sha256": "bff6b9cf37d9c5257446b862be067462563931dcf13a8920081e561549492c9e",
+            "conditions": [],
+            "cases": [
+              {
+                "branch": "Unconditional",
+                "condition": null,
+                "input": "自动化target_thread_id与安装skill引用",
+                "expected": "绑定本会话，不新开独立日报会话",
+                "actual": "target_thread_id=01a1866c-6ec4-7f83-9aa8-f75c67aebcf8；prompt明确加载SKILL与两份必要参考",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/verification.json",
+                  ".runtime/daily-automation-20261030/browser-verification.json",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md",
+                  ".runtime/daily-automation-20261030/automation.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "独立重读当前完整原文，逐项细化并绑定真实实现、条件正反对照及实际运行限制，不修改原话与用户决定",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/verification/coverage.md",
+      "changed_at": "2026-10-30T09:25:17.202098Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "1d40f80997b40d3ca0b4d8faa10bcc4ff0e7f68a3d1b8a2a1e2611930e0bbb58",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_system_effect=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

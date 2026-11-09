@@ -1,0 +1,800 @@
+{
+  "schemaVersion": "2.0",
+  "status": "CANDIDATE_NOT_APPROVED_NOT_PRODUCTION",
+  "snapshotDate": "2026-09-23",
+  "population": "5,543 封邮件 / 7,493 个问题点 / 2026-09-15 至 09-21 共 7 天上线窗口",
+  "derivation": "自下而上：先由向量聚类与逐条裁决得到 51 个三级语义 ID，再归纳出二级与一级。一二级不是先验设计。",
+  "faultTolerance": {
+    "principle": "容错来自结构，不来自更细的规则。",
+    "rules": [
+      {
+        "id": "FT-01",
+        "name": "模型只选三级，一二级由查表得出",
+        "detail": "分类时 LLM 只需在三级 ID 库中选择或申请新建。该邮件的二级与一级由 ID 注册表直接查出，模型不参与。因此不存在一二级判错，也不存在三者互相矛盾。",
+        "effect": "消除了此前最大的一类错误来源"
+      },
+      {
+        "id": "FT-02",
+        "name": "每个一级都有兜底二级",
+        "detail": "每个一级下设 `*.OTHER`，用于确实属于该域但暂无合适三级 ID 的情况。兜底二级可以承载临时三级 ID，不阻塞流程。",
+        "effect": "永远有落点，不会卡住"
+      },
+      {
+        "id": "FT-03",
+        "name": "二级刻意宽口径",
+        "detail": "二级只按处置路径是否相近划分，共 23 个（不含兜底）。二级判错的代价被限制在同一处置路径内部，通常不影响路由结果。",
+        "effect": "错一格不产生实际损失"
+      },
+      {
+        "id": "FT-04",
+        "name": "拿不准时的成文规则",
+        "detail": "两个三级 ID 都说得通时，先看处置路径是否相同：相同则任选其一不影响结果；不同则选体量更大的那个并标记待复核。不要求模型自行权衡。",
+        "effect": "把模糊判断降为可执行动作"
+      },
+      {
+        "id": "FT-05",
+        "name": "状态不占分类位",
+        "detail": "证据不足、已自行解决、目录未覆盖是解析状态，写在绑定记录的状态字段上，不需要为它们找分类。",
+        "effect": "避免把无法分类的信硬塞进某一类"
+      },
+      {
+        "id": "FT-06",
+        "name": "新建三级 ID 不即时生效",
+        "detail": "模型认为都对不上时可以申请新建，新 ID 进待审队列而不是直接进正式库。判错的代价是多一条待审记录，不是污染目录。",
+        "effect": "允许模型犯错"
+      }
+    ]
+  },
+  "levelOne": [
+    {
+      "code": "ACC",
+      "name": "账号与关联",
+      "scope": "账号身份的建立、跨端关联关系的形成与变更、账号存续",
+      "notScope": "登录时的客户端或网络故障归 CLIENT；登录成功后角色不见归 CHARACTER",
+      "levelTwo": [
+        "ACC.LINKNEW",
+        "ACC.LINKWRONG",
+        "ACC.LINKCHG",
+        "ACC.LIFECYCLE",
+        "ACC.VISIBILITY",
+        "ACC.OTHER"
+      ]
+    },
+    {
+      "code": "PAY",
+      "name": "付费与权益",
+      "scope": "玩家付费后应得权益的交付、生效，以及支付与退款本身",
+      "notScope": "无需付费即可取得的活动奖励归 REWARD；取得条件不明时标待判定，不强归",
+      "levelTwo": [
+        "PAY.DELIVERY",
+        "PAY.ACTIVATION",
+        "PAY.PAYMENT",
+        "PAY.REFUND",
+        "PAY.OTHER"
+      ]
+    },
+    {
+      "code": "EVT",
+      "name": "活动与奖励",
+      "scope": "非付费活动奖励的资格、发放、领取，以及活动进度本身",
+      "notScope": "需要付费才能取得的权益归 ENTITLEMENT；游戏内玩法产出归 GAMEPLAY",
+      "levelTwo": [
+        "EVT.GRANT",
+        "EVT.CLAIM",
+        "EVT.PROGRESS",
+        "EVT.OTHER"
+      ]
+    },
+    {
+      "code": "PROG",
+      "name": "角色与进度",
+      "scope": "角色的存在性、进度完整性、区服归属、创建与外观",
+      "notScope": "角色在但某个任务卡住归 GAMEPLAY；账号登不进去归 ACCOUNT 或 CLIENT",
+      "levelTwo": [
+        "PROG.LOSS",
+        "PROG.RESET",
+        "PROG.PLACEMENT",
+        "PROG.CREATION",
+        "PROG.OTHER"
+      ]
+    },
+    {
+      "code": "PLAY",
+      "name": "玩法与内容",
+      "scope": "能进入游戏之后，任务流程、游戏系统、游戏内资产与数值表现",
+      "notScope": "整体无法进入或崩溃归 CLIENT；角色整体丢失归 CHARACTER",
+      "levelTwo": [
+        "PLAY.FLOW",
+        "PLAY.SYSTEM",
+        "PLAY.ASSET",
+        "PLAY.BALANCE",
+        "PLAY.OTHER"
+      ]
+    },
+    {
+      "code": "CLI",
+      "name": "客户端与运行",
+      "scope": "安装、启动、连接、版本、渲染、界面与输入设备",
+      "notScope": "能进游戏后的内容缺陷归 GAMEPLAY；提示账号被占用归 ACCOUNT",
+      "levelTwo": [
+        "CLI.LAUNCH",
+        "CLI.RUNTIME",
+        "CLI.INTERFACE",
+        "CLI.OTHER"
+      ]
+    },
+    {
+      "code": "TRST",
+      "name": "信任与合规",
+      "scope": "举报、素材授权、合规与反作弊、个人数据权利相关的正式诉求",
+      "notScope": "账号删除请求本身归 ACCOUNT，仅在涉及个人数据权利时加风险标记",
+      "levelTwo": [
+        "TRST.REPORT",
+        "TRST.LICENSE",
+        "TRST.OTHER"
+      ]
+    },
+    {
+      "code": "SVC",
+      "name": "服务与产品",
+      "scope": "客服渠道本身、本地化、对产品的整体评价与建议",
+      "notScope": "对具体业务对象的建议归该对象所在域，并打「建议」形态标签",
+      "levelTwo": [
+        "SVC.SUPPORT",
+        "SVC.PRODUCT",
+        "SVC.STATUS",
+        "SVC.OTHER"
+      ]
+    },
+    {
+      "code": "NPLY",
+      "name": "非玩家来信",
+      "scope": "业务联系人、系统自动通知及垃圾邮件的可回复来信",
+      "notScope": "玩家问题、补充材料和玩家反馈",
+      "levelTwo": [
+        "NPLY.BUSINESS",
+        "NPLY.SYSTEM",
+        "NPLY.OTHER"
+      ]
+    },
+    {
+      "code": "ERR",
+      "name": "其他错误",
+      "scope": "材料或描述不够，还不能归入正式一级，但仍按来信内容先立一个问题组",
+      "notScope": "能归入任一正式一级的来信",
+      "levelTwo": [
+        "ERR.OTHER"
+      ]
+    }
+  ],
+  "levelTwo": [
+    {
+      "code": "ACC.LINKNEW",
+      "name": "建立关联",
+      "boundary": "首次把邮箱或平台账号关联起来的过程失败",
+      "issueTypeIds": [
+        "ADJ-ACC-01",
+        "ADJ-ACC-03"
+      ]
+    },
+    {
+      "code": "ACC.LINKWRONG",
+      "name": "关联到错误对象",
+      "boundary": "关联动作完成了，但指向了错误的档案",
+      "issueTypeIds": [
+        "ADJ-ACC-02",
+        "ADJ-ACC-06"
+      ]
+    },
+    {
+      "code": "ACC.LINKCHG",
+      "name": "变更既有关联",
+      "boundary": "玩家主动要求解绑或换绑，不存在故障",
+      "issueTypeIds": [
+        "ADJ-ACC-04"
+      ]
+    },
+    {
+      "code": "ACC.LIFECYCLE",
+      "name": "账号存续",
+      "boundary": "删除、注销、恢复账号本身",
+      "issueTypeIds": [
+        "ADJ-ACC-05"
+      ]
+    },
+    {
+      "code": "ACC.VISIBILITY",
+      "name": "角色对外可见性",
+      "boundary": "游戏内正常，但官网或第三方入口查不到角色",
+      "issueTypeIds": [
+        "ADJ-ACC-07"
+      ]
+    },
+    {
+      "code": "ACC.OTHER",
+      "name": "账号其他",
+      "boundary": "确属账号域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "PAY.DELIVERY",
+      "name": "权益交付",
+      "boundary": "已付费但内容没到、到错地方、或到了又消失",
+      "issueTypeIds": [
+        "ADJ-PAY-01",
+        "ADJ-PAY-02",
+        "ADJ-PAY-05"
+      ]
+    },
+    {
+      "code": "PAY.ACTIVATION",
+      "name": "权益生效",
+      "boundary": "内容已到账但无法使用或系统不认",
+      "issueTypeIds": [
+        "ADJ-PAY-06"
+      ]
+    },
+    {
+      "code": "PAY.PAYMENT",
+      "name": "支付与充值",
+      "boundary": "付款环节本身走不通，或充值货币未足额",
+      "issueTypeIds": [
+        "ADJ-PAY-03",
+        "ADJ-PAY-07"
+      ]
+    },
+    {
+      "code": "PAY.REFUND",
+      "name": "退款",
+      "boundary": "明确提出退款要求",
+      "issueTypeIds": [
+        "ADJ-PAY-04"
+      ]
+    },
+    {
+      "code": "PAY.OTHER",
+      "name": "付费其他",
+      "boundary": "确属付费域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "EVT.GRANT",
+      "name": "奖励发放",
+      "boundary": "符合条件但奖励从未出现",
+      "issueTypeIds": [
+        "ADJ-EVT-01"
+      ]
+    },
+    {
+      "code": "EVT.CLAIM",
+      "name": "奖励领取",
+      "boundary": "奖励存在或应存在，但领取动作走不通，或不知如何领取",
+      "issueTypeIds": [
+        "ADJ-EVT-02",
+        "ADJ-EVT-03",
+        "ADJ-EVT-04"
+      ]
+    },
+    {
+      "code": "EVT.PROGRESS",
+      "name": "活动进度",
+      "boundary": "限时活动或收集玩法的进度异常",
+      "issueTypeIds": [
+        "ADJ-EVT-05"
+      ]
+    },
+    {
+      "code": "EVT.OTHER",
+      "name": "活动其他",
+      "boundary": "确属活动域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "PROG.LOSS",
+      "name": "非自愿丢失",
+      "boundary": "玩家没做任何操作，角色或进度不见了",
+      "issueTypeIds": [
+        "ADJ-PROG-01"
+      ]
+    },
+    {
+      "code": "PROG.RESET",
+      "name": "主动重置",
+      "boundary": "玩家明确要求清档重开",
+      "issueTypeIds": [
+        "ADJ-PROG-02"
+      ]
+    },
+    {
+      "code": "PROG.PLACEMENT",
+      "name": "区服归属",
+      "boundary": "角色在错误区服，或无法选择目标区服",
+      "issueTypeIds": [
+        "ADJ-PROG-03"
+      ]
+    },
+    {
+      "code": "PROG.CREATION",
+      "name": "创建与外观",
+      "boundary": "创角环节的设置未生效或显示异常",
+      "issueTypeIds": [
+        "ADJ-PROG-04"
+      ]
+    },
+    {
+      "code": "PROG.OTHER",
+      "name": "角色其他",
+      "boundary": "确属角色域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "PLAY.FLOW",
+      "name": "流程推进",
+      "boundary": "任务、剧情或引导进入不可推进状态",
+      "issueTypeIds": [
+        "ADJ-PLAY-01"
+      ]
+    },
+    {
+      "code": "PLAY.SYSTEM",
+      "name": "系统功能",
+      "boundary": "某个具体玩法功能不可用或条件不生效，但不阻断整体游玩",
+      "issueTypeIds": [
+        "ADJ-PLAY-03",
+        "ADJ-PLAY-08"
+      ]
+    },
+    {
+      "code": "PLAY.ASSET",
+      "name": "游戏内资产",
+      "boundary": "游戏内应得或已有的资产未入库、丢失，或因误操作请求补回",
+      "issueTypeIds": [
+        "ADJ-PLAY-04",
+        "ADJ-PLAY-06",
+        "ADJ-PLAY-07"
+      ]
+    },
+    {
+      "code": "PLAY.BALANCE",
+      "name": "数值与结果",
+      "boundary": "机制运行了，但结果或表现与预期、与说明不符",
+      "issueTypeIds": [
+        "ADJ-PLAY-02",
+        "ADJ-PLAY-05"
+      ]
+    },
+    {
+      "code": "PLAY.OTHER",
+      "name": "玩法其他",
+      "boundary": "确属玩法域但无合适三级 ID。玩法长尾极长，本兜底预计承载量较大",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "CLI.LAUNCH",
+      "name": "启动与进入",
+      "boundary": "从启动到成功进入游戏之间的任何阻断",
+      "issueTypeIds": [
+        "ADJ-CLI-01",
+        "ADJ-CLI-02",
+        "ADJ-CLI-04",
+        "ADJ-CLI-07",
+        "ADJ-CLI-08"
+      ]
+    },
+    {
+      "code": "CLI.RUNTIME",
+      "name": "运行期表现",
+      "boundary": "已进入游戏后的崩溃、性能与画面渲染问题",
+      "issueTypeIds": [
+        "ADJ-CLI-03",
+        "ADJ-CLI-05",
+        "ADJ-CLI-09"
+      ]
+    },
+    {
+      "code": "CLI.INTERFACE",
+      "name": "界面与输入",
+      "boundary": "界面元素缺失错乱，或输入设备识别与按键问题",
+      "issueTypeIds": [
+        "ADJ-CLI-06",
+        "ADJ-CLI-10"
+      ]
+    },
+    {
+      "code": "CLI.OTHER",
+      "name": "客户端其他",
+      "boundary": "确属客户端域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "TRST.REPORT",
+      "name": "举报",
+      "boundary": "举报外挂、仿冒应用、侵权发布等第三方行为",
+      "issueTypeIds": [
+        "ADJ-TRUST-01"
+      ]
+    },
+    {
+      "code": "TRST.LICENSE",
+      "name": "授权与合规",
+      "boundary": "素材使用授权、合规与反作弊边界的正式询问",
+      "issueTypeIds": [
+        "ADJ-TRUST-02",
+        "ADJ-TRUST-03"
+      ]
+    },
+    {
+      "code": "TRST.OTHER",
+      "name": "信任其他",
+      "boundary": "确属信任合规域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "SVC.SUPPORT",
+      "name": "客服渠道",
+      "boundary": "联系客服的渠道本身不通，或通了但长期无人响应",
+      "issueTypeIds": [
+        "ADJ-GEN-01",
+        "ADJ-GEN-04"
+      ]
+    },
+    {
+      "code": "SVC.PRODUCT",
+      "name": "产品与本地化",
+      "boundary": "语言支持、整体评价、不指向具体对象的产品建议",
+      "issueTypeIds": [
+        "ADJ-GEN-02",
+        "ADJ-GEN-03",
+        "ADJ-GEN-05",
+        "ADJ-GEN-06",
+        "ADJ-GEN-07"
+      ]
+    },
+    {
+      "code": "SVC.STATUS",
+      "name": "撤回与自行解决",
+      "boundary": "确有撤回或自行解决的明确信息，但没有可关联旧问题组，也无法从本封信确认原问题对象",
+      "issueTypeIds": [
+        "ADJ-SVC-STATUS-01"
+      ]
+    },
+    {
+      "code": "SVC.OTHER",
+      "name": "服务其他",
+      "boundary": "确属服务域但无合适三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "NPLY.BUSINESS",
+      "name": "业务往来",
+      "boundary": "非玩家的合作、媒体、商务或机构联络；具体主题按现有候选机制建立三级组",
+      "issueTypeIds": []
+    },
+    {
+      "code": "NPLY.SYSTEM",
+      "name": "系统通知与垃圾邮件",
+      "boundary": "非玩家的自动通知、投递报告、营销和垃圾邮件；具体主题按现有候选机制建立三级组",
+      "issueTypeIds": []
+    },
+    {
+      "code": "NPLY.OTHER",
+      "name": "非玩家其他",
+      "boundary": "明确为非玩家来信但业务或系统性质仍需人工复核",
+      "issueTypeIds": [],
+      "fallback": true
+    },
+    {
+      "code": "ERR.OTHER",
+      "name": "其他错误",
+      "boundary": "线索不够时仍按来信内容命名的问题组，不占用正式三级 ID",
+      "issueTypeIds": [],
+      "fallback": true
+    }
+  ],
+  "newIssueTypeIds": [
+    {
+      "id": "ADJ-SVC-STATUS-01",
+      "name": "无源头问题的撤回或自行解决",
+      "semanticCore": "来信明确撤回或自行解决，找不到可用历史问题组，且正文没有足够线索识别原问题对象。",
+      "includes": ["明确撤回但未提及原诉求", "明确自解但未说明原故障"],
+      "excludes": ["能关联历史问题组的回复", "正文足以识别实际问题类型", "仅为活动邀请或普通致谢"],
+      "levelTwo": "SVC.STATUS"
+    },
+    {
+      "id": "ADJ-PLAY-05",
+      "name": "捕获或孵化结果不符预期",
+      "semanticCore": "捕获或孵化流程完成了，但得到的品质、形态或属性与投入的道具、与说明不符。",
+      "includes": [
+        "闪光蛋孵出普通形态",
+        "闪光立方捕获未达闪耀或完美",
+        "孵化属性与存放时不符"
+      ],
+      "excludes": [
+        "捕获物根本没进背包（见 ADJ-PLAY-06）",
+        "玩家自己扔错道具（见 ADJ-PLAY-07）"
+      ],
+      "levelTwo": "PLAY.BALANCE",
+      "estimatedIssuePoints": 40
+    },
+    {
+      "id": "ADJ-PLAY-06",
+      "name": "捕获物或道具丢失未入库",
+      "semanticCore": "本应进入背包、盒子或仓库的游戏内资产没有出现，或出现后消失。",
+      "includes": [
+        "捕获后未入箱",
+        "孵化后不在盒子里",
+        "研究台操作后捕获物消失"
+      ],
+      "excludes": [
+        "外部发放的奖励未到账（见 ADJ-EVT-01 / ADJ-PAY-01）",
+        "结果品质不符（见 ADJ-PLAY-05）"
+      ],
+      "levelTwo": "PLAY.ASSET",
+      "estimatedIssuePoints": 40
+    },
+    {
+      "id": "ADJ-PLAY-07",
+      "name": "误操作申请补回",
+      "semanticCore": "玩家承认是自己操作失误导致资产损失或用错道具，请求补回或更换。",
+      "includes": [
+        "误放生捕获物",
+        "误用闪光道具",
+        "捕获时扔错立方体",
+        "误选蛋种"
+      ],
+      "excludes": [
+        "系统原因导致的丢失（见 ADJ-PLAY-06）",
+        "要求重置整个角色（见 ADJ-PROG-02）"
+      ],
+      "levelTwo": "PLAY.ASSET",
+      "estimatedIssuePoints": 40,
+      "note": "处置上需核查日志判定真伪，与系统故障完全不同，故独立成 ID"
+    },
+    {
+      "id": "ADJ-PLAY-08",
+      "name": "成长或进化条件不生效",
+      "semanticCore": "玩家已满足升级、进化或解锁条件，但系统不认可或结果被回退。",
+      "includes": [
+        "条件满足仍无法进化",
+        "进化后形态特性丢失",
+        "等级或称号未按条件发放"
+      ],
+      "excludes": [
+        "数值表现强弱争议（见 ADJ-PLAY-02）",
+        "任务流程卡住（见 ADJ-PLAY-01）"
+      ],
+      "levelTwo": "PLAY.SYSTEM",
+      "estimatedIssuePoints": 20
+    },
+    {
+      "id": "ADJ-TRUST-01",
+      "name": "举报外挂、仿冒或侵权",
+      "semanticCore": "玩家主动举报第三方的违规行为，本人不是受害当事人的诉求方。",
+      "includes": [
+        "举报外挂工具发布",
+        "举报应用商店仿冒",
+        "举报自动化脚本"
+      ],
+      "excludes": [
+        "本人账号被盗或被处罚申诉",
+        "对游戏内容的不满"
+      ],
+      "levelTwo": "TRST.REPORT",
+      "estimatedIssuePoints": 20
+    },
+    {
+      "id": "ADJ-TRUST-02",
+      "name": "素材使用与创作授权",
+      "semanticCore": "创作者询问能否使用官方素材、是否可变现、署名与存储要求。",
+      "includes": [
+        "攻略站使用官方图片",
+        "带广告的粉丝站是否允许",
+        "自建 CDN 存储素材"
+      ],
+      "excludes": [
+        "举报他人侵权（见 ADJ-TRUST-01）"
+      ],
+      "levelTwo": "TRST.LICENSE",
+      "estimatedIssuePoints": 10,
+      "note": "回复具有对外承诺性质，需法务或市场口径，不由一线自行答复"
+    },
+    {
+      "id": "ADJ-TRUST-03",
+      "name": "合规与反作弊咨询",
+      "semanticCore": "玩家询问某种行为是否违规、是否触发反作弊，或就数据处理提出异议。",
+      "includes": [
+        "截屏或录屏是否触发反作弊",
+        "第三方工具是否允许",
+        "撤回数据处理同意"
+      ],
+      "excludes": [
+        "已被处罚后的申诉",
+        "账号删除请求本身（归 ACCOUNT.LIFECYCLE，加个人数据权利标记）"
+      ],
+      "levelTwo": "TRST.LICENSE",
+      "estimatedIssuePoints": 10
+    }
+  ],
+  "independentDimensions": [
+    {
+      "code": "REQUEST_FORM",
+      "name": "诉求形态",
+      "values": [
+        "故障报告",
+        "申请变更",
+        "咨询",
+        "建议",
+        "评价",
+        "举报"
+      ],
+      "cardinality": "单值",
+      "rationale": "本轮新增。它不合并三级 ID——「奖励领取咨询」与「奖励领取失败」处置不同，不能并。它的价值是跨域查询：五个「申请变更」类 ID 分散在三个一级里，只有作为维度才能一次看全。",
+      "correction": "此前提案曾称提为维度后 5 个 ID 可各归其域，该说法有误，已在此更正。"
+    },
+    {
+      "code": "AFFECTED_ENVIRONMENT",
+      "name": "受影响环境",
+      "facets": [
+        "设备",
+        "操作系统",
+        "发行渠道"
+      ],
+      "cardinality": "每分面单值，保留原始提取值",
+      "rationale": "沿用上一轮结论：现有「平台」自由文本有 417 种非空写法，混合设备、系统与渠道三类语义，不能用 PC_STEAM 之类复合枚举。"
+    },
+    {
+      "code": "TECHNICAL_RELEVANCE",
+      "name": "技术相关性",
+      "values": [
+        "是",
+        "否",
+        "待定"
+      ],
+      "cardinality": "单值",
+      "note": "现为邮件级字段。上一轮已发现 84 个旧组键内部技术标签混杂，改为问题点级需另立数据契约与迁移方案。"
+    },
+    {
+      "code": "RISK_FLAG",
+      "name": "风险标记",
+      "values": [
+        "个人数据权利",
+        "仿冒诈骗",
+        "外挂作弊",
+        "法务介入"
+      ],
+      "cardinality": "多值",
+      "note": "标记不产生授权、法律结论或处理承诺。"
+    }
+  ],
+  "resolutionStates": [
+    {
+      "code": "EVIDENCE_INSUFFICIENT",
+      "name": "证据不足待补充",
+      "detail": "来信无正文、仅附日志、未描述故障。不是分类。"
+    },
+    {
+      "code": "SELF_RESOLVED_OR_WITHDRAWN",
+      "name": "已自行解决或撤回",
+      "detail": "玩家声明问题已解决或请忽略此前请求。应回链原问题。"
+    },
+    {
+      "code": "CATALOG_UNCOVERED",
+      "name": "目录未覆盖待定",
+      "detail": "确属某域但现有三级 ID 都不合适，已落入该域兜底二级，等待是否新建 ID 的裁决。"
+    }
+  ],
+  "counts": {
+    "levelOne": 8,
+    "levelTwoExcludingFallback": 23,
+    "levelTwoFallback": 8,
+    "issueTypeIdsExisting": 44,
+    "issueTypeIdsNew": 7,
+    "issueTypeIdsTotal": 51,
+    "independentDimensions": 4,
+    "resolutionStates": 3
+  },
+  "severityAttributes": {
+    "note": "SABC 严重度与语义分类正交，不进层级。完整方案见 design/severity-sabc.md。此处只登记需要挂在每个三级 ID 上的静态属性。",
+    "perIssueTypeStatic": [
+      {
+        "field": "coreImpact",
+        "values": [
+          "BLOCKING",
+          "MAJOR",
+          "MINOR"
+        ],
+        "meaning": "是否阻断登录或主流程"
+      },
+      {
+        "field": "solvability",
+        "values": [
+          "SOP",
+          "SENIOR",
+          "PROJECT"
+        ],
+        "meaning": "普通客服 SOP 可解 / 需高级客服 / 需研发介入"
+      },
+      {
+        "field": "projectDependency",
+        "values": [
+          true,
+          false
+        ],
+        "meaning": "是否必须查询或修改研发数据"
+      }
+    ],
+    "perMailDynamic": [
+      {
+        "field": "hasPaymentImpact",
+        "source": "模型逐封判定（是非题）"
+      },
+      {
+        "field": "hasDataRisk",
+        "source": "模型逐封判定（是非题）"
+      }
+    ],
+    "runtimeEscalation": {
+      "aggregateOn": "三级 ID",
+      "signal": "滚动窗口内新增量相对历史基线的倍数，且需同时达到最低绝对量",
+      "note": "实测表明应按集中度而非绝对量判定热点：奖励邮件未领取即消失 77 封中 84% 集中在同一天，而邮箱绑定失败 782 封仅 39% 在峰值日，后者是稳态背景量不应告警。阈值无法用 7 天上线窗口标定。"
+    },
+    "notYetFilled": "51 个三级 ID 的三项静态属性需业务逐一确认，本文件未预填。"
+  },
+  "decisionsTaken": [
+    {
+      "date": "2026-09-23",
+      "decision": "不设缺陷条目层，玩法与其他域走同一条链路",
+      "by": "需求方",
+      "consequence": "玩法长尾落 GAMEPLAY.OTHER 兜底，失去按具体缺陷去重与热点发现的能力；绑定表保留 defectId 预留字段"
+    },
+    {
+      "date": "2026-09-23",
+      "decision": "晋升门槛取 ≥5 个独立会话",
+      "by": "受需求方授权代为决定",
+      "rationale": "召回率实测后 token 成本不再是约束，≥8 会让约 180 个问题点长期滞留兜底；≥3 与长尾中位数 4 过近等于没有闸门。对应库约 150 条，为可调参数"
+    },
+    {
+      "date": "2026-09-23",
+      "decision": "检索 K 取 5",
+      "by": "受需求方授权代为决定",
+      "rationale": "留一法实测 recall@5 为 98.6%、@15 为 99.8%，原拟 K=15 收益仅 1.2 个百分点而目录块大 3 倍"
+    },
+    {
+      "date": "2026-09-23",
+      "decision": "抽取阶段的 category 字段保留但降为咨询性，不参与定级",
+      "by": "受需求方授权代为决定",
+      "rationale": "直接移除会改动抽取管线并影响既有数据；降级为不读取即可消除双真相来源，风险更低"
+    }
+  ],
+  "openDecisions": [
+    "Game Pass 等平台订阅附带奖励归 ENTITLEMENT 还是 REWARD（U01，自上一轮起的阻断项，仍未决）",
+    "51 个三级 ID 的严重度静态属性（coreImpact / solvability / projectDependency）需业务逐一确认",
+    "旧 priority（HIGH/MEDIUM/LOW）到新 SABC 的历史数据映射是否接受新老分段统计",
+    "二级 23 项是否与技术客服实际路由一致，需按处置路径逐条校验",
+    "新增 7 个三级 ID 的问题点数为估算，需走正式裁决确认"
+  ],
+  "codingRules": {
+    "source": "lib/complaint/taxonomy-admin.ts（PRD 7.2 既有约束，非本轮新增）",
+    "levelOne": "^[A-Z]{2,4}$",
+    "levelTwoSuffix": "^[A-Z][A-Z0-9]{1,9}$，不允许下划线",
+    "fallbackSuffix": "OTHER，每个一级自动补一个不可删除的兜底二级",
+    "note": "本轮初稿使用 ACCOUNT / LINK_CREATE 等长代码与下划线，违反既有约束，已统一修正。一级尽量沿用现有代码以减少迁移扰动：ACCOUNT→ACC、ENTITLEMENT→PAY、REWARD→EVT、CHARACTER→PROG、GAMEPLAY→PLAY、CLIENT→CLI；新增 TRST、SVC。"
+  },
+  "priorArtAlignment": {
+    "note": "以下规则并非本轮新增，`lib/complaint/taxonomy-admin.ts` 依据 PRD 7.2 已有实现，本设计与之一致而非替代。",
+    "items": [
+      "每个一级自动补一个不可删除的「其他」兜底二级 —— 对应本设计 FT-02",
+      "新增正式类别需人工确认，模型只能提出候选不能自行发布 —— 对应本设计护栏 G-01",
+      "分类配置需包含定义、包含/排除条件、正反例及版本 —— 对应本设计 G-02 的申请字段要求"
+    ],
+    "gap": "`lib/complaint/taxonomy-persist.ts` 注明分类工作台的写操作目前只落 localStorage，尚无分类服务，AI 分类仍读 `lib/complaint/model.ts` 中硬编码的 CATEGORIES。落地本设计需先补这层服务。"
+  }
+}

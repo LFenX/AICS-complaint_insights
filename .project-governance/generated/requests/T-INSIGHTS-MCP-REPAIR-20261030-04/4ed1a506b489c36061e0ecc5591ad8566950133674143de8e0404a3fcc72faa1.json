@@ -1,0 +1,15 @@
+{
+  "action": "independent_review",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "新工程结果保存后逐条原文重新独立审查；同一交付连续两轮完整无问题才结束，人工Gate和机器登记限制保持",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S6",
+  "tailoring_resolution_sha256": "5f372612a9938d43a2a63b5cc7b32c4b86bf8a4ed66f889aa77b9771a942e355",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04"
+}

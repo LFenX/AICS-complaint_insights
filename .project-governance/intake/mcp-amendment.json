@@ -1,0 +1,429 @@
+[
+  {
+    "path": "scope",
+    "value": {
+      "in_scope": [
+        "本地独立数据库与原始邮件、AI 分类副本",
+        "增量同步、补充对账和日期分类读取模型",
+        "agent 只读 SQL/API 及生产源切换准备",
+        "MCP 只读查询工具、数据类型说明和交接配置"
+      ],
+      "out_of_scope": [
+        "看板 UI、自动周报、附件文件复制、人工分类和生产联调"
+      ],
+      "allowed_paths": [
+        "**"
+      ],
+      "forbidden_actions": [
+        "写入开发源库或操作生产数据库、服务和配置"
+      ]
+    }
+  },
+  {
+    "path": "authority",
+    "value": {
+      "execution_permissions": [
+        "read",
+        "edit-in-scope",
+        "validate",
+        "external-effect",
+        "rollback"
+      ],
+      "required_gates": [
+        "security-privacy-review"
+      ],
+      "stop_conditions": [
+        "scope-expansion",
+        "authority-conflict",
+        "critical-evidence-missing"
+      ],
+      "authority_references": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+      ],
+      "authority_assessments": [
+        {
+          "reference": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+          "source_kind": "UserDirective",
+          "status": "Valid",
+          "scope_refs": [
+            "本地独立数据库与原始邮件、AI 分类副本",
+            "增量同步、补充对账和日期分类读取模型",
+            "agent 只读 SQL/API 及生产源切换准备"
+          ],
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ],
+          "verified_at": "2026-10-29T08:27:18.139677+00:00",
+          "expires_at": null
+        },
+        {
+          "reference": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+          "source_kind": "UserDirective",
+          "status": "Valid",
+          "scope_refs": [
+            "MCP 只读查询工具、数据类型说明和交接配置"
+          ],
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+          ],
+          "verified_at": "2026-10-29T09:43:14.796513+00:00",
+          "expires_at": null
+        }
+      ]
+    }
+  },
+  {
+    "path": "acceptance.criteria",
+    "value": [
+      "独立 PostgreSQL 和数据卷运行，仅监听回环地址，源库连接强制只读，原项目不变",
+      "完整导入开发原始邮件、AI 产物、绑定和静态/动态目录，按北京时间日期及分类可追溯原文",
+      "新增、更新、删除、AI 补全、无事件变更和重启续传通过隔离夹具验证，失败不前移水位",
+      "只读 SQL 与鉴权 API 可查询日汇总、分类、分页邮件、全文及同步状态，拒绝未授权访问",
+      "生产配置独立，来源隔离且默认不接触生产；提供切换步骤和未验项",
+      "真实 stdio MCP 客户端可发现并按需调用只读工具，覆盖分类、汇总、全文和十四类原始业务副本；参数、分页、错误和权限测试通过，连接配置与中文交接说明齐备"
+    ]
+  },
+  {
+    "path": "plan",
+    "value": {
+      "steps": [
+        "建立独立运行环境和数据库",
+        "实现源读取及原子同步发布",
+        "实现日期分类读取模型和只读接口",
+        "导入真实开发数据并执行隔离与接口验证",
+        "交付运行、切源说明和实际证据",
+        "以 MCP 复用本地只读 API，补齐源数据查询与交接说明并运行真实协议验证"
+      ],
+      "verification": [
+        "独立 PostgreSQL 和数据卷运行，仅监听回环地址，源库连接强制只读，原项目不变",
+        "完整导入开发原始邮件、AI 产物、绑定和静态/动态目录，按北京时间日期及分类可追溯原文",
+        "新增、更新、删除、AI 补全、无事件变更和重启续传通过隔离夹具验证，失败不前移水位",
+        "只读 SQL 与鉴权 API 可查询日汇总、分类、分页邮件、全文及同步状态，拒绝未授权访问",
+        "生产配置独立，来源隔离且默认不接触生产；提供切换步骤和未验项",
+        "真实 stdio MCP 客户端可发现并按需调用只读工具，覆盖分类、汇总、全文和十四类原始业务副本；参数、分页、错误和权限测试通过，连接配置与中文交接说明齐备"
+      ],
+      "rollback": [
+        "仅停止本项目命名的进程和容器；保留独立卷；源项目和源库无需回滚"
+      ]
+    }
+  },
+  {
+    "path": "first_principles_analysis",
+    "value": {
+      "method_version": "first-principles-v1",
+      "depth": "Deep",
+      "outcome": "agent 能通过独立 SQL/API 分析按日期分类的真实开发邮件，并能在接入条件齐备后切换生产来源；通过 MCP 按需调用并可交接",
+      "facts": [
+        {
+          "id": "F1",
+          "statement": "开发 PostgreSQL、源表和 AI 关联已实查；分类同时依赖部署 JSON",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "F2",
+          "statement": "日志存在保留期、缺少事件的表和归档映射，单一 ID 水位不能覆盖全部变化",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "F3",
+          "statement": "本地数据库及鉴权 API 已运行；用户要求 MCP 工具和使用交接说明",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+          ]
+        }
+      ],
+      "constraints": [
+        {
+          "id": "C1",
+          "statement": "不写开发源库、不操作生产、不改变原项目结构与命名；仅采纳 AI 分类",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "C2",
+          "statement": "查询读取独立库的预计算模型，服务只监听回环地址并鉴权",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "A1",
+          "statement": "Docker 和缓存镜像可建立独立实例",
+          "validation": "启动独立容器后运行真实连接与健康检查"
+        }
+      ],
+      "unknowns": [
+        {
+          "id": "U1",
+          "statement": "生产监听、密码及可信证书仍未完成采集端联调",
+          "owner": "用户与生产服务器 agent",
+          "resolution_condition": "后续交付凭据和证书并完成连接验收",
+          "blocking": false
+        }
+      ],
+      "fundamentals": [
+        {
+          "id": "P1",
+          "statement": "副本必须保留源身份、原文和关联，切换来源不能混合主键",
+          "derived_from": [
+            "F1",
+            "C1"
+          ]
+        },
+        {
+          "id": "P2",
+          "statement": "及时增量与最终一致性对账必须同时存在",
+          "derived_from": [
+            "F2"
+          ]
+        },
+        {
+          "id": "P3",
+          "statement": "数据获取与查询必须解耦且发布原子化",
+          "derived_from": [
+            "C2"
+          ]
+        },
+        {
+          "id": "P4",
+          "statement": "MCP 与 HTTP 使用同一查询契约，按需分页避免重复业务规则与全量正文加载",
+          "derived_from": [
+            "F3",
+            "C2",
+            "P3"
+          ]
+        }
+      ],
+      "causal_links": [
+        {
+          "from_ref": "P1",
+          "to_ref": "O1",
+          "rationale": "来源命名空间加原始 JSON 镜像可保留证据并适应生产字段扩展",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "from_ref": "P2",
+          "to_ref": "O1",
+          "rationale": "日志驱动和有界周期对账共同覆盖无事件更新、删除、离线与迟提交",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        }
+      ],
+      "alternatives": [
+        {
+          "id": "O1",
+          "description": "独立 PostgreSQL、Python 同步器与只读 API，日志增量结合内容对账",
+          "status": "Selected",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "tradeoffs": [
+            "新增独立实例及常驻进程；无需变更源表或复制权限"
+          ]
+        },
+        {
+          "id": "O0",
+          "description": "保持现状，agent 直接查询现有开发或生产库",
+          "status": "Rejected",
+          "derived_from": [
+            "C1",
+            "C2"
+          ],
+          "tradeoffs": [
+            "没有隔离分析数据和稳定汇总，查询负载回到业务库"
+          ]
+        },
+        {
+          "id": "O3",
+          "description": "使用 PostgreSQL 逻辑复制或 CDC",
+          "status": "Rejected",
+          "derived_from": [
+            "P2",
+            "C1"
+          ],
+          "tradeoffs": [
+            "需要源端复制授权与运行配置变更，超出本期只读边界"
+          ]
+        }
+      ],
+      "decision_criteria": [
+        {
+          "id": "K1",
+          "statement": "可追溯全量且来源隔离、无源写入",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        },
+        {
+          "id": "K2",
+          "statement": "增量可恢复、汇总与明细一致、权限明确",
+          "source_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+          ]
+        }
+      ],
+      "selected_approach": "O1",
+      "derivation": [
+        {
+          "plan_step": "建立独立运行环境和数据库",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "实现源读取及原子同步发布",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "实现日期分类读取模型和只读接口",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "导入真实开发数据并执行隔离与接口验证",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "交付运行、切源说明和实际证据",
+          "derived_from": [
+            "P1",
+            "P2",
+            "P3"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        },
+        {
+          "plan_step": "以 MCP 复用本地只读 API，补齐源数据查询与交接说明并运行真实协议验证",
+          "derived_from": [
+            "P3",
+            "P4"
+          ],
+          "supports": [
+            "K1",
+            "K2"
+          ]
+        }
+      ],
+      "validation_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+      ],
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+      ]
+    }
+  },
+  {
+    "path": "requirement_items",
+    "value": [
+      {
+        "id": "R-01",
+        "source": "request_snapshot",
+        "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+        "reading": "本期使用开发数据完成已讨论的独立数据库、日期分类读取模型、增量与 agent 只读接口；生产准备与实际联调分开交代",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/acceptance.md"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "60659a92d08c5fe3cc00b3cec850af87a10d6c981ded6c08deeba4928526568d",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "开发源只读一致快照、真实目标副本与 HTTP 查询",
+              "expected": "独立副本保留完整源记录并支持日期分类和 agent 原文访问",
+              "actual": "十四表全部内容指纹一致，53119 封源邮件/事实/主归属对齐，38 项测试通过，九端点实际鉴权及原文查询通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/acceptance.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-02",
+        "source": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+        "quote": "提供查询不同数据的接口",
+        "reading": "按数据类型提供只读查询工具",
+        "state": "Open",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+        ],
+        "acceptance_refs": [
+          5
+        ]
+      },
+      {
+        "id": "R-03",
+        "source": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md",
+        "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+        "reading": "交付 MCP 工具、配置和中文交接手册，真实客户端验证按需查询",
+        "state": "Open",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+        ],
+        "acceptance_refs": [
+          5
+        ]
+      }
+    ]
+  }
+]

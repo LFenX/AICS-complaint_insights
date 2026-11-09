@@ -1,0 +1,26 @@
+{
+  "strict_ca": true,
+  "endpoint": "https://10.8.61.200:3037/mcp",
+  "checks": [
+    {
+      "literal": "1.0",
+      "isError": false
+    },
+    {
+      "literal": "1.00000000000000001",
+      "isError": true
+    },
+    {
+      "literal": "200.00000000000000001",
+      "isError": true
+    },
+    {
+      "literal": "0.99999999999999999",
+      "isError": true
+    },
+    {
+      "literal": "1e-9999",
+      "isError": true
+    }
+  ]
+}

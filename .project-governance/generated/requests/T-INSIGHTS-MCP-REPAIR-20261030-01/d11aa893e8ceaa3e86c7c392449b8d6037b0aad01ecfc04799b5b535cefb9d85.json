@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存返修已验证版本与原话覆盖，正式人工门禁Pending所以Deferred；后续独立审查尚未完成，不改父状态或伪造机器登记通过",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "6503afa518c7546163d620be881820864b3bab09c359d620067085cdfd5a5fc9",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01"
+}

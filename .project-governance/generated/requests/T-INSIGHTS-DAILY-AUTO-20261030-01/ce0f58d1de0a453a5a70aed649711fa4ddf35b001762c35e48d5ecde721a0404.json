@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "实现日期化读取模型、日报未生成状态、质量门禁和skill；保持原邮件证据与内网权限不变",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "f56e869658802964eeced3560c608a0fa8e20791a69b09e08d83fac04d1f9f2e",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

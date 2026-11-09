@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按用户明确指令实施本地3030底部/UID首列/证据排序和子问题组预生成日志ZIP；权限仅本机操作者，不连接生产，保存真实原件摘要及导出审计。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "b9b53017e98a9b247b4ecc9ea4443979f15979719a8acf7f591dd1452559d679",
+  "task_id": "T-INSIGHTS-DAILY-TABLE-20261030-02"
+}

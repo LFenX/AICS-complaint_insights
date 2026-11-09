@@ -1,0 +1,205 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "缺少主机、端口或数据库名的连接配置在连接前失败，显式配置的实际目的地与校验身份一致",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "conninfo_to_dict 不补齐省略的主机、端口和数据库名；connection_identity 自行填入 localhost、5432 和空库名",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "第二轮隔离连接复现：省略主机和端口时 PGHOST/PGPORT 决定实际连接，校验身份仍是 localhost:5432",
+      "evidence_refs": [
+        ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "不写开发源库，不连接或重启生产，不改变监听、权限或读取范围",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "C2",
+      "statement": "目的地身份必须在连接前绑定，不能与 libpq 实际地址分离",
+      "source_refs": [
+        ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "当前交付的本地配置和生产示例 URL 已写明主机、端口和数据库名",
+      "validation": "对这两份配置调用 connection_identity，确认三项均来自连接串"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "生产监听范围变更是否已经生效、凭据是否已交付到采集端",
+      "owner": "lfenink",
+      "resolution_condition": "用户通知监听完成后，再做生产连通和只读预检",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "校验使用的主机、端口和数据库名必须就是连接串中的显式值",
+      "derived_from": [
+        "F1",
+        "F2",
+        "C2"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "环境默认值只在参数省略时介入，因此省略必须在连接前失败",
+      "derived_from": [
+        "F2",
+        "C2"
+      ]
+    },
+    {
+      "id": "P3",
+      "statement": "已写明的参数优先于进程环境，不能为了防绕过而改写显式配置",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "省略参数时拒绝连接，环境默认值不再进入身份计算",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+        ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "失败发生在连接前，避免先连到未声明地址再解释身份",
+      "evidence_refs": [
+        ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+      ]
+    },
+    {
+      "from_ref": "P3",
+      "to_ref": "O1",
+      "rationale": "显式连接串保持原值，现有交付配置不需要改写",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "强制主机、端口和数据库名显式，保留既有 hostaddr 与 service 拒绝",
+      "status": "Selected",
+      "derived_from": [
+        "P1"
+      ],
+      "tradeoffs": [
+        "省略目的地的配置不再可用；现有交付 URL 已显式，无需改配置"
+      ]
+    },
+    {
+      "id": "O0",
+      "description": "保持现状",
+      "status": "Rejected",
+      "derived_from": [
+        "P1"
+      ],
+      "tradeoffs": [
+        "环境默认值仍可改变真实源，而身份摘要不变"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "解析并固化全部 libpq 环境与 service 缺省后再连接",
+      "status": "Rejected",
+      "derived_from": [
+        "P1"
+      ],
+      "tradeoffs": [
+        "要追踪可变全局环境和外部 service 文件；本期不需要隐式配置"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "隐式目的地在连接前失败",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "显式配置的身份不被环境默认值改写，现有拒绝规则保持有效",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "拒绝缺省主机、端口或数据库名的连接串",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "验证显式连接参数不受环境缺省值影响并回归规则测试",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "保存返修结果并归属已授权的父审查会话",
+      "derived_from": [
+        "P1",
+        "P2",
+        "P3"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+    ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+  ]
+}

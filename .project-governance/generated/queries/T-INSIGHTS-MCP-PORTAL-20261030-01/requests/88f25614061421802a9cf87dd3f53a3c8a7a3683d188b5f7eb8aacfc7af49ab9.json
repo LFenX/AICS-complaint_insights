@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "严格CA验证真实内网HTTPS门户与MCP，逐条11工具14数据表与原生握手，匿名拒绝和管理员签发使用撤销及日志脱敏，无凭据下载包schema和客户端完整分页；不连接生产",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "955955db4a062703de997564e1ffa4490b08a97324ddc63585c519ed884bd71e",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+}

@@ -1,0 +1,22 @@
+{
+  "format": "complaint-daily-unattended-policy/v1",
+  "decided_at": "2026-11-06T06:40:00+00:00",
+  "decided_by": "user",
+  "source_ref": "cursor user message on 2026-11-06 asking the daily job to run without the user present, and to test with the 27th and 28th",
+  "response": "我意识到，定时任务失败的原因除了你报告的，还可能有多个，比如刚刚在生成昨天的日报过程中，你问了我号几个问题，但是定时任务运行时我大概率是不在并且无法给出任何指示的，而实际上我的要求是整个任务要脱离我运行，请你修复定时任务的问题，然后通过28号，27号的数据来做测试",
+  "fresh_data": {
+    "decided_at": "2026-11-06T07:13:00+00:00",
+    "decided_by": "user",
+    "source_ref": "cursor user message on 2026-11-06 after the unattended 27 and 28 test",
+    "response": "不从本机冻结，每次都要从生产库获取新鲜数据",
+    "mode": "always_production_closed_day"
+  },
+  "rules": {
+    "ask_user": false,
+    "target": "Asia/Shanghai previous calendar day for the 01:00 task; an explicit test date only when this policy names it",
+    "test_dates": ["2026-10-27", "2026-10-28"],
+    "production_read": "Never freeze the report from the existing local replica. Every unpublished run reads that one closed day from production, read-only and repeatable-read, then disconnects. The captured rows may be stored as that closed day only. Do not set allow_production_read, do not start watch, do not advance global watermarks, and do not borrow another date.",
+    "missing_attachment": "If the frozen IMAP message is gone or the original bytes cannot be fetched, skip that file only, keep the mail, record attachment-exceptions.json from this decision, and continue. Do not stop to ask.",
+    "published_report": "If the date is already published, verify it and stop. Do not overwrite."
+  }
+}

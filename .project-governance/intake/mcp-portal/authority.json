@@ -1,0 +1,17 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "HTTPS 内网接入门户及单一发放管理员登录、会话、CSRF、审计、发放撤销",
+      "原生 MCP 协议说明、全部11工具实际 schema、无令牌客户端包及明确选源",
+      "本工程3029/3037部署、权限及真实协议验证；保留生产隔离和撤销失效关闭"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ],
+    "verified_at": "2026-10-29T18:46:46.028511+00:00",
+    "expires_at": null
+  }
+]

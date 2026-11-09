@@ -1,0 +1,2515 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01",
+  "ordinal": 11,
+  "revision": 23,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-29T21:21:34.314265Z",
+  "frozen_at": "2026-10-29T21:29:02.842404Z",
+  "objective": "用户能通过内网访问3030看板，并在指定私有仓库核对同版本的无业务数据源码",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库\n\n把服务开在内网可访问的地址",
+    "captured_at": "2026-10-29T21:21:34.225245Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "内网地址、访问边界和进程归属已核实，用户明确要求开放；本次跳过重复提问。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+    ],
+    "rounds": [],
+    "basis": "用户追加的直接授权与当前网卡/服务勘察一致",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+      "reading": "将当前看板服务代码提交并推送到指定仓库，交付可核对的提交链接",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/github-delivery-20261030/remote-verification.json",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2
+      ],
+      "review": {
+        "source_sha256": "84f4092cb1468a91afb717076d80d37a085e93b512ca9f3624a00ee1a2e1402f",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "当前3030看板源码及用户指定的私有GitHub仓库",
+            "expected": "实际推送并可核对提交、文件和数据排除边界",
+            "actual": "GitHub main提交d36486b27f1a9a92edb35aa825df09a8dd0edb5b；30文件远端目录树一致，客户数据/凭据未上传",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/github-delivery-20261030/remote-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "把服务开在内网可访问的地址",
+      "reading": "将看板部署为本地和内网可访问并验证真实监听和只读边界",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/github-delivery-20261030/lan-verification.json",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "84f4092cb1468a91afb717076d80d37a085e93b512ca9f3624a00ee1a2e1402f",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "显式网卡配置、本机回环及内网地址的真实HTTP请求",
+            "expected": "内网网卡监听3030，允许范围能读取看板且回环继续可用",
+            "actual": "两个精确地址同时监听，页面/634封读取模型/附件/ZIP及限制校验通过；未从第二台电脑实测",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/github-delivery-20261030/lan-verification.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-GITHUB-DIRECTIVE",
+      "kind": "Proceed",
+      "presented": "将当前3030看板服务源码提交到用户指定的GitHub仓库",
+      "response": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+      "decided_by": "user",
+      "decided_at": "2026-10-29T21:21:34.081806+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+      "outcome": "Approved"
+    },
+    {
+      "id": "D-LAN-DIRECTIVE",
+      "kind": "Proceed",
+      "presented": "开放当前3030日报的内网访问入口并保留本地访问",
+      "response": "把服务开在内网可访问的地址",
+      "decided_by": "user",
+      "decided_at": "2026-10-29T21:39:04.132225+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-FILTER-UI-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T21:21:34.275570Z"
+  },
+  "scope": {
+    "in_scope": [
+      "准备3030看板源码及可运行依赖/说明的洁净交付",
+      "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端",
+      "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+    ],
+    "out_of_scope": [
+      "真实客户数据、凭据、生产/IMAP访问、MCP门户、服务器部署及仓库可见性变更"
+    ],
+    "allowed_paths": [
+      ".runtime/github-delivery-20261030/**",
+      ".project-governance/**",
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/**",
+      "LG_project_docs/README.md",
+      "update_log/2026-10-30-github-dashboard-delivery.md",
+      "insights/daily_board.py",
+      "insights/capabilities.py",
+      "tests/test_daily_network.py",
+      "config/daily-board.example.json",
+      "scripts/daily-board-firewall.ps1",
+      ".secrets/daily-board.json",
+      ".runtime/processes.json",
+      ".runtime/board.log",
+      ".runtime/board.err.log"
+    ],
+    "forbidden_actions": [
+      "上传业务数据或凭据、force push、连接生产或修改其他项目/服务进程"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate",
+      "external-effect"
+    ],
+    "required_gates": [
+      "security-privacy-review"
+    ],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "准备3030看板源码及可运行依赖/说明的洁净交付",
+          "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ],
+        "verified_at": "2026-10-29T21:21:34.081806+00:00",
+        "expires_at": null
+      },
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "verified_at": "2026-10-29T21:39:04.132225+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+      "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+      "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+      "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "按用户追加指令配置3030双地址监听及内网边界，验证并只重启board",
+      "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+      "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+      "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档"
+    ],
+    "verification": [
+      "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+      "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+      "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+      "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+    ],
+    "rollback": [
+      "未推送时保留洁净克隆与原目录；已推送则使用普通revert，不强推或删除历史",
+      "按lan-survey.md恢复回环监听并禁用本项目防火墙规则"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "用户能通过内网访问3030看板，并在指定私有仓库核对同版本的无业务数据源码",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "目标仓库无引用、私有且当前账号有push权限；源目录不是Git仓库",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "3030服务使用预生成读取模型，业务数据与源码可以分离；19项源码清单已记录摘要",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          ".runtime/github-delivery-20261030/source-manifest-before.json"
+        ]
+      },
+      {
+        "id": "F3",
+        "statement": "当前3030仅回环监听与校验，当前以太网地址和私有网范围已核实",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "用户授权提交看板服务到该仓库，保持现有目录名称，凭据和客户数据不入库",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "只重启本项目board并限定以太网内网入口；不连接生产或启动IMAP采集，无force push或仓库权限变更",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "交付的是源码及运行契约，数据是运行时私有输入",
+        "derived_from": [
+          "F2",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "单独洁净Git索引和远端身份可证明提交边界",
+        "derived_from": [
+          "F1",
+          "C2"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "监听、真实对端校验和系统防火墙必须使用一致的显式内网范围",
+        "derived_from": [
+          "F3",
+          "C2"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "固定文件白名单和摘要保留当前实现，并使真实数据留在现有私有运行目录",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "洁净克隆可在推送前检查所有暂存文件并在推送后核对远端提交",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "保持源码只在现有电脑",
+        "status": "Rejected",
+        "derived_from": [
+          "P2"
+        ],
+        "tradeoffs": [
+          "无外部写入",
+          "不满足提交仓库要求"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "独立克隆并只提交看板源码、依赖和说明，并以显式双地址和内网允许清单提供访问",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "tradeoffs": [
+          "文件边界清楚，原服务不受影响",
+          "需核对独立依赖和运行说明"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "在完整运行目录初始化Git并依赖忽略文件选取",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "省去复制",
+          "运行资产较多，提交范围更易混入数据和其他会话改动"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "按用户追加指令配置3030双地址监听及内网边界，验证并只重启board",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+      "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+      "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+      "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-03",
+      "DT-07"
+    ],
+    "primary_development_type": "DT-07",
+    "development_type_scopes": {
+      "DT-03": [
+        "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+      ],
+      "DT-07": [
+        "准备3030看板源码及可运行依赖/说明的洁净交付",
+        "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+      ]
+    },
+    "change_surfaces": [
+      "Deploy/Operations",
+      "AI/Data Governance",
+      "Identity/Security/Privacy"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+        ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+      ],
+      "E04": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+      ],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Reference"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+      "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "Yes",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "Yes",
+      "formal_review_or_gate": "Yes"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-GITHUB-20261030-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T21:21:34.275570Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-GITHUB-20261030-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T21:21:34.275570Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-GITHUB-20261030-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T21:21:34.275570Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "task_profile.applicability_facts.data_ai_impact",
+      "old_value": "No",
+      "new_value": "Yes",
+      "reason": "首次检索要求data控制，修正对交付产物外传边界的分类，增补E03而非降低门禁；源码白名单和私有数据排除本已属于确认范围",
+      "basis": "当前任务discovery/survey.md与实际Blocked查询结果；不扩大任何客户数据访问或上传权限",
+      "changed_at": "2026-10-29T21:24:04.046877Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "task_profile.change_surfaces",
+      "old_value": [
+        "Deploy/Operations"
+      ],
+      "new_value": [
+        "Deploy/Operations",
+        "AI/Data Governance"
+      ],
+      "reason": "首次检索要求data控制，修正对交付产物外传边界的分类，增补E03而非降低门禁；源码白名单和私有数据排除本已属于确认范围",
+      "basis": "当前任务discovery/survey.md与实际Blocked查询结果；不扩大任何客户数据访问或上传权限",
+      "changed_at": "2026-10-29T21:24:04.046901Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "task_profile.extension_triggers.E03",
+      "old_value": "Inactive",
+      "new_value": "Active",
+      "reason": "首次检索要求data控制，修正对交付产物外传边界的分类，增补E03而非降低门禁；源码白名单和私有数据排除本已属于确认范围",
+      "basis": "当前任务discovery/survey.md与实际Blocked查询结果；不扩大任何客户数据访问或上传权限",
+      "changed_at": "2026-10-29T21:24:04.046908Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "task_profile.extension_evidence_refs.E03",
+      "old_value": [],
+      "new_value": [
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+        ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+      ],
+      "reason": "首次检索要求data控制，修正对交付产物外传边界的分类，增补E03而非降低门禁；源码白名单和私有数据排除本已属于确认范围",
+      "basis": "当前任务discovery/survey.md与实际Blocked查询结果；不扩大任何客户数据访问或上传权限",
+      "changed_at": "2026-10-29T21:24:04.046915Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "objective",
+      "old_value": "将当前3030看板服务以无业务数据的源码交付提交并推送到LFenX/AICS-CCDD",
+      "new_value": "用户能通过内网访问3030看板，并在指定私有仓库核对同版本的无业务数据源码",
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253526Z"
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "path": "request_snapshot.text",
+      "old_value": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+      "new_value": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库\n\n把服务开在内网可访问的地址",
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253554Z"
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "path": "scope.in_scope",
+      "old_value": [
+        "准备3030看板源码及可运行依赖/说明的洁净交付",
+        "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+      ],
+      "new_value": [
+        "准备3030看板源码及可运行依赖/说明的洁净交付",
+        "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端",
+        "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253572Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "path": "scope.allowed_paths",
+      "old_value": [
+        ".runtime/github-delivery-20261030/**",
+        ".project-governance/**",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/**",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-github-dashboard-delivery.md"
+      ],
+      "new_value": [
+        ".runtime/github-delivery-20261030/**",
+        ".project-governance/**",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/**",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-github-dashboard-delivery.md",
+        "insights/daily_board.py",
+        "insights/capabilities.py",
+        "tests/test_daily_network.py",
+        "config/daily-board.example.json",
+        "scripts/daily-board-firewall.ps1",
+        ".secrets/daily-board.json"
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253584Z"
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "path": "scope.forbidden_actions",
+      "old_value": [
+        "上传业务数据或凭据、force push、改动现有3030进程或生产隔离"
+      ],
+      "new_value": [
+        "上传业务数据或凭据、force push、连接生产或修改其他项目/服务进程"
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253593Z"
+    },
+    {
+      "from_revision": 10,
+      "to_revision": 11,
+      "path": "authority",
+      "old_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate",
+          "external-effect"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ],
+        "authority_assessments": [
+          {
+            "reference": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "准备3030看板源码及可运行依赖/说明的洁净交付",
+              "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+            ],
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ],
+            "verified_at": "2026-10-29T21:21:34.081806+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "new_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate",
+          "external-effect"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+        ],
+        "authority_assessments": [
+          {
+            "reference": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "准备3030看板源码及可运行依赖/说明的洁净交付",
+              "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+            ],
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ],
+            "verified_at": "2026-10-29T21:21:34.081806+00:00",
+            "expires_at": null
+          },
+          {
+            "reference": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+            ],
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+            ],
+            "verified_at": "2026-10-29T21:39:04.132225+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253618Z"
+    },
+    {
+      "from_revision": 11,
+      "to_revision": 12,
+      "path": "decisions",
+      "old_value": [
+        {
+          "id": "D-GITHUB-DIRECTIVE",
+          "kind": "Proceed",
+          "presented": "将当前3030看板服务源码提交到用户指定的GitHub仓库",
+          "response": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "decided_by": "user",
+          "decided_at": "2026-10-29T21:21:34.081806+00:00",
+          "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+          "outcome": "Approved"
+        }
+      ],
+      "new_value": [
+        {
+          "id": "D-GITHUB-DIRECTIVE",
+          "kind": "Proceed",
+          "presented": "将当前3030看板服务源码提交到用户指定的GitHub仓库",
+          "response": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "decided_by": "user",
+          "decided_at": "2026-10-29T21:21:34.081806+00:00",
+          "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+          "outcome": "Approved"
+        },
+        {
+          "id": "D-LAN-DIRECTIVE",
+          "kind": "Proceed",
+          "presented": "开放当前3030日报的内网访问入口并保留本地访问",
+          "response": "把服务开在内网可访问的地址",
+          "decided_by": "user",
+          "decided_at": "2026-10-29T21:39:04.132225+00:00",
+          "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+          "outcome": "Approved"
+        }
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253634Z"
+    },
+    {
+      "from_revision": 12,
+      "to_revision": 13,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "reading": "将当前看板服务代码提交并推送到指定仓库，交付可核对的提交链接",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "reading": "将当前看板服务代码提交并推送到指定仓库，交付可核对的提交链接",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "把服务开在内网可访问的地址",
+          "reading": "将看板部署为本地和内网可访问并验证真实监听和只读边界",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            3
+          ]
+        }
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253649Z"
+    },
+    {
+      "from_revision": 13,
+      "to_revision": 14,
+      "path": "acceptance.criteria",
+      "old_value": [
+        "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+        "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+        "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，原服务和生产隔离不变"
+      ],
+      "new_value": [
+        "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+        "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+        "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+        "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+      ],
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253664Z"
+    },
+    {
+      "from_revision": 14,
+      "to_revision": 15,
+      "path": "plan",
+      "old_value": {
+        "steps": [
+          "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+          "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+          "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档"
+        ],
+        "verification": [
+          "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+          "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+          "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，原服务和生产隔离不变"
+        ],
+        "rollback": [
+          "未推送时保留洁净克隆与原目录；已推送则使用普通revert，不强推或删除历史"
+        ]
+      },
+      "new_value": {
+        "steps": [
+          "按用户追加指令配置3030双地址监听及内网边界，验证并只重启board",
+          "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+          "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+          "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档"
+        ],
+        "verification": [
+          "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+          "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+          "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+          "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+        ],
+        "rollback": [
+          "未推送时保留洁净克隆与原目录；已推送则使用普通revert，不强推或删除历史",
+          "按lan-survey.md恢复回环监听并禁用本项目防火墙规则"
+        ]
+      },
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253678Z"
+    },
+    {
+      "from_revision": 15,
+      "to_revision": 16,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "用户指定私有仓库中保存可运行且无业务数据的当前看板源码",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "目标仓库无引用、私有且当前账号有push权限；源目录不是Git仓库",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "3030服务使用预生成读取模型，业务数据与源码可以分离；19项源码清单已记录摘要",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+              ".runtime/github-delivery-20261030/source-manifest-before.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "用户授权提交看板服务到该仓库，保持现有目录名称，凭据和客户数据不入库",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "不停止现有3030、不连接生产或启动IMAP采集；无force push或仓库权限变更",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "交付的是源码及运行契约，数据是运行时私有输入",
+            "derived_from": [
+              "F2",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "单独洁净Git索引和远端身份可证明提交边界",
+            "derived_from": [
+              "F1",
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "固定文件白名单和摘要保留当前实现，并使真实数据留在现有私有运行目录",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "洁净克隆可在推送前检查所有暂存文件并在推送后核对远端提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "保持源码只在现有电脑",
+            "status": "Rejected",
+            "derived_from": [
+              "P2"
+            ],
+            "tradeoffs": [
+              "无外部写入",
+              "不满足提交仓库要求"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "独立克隆并只提交看板源码、依赖和说明",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "文件边界清楚，原服务不受影响",
+              "需核对独立依赖和运行说明"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "在完整运行目录初始化Git并依赖忽略文件选取",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "省去复制",
+              "运行资产较多，提交范围更易混入数据和其他会话改动"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，原服务和生产隔离不变",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+          "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+          "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，原服务和生产隔离不变"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "用户能通过内网访问3030看板，并在指定私有仓库核对同版本的无业务数据源码",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "目标仓库无引用、私有且当前账号有push权限；源目录不是Git仓库",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "3030服务使用预生成读取模型，业务数据与源码可以分离；19项源码清单已记录摘要",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+              ".runtime/github-delivery-20261030/source-manifest-before.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "当前3030仅回环监听与校验，当前以太网地址和私有网范围已核实",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "用户授权提交看板服务到该仓库，保持现有目录名称，凭据和客户数据不入库",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "只重启本项目board并限定以太网内网入口；不连接生产或启动IMAP采集，无force push或仓库权限变更",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "交付的是源码及运行契约，数据是运行时私有输入",
+            "derived_from": [
+              "F2",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "单独洁净Git索引和远端身份可证明提交边界",
+            "derived_from": [
+              "F1",
+              "C2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "监听、真实对端校验和系统防火墙必须使用一致的显式内网范围",
+            "derived_from": [
+              "F3",
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "固定文件白名单和摘要保留当前实现，并使真实数据留在现有私有运行目录",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "洁净克隆可在推送前检查所有暂存文件并在推送后核对远端提交",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "保持源码只在现有电脑",
+            "status": "Rejected",
+            "derived_from": [
+              "P2"
+            ],
+            "tradeoffs": [
+              "无外部写入",
+              "不满足提交仓库要求"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "独立克隆并只提交看板源码、依赖和说明，并以显式双地址和内网允许清单提供访问",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "tradeoffs": [
+              "文件边界清楚，原服务不受影响",
+              "需核对独立依赖和运行说明"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "在完整运行目录初始化Git并依赖忽略文件选取",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "省去复制",
+              "运行资产较多，提交范围更易混入数据和其他会话改动"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md"
+            ]
+          },
+          {
+            "id": "K4",
+            "statement": "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过",
+            "source_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "按用户追加指令配置3030双地址监听及内网边界，验证并只重启board",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "克隆空的目标仓库并按源码白名单准备保持相对路径的交付",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "编写看板运行说明与依赖/忽略规则，在隔离环境验证功能和整个暂存区",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "提交并推送到目标仓库，复核远端SHA、文件清单和本地服务状态后留档",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "目标私有仓库有实际提交与远端一致的SHA，可通过GitHub提交链接核对",
+          "3030源码/UI资源保持当前交付版本，独立安装/合成测试和运行说明可用",
+          "全部暂存区中没有真实邮件、附件、快照、凭据、证书或运行日志，生产隔离及其他服务保持原状态",
+          "127.0.0.1与指定内网地址3030同时可访问，内网真实对端/Host/Origin限制和只读下载测试通过"
+        ],
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md"
+        ]
+      },
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253736Z"
+    },
+    {
+      "from_revision": 16,
+      "to_revision": 17,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Inactive",
+          "E02": "Inactive",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [],
+          "E02": [],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端",
+            "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253766Z"
+    },
+    {
+      "from_revision": 17,
+      "to_revision": 18,
+      "path": "clarification",
+      "old_value": {
+        "state": "Open",
+        "mode": "Skipped",
+        "notice": "目标是空的私有仓库，已确认具备推送权限。本次会沿用现有目录名称，提交 3030 看板、读取模型生成、附件预览、日志 ZIP 的源码和测试，并补充运行说明。范围已明确，无需补充确认。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+        ],
+        "rounds": [],
+        "basis": "目标仓库、权限、源码边界和私有数据排除路径已确认，用户明确要求提交；无需重复授权",
+        "reopened_by": [
+          "amendment:objective",
+          "amendment:scope.in_scope",
+          "amendment:scope.forbidden_actions",
+          "amendment:acceptance.criteria"
+        ]
+      },
+      "new_value": {
+        "state": "Settled",
+        "mode": "Skipped",
+        "notice": "内网地址、访问边界和进程归属已核实，用户明确要求开放；本次跳过重复提问。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "rounds": [],
+        "basis": "用户追加的直接授权与当前网卡/服务勘察一致",
+        "reopened_by": []
+      },
+      "reason": "用户在GitHub交付期间追加3030内网开放指令，先正式扩展范围和授权再执行",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md; LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md",
+      "changed_at": "2026-10-29T21:39:04.253803Z"
+    },
+    {
+      "from_revision": 18,
+      "to_revision": 19,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端",
+            "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06",
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-06": [
+            "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+          ],
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "reason": "内网开放改变外部行为，按真实事实补充DT06迭代范围和待审安全隐私门禁",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+      "changed_at": "2026-10-29T21:39:28.725545Z"
+    },
+    {
+      "from_revision": 19,
+      "to_revision": 20,
+      "path": "authority.required_gates",
+      "old_value": [],
+      "new_value": [
+        "security-privacy-review"
+      ],
+      "reason": "内网开放改变外部行为，按真实事实补充DT06迭代范围和待审安全隐私门禁",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+      "changed_at": "2026-10-29T21:39:28.725567Z"
+    },
+    {
+      "from_revision": 20,
+      "to_revision": 21,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "reading": "将当前看板服务代码提交并推送到指定仓库，交付可核对的提交链接",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "把服务开在内网可访问的地址",
+          "reading": "将看板部署为本地和内网可访问并验证真实监听和只读边界",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            3
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "[https://github.com/LFenX/AICS-CCDD](https://github.com/LFenX/AICS-CCDD) 提交该 看板服务到该仓库",
+          "reading": "将当前看板服务代码提交并推送到指定仓库，交付可核对的提交链接",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/github-delivery-20261030/remote-verification.json",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ],
+          "review": {
+            "source_sha256": "84f4092cb1468a91afb717076d80d37a085e93b512ca9f3624a00ee1a2e1402f",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "当前3030看板源码及用户指定的私有GitHub仓库",
+                "expected": "实际推送并可核对提交、文件和数据排除边界",
+                "actual": "GitHub main提交d36486b27f1a9a92edb35aa825df09a8dd0edb5b；30文件远端目录树一致，客户数据/凭据未上传",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/github-delivery-20261030/remote-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "把服务开在内网可访问的地址",
+          "reading": "将看板部署为本地和内网可访问并验证真实监听和只读边界",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/github-delivery-20261030/lan-verification.json",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "84f4092cb1468a91afb717076d80d37a085e93b512ca9f3624a00ee1a2e1402f",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "显式网卡配置、本机回环及内网地址的真实HTTP请求",
+                "expected": "内网网卡监听3030，允许范围能读取看板且回环继续可用",
+                "actual": "两个精确地址同时监听，页面/634封读取模型/附件/ZIP及限制校验通过；未从第二台电脑实测",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/github-delivery-20261030/lan-verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "逐条对照两条用户原文登记实际证据，同时修正新增LAN能力的DT03类型与board运行资产范围",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md",
+      "changed_at": "2026-10-29T21:51:44.211081Z"
+    },
+    {
+      "from_revision": 21,
+      "to_revision": 22,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06",
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-06": [
+            "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+          ],
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-03",
+          "DT-07"
+        ],
+        "primary_development_type": "DT-07",
+        "development_type_scopes": {
+          "DT-03": [
+            "开放3030看板到指定内网地址并保持读取模型、只读访问与生产隔离"
+          ],
+          "DT-07": [
+            "准备3030看板源码及可运行依赖/说明的洁净交付",
+            "校验源码和暂存区后提交推送到LFenX/AICS-CCDD并核对远端"
+          ]
+        },
+        "change_surfaces": [
+          "Deploy/Operations",
+          "AI/Data Governance",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/requirements/lan-directive.md",
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+            ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/survey.md",
+          "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/discovery/lan-survey.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "Yes",
+          "formal_review_or_gate": "Yes"
+        }
+      },
+      "reason": "逐条对照两条用户原文登记实际证据，同时修正新增LAN能力的DT03类型与board运行资产范围",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md",
+      "changed_at": "2026-10-29T21:51:44.211124Z"
+    },
+    {
+      "from_revision": 22,
+      "to_revision": 23,
+      "path": "scope.allowed_paths",
+      "old_value": [
+        ".runtime/github-delivery-20261030/**",
+        ".project-governance/**",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/**",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-github-dashboard-delivery.md",
+        "insights/daily_board.py",
+        "insights/capabilities.py",
+        "tests/test_daily_network.py",
+        "config/daily-board.example.json",
+        "scripts/daily-board-firewall.ps1",
+        ".secrets/daily-board.json"
+      ],
+      "new_value": [
+        ".runtime/github-delivery-20261030/**",
+        ".project-governance/**",
+        "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/**",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-github-dashboard-delivery.md",
+        "insights/daily_board.py",
+        "insights/capabilities.py",
+        "tests/test_daily_network.py",
+        "config/daily-board.example.json",
+        "scripts/daily-board-firewall.ps1",
+        ".secrets/daily-board.json",
+        ".runtime/processes.json",
+        ".runtime/board.log",
+        ".runtime/board.err.log"
+      ],
+      "reason": "逐条对照两条用户原文登记实际证据，同时修正新增LAN能力的DT03类型与board运行资产范围",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/acceptance.md",
+      "changed_at": "2026-10-29T21:51:44.211142Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "e033e43aee54b61beb2645ef76a59bd4295c94c636e1d7fd2d3a4488b2dbca1b",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_system_effect=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_review_or_gate=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:security_privacy_impact=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Reference",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:Identity/Security/Privacy",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-03",
+      "VC-PPG-TAIL-001:development_types:DT-07",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

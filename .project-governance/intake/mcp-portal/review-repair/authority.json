@@ -1,0 +1,17 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "修复独立第一轮确认的四项MCP门户/协议问题并回归原需求全部范围",
+      "保持唯一所有者和历史本地副本边界，重建材料并只部署desk/mcp",
+      "逐轮保存审查证据；保持原工程结果、人工门禁与验收原意"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+    ],
+    "verified_at": "2026-10-29T19:40:20.310121+00:00",
+    "expires_at": null
+  }
+]

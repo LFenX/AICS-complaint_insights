@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "经独立原文和全量字节校验后，仅原子切换10月29日报report.json到3封语义纠偏版本；815文件原版归档完整，资源UID与源数据不变，具备CAS及回滚",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "bee418d5e1a38142a1c053ad052aa0331cd3f27276f71876219dece5ba34b629",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03"
+}

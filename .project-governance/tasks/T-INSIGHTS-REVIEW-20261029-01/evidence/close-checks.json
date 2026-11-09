@@ -1,0 +1,24 @@
+[
+  {
+    "result": "Passed",
+    "summary": "50项单元、真实隔离PostgreSQL与MCP协议/权限契约测试通过；三个预审缺陷回归通过",
+    "evidence_refs": [
+      ".runtime/unittest-review-fixes.log",
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/verification/fix-results.json"
+    ]
+  },
+  {
+    "result": "Passed",
+    "summary": "严格HTTPS发现11个工具，修复后来源READY；更新交接包11文件且Python下限3.11",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/verification/fix-results.json"
+    ]
+  },
+  {
+    "result": "Passed",
+    "summary": "14表开发源与本地副本逐行内容SHA256一致；独立预审的分页/断线/迟提交/归档等实体反例成功",
+    "evidence_refs": [
+      ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-1-results.json"
+    ]
+  }
+]

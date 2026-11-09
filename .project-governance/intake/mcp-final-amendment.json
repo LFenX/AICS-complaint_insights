@@ -1,0 +1,256 @@
+[
+  {
+    "path": "request_snapshot",
+    "value": {
+      "language": "zh",
+      "text": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划\n提供查询不同数据的接口\n并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+      "captured_at": "2026-10-29T08:27:18.250690Z",
+      "source": "真实用户持续指令；初次采集时间保留，后补原话的采集时间由 Amendment.changed_at 记录；原问答见 discovery/mcp-steering.md"
+    }
+  },
+  {
+    "path": "requirement_items",
+    "value": [
+      {
+        "id": "R-01",
+        "source": "request_snapshot",
+        "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+        "reading": "本期开发数据库、增量、日期分类读取模型和接口已完成；生产接通后的真实联调仍是未来条件，已预备配置与手册，不能记为已经完成",
+        "state": "Deferred",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/release/production-switch.md"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+          "conditions": [
+            "后续生产数据库连接接通"
+          ],
+          "cases": [
+            {
+              "condition": 0,
+              "branch": "NotMet",
+              "input": "生产尚未内网监听，未取得采集端生产连接验证",
+              "expected": "用开发数据交付本地底座并预留生产切换",
+              "actual": "53119 封邮件完整复制；增量/API/MCP 运行；47 项测试及十四表内容核对通过；生产默认关闭",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+              ]
+            },
+            {
+              "condition": 0,
+              "branch": "Met",
+              "input": "未来真实生产只读连接接通后",
+              "expected": "按独立来源配置完成生产预检、首批导入和实际负载验证",
+              "actual": "仅完成配置、来源隔离测试和切换手册；真实生产连接、导入和负载未执行",
+              "result": "NotRun",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/release/production-switch.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-02",
+        "source": "request_snapshot",
+        "quote": "提供查询不同数据的接口",
+        "reading": "按数据类型提供只读接口",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+        ],
+        "acceptance_refs": [
+          3,
+          5
+        ],
+        "review": {
+          "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+              "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+              "actual": "11 个工具覆盖分类、统计、邮件原文/AI、状态及十四类业务副本，真实调用 26 次通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-03",
+        "source": "request_snapshot",
+        "quote": "并给出说明，注意接口工具以MCP形式构建，并提供相关说明，后续方便和其他人交接如何使用这些工具，按需调用所需数据",
+        "reading": "标准 MCP、中文工具说明、配置与按需调用交接",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+        ],
+        "acceptance_refs": [
+          5
+        ],
+        "review": {
+          "source_sha256": "8eb32ed764ff33f6a20052cbd7c0abe22ea9d1614f2031da5d0e628604b1da53",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+              "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+              "actual": "HTTPS MCP 工具发现/调用、资源、旧版 initialize 通过；含真实只读令牌的交接包解压后客户端发现 11 个工具；文档含参数、分页、口径与故障步骤",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-04",
+        "source": "clarification:r1.e1",
+        "quote": "需要其他内网电脑的 Agent 直接远程调用",
+        "reading": "提供内网远程可调用的 HTTPS MCP 入口；接收方电脑实际路由与客户端验收保留未验项",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+        ],
+        "acceptance_refs": [
+          5
+        ],
+        "review": {
+          "source_sha256": "cea98928f5577bcb9b5a100ee2f1cf962249b99d23d08227c4c61197d383099f",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "当前已运行的开发副本、真实 HTTPS MCP 与解压后的交接客户端",
+              "expected": "按用户指定的数据类型和 MCP 形式只读查询，并能按文档交接",
+              "actual": "10.8.61.200:3037 真实严格 HTTPS MCP 验证成功，独立令牌、Host/Origin、网段及防火墙已生效；未声称另一台电脑已验收",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "path": "artifact_manifest",
+    "value": [
+      {
+        "meta_type": "TaskContract",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-before",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/before.json",
+        "reason": "freeze execution input",
+        "rule_reference": "VC-PPG-PRO-001 §8.1",
+        "owner": "task-initiator",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "RunLedger",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-run",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/run.jsonl",
+        "reason": "record material execution events",
+        "rule_reference": "VC-PPG-PRO-001 §8.2",
+        "owner": "execution-agent",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "TaskOutcome",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-after",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/after.json",
+        "reason": "record terminal facts and residue",
+        "rule_reference": "VC-PPG-PRO-001 §8.3",
+        "owner": "task-initiator",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "DerivedView",
+        "legacy_kind": null,
+        "action": "Generate",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-source-manifest",
+        "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+        "reason": "绑定 59 个实际公开交付文件的 SHA256；私有凭据与运行缓存不纳入公开清单",
+        "rule_reference": "C09 execution evidence; C05 verification",
+        "owner": "execution-agent",
+        "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "human_confirmation_refs": []
+      }
+    ]
+  },
+  {
+    "path": "clarification",
+    "value": {
+      "state": "Settled",
+      "mode": "Asked",
+      "notice": "需确认调用位置，因为远程 MCP 需要增加监听地址和认证配置。",
+      "survey_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/mcp-steering.md"
+      ],
+      "rounds": [
+        {
+          "ordinal": 1,
+          "asked_at": "2026-10-29T09:49:25.764883+00:00",
+          "exchanges": [
+            {
+              "question": "MCP 工具需要在哪里调用？这决定连接配置和服务监听方式。",
+              "changes": "Scope",
+              "recommended_default": "先供这台采集电脑上的 Agent 使用，交接本地 stdio 配置",
+              "answer": "需要其他内网电脑的 Agent 直接远程调用",
+              "answer_state": "Answered"
+            }
+          ]
+        }
+      ],
+      "basis": "用户已真实回答远程内网调用；asked_at 为此次补录的采集时间，不冒充原始消息时间。MCP 范围已明确，安全隐私 Gate 未获通过，仍独立待审。",
+      "reopened_by": [
+        "amendment:scope",
+        "amendment:acceptance.criteria"
+      ]
+    }
+  }
+]

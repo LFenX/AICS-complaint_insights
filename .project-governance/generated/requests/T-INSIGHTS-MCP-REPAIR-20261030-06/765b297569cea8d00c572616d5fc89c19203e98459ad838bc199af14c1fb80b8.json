@@ -1,0 +1,15 @@
+{
+  "action": "independent_review",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "新只读独立执行者在工程冻结留档后完整重读原始用户需求/澄清，覆盖stdio与HTTP所有工具参数、权限和状态边界；两问题处置以实际证据判断，保留正式人类Pending",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S6",
+  "tailoring_resolution_sha256": "df64667729dd024197f1a9e77cbbc540ad390421389b6870ed2ca384ebd13b2b",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-06"
+}

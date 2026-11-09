@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-MCP-REPAIR-20261030-03-SCOPE-RECON",
+  "view_kind": "scope-reconciliation",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T20:50:06.351669Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "57f5e4743acafaac1a9a465036b36f6408c03a993b565206cdff5886dad7490d",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-03/before.json"
+  ],
+  "content_ref": ".project-governance/generated/scope-reconciliation/T-INSIGHTS-MCP-REPAIR-20261030-03.md",
+  "integrity_status": "Complete"
+}

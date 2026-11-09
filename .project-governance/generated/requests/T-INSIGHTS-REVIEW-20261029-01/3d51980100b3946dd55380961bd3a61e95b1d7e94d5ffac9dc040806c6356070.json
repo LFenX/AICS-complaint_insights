@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "记录只读证据承接与已授权Agent审查协作；不改变原工程业务、数据、认证、监听或部署",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "3a90f1a575cd4c14d025ffc1c126d9a388634fb8d6509faddd1bddecbe19e43f",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

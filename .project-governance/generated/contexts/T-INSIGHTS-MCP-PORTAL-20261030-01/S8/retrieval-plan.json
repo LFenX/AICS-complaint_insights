@@ -1,0 +1,168 @@
+{
+  "activation": {
+    "mode": "Shadow",
+    "release_authorized": false,
+    "remote_semantic_enabled": false
+  },
+  "allowed_actions": [
+    {
+      "action": "close_task",
+      "pinned_control_types": [
+        "prohibition",
+        "gate",
+        "integrity"
+      ],
+      "required_control_types": [
+        "execution",
+        "validation",
+        "evidence",
+        "records",
+        "freshness"
+      ]
+    }
+  ],
+  "diagnostic_fallback": {
+    "cannot_bypass": [
+      "Blocked",
+      "Tailoring Resolution",
+      "Authority",
+      "Gate"
+    ],
+    "condition": "query runtime diagnosis or an explicit Expanded fallback only",
+    "scope": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-MCP-PORTAL-20261030-01\\S8\\norm-source-pack.md",
+    "tool": "rg"
+  },
+  "fallback_chain": [
+    "clause",
+    "parent-section",
+    "complete-source",
+    "ordered-source-pages",
+    "blocked"
+  ],
+  "inputs": [
+    {
+      "digest_kind": "retrieval-contract-projection-v1",
+      "excluded_fields": [
+        "frozen_at",
+        "lifecycle_state"
+      ],
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01\\before.json",
+      "role": "task-contract",
+      "sha256": "f648e7c2adfad085d89eb8bf9df38ef75619faa194aad8d96faa3f7d05d355a4"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-MCP-PORTAL-20261030-01\\S8\\norm-packet.json",
+      "role": "norm-packet-json",
+      "sha256": "295d96606520f21725602326b2984494b8ab4634a299ce6e7a894a5687f8199b"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-MCP-PORTAL-20261030-01\\S8\\norm-packet.md",
+      "role": "norm-packet-markdown",
+      "sha256": "87f2a3436f28f3eefa2d1f48bd3c6b54f7da9a06227d2e7cf6d27464db80d1a1"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-MCP-PORTAL-20261030-01\\S8\\norm-source-pack.md",
+      "role": "complete-source-pack",
+      "sha256": "24948852f93a2d70c31b67a04384dac3fb331adf636df8a7826ad76764e5c76b"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\norm-action-taxonomy.json",
+      "role": "action-taxonomy",
+      "sha256": "d814fc5a9ccf0cc6e547f3a23d534d3100039d73dca59cdc23fbe819bc8b3882"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query.schema.json",
+      "role": "query-schema",
+      "sha256": "18a00d1808aa76fb9b70d5425afc8081eeb1a05a95e063847e1e86ca3d06b106"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query-result.schema.json",
+      "role": "query-result-schema",
+      "sha256": "5e000963dce586ffb3bb027da899470245aa90eb3d206217ede9640ee1a174cf"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\query_norm_context.py",
+      "role": "query-runtime",
+      "sha256": "3244615459018b3b2bec8bc961b28ad9e684a602d76854bd8363100f94ec7c5a"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\compile_norm_context.py",
+      "role": "compiler",
+      "sha256": "f52d4dc8e34a4def3b00c8bb3bedcb5583b0c52caf7327c0602ddcb13528df63"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\governance_artifacts.py",
+      "role": "governance-runtime",
+      "sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153"
+    }
+  ],
+  "invocation": {
+    "arguments": [
+      "--task-dir",
+      "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-MCP-PORTAL-20261030-01",
+      "--request-json-file",
+      "${QUERY_REQUEST_JSON}"
+    ],
+    "executable": "python",
+    "script": "${SKILL_ROOT}/scripts/query_norm_context.py"
+  },
+  "outcome_policy": {
+    "Blocked": "stop the material action; do not bypass the blocker with rg or uncited memory",
+    "Complete": "consume clause-context.md and its cited controls",
+    "Expanded": "follow fallback.event_ref and read the indicated parent section, complete source, or ordered source page"
+  },
+  "plan_type": "bounded-norm-retrieval",
+  "plan_version": "1.0",
+  "project_id": "complaint-insights",
+  "request_template": {
+    "action": null,
+    "budget_profile": "standard",
+    "modes": [
+      "exact",
+      "fts"
+    ],
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "query_text": null,
+    "requested_additional_control_types": [],
+    "schema_version": "6.3-candidate",
+    "stage": "S8",
+    "tailoring_resolution_sha256": "2ce1e2795b2608e9987e53608f924b088f89fe43fc0b50343255a09ee4cfd22a",
+    "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+  },
+  "required_agent_inputs": [
+    "action",
+    "query_text"
+  ],
+  "schema_version": "6.3-candidate",
+  "source_boundary": {
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "source_ids": [
+      "VC-PPG-COM-001",
+      "VC-PPG-COM-002",
+      "VC-PPG-DEC-001",
+      "VC-PPG-PRO-001",
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E05",
+      "VC-PPG-IDX-001"
+    ],
+    "tailoring_resolution_sha256": "2ce1e2795b2608e9987e53608f924b088f89fe43fc0b50343255a09ee4cfd22a"
+  },
+  "source_pack_retained": true,
+  "stage": "S8",
+  "status": "ShadowReady",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+}

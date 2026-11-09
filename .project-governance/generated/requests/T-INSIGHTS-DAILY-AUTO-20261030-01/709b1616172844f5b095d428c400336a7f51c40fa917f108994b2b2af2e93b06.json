@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按原文实施日期选择默认今天和缺报空状态，固化逐封证据质量标准并安装skill及00:30本会话自动生成，保持生产隔离及内网权限",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "04f38065c50f683ba35b0ddf80e1ea80b139656bd05a01e27be8996d50169548",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "用户已对当前同版内网看板明确回复通过本轮门禁，登记真实安全隐私批准来源与交付摘要，保留旧Run和历史Pending记录，更新当前结果，不将本次门禁等同于整体验收或多轮对抗性审查授权",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "49db2cd95113cab68a4d2024a1b0f5208eab39ffe4947853102c14da9b29f2fc",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

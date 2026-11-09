@@ -1,0 +1,212 @@
+{
+  "activation": {
+    "mode": "Shadow",
+    "release_authorized": false,
+    "remote_semantic_enabled": false
+  },
+  "allowed_actions": [
+    {
+      "action": "classify_task",
+      "pinned_control_types": [
+        "applicability",
+        "prohibition"
+      ],
+      "required_control_types": [
+        "applicability",
+        "scope",
+        "freshness"
+      ]
+    },
+    {
+      "action": "plan_execution",
+      "pinned_control_types": [
+        "permission",
+        "gate",
+        "prohibition"
+      ],
+      "required_control_types": [
+        "scope",
+        "permission",
+        "gate",
+        "validation",
+        "change"
+      ]
+    },
+    {
+      "action": "resolve_conflict",
+      "pinned_control_types": [
+        "authority",
+        "prohibition",
+        "integrity"
+      ],
+      "required_control_types": [
+        "authority",
+        "prohibition",
+        "integrity",
+        "freshness"
+      ]
+    },
+    {
+      "action": "run_started",
+      "pinned_control_types": [
+        "authority",
+        "permission",
+        "prohibition",
+        "gate",
+        "integrity"
+      ],
+      "required_control_types": [
+        "scope",
+        "authority",
+        "permission",
+        "gate",
+        "integrity",
+        "freshness"
+      ]
+    }
+  ],
+  "diagnostic_fallback": {
+    "cannot_bypass": [
+      "Blocked",
+      "Tailoring Resolution",
+      "Authority",
+      "Gate"
+    ],
+    "condition": "query runtime diagnosis or an explicit Expanded fallback only",
+    "scope": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-DAILY-AUTO-20261030-01\\S4\\norm-source-pack.md",
+    "tool": "rg"
+  },
+  "fallback_chain": [
+    "clause",
+    "parent-section",
+    "complete-source",
+    "ordered-source-pages",
+    "blocked"
+  ],
+  "inputs": [
+    {
+      "digest_kind": "retrieval-contract-projection-v1",
+      "excluded_fields": [
+        "frozen_at",
+        "lifecycle_state"
+      ],
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-AUTO-20261030-01\\before.json",
+      "role": "task-contract",
+      "sha256": "5452befa04a62ebb94d4ca4495f7738dc1a0a221c4bf6000894bf9bb6dbaa196"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-DAILY-AUTO-20261030-01\\S4\\norm-packet.json",
+      "role": "norm-packet-json",
+      "sha256": "4232d83ddee0e68d84b530f1bb723d3d37924524621efd6b5a275b31d23fd4f8"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-DAILY-AUTO-20261030-01\\S4\\norm-packet.md",
+      "role": "norm-packet-markdown",
+      "sha256": "0eb1ee6253dc2e242367d20f747defcbfb2d0cd8ae7433d2a4cdf74a1a88394b"
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\generated\\contexts\\T-INSIGHTS-DAILY-AUTO-20261030-01\\S4\\norm-source-pack.md",
+      "role": "complete-source-pack",
+      "sha256": "70b37fecfdf05d8e0b42ff18b3979c136ba911351af7b9228e7a5b4bee073bc9"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\norm-action-taxonomy.json",
+      "role": "action-taxonomy",
+      "sha256": "d814fc5a9ccf0cc6e547f3a23d534d3100039d73dca59cdc23fbe819bc8b3882"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query.schema.json",
+      "role": "query-schema",
+      "sha256": "18a00d1808aa76fb9b70d5425afc8081eeb1a05a95e063847e1e86ca3d06b106"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query-result.schema.json",
+      "role": "query-result-schema",
+      "sha256": "5e000963dce586ffb3bb027da899470245aa90eb3d206217ede9640ee1a174cf"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\query_norm_context.py",
+      "role": "query-runtime",
+      "sha256": "3244615459018b3b2bec8bc961b28ad9e684a602d76854bd8363100f94ec7c5a"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\compile_norm_context.py",
+      "role": "compiler",
+      "sha256": "f52d4dc8e34a4def3b00c8bb3bedcb5583b0c52caf7327c0602ddcb13528df63"
+    },
+    {
+      "path": "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\governance_artifacts.py",
+      "role": "governance-runtime",
+      "sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153"
+    }
+  ],
+  "invocation": {
+    "arguments": [
+      "--task-dir",
+      "D:\\LFEN_project\\dev_project\\complaint-insights\\.project-governance\\tasks\\T-INSIGHTS-DAILY-AUTO-20261030-01",
+      "--request-json-file",
+      "${QUERY_REQUEST_JSON}"
+    ],
+    "executable": "python",
+    "script": "${SKILL_ROOT}/scripts/query_norm_context.py"
+  },
+  "outcome_policy": {
+    "Blocked": "stop the material action; do not bypass the blocker with rg or uncited memory",
+    "Complete": "consume clause-context.md and its cited controls",
+    "Expanded": "follow fallback.event_ref and read the indicated parent section, complete source, or ordered source page"
+  },
+  "plan_type": "bounded-norm-retrieval",
+  "plan_version": "1.0",
+  "project_id": "complaint-insights",
+  "request_template": {
+    "action": null,
+    "budget_profile": "standard",
+    "modes": [
+      "exact",
+      "fts"
+    ],
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "query_text": null,
+    "requested_additional_control_types": [],
+    "schema_version": "6.3-candidate",
+    "stage": "S4",
+    "tailoring_resolution_sha256": "04f38065c50f683ba35b0ddf80e1ea80b139656bd05a01e27be8996d50169548",
+    "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+  },
+  "required_agent_inputs": [
+    "action",
+    "query_text"
+  ],
+  "schema_version": "6.3-candidate",
+  "source_boundary": {
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "source_ids": [
+      "VC-PPG-COM-001",
+      "VC-PPG-COM-002",
+      "VC-PPG-DEC-001",
+      "VC-PPG-PRO-001",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05",
+      "VC-PPG-IDX-001"
+    ],
+    "tailoring_resolution_sha256": "04f38065c50f683ba35b0ddf80e1ea80b139656bd05a01e27be8996d50169548"
+  },
+  "source_pack_retained": true,
+  "stage": "S4",
+  "status": "ShadowReady",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

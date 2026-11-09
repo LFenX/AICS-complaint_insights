@@ -1,0 +1,1971 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01",
+  "ordinal": 17,
+  "revision": 6,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-30T11:25:35.689201Z",
+  "frozen_at": "2026-10-30T11:26:27.028743Z",
+  "objective": "默认展示上一自然日日报并完成已授权审查返修",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+    "captured_at": "2026-10-30T11:25:35.612392Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Asked",
+    "notice": "这次澄清已经明确了默认日期，本轮跳过提问阶段。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+    ],
+    "rounds": [
+      {
+        "ordinal": 1,
+        "asked_at": "2026-10-30T09:34:42.020510+00:00",
+        "exchanges": [
+          {
+            "question": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+            "changes": "Acceptance",
+            "recommended_default": "启动多轮对抗性审查",
+            "answer": "启动多轮对抗性审查",
+            "answer_state": "Answered"
+          }
+        ]
+      }
+    ],
+    "basis": "引用本会话已真实询问并已回答的call_658d513347f440319b3e1955ed4687c9，不新编问答、不要求重复授权；该答复授权父任务的多轮审查及同范围返修。子任务仅保存已验证修复交付，父任务负责两轮收敛；最新日期澄清原文不变。来源 .runtime/daily-automation-20261030/review-authorization.json。",
+    "reopened_by": [
+      "amendment:acceptance.criteria"
+    ]
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "reading": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_dates.py",
+        ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+        ".runtime/daily-automation-20261030/review-repair/verification.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "北京时间10月30日无date请求、快捷昨天及跨月/年/闰日模拟",
+            "expected": "默认10月29日且标题数据日期一致；自然日减一正确",
+            "actual": "真实两地址634封、浏览器日期10月29，三个日历边界测试通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_dates.py",
+              ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+              ".runtime/daily-automation-20261030/review-repair/verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "reading": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_dates.py",
+        ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+        "conditions": [
+          "所选日期尚无正式日报"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "显式2026-10-30、模拟10月31日默认昨天无报告",
+            "expected": "整页未生成、0旧行、不回填更旧日报",
+            "actual": "浏览器显式今日未生成0行；模拟昨日缺报测试通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_dates.py",
+              ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "默认或显式2026-10-29已生成",
+            "expected": "显示634封，对应详情/文件/ZIP；切换分页同步",
+            "actual": "两地址634封、详情/图片/文本/PDF/ZIP与date/version错误、浏览器100重载25均通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_dates.py",
+              ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "reading": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+      "state": "Covered",
+      "evidence_refs": [
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+        ".runtime/daily-automation-20261030/review-repair/automation.json",
+        ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "读取安装skill十文件与现有automation-2配置",
+            "expected": "最终默认昨天、00:30前一天、本会话不变",
+            "actual": "元数据/链接/634索引与30714最长正文分页、客户指纹无命中、ACTIVE heartbeat和当前thread回读通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+              ".runtime/daily-automation-20261030/review-repair/automation.json",
+              ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "reading": "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+        "tests/test_daily_generation.py",
+        ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "首轮4个已确认反例与完整修复版本",
+            "expected": "拒绝两类身份碰撞、分页同步、开关/健康状态一致并留独立审查续接",
+            "actual": "67项测试通过；碰撞阻断及合法子组/领域隔离发布正分支、能力flag/READY/aux正反测试、实际分页重载通过。父审查等待同版复查，不冒填通过",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "request_snapshot",
+      "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "reading": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-repair/verification.json",
+        ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+        ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+      ],
+      "acceptance_refs": [
+        4
+      ],
+      "review": {
+        "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "原报告/全部原件/ZIP字节、服务PID、生产开关及页面截图",
+            "expected": "历史SHA保持，原风格/布局/9列不退化，生产隔离和其他PID不变",
+            "actual": "原报告SHA、634封/405附件/35ZIP完整通过，白底/UID首列9列表实测，生产false/watch停/其他服务PID保持",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-repair/verification.json",
+              ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+              ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-006",
+      "source": "clarification:r1.e1",
+      "quote": "启动多轮对抗性审查",
+      "reading": "本任务的返修沿用用户已明确启动的父审查授权，直接依赖父任务并交回其多轮审查，不重复询问或冒填审查通过",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-authorization.json",
+        ".runtime/daily-automation-20261030/review-round-01.log",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/before.json"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "真实问答call_658d513347f440319b3e1955ed4687c9及父任务审查状态",
+            "expected": "明确Accepted且父会话尚未结束；返修直接depends_on父任务、提交review-parent，不把用户启动同意当验收或两轮已通过",
+            "actual": "父状态InProgress、0干净轮/4个开放发现；本任务直接依赖父任务，官方close使用review-parent参数；用户决定保持Pending，没有新造答复",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-authorization.json",
+              ".runtime/daily-automation-20261030/review-round-01.log",
+              ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/before.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-DAILY-REPAIR-PROCEED",
+      "kind": "Proceed",
+      "presented": "按明确澄清修正默认上一自然日，并接续已授权审查和同范围返修验证。",
+      "response": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+      "decided_by": "user",
+      "decided_at": "2026-10-30T11:25:35.497227+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-AUTO-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T11:25:35.652944Z"
+  },
+  "scope": {
+    "in_scope": [
+      "默认上一自然日及日期导航",
+      "日报生成与skill质量契约的本次审查修复",
+      "原文追踪、验证与父审查证据"
+    ],
+    "out_of_scope": [
+      "生产访问/重启、watch、MCP令牌台、GitHub推送、历史日报重写"
+    ],
+    "allowed_paths": [
+      "insights/daily_board.py",
+      "insights/daily_generation.py",
+      "insights/capabilities.py",
+      "assets/daily-board.*",
+      "tests/test_daily_dates.py",
+      "tests/test_daily_generation.py",
+      "tests/test_daily_review.py",
+      "README.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/steering.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+      "LG_project_docs/README.md",
+      "update_log/2026-10-30-daily-review-repair.md",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/**",
+      ".project-governance/generated/**",
+      ".project-governance/README.md",
+      ".runtime/daily-automation-20261030/**",
+      ".runtime/processes.json",
+      ".runtime/board*.log",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report",
+      "insights/api.py"
+    ],
+    "forbidden_actions": [
+      "解除生产隔离、改其他服务、泄漏原文与凭据、用模拟数据正式发布"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate",
+      "external-effect"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "默认上一自然日及日期导航",
+          "日报生成与skill质量契约的本次审查修复",
+          "原文追踪、验证与父审查证据"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+          ".runtime/daily-automation-20261030/review-authorization.json"
+        ],
+        "verified_at": "2026-10-30T11:25:35.497227+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+      "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+      "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+      "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+      "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "保留用户原文并冻结修复计划与现状",
+      "修正默认日期、导航和相关契约；处理独立审查确认问题",
+      "完成隔离反例、回归和实际页面验证，保存工程修复版本",
+      "接续父会话完整审查，直到同版连续两轮无问题"
+    ],
+    "verification": [
+      "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+      "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+      "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+      "针对原文完整范围执行已授权对抗审查，确认问题在依赖父任务的返修任务修复并复验；同版连续两轮完整无问题才收敛",
+      "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离"
+    ],
+    "rollback": [
+      "使用本次前置文件备份恢复受改源码/skill及文档，仅重启board，保留全部报告与审查历史"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "用户当天打开看到上一完整自然日日报，后续定时按最终质量标准产出",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "当前默认今天、00:30任务生成昨天，默认日期与用户消费时间错开",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "按北京时间自然日；显式日期不替换；生产隔离与其他服务保持；审查同版两轮",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+          ".runtime/daily-automation-20261030/review-authorization.json"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "数据日期与访问日期分别表达，默认值由业务时间计算",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "日报质量来自逐封证据与原文完整复核，摘要/绿灯不替代语义审查",
+        "derived_from": [
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "默认减一个自然日且保留显式date，消除默认缺报并不伪装报告日期",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "保留默认今天",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "无需修改",
+          "违反最新澄清"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "服务端默认昨天、前端快捷昨天，日期框为数据日；完整审查后返修",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "保留日期契约和样式",
+          "缺报仍如实提示"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "默认最近已生成日报",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "能打开已有版本",
+          "会掩盖昨日缺报且不符合固定上一自然日"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "针对原文完整范围执行已授权对抗审查，确认问题在依赖父任务的返修任务修复并复验；同版连续两轮完整无问题才收敛",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K5",
+        "statement": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "保留用户原文并冻结修复计划与现状",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      },
+      {
+        "plan_step": "修正默认日期、导航和相关契约；处理独立审查确认问题",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      },
+      {
+        "plan_step": "完成隔离反例、回归和实际页面验证，保存工程修复版本",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      },
+      {
+        "plan_step": "接续父会话完整审查，直到同版连续两轮无问题",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+      "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+      "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+      "针对原文完整范围执行已授权对抗审查，确认问题在依赖父任务的返修任务修复并复验；同版连续两轮完整无问题才收敛",
+      "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "默认上一自然日及日期导航",
+        "日报生成与skill质量契约的本次审查修复",
+        "原文追踪、验证与父审查证据"
+      ]
+    },
+    "change_surfaces": [
+      "UI/UX",
+      "API/Integration",
+      "AI/Data Governance",
+      "Agent/Collaboration",
+      "Deploy/Operations"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+      ],
+      "E04": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+      ],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "Yes",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T11:25:35.652944Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T11:25:35.652944Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T11:25:35.652944Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "scope.allowed_paths",
+      "old_value": [
+        "insights/daily_board.py",
+        "insights/daily_generation.py",
+        "insights/capabilities.py",
+        "assets/daily-board.*",
+        "tests/test_daily_dates.py",
+        "tests/test_daily_generation.py",
+        "tests/test_daily_review.py",
+        "README.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/steering.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-daily-review-repair.md",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        ".runtime/processes.json",
+        ".runtime/board*.log",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+      ],
+      "new_value": [
+        "insights/daily_board.py",
+        "insights/daily_generation.py",
+        "insights/capabilities.py",
+        "assets/daily-board.*",
+        "tests/test_daily_dates.py",
+        "tests/test_daily_generation.py",
+        "tests/test_daily_review.py",
+        "README.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/requirements/steering.md",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+        "LG_project_docs/README.md",
+        "update_log/2026-10-30-daily-review-repair.md",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/**",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        ".runtime/processes.json",
+        ".runtime/board*.log",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report",
+        "insights/api.py"
+      ],
+      "reason": "审查确认新日报生成能力的目录状态错误，补充其只读状态接口文件；不新增远程生成入口或重启其他服务",
+      "basis": ".runtime/daily-automation-20261030/review-initial/capability-results.json",
+      "changed_at": "2026-10-30T11:31:34.840617Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "acceptance.criteria",
+      "old_value": [
+        "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+        "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+        "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+        "针对原文完整范围执行已授权对抗审查，确认问题在依赖父任务的返修任务修复并复验；同版连续两轮完整无问题才收敛",
+        "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离"
+      ],
+      "new_value": [
+        "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+        "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+        "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+        "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+        "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离"
+      ],
+      "reason": "逐条对照后续用户澄清及已授权父审查，绑定修复与正反实际证据；区分子任务保存修复版本和父任务最终审查，消除循环验收",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+      "changed_at": "2026-10-30T11:40:08.211970Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "针对原文完整范围执行已授权对抗审查，确认问题在依赖父任务的返修任务修复并复验；同版连续两轮完整无问题才收敛",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            3
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            4
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+            ".runtime/daily-automation-20261030/review-repair/verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "北京时间10月30日无date请求、快捷昨天及跨月/年/闰日模拟",
+                "expected": "默认10月29日且标题数据日期一致；自然日减一正确",
+                "actual": "真实两地址634封、浏览器日期10月29，三个日历边界测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+                  ".runtime/daily-automation-20261030/review-repair/verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [
+              "所选日期尚无正式日报"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "显式2026-10-30、模拟10月31日默认昨天无报告",
+                "expected": "整页未生成、0旧行、不回填更旧日报",
+                "actual": "浏览器显式今日未生成0行；模拟昨日缺报测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "默认或显式2026-10-29已生成",
+                "expected": "显示634封，对应详情/文件/ZIP；切换分页同步",
+                "actual": "两地址634封、详情/图片/文本/PDF/ZIP与date/version错误、浏览器100重载25均通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+          "state": "Covered",
+          "evidence_refs": [
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            ".runtime/daily-automation-20261030/review-repair/automation.json",
+            ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "读取安装skill十文件与现有automation-2配置",
+                "expected": "最终默认昨天、00:30前一天、本会话不变",
+                "actual": "元数据/链接/634索引与30714最长正文分页、客户指纹无命中、ACTIVE heartbeat和当前thread回读通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  ".runtime/daily-automation-20261030/review-repair/automation.json",
+                  ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "首轮4个已确认反例与完整修复版本",
+                "expected": "拒绝两类身份碰撞、分页同步、开关/健康状态一致并留独立审查续接",
+                "actual": "67项测试通过；碰撞阻断及合法子组/领域隔离发布正分支、能力flag/READY/aux正反测试、实际分页重载通过。父审查等待同版复查，不冒填通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-repair/verification.json",
+            ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+            ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+          ],
+          "acceptance_refs": [
+            4
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "原报告/全部原件/ZIP字节、服务PID、生产开关及页面截图",
+                "expected": "历史SHA保持，原风格/布局/9列不退化，生产隔离和其他PID不变",
+                "actual": "原报告SHA、634封/405附件/35ZIP完整通过，白底/UID首列9列表实测，生产false/watch停/其他服务PID保持",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-repair/verification.json",
+                  ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+                  ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "逐条对照后续用户澄清及已授权父审查，绑定修复与正反实际证据；区分子任务保存修复版本和父任务最终审查，消除循环验收",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/requirements/source.md",
+      "changed_at": "2026-10-30T11:40:08.212033Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "clarification",
+      "old_value": {
+        "state": "Open",
+        "mode": "Skipped",
+        "notice": "这次澄清已经明确了默认日期，本轮跳过提问阶段。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+        ],
+        "rounds": [],
+        "basis": "用户明确纠偏默认上一自然日；已有日期命名空间可保持显式日期契约，无新增权限或生产操作",
+        "reopened_by": [
+          "amendment:acceptance.criteria"
+        ]
+      },
+      "new_value": {
+        "state": "Settled",
+        "mode": "Asked",
+        "notice": "这次澄清已经明确了默认日期，本轮跳过提问阶段。",
+        "survey_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-01/discovery/survey.md"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-10-30T09:34:42.020510+00:00",
+            "exchanges": [
+              {
+                "question": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+                "changes": "Acceptance",
+                "recommended_default": "启动多轮对抗性审查",
+                "answer": "启动多轮对抗性审查",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "引用本会话已真实询问并已回答的call_658d513347f440319b3e1955ed4687c9，不新编问答、不要求重复授权；该答复授权父任务的多轮审查及同范围返修。子任务仅保存已验证修复交付，父任务负责两轮收敛；最新日期澄清原文不变。来源 .runtime/daily-automation-20261030/review-authorization.json。",
+        "reopened_by": [
+          "amendment:acceptance.criteria"
+        ]
+      },
+      "reason": "仅补齐修复交付与父审查分离所依据的既有真实答复来源，不改变授权或请求人重复确认",
+      "basis": ".runtime/daily-automation-20261030/review-authorization.json",
+      "changed_at": "2026-10-30T11:41:31.560132Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+            ".runtime/daily-automation-20261030/review-repair/verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "北京时间10月30日无date请求、快捷昨天及跨月/年/闰日模拟",
+                "expected": "默认10月29日且标题数据日期一致；自然日减一正确",
+                "actual": "真实两地址634封、浏览器日期10月29，三个日历边界测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+                  ".runtime/daily-automation-20261030/review-repair/verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [
+              "所选日期尚无正式日报"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "显式2026-10-30、模拟10月31日默认昨天无报告",
+                "expected": "整页未生成、0旧行、不回填更旧日报",
+                "actual": "浏览器显式今日未生成0行；模拟昨日缺报测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "默认或显式2026-10-29已生成",
+                "expected": "显示634封，对应详情/文件/ZIP；切换分页同步",
+                "actual": "两地址634封、详情/图片/文本/PDF/ZIP与date/version错误、浏览器100重载25均通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+          "state": "Covered",
+          "evidence_refs": [
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            ".runtime/daily-automation-20261030/review-repair/automation.json",
+            ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "读取安装skill十文件与现有automation-2配置",
+                "expected": "最终默认昨天、00:30前一天、本会话不变",
+                "actual": "元数据/链接/634索引与30714最长正文分页、客户指纹无命中、ACTIVE heartbeat和当前thread回读通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  ".runtime/daily-automation-20261030/review-repair/automation.json",
+                  ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "首轮4个已确认反例与完整修复版本",
+                "expected": "拒绝两类身份碰撞、分页同步、开关/健康状态一致并留独立审查续接",
+                "actual": "67项测试通过；碰撞阻断及合法子组/领域隔离发布正分支、能力flag/READY/aux正反测试、实际分页重载通过。父审查等待同版复查，不冒填通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-repair/verification.json",
+            ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+            ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+          ],
+          "acceptance_refs": [
+            4
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "原报告/全部原件/ZIP字节、服务PID、生产开关及页面截图",
+                "expected": "历史SHA保持，原风格/布局/9列不退化，生产隔离和其他PID不变",
+                "actual": "原报告SHA、634封/405附件/35ZIP完整通过，白底/UID首列9列表实测，生产false/watch停/其他服务PID保持",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-repair/verification.json",
+                  ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+                  ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "无日期地址默认北京时间前一自然日；快捷入口回到昨天；标题/日期框均为邮件所属日期，支持跨月跨年闰日",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+            ".runtime/daily-automation-20261030/review-repair/verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "北京时间10月30日无date请求、快捷昨天及跨月/年/闰日模拟",
+                "expected": "默认10月29日且标题数据日期一致；自然日减一正确",
+                "actual": "真实两地址634封、浏览器日期10月29，三个日历边界测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json",
+                  ".runtime/daily-automation-20261030/review-repair/verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "显式选择任意日期读取对应日报，缺失显示整页日报未生成，不回填其他日期；快速切换/前进后退和版本隔离不退化",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_dates.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [
+              "所选日期尚无正式日报"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "显式2026-10-30、模拟10月31日默认昨天无报告",
+                "expected": "整页未生成、0旧行、不回填更旧日报",
+                "actual": "浏览器显式今日未生成0行；模拟昨日缺报测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "默认或显式2026-10-29已生成",
+                "expected": "显示634封，对应详情/文件/ZIP；切换分页同步",
+                "actual": "两地址634封、详情/图片/文本/PDF/ZIP与date/version错误、浏览器100重载25均通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_dates.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "skill及维护文档同步最新默认口径，00:30前一天、本会话定时任务及历史质量标准一致；不改变自动化时间",
+          "state": "Covered",
+          "evidence_refs": [
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+            ".runtime/daily-automation-20261030/review-repair/automation.json",
+            ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "读取安装skill十文件与现有automation-2配置",
+                "expected": "最终默认昨天、00:30前一天、本会话不变",
+                "actual": "元数据/链接/634索引与30714最长正文分页、客户指纹无命中、ACTIVE heartbeat和当前thread回读通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+                  ".runtime/daily-automation-20261030/review-repair/automation.json",
+                  ".runtime/daily-automation-20261030/review-repair/installed-skill-manifest.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "为已授权父审查保存可复验的修复版本，已确认问题有修复及反例复验证据；最终多轮计数与结论留在父任务接续",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "首轮4个已确认反例与完整修复版本",
+                "expected": "拒绝两类身份碰撞、分页同步、开关/健康状态一致并留独立审查续接",
+                "actual": "67项测试通过；碰撞阻断及合法子组/领域隔离发布正分支、能力flag/READY/aux正反测试、实际分页重载通过。父审查等待同版复查，不冒填通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/review-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/review-repair/yesterday-browser-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "我已经发现了一个问题，就是今天展示的是昨天的日报。今天展示就是昨天的日报，所以默认今天展示昨天的，而不是今天展示今天的，这个要澄清一下，好吧？要不然的话，永远我看到的都是日报未完成的画面，基本上。",
+          "reading": "白底配色、模块顺序、UID证据/发件送达、原译、附件和子组日志ZIP保持；既有历史报告字节不变且生产隔离",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-repair/verification.json",
+            ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+            ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+          ],
+          "acceptance_refs": [
+            4
+          ],
+          "review": {
+            "source_sha256": "9a3d105e28cdfd9cb2d26baa8c483afbd95ae4f9a60fd5120cf70126b31d8fc6",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "原报告/全部原件/ZIP字节、服务PID、生产开关及页面截图",
+                "expected": "历史SHA保持，原风格/布局/9列不退化，生产隔离和其他PID不变",
+                "actual": "原报告SHA、634封/405附件/35ZIP完整通过，白底/UID首列9列表实测，生产false/watch停/其他服务PID保持",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-repair/verification.json",
+                  ".runtime/daily-automation-20261030/review-repair/default-yesterday.jpg",
+                  ".runtime/daily-automation-20261030/review-repair/runtime-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-006",
+          "source": "clarification:r1.e1",
+          "quote": "启动多轮对抗性审查",
+          "reading": "本任务的返修沿用用户已明确启动的父审查授权，直接依赖父任务并交回其多轮审查，不重复询问或冒填审查通过",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-authorization.json",
+            ".runtime/daily-automation-20261030/review-round-01.log",
+            ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/before.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "真实问答call_658d513347f440319b3e1955ed4687c9及父任务审查状态",
+                "expected": "明确Accepted且父会话尚未结束；返修直接depends_on父任务、提交review-parent，不把用户启动同意当验收或两轮已通过",
+                "actual": "父状态InProgress、0干净轮/4个开放发现；本任务直接依赖父任务，官方close使用review-parent参数；用户决定保持Pending，没有新造答复",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/review-authorization.json",
+                  ".runtime/daily-automation-20261030/review-round-01.log",
+                  ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-01/before.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "收尾发现新增引用的真实审查答复缺独立需求覆盖项，补齐原话、来源与真实父会话状态，不改原Run",
+      "basis": ".runtime/daily-automation-20261030/review-authorization.json",
+      "changed_at": "2026-10-30T11:45:00.081023Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "a37a003a80375dbddb501d57fa9469cdd896d22859709328948cb4476fba4dbc",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_system_effect=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

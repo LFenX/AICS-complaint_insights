@@ -1,0 +1,15 @@
+{
+  "action": "independent_review",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存原文逐条核对及三个反例修复，工程冻结留档后按持续授权新只读独立执行者覆盖全部原始需求、条件、安全和失败恢复；人工Gate Pending与官方父Deferred限制如实保留",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S6",
+  "tailoring_resolution_sha256": "737ea3009b4d9588dec92d41f216a42ac5a6eaf5cae3e01e257d7f7fa7d4183f",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05"
+}

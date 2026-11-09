@@ -1,0 +1,23 @@
+[
+  {
+    "reason": "security-privacy-review 待真实用户审查；用户回复是 MCP 功能指令，没有通过门禁",
+    "impact": "本地工程和服务已交付，正式工程 Gate 不能标为通过；用户验收独立 Pending",
+    "owner": "task-initiator",
+    "reentry_condition": "有权用户对当前已验证交付作出可核对的安全隐私门禁决定",
+    "summary": "security-privacy-review 待真实用户审查；用户回复是 MCP 功能指令，没有通过门禁"
+  },
+  {
+    "reason": "生产连接是未来条件，尚未接通并验证；没有重启权限",
+    "impact": "当前数据明确标记 development-local，不能称为实时生产数据",
+    "owner": "用户与生产服务器 agent",
+    "reentry_condition": "监听与凭据/证书到位且授权采集端进行生产只读联调",
+    "summary": "生产连接是未来条件，尚未接通并验证；没有重启权限"
+  },
+  {
+    "reason": "尚未从另一台内网电脑执行路由与客户端验收",
+    "impact": "服务端与采集电脑通过内网 IP 的真实协议验证已完成，接收方网络路径仍未实测",
+    "owner": "待指定的接收方",
+    "reentry_condition": "接收方导入专用 CA、配置独立令牌并按交接手册连接验证",
+    "summary": "尚未从另一台内网电脑执行路由与客户端验收"
+  }
+]

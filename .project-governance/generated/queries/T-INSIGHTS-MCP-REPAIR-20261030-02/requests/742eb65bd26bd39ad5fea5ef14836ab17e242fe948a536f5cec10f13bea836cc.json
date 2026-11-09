@@ -1,0 +1,15 @@
+{
+  "action": "publish_release",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "延续用户原内网部署及审查修复授权，只重启改动的mcp3037，保留desk3029会话和3030/3036/15433进程；实际Schema构建公共包与严格CA验证，备份代码且回滚不恢复撤销令牌",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S7",
+  "tailoring_resolution_sha256": "a389540c4a02bafb8c45229e77c4fdba20c9328195b4522610f1ec51eb2d2cb3",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02"
+}

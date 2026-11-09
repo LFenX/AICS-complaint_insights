@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "固定SDK2.3内精确stdio原始行适配，共享HTTP数值/ID预检，保留句柄保护和上下文传播；补真实stdin子进程测试、更新当前交接",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "260d2542a79db8222c7d4befba062c85893634d59949f70019f57519a32d74f3",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-06"
+}

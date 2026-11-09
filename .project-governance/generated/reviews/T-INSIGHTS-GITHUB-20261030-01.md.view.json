@@ -1,0 +1,18 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-GITHUB-20261030-01",
+  "view_kind": "task-review",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:11.986831Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "f2a592326e00d5c879b5a02f157e933f4ccb0e1a8868bdca90f4feba28b3287a",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/before.json",
+    ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/run.jsonl",
+    ".project-governance/tasks/T-INSIGHTS-GITHUB-20261030-01/after.json"
+  ],
+  "content_ref": ".project-governance/generated/reviews/T-INSIGHTS-GITHUB-20261030-01.md",
+  "integrity_status": "Complete"
+}

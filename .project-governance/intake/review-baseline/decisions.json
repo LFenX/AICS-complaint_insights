@@ -1,0 +1,12 @@
+[
+  {
+    "id": "D-REVIEW-PROCEED",
+    "kind": "Proceed",
+    "presented": "原本地与 MCP 工程已保存并提供 47 项测试、真实 HTTPS 证据和交接材料，因安全门禁待审未获正式工程通过；现确认当前版本门禁并继续已授权审查。",
+    "response": "通过本次安全隐私门禁，继续审查",
+    "decided_by": "当前聊天用户",
+    "decided_at": "2026-10-29T10:43:57.188199+00:00",
+    "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+    "outcome": "Approved"
+  }
+]

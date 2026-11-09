@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "当前已登记E03交付产物外传边界控制，按用户明确指令将3030看板源码提交到LFenX/AICS-CCDD私有空仓库，保持代码相对路径、排除业务数据与凭据、验证依赖与暂存区再commit/push并核对远端SHA；不部署不连接生产。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "5acf4f5dfdb2275af5803b08dc52c8fa1ea25feacb19a7ee80281f64a40cfd61",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

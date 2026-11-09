@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "两日补报已正式发布并完成原件ZIP和回环内网HTTP验证，逐条对照用户原文回绑六项需求；工程收尾保持用户验收Pending，GUI因Work禁用未执行列入未验，不把全局副本DEGRADED说成同步完成，不宣称新对抗审查通过",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3da4c20e4f93c1f04fb1eed6e6ff9e460422606b8127f786ee1dc37ac2cca5f2",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01"
+}

@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "根据用户纠偏合并16个业务问题主层、保留具体子类，整合111封原文会话和附件重分类、补全HTML正文译文与To名称，重建只读日报读取模型与白色3030页面并验证。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "98178af7749a6f80483ad09004c44809f2d22000c1c6036c542ee8df864ff8d4",
+  "task_id": "T-INSIGHTS-DAILY-20261030-01"
+}

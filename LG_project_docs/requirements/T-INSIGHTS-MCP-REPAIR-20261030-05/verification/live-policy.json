@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-29T23:11:29.583502+00:00",
+  "policy": {
+    "calls": 6000,
+    "window_seconds": 60,
+    "scope": "per_identity_all_tools",
+    "error_code": "TOOL_RATE_LIMITED",
+    "recovery": "等待错误中的 retry_after_seconds 后重试；分页版本改变时丢弃旧页并从首页重查，禁止输出半结果。"
+  },
+  "strict_ca": true,
+  "public_guide_mentions_error": true,
+  "served_css_matches_source": true,
+  "real_service_load_tested": false
+}

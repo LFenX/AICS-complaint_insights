@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "在既有目录内修复增量与MCP认证；新增职责单一的只读IMAP附件下载适配器、稳定日报模型和全宽HTML页面",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "2ece07e8a3125c1ea9e78c6dacfd4886e98eab1d64169e75bfbaf0bf788bd8c9",
+  "task_id": "T-INSIGHTS-DAILY-20261030-01"
+}

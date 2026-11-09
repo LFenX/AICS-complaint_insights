@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-DAILY-BACKFILL-20261031-01-SCOPE-RECON",
+  "view_kind": "scope-reconciliation",
+  "legacy_kind": null,
+  "generated_at": "2026-10-31T09:36:26.059424Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "c40c011601eb0844dac62f407ba6f7cc141ff01ca9a0d8fc905c71103d83eee3",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/before.json"
+  ],
+  "content_ref": ".project-governance/generated/scope-reconciliation/T-INSIGHTS-DAILY-BACKFILL-20261031-01.md",
+  "integrity_status": "Complete"
+}

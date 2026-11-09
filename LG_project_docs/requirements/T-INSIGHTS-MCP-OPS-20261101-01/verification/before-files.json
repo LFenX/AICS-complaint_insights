@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-31T17:00:54.982689+00:00",
+  "files": [
+    {
+      "name": "mcp.err.log",
+      "bytes": 466784,
+      "sha256": "7a9573e1e15eb1fa409f1c546c2bfd22a670f0c64e71843cc8baab7286b8f829"
+    },
+    {
+      "name": "mcp.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "desk.err.log",
+      "bytes": 66548,
+      "sha256": "b6e22a798fd356accbef0529e9612f52848c2fdddcc8097004bc19183d0b23e0"
+    },
+    {
+      "name": "desk.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "processes.json",
+      "bytes": 982,
+      "sha256": "7e6033750376b111fad2240a8ddad00f564335ef8f1eab5891de6bf90596f67d"
+    }
+  ]
+}

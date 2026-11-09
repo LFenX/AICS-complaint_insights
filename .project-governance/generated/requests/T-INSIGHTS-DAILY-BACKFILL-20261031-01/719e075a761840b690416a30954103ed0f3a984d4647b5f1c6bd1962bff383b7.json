@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "既有能力的日期限定内容补报：本地mirror和projection导入921封757附件与必要上下文，保存全局状态前像和sync.runs日范围闭合证明，不推进全局游标不伪造全局READY；reader冻结来源和手工语义审阅输入，产品源码接口权限界面不变",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "f09809933948643e13f9d2704083724b16ca1141ce2a8899507daa737ca8e781",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

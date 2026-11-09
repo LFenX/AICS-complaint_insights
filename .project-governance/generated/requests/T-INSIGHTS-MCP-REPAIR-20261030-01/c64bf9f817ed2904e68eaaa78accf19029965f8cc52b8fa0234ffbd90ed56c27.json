@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "开始已授权四项MCP审查返修，保留父任务人工门禁和机器登记限制",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "b1163826556ec84b9f13ec922cafbaac8a7e6a1edabef28a1fa6f6dad501e183",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01"
+}

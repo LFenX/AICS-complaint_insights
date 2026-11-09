@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "实现本地预构建子问题日志ZIP和固定ID只读导出，独立权限Feature审计；UID首列四种有内容优先排序与底部20像素，沿用原始634封分类及证据。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "54a9811a3de409c89c15ec1ca148687d6d35b0193eec53a824fd690d83074d76",
+  "task_id": "T-INSIGHTS-DAILY-TABLE-20261030-02"
+}

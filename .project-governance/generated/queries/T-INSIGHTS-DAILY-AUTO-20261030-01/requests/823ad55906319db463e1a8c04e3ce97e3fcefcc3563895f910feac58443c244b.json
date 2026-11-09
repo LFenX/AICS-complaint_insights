@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "如实记录已授权第四轮审查中断为Incomplete及已复现UIDVALIDITY缺口，不计连续干净轮次，后续直接依赖父任务修复",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "d2b98eaf7e1d6fd82afae1db59fcd838163d1c4d842077471d6d1ae8cc317cfc",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

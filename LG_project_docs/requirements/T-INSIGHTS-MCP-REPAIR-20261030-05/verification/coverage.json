@@ -1,0 +1,1019 @@
+{
+  "captured_at": "2026-10-29T23:11:29.410850+00:00",
+  "derived_view": true,
+  "basis": "逐句保留第7轮从权威原话独立提取的27条和原文摘要；当前新增返修证据另列，后续独立审查必须重读原文",
+  "requirements": [
+    {
+      "id": "Q01",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "提供可交给其他接收人的详细MCP介绍",
+      "conditions": [],
+      "previous_version_observation": "在线指南、全部11工具Schema及逐参数表、14表说明、原生协议与错误/分页/来源说明均与真实对象对照。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "提供可交给其他接收人的详细MCP介绍",
+          "actual": "在线指南、全部11工具Schema及逐参数表、14表说明、原生协议与错误/分页/来源说明均与真实对象对照。",
+          "result": "Passed",
+          "evidence_refs": [
+            "live-results.json",
+            "body-provenance.json",
+            "client-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q02",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "文档及程序符合MCP本身协议",
+      "conditions": [],
+      "previous_version_observation": "初始化、通知、资源、请求ID和分层错误通过；工具调用缺少官方MUST要求的频率限制。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "文档及程序符合MCP本身协议",
+          "actual": "初始化、通知、资源、请求ID和分层错误通过；工具调用缺少官方MUST要求的频率限制。",
+          "result": "Failed",
+          "evidence_refs": [
+            "synthetic-results.json",
+            "R7-002"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q03",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "接收人能够配置并实际使用MCP",
+      "conditions": [],
+      "previous_version_observation": "下载标准库、SDK和11工具workflow接入成功，公开包无凭据。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "接收人能够配置并实际使用MCP",
+          "actual": "下载标准库、SDK和11工具workflow接入成功，公开包无凭据。",
+          "result": "Passed",
+          "evidence_refs": [
+            "client-results.json",
+            "live-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q04",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "优化并复核MCP令牌生成服务",
+      "conditions": [],
+      "previous_version_observation": "认证、会话、CSRF、撤销故障安全及原子并发通过；窄屏成功反馈裁切及MCP工具限频缺口待修复。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "优化并复核MCP令牌生成服务",
+          "actual": "认证、会话、CSRF、撤销故障安全及原子并发通过；窄屏成功反馈裁切及MCP工具限频缺口待修复。",
+          "result": "Failed",
+          "evidence_refs": [
+            "regression.log",
+            "synthetic-results.json",
+            "R7-001",
+            "R7-002"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q05",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "内网开放令牌服务入口",
+      "conditions": [],
+      "previous_version_observation": "3029真实内网HTTPS可读，严格CA、Host/Origin边界成立。异机路由及CA另列外部限制。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "内网开放令牌服务入口",
+          "actual": "3029真实内网HTTPS可读，严格CA、Host/Origin边界成立。异机路由及CA另列外部限制。",
+          "result": "Passed",
+          "evidence_refs": [
+            "boundary-results.json",
+            "live-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q06",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "MCP协议、介绍和接入方法放于生成令牌的同一服务",
+      "conditions": [],
+      "previous_version_observation": "同一3029提供完整在线指南、7项下载、23项通用包；全部Schema逐对象相同。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "MCP协议、介绍和接入方法放于生成令牌的同一服务",
+          "actual": "同一3029提供完整在线指南、7项下载、23项通用包；全部Schema逐对象相同。",
+          "result": "Passed",
+          "evidence_refs": [
+            "live-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q07",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "reading": "一个内网链接可供接收人阅读、下载和找到管理员入口",
+      "conditions": [],
+      "previous_version_observation": "首页导航/指南/下载/登录表单可用；64字符身份的管理成功反馈在360px被裁切。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "一个内网链接可供接收人阅读、下载和找到管理员入口",
+          "actual": "首页导航/指南/下载/登录表单可用；64字符身份的管理成功反馈在360px被裁切。",
+          "result": "Failed",
+          "evidence_refs": [
+            "live-results.json",
+            "browser-results.json",
+            "R7-001"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q08",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "reading": "本轮只处理MCP及历史副本，不干涉日报/采集/保护服务",
+      "conditions": [],
+      "previous_version_observation": "只写round7证据；未连接任何数据库/源生产、未重启或修改服务；受保护冻结文件起止相同。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "本轮只处理MCP及历史副本，不干涉日报/采集/保护服务",
+          "actual": "只写round7证据；未连接任何数据库/源生产、未重启或修改服务；受保护冻结文件起止相同。",
+          "result": "Passed",
+          "evidence_refs": [
+            "hash-start.json",
+            "hash-end.json",
+            "boundary-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q09",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:request_snapshot",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "quote": "继续",
+      "reading": "沿用已有MCP范围与所有者权限，不增加管理员",
+      "conditions": [],
+      "previous_version_observation": "仅唯一管理员机制；本轮认证/发放/撤销全在合成夹具，没有扩大权限。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "沿用已有MCP范围与所有者权限，不增加管理员",
+          "actual": "仅唯一管理员机制；本轮认证/发放/撤销全在合成夹具，没有扩大权限。",
+          "result": "Passed",
+          "evidence_refs": [
+            "synthetic-results.json",
+            "regression.log"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q10",
+      "source": "T-INSIGHTS-DAILY-20261030-01:request_snapshot",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "搞定以后，测试数据是否完整，MCP访问是否能够正常取出所有数据，并且数据和线上一致没有遗漏",
+      "reading": "MCP可读取约定历史副本的全部类型数据并保留完整源payload；早期线上一致性要求按后续生产隔离范围理解",
+      "conditions": [],
+      "previous_version_observation": "14表入口全部执行，11非空表完整行列表与get_source_record逐对象相同、3合法空表无伪造数据；五分页小集合完整、正文/译文/业务键来源可核对。未扩展为生产实时一致审计。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "MCP可读取约定历史副本的全部类型数据并保留完整源payload；早期线上一致性要求按后续生产隔离范围理解",
+          "actual": "14表入口全部执行，11非空表完整行列表与get_source_record逐对象相同、3合法空表无伪造数据；五分页小集合完整、正文/译文/业务键来源可核对。未扩展为生产实时一致审计。",
+          "result": "Passed",
+          "evidence_refs": [
+            "live-results.json",
+            "body-provenance.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q11",
+      "source": "T-INSIGHTS-DAILY-20261030-01:request_snapshot",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "简单权限发放网页能够生成访问令牌",
+      "conditions": [
+        "有效唯一管理员会话和同源CSRF成立后才允许发放/撤销；匿名、仅MCP Bearer、伪造或失效会话不得管理"
+      ],
+      "previous_version_observation": "原生登录发放可用；合法长身份成功反馈在窄屏裁切。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "合成唯一管理员正确口令、独立挑战、会话和同源CSRF；原生浏览器表单",
+          "expected": "登录303、签发200一次显示、撤销303、退出后失效",
+          "actual": "上述逻辑全部通过；窄屏反馈文字另列R7-001",
+          "result": "Passed",
+          "evidence_refs": [
+            "browser-results.json",
+            "synthetic-results.json",
+            "regression.log"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "匿名/MCP Bearer/重复挑战/跨会话CSRF/注销Cookie/错误Origin/损坏凭据",
+          "expected": "拒绝且不新增授权",
+          "actual": "401/403/303/503按边界返回，原授权不变",
+          "result": "Passed",
+          "evidence_refs": [
+            "regression.log",
+            "synthetic-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q12",
+      "source": "T-INSIGHTS-DAILY-20261030-01:request_snapshot",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "内网MCP仍须本人下发的独立访问令牌",
+      "conditions": [
+        "虽然在内网，读取MCP数据仍必须具有所有者下发且当前有效的独立Bearer"
+      ],
+      "previous_version_observation": "有效Bearer放行；匿名、错误、撤销及配置失效关闭。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "当前有效内存Bearer；合成重新发放令牌",
+          "expected": "允许11工具读取",
+          "actual": "真实11工具成功，合成最后撤销后可重新发放",
+          "result": "Passed",
+          "evidence_refs": [
+            "live-results.json",
+            "regression.log"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "匿名/错误/撤销/丢失或损坏授权文件",
+          "expected": "拒绝，不回退已撤销启动令牌",
+          "actual": "真实匿名401，合成撤销/空文件/损坏全拒绝",
+          "result": "Passed",
+          "evidence_refs": [
+            "live-results.json",
+            "regression.log",
+            "synthetic-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q13",
+      "source": "T-INSIGHTS-DAILY-20261030-01:request_snapshot",
+      "source_sha256": "f136041515b0fc751dc801e3b229702bb338403f61eac1ac3aedecefaeaabe6e",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "reading": "部署3029；后续明确内网开放覆盖早期localhost绑定",
+      "conditions": [
+        "后续内网开放授权成立时采用指定内网HTTPS；仍须拒绝HTTP/非授权实际peer/错误Host和Origin"
+      ],
+      "previous_version_observation": "3029只监听10.8.61.200，实际指定内网peer/HTTPS/Host/Origin验证成立，伪造代理头不放行。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "指定内网IP、有效CA、允许peer、正确Host",
+          "expected": "200",
+          "actual": "真实3029和3037 HTTPS成功",
+          "result": "Passed",
+          "evidence_refs": [
+            "boundary-results.json"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "HTTP/公网peer/伪造代理头/错误Host或Origin",
+          "expected": "403或421，不放行",
+          "actual": "合成403/421、真实错误Host421/Origin403",
+          "result": "Passed",
+          "evidence_refs": [
+            "boundary-results.json",
+            "regression.log"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q14",
+      "source": "T-INSIGHTS-MCP-PORTAL-20261030-01:clarification:r1.e1",
+      "source_sha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+      "quote": "继续",
+      "reading": "普通访客只读指南及无凭据客户端；仅唯一所有者独立登录后发放/撤销",
+      "conditions": [
+        "有效唯一管理员会话和同源CSRF成立后才允许发放/撤销；匿名、仅MCP Bearer、伪造或失效会话不得管理"
+      ],
+      "previous_version_observation": "唯一所有者和角色分离成立；登录后的长身份反馈有窄屏缺陷。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "合成唯一管理员正确口令、独立挑战、会话和同源CSRF；原生浏览器表单",
+          "expected": "登录303、签发200一次显示、撤销303、退出后失效",
+          "actual": "上述逻辑全部通过；窄屏反馈文字另列R7-001",
+          "result": "Passed",
+          "evidence_refs": [
+            "browser-results.json",
+            "synthetic-results.json",
+            "regression.log"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "匿名/MCP Bearer/重复挑战/跨会话CSRF/注销Cookie/错误Origin/损坏凭据",
+          "expected": "拒绝且不新增授权",
+          "actual": "401/403/303/503按边界返回，原授权不变",
+          "result": "Passed",
+          "evidence_refs": [
+            "regression.log",
+            "synthetic-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q15a",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供唯一管理员账号",
+      "conditions": [],
+      "previous_version_observation": "维护交接明确owner、唯一管理员存储；合成唯一管理员机制实测，不重读真实口令。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "提供唯一管理员账号",
+          "actual": "维护交接明确owner、唯一管理员存储；合成唯一管理员机制实测，不重读真实口令。",
+          "result": "Passed",
+          "evidence_refs": [
+            "original-sources.json",
+            "../AICS-database-MCP/LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q15b",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "管理员口令经受控渠道交付",
+      "conditions": [],
+      "previous_version_observation": "既有维护记录记载已在用户私聊交付；本轮未获得原始私聊消息作实际收件证据，未读取/重发/重置真实口令。该历史收件事实留给用户验收确认。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "历史交付记录",
+          "expected": "真实私聊交付与用户接收可核对",
+          "actual": "维护记录可核对；本轮不能重核私聊实际接收",
+          "result": "NotRun",
+          "evidence_refs": [
+            "../AICS-database-MCP/LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q15c",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供直接管理员登录入口",
+      "conditions": [],
+      "previous_version_observation": "/admin/login真实页面可达，原生浏览器登录成功。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "提供直接管理员登录入口",
+          "actual": "/admin/login真实页面可达，原生浏览器登录成功。",
+          "result": "Passed",
+          "evidence_refs": [
+            "boundary-results.json",
+            "browser-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q15d",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该唯一管理员后即可生成可用token",
+      "conditions": [
+        "有效唯一管理员会话和同源CSRF成立后才允许发放/撤销；匿名、仅MCP Bearer、伪造或失效会话不得管理"
+      ],
+      "previous_version_observation": "原生登录/签发/复制/关闭与合成撤销认证链路成立；合法长身份反馈裁切。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "合成唯一管理员正确口令、独立挑战、会话和同源CSRF；原生浏览器表单",
+          "expected": "登录303、签发200一次显示、撤销303、退出后失效",
+          "actual": "上述逻辑全部通过；窄屏反馈文字另列R7-001",
+          "result": "Passed",
+          "evidence_refs": [
+            "browser-results.json",
+            "synthetic-results.json",
+            "regression.log"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "匿名/MCP Bearer/重复挑战/跨会话CSRF/注销Cookie/错误Origin/损坏凭据",
+          "expected": "拒绝且不新增授权",
+          "actual": "401/403/303/503按边界返回，原授权不变",
+          "result": "Passed",
+          "evidence_refs": [
+            "regression.log",
+            "synthetic-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q16a",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供唯一管理员账号",
+      "conditions": [],
+      "previous_version_observation": "维护交接明确owner、唯一管理员存储；合成唯一管理员机制实测，不重读真实口令。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "提供唯一管理员账号",
+          "actual": "维护交接明确owner、唯一管理员存储；合成唯一管理员机制实测，不重读真实口令。",
+          "result": "Passed",
+          "evidence_refs": [
+            "original-sources.json",
+            "../AICS-database-MCP/LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q16b",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "管理员口令经受控渠道交付",
+      "conditions": [],
+      "previous_version_observation": "既有维护记录记载已在用户私聊交付；本轮未获得原始私聊消息作实际收件证据，未读取/重发/重置真实口令。该历史收件事实留给用户验收确认。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "历史交付记录",
+          "expected": "真实私聊交付与用户接收可核对",
+          "actual": "维护记录可核对；本轮不能重核私聊实际接收",
+          "result": "NotRun",
+          "evidence_refs": [
+            "../AICS-database-MCP/LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q16c",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "提供直接管理员登录入口",
+      "conditions": [],
+      "previous_version_observation": "/admin/login真实页面可达，原生浏览器登录成功。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "提供直接管理员登录入口",
+          "actual": "/admin/login真实页面可达，原生浏览器登录成功。",
+          "result": "Passed",
+          "evidence_refs": [
+            "boundary-results.json",
+            "browser-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q16d",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "登录该唯一管理员后即可生成可用token",
+      "conditions": [
+        "有效唯一管理员会话和同源CSRF成立后才允许发放/撤销；匿名、仅MCP Bearer、伪造或失效会话不得管理"
+      ],
+      "previous_version_observation": "原生登录/签发/复制/关闭与合成撤销认证链路成立；合法长身份反馈裁切。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "合成唯一管理员正确口令、独立挑战、会话和同源CSRF；原生浏览器表单",
+          "expected": "登录303、签发200一次显示、撤销303、退出后失效",
+          "actual": "上述逻辑全部通过；窄屏反馈文字另列R7-001",
+          "result": "Passed",
+          "evidence_refs": [
+            "browser-results.json",
+            "synthetic-results.json",
+            "regression.log"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "匿名/MCP Bearer/重复挑战/跨会话CSRF/注销Cookie/错误Origin/损坏凭据",
+          "expected": "拒绝且不新增授权",
+          "actual": "401/403/303/503按边界返回，原授权不变",
+          "result": "Passed",
+          "evidence_refs": [
+            "regression.log",
+            "synthetic-results.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q17a",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "完成已授权多轮对抗审查、问题返修和复验，直到同版连续两轮无问题",
+      "conditions": [
+        "只有同一交付版本连续两轮完整审查零确认问题且无未决覆盖缺口，才可标记对抗审查通过；发现问题或版本变化须归零"
+      ],
+      "previous_version_observation": "本轮有三项确认问题，等待同范围返修并保存新版后继续；不能宣称两轮收敛。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "同版两轮完整无问题",
+          "expected": "才可结束实际审查",
+          "actual": "本轮三项确认问题，不满足该前提；没有伪造正向事实",
+          "result": "NotRun",
+          "evidence_refs": [
+            "results.json"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "本轮有三项确认问题",
+          "expected": "本轮不得计干净，连续计数归零，先修复保存再重审",
+          "actual": "完整报告、3项Open、实际计数0；正式机器状态不伪造",
+          "result": "Passed",
+          "evidence_refs": [
+            "results.json",
+            "report.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q17b",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-03:request_snapshot",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "quote": "开始审查",
+      "reading": "实际进行独立完整审查",
+      "conditions": [],
+      "previous_version_observation": "新只读执行者独立读取原文、构造新失效视角并完成全部领域；没有把上一轮无问题作为前提。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "实际进行独立完整审查",
+          "actual": "新只读执行者独立读取原文、构造新失效视角并完成全部领域；没有把上一轮无问题作为前提。",
+          "result": "Passed",
+          "evidence_refs": [
+            "results.json",
+            "original-sources.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q18a",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "完成已授权多轮对抗审查、问题返修和复验，直到同版连续两轮无问题",
+      "conditions": [
+        "只有同一交付版本连续两轮完整审查零确认问题且无未决覆盖缺口，才可标记对抗审查通过；发现问题或版本变化须归零"
+      ],
+      "previous_version_observation": "本轮有三项确认问题，等待同范围返修并保存新版后继续；不能宣称两轮收敛。",
+      "previous_version_cases": [
+        {
+          "condition": 0,
+          "branch": "Met",
+          "input": "同版两轮完整无问题",
+          "expected": "才可结束实际审查",
+          "actual": "本轮三项确认问题，不满足该前提；没有伪造正向事实",
+          "result": "NotRun",
+          "evidence_refs": [
+            "results.json"
+          ]
+        },
+        {
+          "condition": 0,
+          "branch": "NotMet",
+          "input": "本轮有三项确认问题",
+          "expected": "本轮不得计干净，连续计数归零，先修复保存再重审",
+          "actual": "完整报告、3项Open、实际计数0；正式机器状态不伪造",
+          "result": "Passed",
+          "evidence_refs": [
+            "results.json",
+            "report.md"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "部分实现（同版两轮尚待本次留档后开展）",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q18b",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "开始审查",
+      "reading": "实际进行独立完整审查",
+      "conditions": [],
+      "previous_version_observation": "新只读执行者独立读取原文、构造新失效视角并完成全部领域；没有把上一轮无问题作为前提。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "实际进行独立完整审查",
+          "actual": "新只读执行者独立读取原文、构造新失效视角并完成全部领域；没有把上一轮无问题作为前提。",
+          "result": "Passed",
+          "evidence_refs": [
+            "results.json",
+            "original-sources.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    },
+    {
+      "id": "Q19",
+      "source": "T-INSIGHTS-MCP-REPAIR-20261030-04:request_snapshot",
+      "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+      "quote": "拉取最新代码并重启审查",
+      "reading": "绑定当前最新Git交付，暂停/旧版轮次不计数",
+      "conditions": [],
+      "previous_version_observation": "审查固定cbf64e8与110项afeaa7c6...；旧轮次/暂停第四轮不累计；本轮有问题计数0。",
+      "previous_version_cases": [
+        {
+          "condition": null,
+          "branch": "Unconditional",
+          "input": "当前冻结交付及原文",
+          "expected": "绑定当前最新Git交付，暂停/旧版轮次不计数",
+          "actual": "审查固定cbf64e8与110项afeaa7c6...；旧轮次/暂停第四轮不累计；本轮有问题计数0。",
+          "result": "Passed",
+          "evidence_refs": [
+            "hash-start.json",
+            "hash-end.json",
+            "../restart-20261030/session.json"
+          ]
+        }
+      ],
+      "previous_version_ref": "round-7-results.json",
+      "current_verification_refs": [
+        "tests.log",
+        "results.json",
+        "live-policy.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "state": "本次局部修复及回归通过；未改业务语义的深入验证见前版独立原文对照",
+      "current_scope": "本次只修3个确认反例，49回归、17真实HTTPS组与新增限频/提示对照；不把前版深度验证冒称本版已重复独立执行"
+    }
+  ],
+  "new_delivery_two_clean_rounds": "尚待工程留档后开始",
+  "user_decision": {
+    "outcome": "Pending"
+  }
+}

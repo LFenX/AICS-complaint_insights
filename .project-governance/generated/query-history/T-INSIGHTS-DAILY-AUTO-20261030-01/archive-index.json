@@ -1,0 +1,206 @@
+{
+  "schema_version": "6.3-candidate",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+  "reconciled_at": "2026-10-30T09:28:21.996452Z",
+  "reason": "原阶段原字节完整封存并保留请求，当前S8收尾查询独立绑定最终契约",
+  "legacy_index_archived_at": null,
+  "publications": [
+    {
+      "query_digest": "1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe",
+      "generated_at": "2026-10-30T08:53:27.917192Z",
+      "archived_at": "2026-10-30T09:28:21.996452Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe",
+      "files": {
+        "clause-context.md": "df804bd0585219bd1df666de8aff6ef753ebfd9d7c14bb4b201b3d0158a8554e",
+        "clause-context.md.view.json": "27235b4b8f19bc7d1171ac06641941fc6b8a2308d4552099754e3da8b06be416",
+        "query-result.json": "817a00eccb00ffda6c7014ee72b8c31aab12487e0c5fe72034b4b93dc78079f0",
+        "query-result.json.view.json": "1a05f888d5ab5b661f43150fcdb3d612fbc08d6039449dcf46a33a696e26ad5f"
+      }
+    },
+    {
+      "query_digest": "1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e",
+      "generated_at": "2026-10-30T09:18:49.121232Z",
+      "archived_at": "2026-10-30T09:28:21.996452Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e",
+      "files": {
+        "clause-context.md": "26aa929c00de853b24d5b6dc59eb4d2e83811a2c6f6735c2e5a6343764e17906",
+        "clause-context.md.view.json": "2c2cca5d7e5a9db8a53cefc111f428b050103d75e3358554aba52f2d183fb250",
+        "query-result.json": "d784b9e2e39d45862231b98612c9beaab0ba2bb6add63c4edbd71371973a747b",
+        "query-result.json.view.json": "aa6bc72487aa18a7ff7b3d055c116601156d6677f6fd2e7e24915bcd45d93e1e"
+      }
+    },
+    {
+      "query_digest": "492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982",
+      "generated_at": "2026-10-30T09:06:13.853451Z",
+      "archived_at": "2026-10-30T09:28:21.996452Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982",
+      "files": {
+        "clause-context.md": "cdf4c48c2c53201b9d9585f234cf6ccf5cadfba682d31f955523a38281257288",
+        "clause-context.md.view.json": "5ccf5258b5ea3697ab031249535607167e3f2b02b0a6de2109a0f55fdde2ad9c",
+        "query-result.json": "01f4145dbd68ab4cc928abac6c3b67bd9386857770ea9a0a79d916aeaa87a61d",
+        "query-result.json.view.json": "a8b8989909f23ee53a58f3eaad2dfd0c929718a6d52fcd7065083b7c042643dc"
+      }
+    },
+    {
+      "query_digest": "709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06",
+      "generated_at": "2026-10-30T08:36:23.471656Z",
+      "archived_at": "2026-10-30T09:28:21.996452Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06",
+      "files": {
+        "clause-context.md": "8b7d433604e5d6ad76bbc05a98684c86c13a9921cba1aff9028f14edbaf4cf77",
+        "clause-context.md.view.json": "79558683fbb5c19bb852a9d9663df9ecf8247f9e89bf5ecd8c5da58ea25275ac",
+        "query-result.json": "be1fc73cc3720b32eacb980c58db3f7a60f4b270a1eccb2f4ae0dd70ffc16d32",
+        "query-result.json.view.json": "ac3396c43bb870b210ba44f64b59cd4fcf6f9d314de25ad42391fa82b4b69e37"
+      }
+    },
+    {
+      "query_digest": "ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404",
+      "generated_at": "2026-10-30T08:36:58.906037Z",
+      "archived_at": "2026-10-30T09:28:21.996452Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404",
+      "files": {
+        "clause-context.md": "943147c35fa7f254210d4412e5b270e448547c376456a8a3fcbbcf99549e488c",
+        "clause-context.md.view.json": "5636936ad7bfaa9fea228d56e00ab0e24fa07f94c0c03ad598ef3811ed67ce65",
+        "query-result.json": "c57849351665b5806d8cd0784615f4aecd9b0f4103f3cdc0f231b7e5b1bd812a",
+        "query-result.json.view.json": "b4f3f16c22ee369eef6fc1be3ae7fa185f5e649bea0f10d9535cb92a5d7d8a84"
+      }
+    }
+  ],
+  "archived_request_sets": [
+    {
+      "path": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/requests-final-20261030T092517",
+      "files": {
+        "1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe.json": "c14f153213e3970d974c78a6c36873eac543c13cc218a78c02b23bf1479cfc7a",
+        "1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e.json": "7506a950f2b71917cc36c4ed2688ae94790425742b621ad2b98f97a53558f979",
+        "492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982.json": "6a22b6e75c354f965961ce08dfd5ce823d8213f480e85ec62cf749c00bb0d7b5",
+        "709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06.json": "ade306880f4299fe1da1c72ff75e57f0fdbee10f2223b2899b763d73da6fa5e4",
+        "ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404.json": "8949c9b20bac67eca9375f52e31d63d5cb0ad5c81d5487b27522fdc97bc643bf"
+      }
+    }
+  ],
+  "evidence_redirects": [
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/clause-context.md",
+      "sha256": "df804bd0585219bd1df666de8aff6ef753ebfd9d7c14bb4b201b3d0158a8554e"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/clause-context.md.view.json",
+      "sha256": "27235b4b8f19bc7d1171ac06641941fc6b8a2308d4552099754e3da8b06be416"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/query-result.json",
+      "sha256": "817a00eccb00ffda6c7014ee72b8c31aab12487e0c5fe72034b4b93dc78079f0"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1d2804407ca3631ed4281e75b3016975d3fa51578f287a5538baf656e5325ffe/query-result.json.view.json",
+      "sha256": "1a05f888d5ab5b661f43150fcdb3d612fbc08d6039449dcf46a33a696e26ad5f"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/clause-context.md",
+      "sha256": "26aa929c00de853b24d5b6dc59eb4d2e83811a2c6f6735c2e5a6343764e17906"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/clause-context.md.view.json",
+      "sha256": "2c2cca5d7e5a9db8a53cefc111f428b050103d75e3358554aba52f2d183fb250"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/query-result.json",
+      "sha256": "d784b9e2e39d45862231b98612c9beaab0ba2bb6add63c4edbd71371973a747b"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/1f20e372f2181053599da6615d175b3d315f4f52b577d7eb22c42fe5a5632f0e/query-result.json.view.json",
+      "sha256": "aa6bc72487aa18a7ff7b3d055c116601156d6677f6fd2e7e24915bcd45d93e1e"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/clause-context.md",
+      "sha256": "cdf4c48c2c53201b9d9585f234cf6ccf5cadfba682d31f955523a38281257288"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/clause-context.md.view.json",
+      "sha256": "5ccf5258b5ea3697ab031249535607167e3f2b02b0a6de2109a0f55fdde2ad9c"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/query-result.json",
+      "sha256": "01f4145dbd68ab4cc928abac6c3b67bd9386857770ea9a0a79d916aeaa87a61d"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/492480bcc63d567c06d4403b563fb952a85dab4bb7f699c9082746555c822982/query-result.json.view.json",
+      "sha256": "a8b8989909f23ee53a58f3eaad2dfd0c929718a6d52fcd7065083b7c042643dc"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/clause-context.md",
+      "sha256": "8b7d433604e5d6ad76bbc05a98684c86c13a9921cba1aff9028f14edbaf4cf77"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/clause-context.md.view.json",
+      "sha256": "79558683fbb5c19bb852a9d9663df9ecf8247f9e89bf5ecd8c5da58ea25275ac"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/query-result.json",
+      "sha256": "be1fc73cc3720b32eacb980c58db3f7a60f4b270a1eccb2f4ae0dd70ffc16d32"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/709b1616172844f5b095d428c400336a7f51c40fa917f108994b2b2af2e93b06/query-result.json.view.json",
+      "sha256": "ac3396c43bb870b210ba44f64b59cd4fcf6f9d314de25ad42391fa82b4b69e37"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/clause-context.md",
+      "sha256": "943147c35fa7f254210d4412e5b270e448547c376456a8a3fcbbcf99549e488c"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/clause-context.md.view.json",
+      "sha256": "5636936ad7bfaa9fea228d56e00ab0e24fa07f94c0c03ad598ef3811ed67ce65"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/query-result.json",
+      "sha256": "c57849351665b5806d8cd0784615f4aecd9b0f4103f3cdc0f231b7e5b1bd812a"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-DAILY-AUTO-20261030-01/ce0f58d1de0a453a5a70aed649711fa4ddf35b001762c35e48d5ecde721a0404/query-result.json.view.json",
+      "sha256": "b4f3f16c22ee369eef6fc1be3ae7fa185f5e649bea0f10d9535cb92a5d7d8a84"
+    }
+  ],
+  "active_publications": [
+    {
+      "query_digest": "5a502298a7d5c1eedc9ed1ddd4db80775c3bd55f2e88467a9f0f063ca5fa9f30",
+      "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+      "action": "close_task",
+      "generated_at": "2026-10-30T09:26:19.905708Z",
+      "result_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/5a502298a7d5c1eedc9ed1ddd4db80775c3bd55f2e88467a9f0f063ca5fa9f30/query-result.json",
+      "files": {
+        "clause-context.md": "75cf706aab2ba68a8b8b8565c69614559b792de5cc66412704c0c93fe112d963",
+        "clause-context.md.view.json": "523cf407deaaa16f3e522e8cee4a9f4db05c5f927189fcd027952b4cd34d246a",
+        "query-result.json": "bda9ed14cbc42ab8086f91240b6def7385dfc3d887b6ef78229eb1ffea541808",
+        "query-result.json.view.json": "bab039d0bec3e01db5685137700f419e34a64534e2f8104b9138855583a1cf81"
+      },
+      "request_path": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/requests/5a502298a7d5c1eedc9ed1ddd4db80775c3bd55f2e88467a9f0f063ca5fa9f30.json",
+      "request_sha256": "959a89119e1b53358dd1ee984124a86bff30b1481755fa61b6be28e147ff4d6a"
+    }
+  ],
+  "current_active_query_result": ".project-governance/generated/queries/T-INSIGHTS-DAILY-AUTO-20261030-01/5a502298a7d5c1eedc9ed1ddd4db80775c3bd55f2e88467a9f0f063ca5fa9f30/query-result.json"
+}

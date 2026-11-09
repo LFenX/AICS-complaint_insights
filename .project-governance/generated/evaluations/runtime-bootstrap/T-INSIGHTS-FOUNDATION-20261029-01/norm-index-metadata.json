@@ -1,0 +1,52 @@
+{
+  "schema_version": "6.3-candidate",
+  "index_schema_version": "1.1;max_block_chars=4000",
+  "index_digest": "6ecc4a89f2c95a0331c2718b576f62e5e5a60131795d61caad8bcd4327a8a94c",
+  "status": "Ready",
+  "created_at": "2026-10-29T08:27:20.272674Z",
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "consistency_report_sha256": "acf4b56cd3a104183aff14466cb061beae4c01bb8c7f26b930ca9af9724998f1",
+  "parser_sha256": "e5d70d7549965ff6976434dcb11e1349e9fea2626c819830c800f8c5fa3d9ee1",
+  "action_taxonomy_sha256": "d814fc5a9ccf0cc6e547f3a23d534d3100039d73dca59cdc23fbe819bc8b3882",
+  "source_ids": [
+    "VC-PPG-COM-001",
+    "VC-PPG-COM-002",
+    "VC-PPG-DEC-001",
+    "VC-PPG-PRO-001",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "C12",
+    "E01",
+    "E02",
+    "E03",
+    "E04",
+    "E05",
+    "VC-PPG-IDX-001"
+  ],
+  "source_count": 22,
+  "clause_count": 18603,
+  "storage": {
+    "engine": "sqlite3-fts5",
+    "sqlite_version": "3.45.3",
+    "fts_modes": [
+      "unicode61",
+      "trigram"
+    ],
+    "relative_cache_path": ".project-governance/runtime-cache/norm-index/6ecc4a89f2c95a0331c2718b576f62e5e5a60131795d61caad8bcd4327a8a94c.sqlite3"
+  },
+  "integrity": {
+    "sqlite_integrity_check": "ok",
+    "source_hashes_verified": true,
+    "completion_marker": true
+  },
+  "blocker_reasons": []
+}

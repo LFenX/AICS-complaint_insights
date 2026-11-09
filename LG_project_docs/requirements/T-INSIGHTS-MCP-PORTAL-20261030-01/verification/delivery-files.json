@@ -1,0 +1,127 @@
+{
+  "captured_at": "2026-10-29T19:23:25.404140+00:00",
+  "vcs": "unavailable",
+  "files": [
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+      "sha256": "6e86a9d78204743d9f1551a15809c782551a4bfc3242aa97ca7c7171f52ffbb0"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.template.md",
+      "sha256": "5cd36eeafe38a45e45bd148586229923ac202040b075e0a99532bb8a5c5f2dc4"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "sha256": "daea2bce59a35eec3e414abb09d3469f8177435f0ba8f0c638b9221517157284"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/tools-schema.json",
+      "sha256": "1ab5362e526f8b4e083bf09618d078c0064f99ffe4c44b6fbdb69dcd9aee76a8"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "sha256": "4cc316bffa7248136500b2a1af8bafc9cfc909ac9b701cfe76918f6f57daafdf"
+    },
+    {
+      "path": "assets/token-desk.js",
+      "sha256": "0dc1f11f0306b3c09915ef68cb45331027e69c02dffad95ed1096c00c04d41c1"
+    },
+    {
+      "path": "config/mcp-queries/ai-records.json",
+      "sha256": "f093231cda54400aee6b20519ce6a8cf23751c2511d53ebacbf5e270f5ec5113"
+    },
+    {
+      "path": "config/mcp-queries/context.json",
+      "sha256": "47eaec865ec9397cf021e0ec34ad390beb3c571c30be17c28dd3fa123cd9f67d"
+    },
+    {
+      "path": "config/mcp-queries/daily.json",
+      "sha256": "9835aa1d3c6258745f1aabf8c75c6f0e0cb585264fb7579d111fba325d371697"
+    },
+    {
+      "path": "config/mcp-queries/mails.json",
+      "sha256": "f5b0754cb8572b9df2e4a34f73381426a23783df6e005b4b36c09b4c13e7b4ff"
+    },
+    {
+      "path": "config/mcp-queries/source-records.json",
+      "sha256": "a5fd07baa008e0ba8ea3b52b38ef6afb25a2be3f9d1501db9061ab5b8376ce78"
+    },
+    {
+      "path": "config/mcp-queries/status.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/tables.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/taxonomy.json",
+      "sha256": "95fc99a669cafb7fa96963f8766ec1ce991396ee7c524b0505cfbc13787fdfeb"
+    },
+    {
+      "path": "insights/capabilities.py",
+      "sha256": "72f11bacf9d0343e6bb4691d9bae166fc6770d53639917188b1ca25ba25ec2cb"
+    },
+    {
+      "path": "insights/mcp_http.py",
+      "sha256": "ab100ec517e0c3ddc0c89d37b5fa7d19b9ba93f760d56a95db2f38edc8c34552"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "sha256": "75123f210dc452bfbfb8f20ce56d6b7196e70f8aee108f1379544fdf17c79f98"
+    },
+    {
+      "path": "insights/mcp_tokens.py",
+      "sha256": "d3858e8ed5b62a09dc3bbad0762fa5b18ba9f34ea88e5e5c07431ec391cc7e14"
+    },
+    {
+      "path": "insights/token_desk.py",
+      "sha256": "bbb3993eea068f0e3d39b88a339e3a4052ba42f0d42ad69663e996eda6cc3a9f"
+    },
+    {
+      "path": "scripts/build_mcp_handoff.py",
+      "sha256": "688c120e79d3439ba583ced6590e0fc8a1231556c4f3f38a8514a0cef9ebcbd1"
+    },
+    {
+      "path": "scripts/mcp-firewall.ps1",
+      "sha256": "73f28188fe42f85905a5fbf6165dfe8ca42de9468955664bd9a0b94084065fa6"
+    },
+    {
+      "path": "scripts/mcp_client.py",
+      "sha256": "ef06be96d5cf86ebf7d0e4b713a23d93c7f8037d1a3fd56fc7f9ac7c97c55a37"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "sha256": "83c558f2ae54a5481f740843c7008f290b8e10b990ca51e071704663ce6e03b0"
+    },
+    {
+      "path": "scripts/mcp_portal_verify.py",
+      "sha256": "41e527c0907fdf9449d72ea44e39664f93d6d08b30d2cd59db684d2cd9dd0f92"
+    },
+    {
+      "path": "scripts/mcp_protocol_client.py",
+      "sha256": "9b44d68ecfb8619d9fcf81b83a83cc54af78feced8ee41eb5b4bba933d8ef246"
+    },
+    {
+      "path": "scripts/mcp_workflow.py",
+      "sha256": "4930934c9c752d4f64b39f9742a61757dd9f899e6c7ca17c55af3d18e63c5b10"
+    },
+    {
+      "path": "scripts/token_desk_admin.py",
+      "sha256": "b7804a1a97eb4ada5f2101d25621545e17f2610ad51f8cbef443c1c0df26a6ff"
+    },
+    {
+      "path": "scripts/verify_mcp.py",
+      "sha256": "7b25747980e56e64170c2a2467297769d9b7a0007ff37efda1bd46711adc82d2"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "fda7f0584ed7723030945ab22452541e373257c5f2c819eb8422b88dee964151"
+    },
+    {
+      "path": "tests/test_token_desk.py",
+      "sha256": "a90a5f4d93f3d864a51af6f2591769ece5bd15cbb0664462596254386ebab90d"
+    }
+  ],
+  "contains_secrets": false
+}

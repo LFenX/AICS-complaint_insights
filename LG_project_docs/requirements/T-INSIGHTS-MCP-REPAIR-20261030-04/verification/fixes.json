@@ -1,0 +1,53 @@
+{
+  "captured_at": "2026-10-29T22:15:54.832030+00:00",
+  "findings": [
+    {
+      "id": "R5-001",
+      "status": "Fixed",
+      "change": "KDF完成后从当前失败窗口安全读取计数，成功认证清空计数不会导致并发失败认证KeyError",
+      "evidence": [
+        "tests.log::test_success_during_another_failed_login_does_not_crash_retry"
+      ]
+    },
+    {
+      "id": "R5-002",
+      "status": "Fixed",
+      "change": "HTTP保留Decimal原值，通过每请求ContextVar在SDK转换前按工具Schema验证；极端数值失败关闭",
+      "evidence": [
+        "tests.log::test_raw_number_precision_and_request_context_isolation",
+        "live-numeric-fixed.json"
+      ]
+    },
+    {
+      "id": "R5-003",
+      "status": "Fixed",
+      "change": "首页mcp-client.json使用带引号的令牌占位值，JSON可以解析",
+      "evidence": [
+        "tests.log::test_home_configuration_example_is_json",
+        "browser-fixed.json"
+      ]
+    },
+    {
+      "id": "R5-004",
+      "status": "Fixed",
+      "change": "Referrer-Policy调整为same-origin；原生POST保留同源Origin，Origin:null仍拒绝",
+      "evidence": [
+        "tests.log::test_null_origin_stays_denied_for_native_form_endpoints",
+        "browser-fixed.json",
+        "results.json"
+      ]
+    },
+    {
+      "id": "R5-005",
+      "status": "Fixed",
+      "change": "限制管理grid最小宽度，表格独立横向滚动；确认表单在流内换行，展开后滚动到完整确认区域",
+      "evidence": [
+        "browser-fixed.json",
+        "../ui-previews/admin-mobile-fixed.png"
+      ]
+    }
+  ],
+  "test_count": 45,
+  "live_check_count": 17,
+  "live_numeric_controls": 5
+}

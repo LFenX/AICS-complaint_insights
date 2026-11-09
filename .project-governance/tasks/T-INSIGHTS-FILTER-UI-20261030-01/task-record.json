@@ -1,0 +1,536 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "carrier_version": "minimal-task-record-v1",
+  "carrier_mode": "Minimal",
+  "meta_types": [
+    "TaskContract",
+    "RunLedger",
+    "TaskOutcome"
+  ],
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-FILTER-UI-20261030-01",
+  "ordinal": 10,
+  "depends_on": [
+    "T-INSIGHTS-DAILY-TABLE-20261030-02"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "revision": 10,
+  "lifecycle_state": "Completed",
+  "created_at": "2026-10-29T21:05:25.372161Z",
+  "completed_at": "2026-10-29T21:10:31.235940Z",
+  "selection": {
+    "source": "automatic",
+    "basis": [
+      "script default: omitted non-blocking Minimal fields were populated by manage_minimal_task.py."
+    ],
+    "authority_refs": [
+      ".runtime/daily-filter-20261030/request.txt"
+    ]
+  },
+  "eligibility": {
+    "risk_level": "Low",
+    "reversible": true,
+    "single_scope": true,
+    "external_system_effect": false,
+    "production_release": false,
+    "security_privacy_impact": false,
+    "extension_triggers": {
+      "E01": "Inactive",
+      "E02": "Inactive",
+      "E03": "Inactive",
+      "E04": "Inactive",
+      "E05": "Inactive"
+    },
+    "blocking_unknowns": [],
+    "special_gates": [],
+    "evidence_refs": [
+      ".runtime/daily-filter-20261030/survey.json",
+      ".runtime/daily-filter-20261030/before/assets/daily-board.js",
+      ".runtime/daily-filter-20261030/request.txt",
+      "assets/daily-board.html",
+      ".runtime/daily-table-20261030/isolation.json"
+    ]
+  },
+  "task_contract": {
+    "objective": "删除明细长分类说明并更新搜索筛选行的可见标签、对齐和四项排序入口",
+    "request_snapshot": {
+      "language": "zh",
+      "text": "已拥有个体或道具缺失/特性改变、仓储容量、家园设施和摆放、收藏消耗、色相使用以及游戏内扣币购道具不符。实体丢失、特性改变和未入背包保留独立子标签。 这句话也删掉\n另外，搜索和筛选这一行组件是不是没有更新？更新一下2",
+      "captured_at": "2026-10-29T21:05:25.370461Z"
+    },
+    "requirement_items": [
+      {
+        "id": "R-001",
+        "source": "request_snapshot",
+        "quote": "已拥有个体或道具缺失/特性改变、仓储容量、家园设施和摆放、收藏消耗、色相使用以及游戏内扣币购道具不符。实体丢失、特性改变和未入背包保留独立子标签。 这句话也删掉",
+        "reading": "移除表格上方长分类说明",
+        "state": "Covered",
+        "evidence_refs": [
+          ".runtime/daily-filter-20261030/browser-verification.json",
+          ".runtime/daily-filter-20261030/verification.json",
+          ".runtime/daily-filter-20261030/filters-final.jpg"
+        ],
+        "acceptance_refs": [
+          0
+        ],
+        "review": {
+          "source_sha256": "306017abbc70f295c403cf6cf596a1b499d930c02207e55bb0705b6087f21b9a",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "真实浏览器选择伊莫主问题和客诉口径",
+              "expected": "指定长说明不在列表中展示",
+              "actual": "25封客诉来信，activeNote为空且visibleLongDefinition=false",
+              "result": "Passed",
+              "evidence_refs": [
+                ".runtime/daily-filter-20261030/browser-verification.json",
+                ".runtime/daily-filter-20261030/verification.json",
+                ".runtime/daily-filter-20261030/filters-final.jpg"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "R-002",
+        "source": "request_snapshot",
+        "quote": "另外，搜索和筛选这一行组件是不是没有更新？更新一下2",
+        "reading": "更新搜索筛选工具栏并确认四项排序可见可用",
+        "state": "Covered",
+        "evidence_refs": [
+          ".runtime/daily-filter-20261030/browser-verification.json",
+          ".runtime/daily-filter-20261030/verification.json",
+          ".runtime/daily-filter-20261030/filters-final.jpg"
+        ],
+        "acceptance_refs": [
+          0
+        ],
+        "review": {
+          "source_sha256": "306017abbc70f295c403cf6cf596a1b499d930c02207e55bb0705b6087f21b9a",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "刷新本轮资源并操作搜索、口径、主问题、四项排序、重置及子问题",
+              "expected": "四标签、38px等高并保持原控件事件有效",
+              "actual": "四标签与38px同基线；精确搜索1封、重置634封；四种排序首25封有相应证据、子问题6日志/3来信入口保留",
+              "result": "Passed",
+              "evidence_refs": [
+                ".runtime/daily-filter-20261030/browser-verification.json",
+                ".runtime/daily-filter-20261030/verification.json",
+                ".runtime/daily-filter-20261030/filters-final.jpg"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "D-FILTER-UI-DIRECTIVE",
+        "kind": "Proceed",
+        "presented": "当前3030看板的说明删除与搜索筛选组件更新",
+        "response": "已拥有个体或道具缺失/特性改变、仓储容量、家园设施和摆放、收藏消耗、色相使用以及游戏内扣币购道具不符。实体丢失、特性改变和未入背包保留独立子标签。 这句话也删掉\n另外，搜索和筛选这一行组件是不是没有更新？更新一下2",
+        "decided_by": "user",
+        "decided_at": "2026-10-29T21:05:25.281044+00:00",
+        "evidence_ref": ".runtime/daily-filter-20261030/request.txt",
+        "outcome": "Approved"
+      }
+    ],
+    "clarification": {
+      "state": "Settled",
+      "mode": "Skipped",
+      "notice": "截图中缺少新版“优先排序”控件，与当前服务的界面不一致。本轮直接调整：给搜索、来信口径、主问题、优先排序加上清晰标签，统一高度和间距；同时移除表格上方的长分类说明，保留子问题和时段筛选提示，无需补充确认。",
+      "survey_refs": [
+        ".runtime/daily-filter-20261030/survey.json"
+      ],
+      "rounds": [],
+      "basis": "源文件、截图与真实DOM已勘察；只调整现有静态组件，可逆低影响，无安全/数据/生产未知",
+      "reopened_by": []
+    },
+    "scope": "3030原信明细搜索筛选行和分类说明的静态UI调整",
+    "out_of_scope": [
+      "数据/分类/下载/权限/MCP/采集/生产及服务监听改动"
+    ],
+    "allowed_paths": [
+      "assets/daily-board.js",
+      "assets/daily-board.css",
+      "assets/daily-board.html",
+      ".runtime/daily-filter-20261030/**",
+      "update_log/2026-10-30-daily-filter-ui.md",
+      ".project-governance/tasks/T-INSIGHTS-FILTER-UI-20261030-01/**"
+    ],
+    "forbidden_actions": [
+      "script default: files outside allowed_paths are forbidden."
+    ],
+    "acceptance": "选择伊莫主问题后无所指长分类说明；搜索、来信口径、主问题、优先排序均有可见标签、等高且四种排序与重置可用；子问题与小时提示保留，634封与35ZIP和报告SHA不变；真实浏览器证据与日志保存",
+    "task_profile": {
+      "delivery_scenario": "DS-03",
+      "development_type": "DT-06",
+      "change_surface": "UI/UX",
+      "risk_level": "Low",
+      "extension_triggers": {
+        "E01": "Inactive",
+        "E02": "Inactive",
+        "E03": "Inactive",
+        "E04": "Inactive",
+        "E05": "Inactive"
+      }
+    },
+    "plan": {
+      "selected_approach": "只修改既有三个静态资源，保留组件ID和事件协议，刷新页面验证",
+      "alternative_rejected": "不重建读取模型、不改分类、不增加服务或接口",
+      "steps": [
+        "修改说明渲染和带标签的筛选栏",
+        "刷新真实浏览器核验两项原话及现有筛选/排序/下载状态"
+      ],
+      "verification": "真实DOM与截图核验文案消失、四标签、等高与操作；核对固定报告SHA",
+      "rollback": "恢复.runtime/daily-filter-20261030/before/assets内的三个同名文件"
+    },
+    "first_principles_analysis": {
+      "outcome": "删除明细长分类说明并更新搜索筛选行的可见标签、对齐和四项排序入口",
+      "facts": [
+        "当前源码已有四项证据排序，但用户截图未显示该控件；不推定具体浏览器缓存原因",
+        "长句来自选中主题definition的列表渲染，不需要改原始数据"
+      ],
+      "constraints": [
+        "保持白色主题、底部20px和既有读取模型/导出契约"
+      ],
+      "assumptions": [
+        "script default: Minimal eligibility facts remain valid; upgrade if a hard boundary is crossed."
+      ],
+      "unknowns": [],
+      "fundamentals": [
+        "列表优先展示操作与证据，去掉用户要求删除的解释文案",
+        "script default: the change is confined to the recorded allowed_paths.",
+        "script default: the change is reversible, which is the eligibility fact that permits the Minimal carrier."
+      ],
+      "causal_chain": [
+        "script default: the recorded eligibility facts -- Low risk, reversible, single scope, no external effect, no production release, no security or privacy impact, all extensions Inactive -- are why the aggregate carrier is sufficient here."
+      ],
+      "alternatives": [
+        "只修改既有三个静态资源，保留组件ID和事件协议，刷新页面验证",
+        "不重建读取模型、不改分类、不增加服务或接口"
+      ],
+      "decision_criteria": [
+        "script default: satisfy the recorded acceptance statement without crossing any Minimal hard boundary."
+      ],
+      "selected_approach": "只修改既有三个静态资源，保留组件ID和事件协议，刷新页面验证",
+      "validation": "真实DOM与截图核验文案消失、四标签、等高与操作；核对固定报告SHA"
+    },
+    "source_snapshot": {
+      "repository": "complaint-insights",
+      "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+      "vcs": "unavailable",
+      "captured_at": "2026-10-29T21:05:25.372658Z"
+    }
+  },
+  "run_ledger": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-10-29T21:05:26.274638Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0001",
+      "attempt_id": "attempt-001",
+      "event_type": "run_started",
+      "summary": "按当前用户直接指令修改既有静态UI，已备份三个资源；初始化曾因CLI单条acceptance误用索引1而零写入拒绝，修正参数映射后创建成功，未变更业务范围。",
+      "status": "started",
+      "evidence_refs": [
+        ".runtime/daily-filter-20261030/survey.json"
+      ]
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-10-29T21:06:38.614841Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0002",
+      "attempt_id": "attempt-001",
+      "event_type": "mutation",
+      "summary": "三个静态资源已更新：移除列表主问题长定义，新增四个可见标签和38px等高网格布局/窄屏换行；保留原控件ID、四项排序及筛选事件；静态CSS/JS URL增加本轮版本标记，JS语法检查通过。",
+      "status": "succeeded",
+      "evidence_refs": [
+        "assets/daily-board.js",
+        "assets/daily-board.css",
+        "assets/daily-board.html"
+      ]
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-10-29T21:09:29.504175Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0003",
+      "attempt_id": "attempt-001",
+      "event_type": "failure",
+      "summary": "浏览器联动夹具从玩法领域直接选择更新组，后者已不在当前下拉选项中，因此该步selectOption超时；源控件按领域限制选项符合原设计，无产品数据变更。实际状态与成功前置检查保留。",
+      "status": "failed",
+      "evidence_refs": [
+        ".runtime/daily-filter-20261030/browser-verification.json"
+      ]
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-10-29T21:09:30.289626Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0004",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "retry",
+      "summary": "补上跨领域前重置步骤并完成联动复验；继续独立核对已收集的DOM、行ID和固定报告摘要，不改变代码、授权或需求。",
+      "status": "started",
+      "evidence_refs": [
+        ".runtime/daily-filter-20261030/browser-verification.json"
+      ]
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-10-29T21:10:30.433180Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0005",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "verification",
+      "summary": "本轮三个资源JS语法与真实浏览器核验通过：长定义删除、四个可见标签、所有操作控件38px同基线，搜索1封、口径25封、四排序首25封有内容在前、重置634封、子问题提示和6日志/3来信ZIP入口保留；报告SHA与35包未变。",
+      "status": "succeeded",
+      "evidence_refs": [
+        ".runtime/daily-filter-20261030/verification.json",
+        ".runtime/daily-filter-20261030/browser-verification.json",
+        "update_log/2026-10-30-daily-filter-ui.md"
+      ]
+    },
+    {
+      "sequence": 6,
+      "timestamp": "2026-10-29T21:10:31.235940Z",
+      "run_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-FILTER-UI-20261030-01-run-001-E0006",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "run_finished",
+      "summary": "Minimal task closed as Implemented.",
+      "status": "succeeded",
+      "evidence_refs": [
+        ".runtime/daily-filter-20261030/verification.json"
+      ]
+    }
+  ],
+  "task_outcome": {
+    "status": "Implemented",
+    "user_decision": {
+      "outcome": "Pending"
+    },
+    "adversarial_review": [
+      {
+        "event": "Offer",
+        "recorded_at": "2026-10-29T21:11:10.469690+00:00",
+        "prompt": "3030 本轮界面调整已完成。是否启动本轮的多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+        "evidence_ref": "conversation:T-INSIGHTS-FILTER-UI-20261030-01:request_user_input_async-review-offer"
+      },
+      {
+        "event": "Decision",
+        "recorded_at": "2026-10-29T21:12:55.721487+00:00",
+        "outcome": "Deferred",
+        "response": "稍后决定",
+        "decided_by": "user",
+        "evidence_ref": "conversation:request_user_input_async:call_9976f6ce7d58431589ffb1db8d5eede8:0:user-reply"
+      }
+    ],
+    "established_facts": [
+      "两项原话已逐条Covered，本机3030已实际加载本轮CSS/JS版本；用户决定Pending"
+    ],
+    "actual_changes": [
+      "删除明细长分类定义并更新四标签、等高网格、窄屏和资源版本，保留既有数据与筛选排序ZIP契约"
+    ],
+    "verification": [
+      {
+        "result": "Passed",
+        "summary": "JS语法与实际浏览器两项原话和原筛选排序联动通过",
+        "evidence_refs": [
+          ".runtime/daily-filter-20261030/verification.json"
+        ]
+      }
+    ],
+    "incomplete_items": [],
+    "completed_at": "2026-10-29T21:10:31.235940Z"
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FILTER-UI-20261030-01/task-record.json",
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FILTER-UI-20261030-01/task-record.json",
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FILTER-UI-20261030-01/task-record.json",
+      "outcome": "Created"
+    }
+  ],
+  "upgrade": {
+    "required": false,
+    "triggered_at": null,
+    "reason": null,
+    "basis": null,
+    "full_carrier_ref": null
+  },
+  "amendments": [
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "changes": [
+        {
+          "path": "task_contract.requirement_items",
+          "old_value": [
+            {
+              "id": "R-001",
+              "source": "request_snapshot",
+              "quote": "已拥有个体或道具缺失/特性改变、仓储容量、家园设施和摆放、收藏消耗、色相使用以及游戏内扣币购道具不符。实体丢失、特性改变和未入背包保留独立子标签。 这句话也删掉",
+              "reading": "移除表格上方长分类说明",
+              "state": "Open",
+              "evidence_refs": [],
+              "acceptance_refs": [
+                0
+              ]
+            },
+            {
+              "id": "R-002",
+              "source": "request_snapshot",
+              "quote": "另外，搜索和筛选这一行组件是不是没有更新？更新一下2",
+              "reading": "更新搜索筛选工具栏并确认四项排序可见可用",
+              "state": "Open",
+              "evidence_refs": [],
+              "acceptance_refs": [
+                0
+              ]
+            }
+          ],
+          "new_value": [
+            {
+              "id": "R-001",
+              "source": "request_snapshot",
+              "quote": "已拥有个体或道具缺失/特性改变、仓储容量、家园设施和摆放、收藏消耗、色相使用以及游戏内扣币购道具不符。实体丢失、特性改变和未入背包保留独立子标签。 这句话也删掉",
+              "reading": "移除表格上方长分类说明",
+              "state": "Covered",
+              "evidence_refs": [
+                ".runtime/daily-filter-20261030/browser-verification.json",
+                ".runtime/daily-filter-20261030/verification.json",
+                ".runtime/daily-filter-20261030/filters-final.jpg"
+              ],
+              "acceptance_refs": [
+                0
+              ],
+              "review": {
+                "source_sha256": "306017abbc70f295c403cf6cf596a1b499d930c02207e55bb0705b6087f21b9a",
+                "conditions": [],
+                "cases": [
+                  {
+                    "condition": null,
+                    "branch": "Unconditional",
+                    "input": "真实浏览器选择伊莫主问题和客诉口径",
+                    "expected": "指定长说明不在列表中展示",
+                    "actual": "25封客诉来信，activeNote为空且visibleLongDefinition=false",
+                    "result": "Passed",
+                    "evidence_refs": [
+                      ".runtime/daily-filter-20261030/browser-verification.json",
+                      ".runtime/daily-filter-20261030/verification.json",
+                      ".runtime/daily-filter-20261030/filters-final.jpg"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R-002",
+              "source": "request_snapshot",
+              "quote": "另外，搜索和筛选这一行组件是不是没有更新？更新一下2",
+              "reading": "更新搜索筛选工具栏并确认四项排序可见可用",
+              "state": "Covered",
+              "evidence_refs": [
+                ".runtime/daily-filter-20261030/browser-verification.json",
+                ".runtime/daily-filter-20261030/verification.json",
+                ".runtime/daily-filter-20261030/filters-final.jpg"
+              ],
+              "acceptance_refs": [
+                0
+              ],
+              "review": {
+                "source_sha256": "306017abbc70f295c403cf6cf596a1b499d930c02207e55bb0705b6087f21b9a",
+                "conditions": [],
+                "cases": [
+                  {
+                    "condition": null,
+                    "branch": "Unconditional",
+                    "input": "刷新本轮资源并操作搜索、口径、主问题、四项排序、重置及子问题",
+                    "expected": "四标签、38px等高并保持原控件事件有效",
+                    "actual": "四标签与38px同基线；精确搜索1封、重置634封；四种排序首25封有相应证据、子问题6日志/3来信入口保留",
+                    "result": "Passed",
+                    "evidence_refs": [
+                      ".runtime/daily-filter-20261030/browser-verification.json",
+                      ".runtime/daily-filter-20261030/verification.json",
+                      ".runtime/daily-filter-20261030/filters-final.jpg"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "reason": "按两条完整原话保存真实浏览器核验结果",
+      "basis": ".runtime/daily-filter-20261030/verification.json",
+      "changed_at": "2026-10-29T21:10:29.607910Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "reason": "当前UI工程结果已保存，按技能实际发出可选审查询问",
+      "basis": "request_user_input_async已接受询问；尚无用户答复，不启动审查",
+      "changed_at": "2026-10-29T21:11:10.469690+00:00",
+      "changes": [
+        {
+          "path": "task_outcome.adversarial_review.0",
+          "old_value": {
+            "$missing": true
+          },
+          "new_value": {
+            "event": "Offer",
+            "recorded_at": "2026-10-29T21:11:10.469690+00:00",
+            "prompt": "3030 本轮界面调整已完成。是否启动本轮的多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+            "evidence_ref": "conversation:T-INSIGHTS-FILTER-UI-20261030-01:request_user_input_async-review-offer"
+          }
+        }
+      ]
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "reason": "用户对本轮界面可选审查明确选择稍后决定",
+      "basis": "用户对call_9976f6ce7d58431589ffb1db8d5eede8第0项的实际回答：稍后决定",
+      "changed_at": "2026-10-29T21:12:55.721487+00:00",
+      "changes": [
+        {
+          "path": "task_outcome.adversarial_review.1",
+          "old_value": {
+            "$missing": true
+          },
+          "new_value": {
+            "event": "Decision",
+            "recorded_at": "2026-10-29T21:12:55.721487+00:00",
+            "outcome": "Deferred",
+            "response": "稍后决定",
+            "decided_by": "user",
+            "evidence_ref": "conversation:request_user_input_async:call_9976f6ce7d58431589ffb1db8d5eede8:0:user-reply"
+          }
+        }
+      ]
+    }
+  ]
+}

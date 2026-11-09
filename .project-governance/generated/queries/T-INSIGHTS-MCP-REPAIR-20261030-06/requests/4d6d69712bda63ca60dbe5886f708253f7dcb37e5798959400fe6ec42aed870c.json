@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "准备汇总已授权同版独立技术审查的实际报告；仅在真实完整两轮结束后更正after未完成项和证据引用，不改已结束Run、交付快照、正式门禁或审查数组，不推断用户验收。代码推送沿用用户此前明确授权。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "34e8b6a29e8286335438a2651e20166e6e9498e0619718767b8d2d9ae6e25bc7",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-06"
+}

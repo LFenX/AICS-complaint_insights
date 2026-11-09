@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "全附件就绪条件共享校验已修复，79回归及原补充三入口/11发布反例与正常分支通过，4版正式历史和70项其他资产不变，保存工程归父Accepted完整审查，保留真实新日/00:30首次运行和副本限制，最终用户验收Pending",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "b9662e69d78978d04617eb4ebe97cb702b82cf226552946e7f75db5428c32c87",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-04"
+}

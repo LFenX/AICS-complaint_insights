@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "实际授权的10月31日和11月1日日报一次源RR只读捕获、本地受限数据导入冻结、逐封语义与UID角色及附件ZIP审阅、现有3030日期读取模型发布验证；不改长期配置全局游标或其他日期和服务",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "4d88a9bcb533cf424414fcb1946df54502a684f7bc2a77679376560dab58e7fb",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01"
+}

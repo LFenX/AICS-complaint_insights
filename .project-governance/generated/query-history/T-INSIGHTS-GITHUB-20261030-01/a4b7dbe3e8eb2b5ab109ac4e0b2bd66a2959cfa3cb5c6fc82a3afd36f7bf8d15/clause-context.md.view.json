@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-GITHUB-20261030-01-CLAUSE-CONTEXT-a4b7dbe3e8eb2b5a",
+  "view_kind": "clause-context",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T21:39:33.918908Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "98c5ac98e4e70f5fa6d9cea6a546e185efbefdd85d5c3b9c2c82027e665a350c",
+  "sources": [
+    ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/query-result.json"
+  ],
+  "content_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/clause-context.md",
+  "integrity_status": "Complete"
+}

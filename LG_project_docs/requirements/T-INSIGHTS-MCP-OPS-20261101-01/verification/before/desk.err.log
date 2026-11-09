@@ -1,0 +1,495 @@
+INFO:     Started server process [278064]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on https://10.8.61.200:3029 (Press CTRL+C to quit)
+{"request_id": "42294f4e40ab4b50ac4e3406a2ddccf0", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "409f6c6c452a4886b79817ea83bb88ed", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "409f6c6c452a4886b79817ea83bb88ed", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "0940bbedaac84215b306c1fb2ecc19dd", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "0940bbedaac84215b306c1fb2ecc19dd", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "ac75915ba14149d68fcef0497dd0afc6", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "5ae4ea65d60347eb9836175e992cd6fa", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "dbe6bc49afca4ea0ac80ce20f7f36835", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "b1a187220bcb4426b27ca7c5ef4b3c24", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "1b41b556cde049ceb10e33ec44b6fa6c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "1b41b556cde049ceb10e33ec44b6fa6c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "0ce5d59b54b3402eb78535a1d912c3bb", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "0ce5d59b54b3402eb78535a1d912c3bb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "d380aafc807243a9bc357a49d68a3f9f", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "d380aafc807243a9bc357a49d68a3f9f", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "bc17f158ea744e839b9886c289ed0acb", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bc17f158ea744e839b9886c289ed0acb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "bada89b21643464e8fb6f39fd491c1ca", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bada89b21643464e8fb6f39fd491c1ca", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "2728d61862cf46f4b278425012388cb4", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "2728d61862cf46f4b278425012388cb4", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "8487a29d303e4478bf030871743d3ff1", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "8487a29d303e4478bf030871743d3ff1", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "cd24ece18dd442c4a9f8e4cc99d85515", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "89cb85fcb6aa4c3cb98b8bbc6a5c9515", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "b5bb6ee91cbd4e8d8b3394dca21f2758", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "1649446141b14d1aa264214af798e3e7", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "1649446141b14d1aa264214af798e3e7", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 132}
+{"request_id": "d98c1bff331e4d5f9cf9e1db1412eb80", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "de75be68c0a74ba99b26c13a531c4604", "action": "token.manage", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "csrf_denied"}
+{"request_id": "de75be68c0a74ba99b26c13a531c4604", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "81206af5b08c4d06b3a8e5e7227d5301", "action": "token.issue", "admin": "owner", "target_identity": "portal-verification-221152", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "81206af5b08c4d06b3a8e5e7227d5301", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 8}
+{"request_id": "cb1e50d96e634cdc8a147180d77786ec", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "e4b08dac1b03447bb4910eac2eb2e9ee", "action": "token.revoke", "admin": "owner", "target_identity": "portal-verification-221152", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e4b08dac1b03447bb4910eac2eb2e9ee", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 7}
+{"request_id": "c8bd8673bdcc4957ab66bea74a964052", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c8bd8673bdcc4957ab66bea74a964052", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "39eded01def04cae91fd8626845b16d3", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "89c7d765384f44f6931bf8a4f026d639", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "82d3db8e57a7424da305d49a6fe879f9", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "82d3db8e57a7424da305d49a6fe879f9", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "dc15c6adbfc645378a5d18db996dd64a", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "dc15c6adbfc645378a5d18db996dd64a", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "414dc3c605d84c5bbacd424539d5ff08", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6996afeee4c548a0b57f9ad3ecf5c916", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "2cac4d486bbb4311bb95ec496965c770", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "72328361d28d4c64970da5d9a49cb71f", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "f2505f03907e4652925cf0008108e9a6", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "f2505f03907e4652925cf0008108e9a6", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "4f7c1685b3e54cd38d61f4dcc0cdb6fc", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "4f7c1685b3e54cd38d61f4dcc0cdb6fc", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "af4125661a094922839f78f13d652dad", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "af4125661a094922839f78f13d652dad", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "de01ed271b104a5b879a427e729e351b", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "de01ed271b104a5b879a427e729e351b", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "1bfb7568c49d4d1493b66ec527960248", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "1bfb7568c49d4d1493b66ec527960248", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "cef5444392b247518cbe9af65d3fad74", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "cef5444392b247518cbe9af65d3fad74", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "e81ebc51c813423ab7561750182803c3", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e81ebc51c813423ab7561750182803c3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "09137d5415a848cf9f221b4fae942d27", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6b7b773af1db44e690ef53974da4b68d", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "fef9b4b9fa6648c9a0f8fe3ea5b90566", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6b796c96e23e4d4db3ee612c16e4e15e", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "6b796c96e23e4d4db3ee612c16e4e15e", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 137}
+{"request_id": "a368b3d2711d455cb52516ec7f71fe2e", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "00ce09cde177490b8be61834223bd197", "action": "token.manage", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "csrf_denied"}
+{"request_id": "00ce09cde177490b8be61834223bd197", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "4d2cb4b564714451bc300d1f177ca2b9", "action": "token.issue", "admin": "owner", "target_identity": "portal-verification-221234", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "4d2cb4b564714451bc300d1f177ca2b9", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 6}
+{"request_id": "37a6dfeb9cac4e11b76be90e56f616d5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "8d7295940c494e9bb54451356bfdf38a", "action": "token.revoke", "admin": "owner", "target_identity": "portal-verification-221234", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "8d7295940c494e9bb54451356bfdf38a", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 6}
+{"request_id": "5aff3c647521486784754e976f733b83", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5aff3c647521486784754e976f733b83", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 2}
+{"request_id": "4378be32703b45c8a5ed588d1f2f9ddc", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "70ca9b0f311a4b6696b4d858733329f1", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "70ca9b0f311a4b6696b4d858733329f1", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "ea5cde5e34044e04a9355669daca82ac", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ea5cde5e34044e04a9355669daca82ac", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "6e4c2806204342dd9f706f795782a03a", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "6e4c2806204342dd9f706f795782a03a", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "4be4d232955149f4ae376d975a65fd97", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "4be4d232955149f4ae376d975a65fd97", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "d70fc4de4d5746f58af868fbc9a1df87", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "d70fc4de4d5746f58af868fbc9a1df87", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "e7296aecf101445e9bb1162921cc124c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e7296aecf101445e9bb1162921cc124c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 3}
+{"request_id": "533047e7e3ce4c608d94e5532dba5d95", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "533047e7e3ce4c608d94e5532dba5d95", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "7e206bf0e60d4b83bb99c963bfd71089", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "f040dd9082094a0da0f3faa172cfa065", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "1639db0d36cd44aabecf6ee0c61378f2", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "4080974e98114bae998b23b837147885", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "efc27fb3b3354582b55048a91648db2f", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "9b07a9ee641442da9857e86c6e00e6f0", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "1923bf36e12948719168395c542c66eb", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6dcec450055e4536b84201182cf74f59", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "776f5fce00ec4a789f6aabfb8e314113", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "139715f0ea5748d2a2ccaf646dfd25d9", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "139715f0ea5748d2a2ccaf646dfd25d9", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "f0ab06cb48d047aa8028f38b44eb26aa", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "f0ab06cb48d047aa8028f38b44eb26aa", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 0}
+{"request_id": "95e5701da98f46a9957e2ac0819f90e3", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "7e370b8cfb2c4fb499c6173034a4a502", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "5e066644c2984e61a3ecabff8fc3a1b5", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "06c1d68609b14f2cb82a25e9611de23b", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e763476ec4104f4b962d2b9e7bb7e8cb", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e763476ec4104f4b962d2b9e7bb7e8cb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "ab7908290d0d4dd0b391b148584013ad", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ab7908290d0d4dd0b391b148584013ad", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "ee118500d48d41e2a78eb1508e155a36", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ee118500d48d41e2a78eb1508e155a36", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "f6ec28e6230f4aaf9f841e930e6139ca", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "f6ec28e6230f4aaf9f841e930e6139ca", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "7d6c6cfb68b348059b85e17fcfc0020b", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "7d6c6cfb68b348059b85e17fcfc0020b", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "938bc186a8764850a8010f56fa36f3ce", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "938bc186a8764850a8010f56fa36f3ce", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "716b18421b114352bb729cfdfdfc7189", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "716b18421b114352bb729cfdfdfc7189", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "86850e1591a746deb312fc3118f1cb98", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "331c76c4bcf347ffa7bdde1f54069f47", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "c0b39c99ed47462ebd6baed90a070b6c", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "2aa2c9d043c74a6d943579813d9b6660", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "91e318756e4747c9bbac98e388d46541", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e930e6d4031f47d1b180256f1c6a224b", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "bfb46ff6ede44365861949c5d9c7fc98", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "01d3c71d1ff54c7fb8f460375e3856d9", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "01d3c71d1ff54c7fb8f460375e3856d9", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "75ce9b9c304144289395ac3df8e135f5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "75ce9b9c304144289395ac3df8e135f5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "ec9974c193fe45c8b68654f7d48c191c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ec9974c193fe45c8b68654f7d48c191c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "4c19b2ebf83e447c8122902f6d6206c5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "4c19b2ebf83e447c8122902f6d6206c5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "c0384f8213a847e5abae7b85b7820688", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c0384f8213a847e5abae7b85b7820688", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "acebe7d5ee0f4be8b5430f2cb4616a51", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "acebe7d5ee0f4be8b5430f2cb4616a51", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "f50ec7b3a44d4117af5c7d74c597ab17", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "f50ec7b3a44d4117af5c7d74c597ab17", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "9a79b3def0fe4642b31ee21240a430a2", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6a65a5254dfc4b4abaf29bf1e368a28b", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "a6ce339ecfcd4eb3adcccb7718713b67", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "bc64eb9726d54f5dafe5df0521797c4b", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e767a9a4007142c2bef3d7422349234c", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "5b09b0f6b0764a6c9def33861cd690ca", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "31d16b551d5a4d7f82e200f85915dd0e", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e59d1dab5eb04fccba0209f28f1d8645", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e59d1dab5eb04fccba0209f28f1d8645", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "5ccbd1e2359245428e9572c400c96b45", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5ccbd1e2359245428e9572c400c96b45", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "c48122511cce49f6bd7290433298cb9c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c48122511cce49f6bd7290433298cb9c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "a4353bdfd064483abb5b129ede3c05a4", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "a4353bdfd064483abb5b129ede3c05a4", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "43b3c799c7ca4768b3e4bc5a90a8f11c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "43b3c799c7ca4768b3e4bc5a90a8f11c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "5ebf94aac4a74bb2875dae251398c82b", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5ebf94aac4a74bb2875dae251398c82b", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "bdd20726211348c1ad007724cca4878c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bdd20726211348c1ad007724cca4878c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "fa4cd90027b24a25a2894481cf14ec9e", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "8e8aad90833748d4be6a9c571851202f", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6e76ad687e574c209b7a1d384897694f", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "40a850e4a62042888a1d94d4a3f51c22", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e2899076fd924728a74eda92d6d3054c", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "efa6bbd364d04413aed7d4d62ba204cd", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "d2bae10134b1454483910139dc782891", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "b14a94e84420459498533e0dab755f2f", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "8393bc8fce8b47bca67f896500d94705", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "145a6d233d4344038667f04ca502eec3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "af2577e39fdf468bb33d6e498927489c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "be68569431e241cd92a52cb96390f6f6", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "be68569431e241cd92a52cb96390f6f6", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 0}
+{"request_id": "a0e630e40cfd478dba3f8c9dc9cd8f9c", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "a0e630e40cfd478dba3f8c9dc9cd8f9c", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "7f55c2cc10104c86aa239f7c74d34471", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "d53d1d4bb0d14cbd8d44302746b4b4ec", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "66670c53aedb4a6183afd1cae6b3be8b", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "838b6eb537e84dc79c9b6e58e7767bdd", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "727d144e04fb4f8590367e4fdbb1dfbb", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "727d144e04fb4f8590367e4fdbb1dfbb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "5317bd4c2c834e48b2e736e9b16b8569", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5317bd4c2c834e48b2e736e9b16b8569", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "8e12f6663a284676b816b06a20edb904", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "8e12f6663a284676b816b06a20edb904", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "e9a45ffae4e0402baeb7d412a09fb681", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e9a45ffae4e0402baeb7d412a09fb681", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 4}
+{"request_id": "ea827ca7c1634683aaea65216d51e94c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ea827ca7c1634683aaea65216d51e94c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "ebcbe87476544e16bbddec7cc213e9d5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ebcbe87476544e16bbddec7cc213e9d5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 3}
+{"request_id": "a9bbdcd2ed0f46e8a617ef5b16e074eb", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "a9bbdcd2ed0f46e8a617ef5b16e074eb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "df3c529855784d989a915361ee9fd1a0", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "3ec6e22577eb4c59bb083c821501639c", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "b0355d6a9e6149e1a2384fcdcdf3ede1", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "7b0b9889e5f446aab032e917aff5bc08", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "7b0b9889e5f446aab032e917aff5bc08", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 138}
+{"request_id": "04461361665a48998e71f4f5415d9e28", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "4f8aa9a20d3c492eb8f2a5f04714b1d2", "action": "token.manage", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "csrf_denied"}
+{"request_id": "4f8aa9a20d3c492eb8f2a5f04714b1d2", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "e32264a066db41b08a7a4a267426f1ff", "action": "token.issue", "admin": "owner", "target_identity": "portal-verification-230946", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e32264a066db41b08a7a4a267426f1ff", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 7}
+{"request_id": "45a66538cdb94f3d96ed9554647c0463", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6561416da9094474aab624654944cd7e", "action": "token.revoke", "admin": "owner", "target_identity": "portal-verification-230946", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "6561416da9094474aab624654944cd7e", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 7}
+{"request_id": "19c58d27921e48b68d462dd0871f1217", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "19c58d27921e48b68d462dd0871f1217", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "37f3edbc3b504cc4a41941ed6995d722", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "40a0e0a897b942cca5454a7f9d3d00e8", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "36495657335147e789b97afde9681739", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "329cd8562e5542ceb833dad65706efe0", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "3efc019700ed4b9a9ad4d6b673a3df78", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "bec705e39dfa41af814b3a6f8701bd5f", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bec705e39dfa41af814b3a6f8701bd5f", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "dbd1058de7f840709f393cb969406412", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "dbd1058de7f840709f393cb969406412", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "74127dc362cf4de787c8f893b9344caf", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "74127dc362cf4de787c8f893b9344caf", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "aef7698062794432ba23f50c23d6f9a7", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "aef7698062794432ba23f50c23d6f9a7", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "a5a1564505b44735bee67e4e332a6b0e", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "a5a1564505b44735bee67e4e332a6b0e", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "f3df2ac441c94c978263a556dd1565a3", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "f3df2ac441c94c978263a556dd1565a3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "c96a042b1ec648608f0a7a6222c1b2c3", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c96a042b1ec648608f0a7a6222c1b2c3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "9154f579691c4f19bb533a8d06e273ca", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "29b11085eb5740e4b6513a384ea67619", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "7fa3327abebc477d97d68ca877d96d12", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "be98b65a1dfa4001957a78a822df142f", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "be98b65a1dfa4001957a78a822df142f", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 0}
+{"request_id": "addae5a71a2a483db91807ef39f82ca8", "action": "token.manage", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "unauthorized"}
+{"request_id": "addae5a71a2a483db91807ef39f82ca8", "action": "http", "status": 401, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "21f342f0d67d4c40843b645539e071d5", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "70d5b91897f943c990cd223db9db3310", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "00acccfcb23b4f8085d8789ddc29132f", "action": "http", "status": 421, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "52e8de97400149afb2deda05b6660e6e", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "a30b33a7c755405fae19d7ee81a56dca", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "a30b33a7c755405fae19d7ee81a56dca", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "c79a671bc5474b3fb9b35a83e6662413", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c79a671bc5474b3fb9b35a83e6662413", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "484f8dfab6614823a1e3b4240e5768b5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "484f8dfab6614823a1e3b4240e5768b5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "200ae082407044a6868d805907bca8a0", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "200ae082407044a6868d805907bca8a0", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "7137422e19764bcda2cddf3ddea55003", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "7137422e19764bcda2cddf3ddea55003", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "736dc785ae96462482a48443f3471626", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "736dc785ae96462482a48443f3471626", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "8233f4cbaceb4e499d76744692a4a8c5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "8233f4cbaceb4e499d76744692a4a8c5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "686f0068b8c74e97bd461127dca41319", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6c8b390dec294763a77011c28429f87f", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "a388865c65c64f26bcb291737ddea5a5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "e4e2533586024de4bf2e75b10b0218ed", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e4e2533586024de4bf2e75b10b0218ed", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 137}
+{"request_id": "5ce3e6411573498a88cba093d85abc73", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "eb03c891a1424f06be8b1534ddb82613", "action": "token.manage", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "csrf_denied"}
+{"request_id": "eb03c891a1424f06be8b1534ddb82613", "action": "http", "status": 403, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "33499827a1bd4c858460dfee869d7641", "action": "token.issue", "admin": "owner", "target_identity": "portal-verification-234730", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "33499827a1bd4c858460dfee869d7641", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 9}
+{"request_id": "f8b46b7e50944338b375ed7351b898ee", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "6e39b57d75bc4eb6bd7368cab8b3698f", "action": "token.revoke", "admin": "owner", "target_identity": "portal-verification-234730", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "6e39b57d75bc4eb6bd7368cab8b3698f", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 7}
+{"request_id": "bbd7fbb0fb0a4b4698393f3d427ac7b9", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bbd7fbb0fb0a4b4698393f3d427ac7b9", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "5c66a953d1394aa2ae12ca4cd540ed56", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "ebe8f84e89214081af6ccedf2be1eee0", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "d02b26633fc94cfbb95d68eca919dbab", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "8b7cf70eeae14ae39965d6c706c453d7", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "7f715ca07a15411a8c8d801aad0bb00f", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "03f6cfa859fc4096b8c3b892d1c20ebc", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "2acbe2f5d5344ba4a0047c053cc969e5", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "9c0af6acc2d5487dbf311ac5b2cfe283", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "9c0af6acc2d5487dbf311ac5b2cfe283", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "14322c5fab804722a8e0e260fdd27600", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "04e6f28c394944d59ba52e9524851066", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "5f100a81e0ec42ac8f51ee93dd30fd44", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "f198f41d6a884b8b9c88efe1ccfa69ad", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "7a429f8d9b404da2a3fa60bea42e8799", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "7a429f8d9b404da2a3fa60bea42e8799", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "ced28d7e7817440ea47b3ea4c95c1c88", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6dc91b297544476fb508227cd1f0e396", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "d4b263666c2d40b4a794da9d9f94526f", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "cb51a9df6ac74854be59990c4916e4c7", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "a0cf639d17cf4633a1e2ca2ad0f1d6c9", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "06dc597c6c2f4b46b84c50e1d0405aac", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "06dc597c6c2f4b46b84c50e1d0405aac", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "bcc1080c667e43b1ac177633b7d4c138", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "bcc1080c667e43b1ac177633b7d4c138", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "5319d61b666344058563b1aa773fd4b9", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5319d61b666344058563b1aa773fd4b9", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "be779b5034864793959c0a9dfbf4c48c", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "be779b5034864793959c0a9dfbf4c48c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "2c101f10abea4ec68a8669616f3ae60d", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "2c101f10abea4ec68a8669616f3ae60d", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "4d7e908753d04838aee7336e6108b992", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "4d7e908753d04838aee7336e6108b992", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "c0af6c5683cd4939be7b9562f4d4b8b5", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c0af6c5683cd4939be7b9562f4d4b8b5", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "25c4a40c83f543ea9a7e5aa53b550ee9", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "47f7729fa2b84dcd8dcd782d41d33ca9", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "a3e4143863b747edb467f309fc54c737", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6d1dfd80e6904831a2a7d11ef1335945", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "188355f1c0ec4a0c811538a6916f2bb4", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "1b6bfc25a96540678d0dc52fb841faee", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "6382a0052bcd4b53b9a2e2f86b792428", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "6382a0052bcd4b53b9a2e2f86b792428", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "15ddc3b6b6cf4ec3b7f94eb7820e0d5d", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "15ddc3b6b6cf4ec3b7f94eb7820e0d5d", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "a28b74a155574b1c8d409959d71b76b2", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "a28b74a155574b1c8d409959d71b76b2", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "668d1ac10d2d4298b0c2dc4d84b28cad", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "668d1ac10d2d4298b0c2dc4d84b28cad", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "e131a5ca570d49d49e47d9f7c4ed8ac8", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "e131a5ca570d49d49e47d9f7c4ed8ac8", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 3}
+{"request_id": "c9d3e0adbaf346a28e758dfc2c9c243f", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "c9d3e0adbaf346a28e758dfc2c9c243f", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "804daac3a2df49c2a3d3c8de6640c598", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "804daac3a2df49c2a3d3c8de6640c598", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "945b1773e23a46a1a48d393fa6edc120", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "5399ab02a3124d32aa8e874daf59b9ce", "action": "http", "status": 404, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "13a49a23eb3d415880b4925fe8856403", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "22b6cc495920483fb3b953ac081768b5", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "22b6cc495920483fb3b953ac081768b5", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 160}
+{"request_id": "12c7f864dd074425b294dcd2d12b8d3d", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "f6708123c53e461cb80a11439adabca1", "action": "token.issue", "admin": "owner", "target_identity": "lfen-20261030-141257", "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "f6708123c53e461cb80a11439adabca1", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 8}
+{"request_id": "5280350c45d543fba3dc3e3306196a7d", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5280350c45d543fba3dc3e3306196a7d", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "c6388a2dde044417b572f843deffd7b4", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "0980f77d026c45f4a7045cf8d0e8a0f4", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "ea8a4e144dc340d8813a6b3005726362", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "a5079a93b18444dcbc9b95a740ebfee4", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "2c876b8de14b4502a4ddbf3390a947b3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "883c821e2d8b4ac7881ede2f4eb57a14", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "d06b93bf6c034cd0adc32aeb0aa98c7c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "ec5f504828674b849f157cbf8dc473a3", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "ec5f504828674b849f157cbf8dc473a3", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "71ba6216a74d4c9085e326318569a2ec", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "670355ba95da4e5f9a628897ca2b4d4b", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "af19386eba98444baee331ae827e7679", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "73b6aca625814a89bba47f6eec50ca01", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "5b4f18e3d8fe4e57bc691a7d257f44ea", "action": "admin.login", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "5b4f18e3d8fe4e57bc691a7d257f44ea", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 162}
+{"request_id": "48d56da5900b4e32bbe3222ea6e2943f", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "e92eb6ebf0e44e749662e69c36523249", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "17ebb21ce9b3413cb5feda081bfcc939", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "84cb613569a44411a077e7cf734bbcaf", "action": "admin.logout", "admin": "owner", "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "84cb613569a44411a077e7cf734bbcaf", "action": "http", "status": 303, "client_ip": "10.8.61.200", "method": "POST", "duration_ms": 1}
+{"request_id": "87515d4846414bd39accc2af4c1c0565", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "bc984d7208304743a802b5a4c01e59c9", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "fe3b829bd7cf41a0944acce15f8d174c", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "3e854e73a28a4ebba40cbc1ad35f9cbd", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "f4691f826fcc446ebd45f56e5857ea48", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "cd551bbef8484e4abebbed42ff3e957f", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "b36331be13b3464e8c98b98a8692f672", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 0}
+{"request_id": "f6ef53b0c83e4a5fac575833d197bbae", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 1}
+{"request_id": "b677f8ab08624928b579d64db2ed261e", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "6024762f2eec4ab9bc6243c042603e89", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 3}
+{"request_id": "4b8686c0eb6c45a696ec6dc62ea9df01", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 1}
+{"request_id": "d8256d10808a442e8faae4bbbb32198a", "action": "http", "status": 200, "client_ip": "10.8.60.95", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "9a7ca7303a234f209f676a8f751e2855", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "9a7ca7303a234f209f676a8f751e2855", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 5}
+{"request_id": "aed7c29026654c9bab20f801ceb7b284", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "88b7f3a515354b75a1f76649f4f3f3cb", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 2}
+{"request_id": "25f915250bc84a8990e832b83c4a86a2", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "64cd552d02d94f2db859dc1c6b06d6f4", "action": "download.read", "admin": null, "target_identity": null, "client_ip": "10.8.61.200", "status": "succeeded"}
+{"request_id": "64cd552d02d94f2db859dc1c6b06d6f4", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 9}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。
+{"request_id": "041ca66394a44f2a82d1974aabf374e8", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 0}
+{"request_id": "0a17487c775b4a8893f486aec8a1bb7a", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "01a6f9b92df24080ad592f8eaddc1b41", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+{"request_id": "702c94d99f5e43d8af1c56b3a71a1cb7", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 3}
+{"request_id": "975b06b9ca244267866d949d7be38ecf", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 4}
+{"request_id": "82b655e508174d968cee055b69a18f79", "action": "http", "status": 200, "client_ip": "10.8.61.200", "method": "GET", "duration_ms": 1}
+Exception in callback _ProactorBasePipeTransport._call_connection_lost()
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost()>
+Traceback (most recent call last):
+  File "C:\Program Files\Python313\Lib\asyncio\events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] 远程主机强迫关闭了一个现有的连接。

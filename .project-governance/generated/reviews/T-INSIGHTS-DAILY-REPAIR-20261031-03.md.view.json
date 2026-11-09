@@ -1,0 +1,18 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-DAILY-REPAIR-20261031-03",
+  "view_kind": "task-review",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:11.585021Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "bd7023093b4ec20bceac1f7383a39794a0df5e528d7407285a5624d3b4f12489",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/before.json",
+    ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/run.jsonl",
+    ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/after.json"
+  ],
+  "content_ref": ".project-governance/generated/reviews/T-INSIGHTS-DAILY-REPAIR-20261031-03.md",
+  "integrity_status": "Complete"
+}

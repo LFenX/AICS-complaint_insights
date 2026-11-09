@@ -1,0 +1,1861 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-TABLE-20261030-02",
+  "ordinal": 9,
+  "revision": 6,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-29T20:31:07.643252Z",
+  "frozen_at": "2026-10-29T20:33:49.188802Z",
+  "objective": "压缩3030底部、UID首列和证据优先排序，增加子问题组日志ZIP只读下载",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉\n\n另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+    "captured_at": "2026-10-29T20:31:07.556355Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "需求和截图已明确，本轮直接修改。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+    ],
+    "rounds": [],
+    "basis": "截图与CSS/表格/读取模型勘察闭合；当前用户明确授权布局排序和本地日志ZIP，未增加生产或内网授权。",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+      "reading": "压缩底部留白",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/bottom-final.jpg",
+        ".runtime/daily-table-20261030/browser-result.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "桌面浏览器滚动至文档最底端",
+            "expected": "容器底部自然留20px，不留原56px尾空白",
+            "actual": "真实底部间距19.515625px；CSS padding-bottom=20px",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/bottom-final.jpg"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+      "reading": "去掉底部说明",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/browser-result.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "加载当前3030读取模型",
+            "expected": "无截图所指旧说明与版本footer",
+            "actual": "真实DOM footerPresent=false，旧尾栏已删除",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "reading": "去掉时间主键列",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/browser-result.json",
+        ".runtime/daily-table-20261030/browser-verification.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "检查真实表头与邮件行",
+            "expected": "删除时间和主键这一列，行与表头对齐",
+            "actual": "9列，无时间/主键表头；详情追溯字段保留",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "reading": "UID第一列",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/browser-result.json",
+        ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "查看真实邮件表第一列",
+            "expected": "UID及依据位于第一列",
+            "actual": "第一列表头“游戏 UID / 依据”",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "request_snapshot",
+      "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "reading": "四种有内容优先排序",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/browser-result.json",
+        ".runtime/daily-table-20261030/browser-verification.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [
+          "邮件具有UID，以该项进行有内容优先排序",
+          "邮件具有日志，以该项进行有内容优先排序",
+          "邮件具有图片，以该项进行有内容优先排序",
+          "邮件具有其他文件，以该项进行有内容优先排序"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "选择有UID优先，遍历全部634封中的有内容邮件",
+            "expected": "有内容在无内容之前且634个ID完整唯一",
+            "actual": "150封有内容均在前；全量634唯一ID无缺失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "选择有UID优先，检查无该内容的其余邮件",
+            "expected": "无内容排在后面但保留所有邮件",
+            "actual": "484封无内容均在后；无过滤丢失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "Met",
+            "input": "选择有日志优先，遍历全部634封中的有内容邮件",
+            "expected": "有内容在无内容之前且634个ID完整唯一",
+            "actual": "50封有内容均在前；全量634唯一ID无缺失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "NotMet",
+            "input": "选择有日志优先，检查无该内容的其余邮件",
+            "expected": "无内容排在后面但保留所有邮件",
+            "actual": "584封无内容均在后；无过滤丢失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 2,
+            "branch": "Met",
+            "input": "选择有图片优先，遍历全部634封中的有内容邮件",
+            "expected": "有内容在无内容之前且634个ID完整唯一",
+            "actual": "175封有内容均在前；全量634唯一ID无缺失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 2,
+            "branch": "NotMet",
+            "input": "选择有图片优先，检查无该内容的其余邮件",
+            "expected": "无内容排在后面但保留所有邮件",
+            "actual": "459封无内容均在后；无过滤丢失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 3,
+            "branch": "Met",
+            "input": "选择有其他文件优先，遍历全部634封中的有内容邮件",
+            "expected": "有内容在无内容之前且634个ID完整唯一",
+            "actual": "41封有内容均在前；全量634唯一ID无缺失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          },
+          {
+            "condition": 3,
+            "branch": "NotMet",
+            "input": "选择有其他文件优先，检查无该内容的其余邮件",
+            "expected": "无内容排在后面但保留所有邮件",
+            "actual": "593封无内容均在后；无过滤丢失",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-006",
+      "source": "request_snapshot",
+      "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "reading": "子问题日志ZIP下载",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/archive-verification.json",
+        ".runtime/daily-table-20261030/browser-result.json",
+        ".runtime/daily-table-20261030/tests.log"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "请求全部35个子问题ZIP并对照归属与原件",
+            "expected": "覆盖全部86日志且清单/路径/字节正确",
+            "actual": "35包86日志全部通过；634封原业务字段不变；浏览器实际下载6份和7份日志两包摘要相同",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/archive-verification.json",
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/tests.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-007",
+      "source": "request_snapshot",
+      "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "reading": "ZIP入口与子问题筛选结合",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-table-20261030/browser-result.json",
+        ".runtime/daily-table-20261030/browser-verification.json",
+        ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+        "conditions": [
+          "所选具体子问题包含日志"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "选择登录或账号验证失败子问题",
+            "expected": "子问题筛选旁显示整组ZIP和文件/邮件数",
+            "actual": "具体子问题行显示6个日志/3封来信，下载入口可用",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "选择启动黑屏，无法进入游戏子问题",
+            "expected": "无日志时禁用并说明原因",
+            "actual": "按钮disabled=true、无下载href、显示“该子问题暂无日志”",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-table-20261030/browser-result.json",
+              ".runtime/daily-table-20261030/browser-verification.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-TABLE-PROCEED",
+      "kind": "Proceed",
+      "presented": "基于用户正在查看的3030交付，当前消息明确指定表格布局、四项有内容排序和子问题日志ZIP入口。",
+      "response": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉\n\n另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+      "decided_by": "user",
+      "decided_at": "2026-10-29T20:31:07.431626+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T20:31:07.604745Z"
+  },
+  "scope": {
+    "in_scope": [
+      "3030底部与表格列/排序调整",
+      "子问题日志ZIP读取产物和本机下载接口",
+      "相关权限、Feature、审计、测试及交接"
+    ],
+    "out_of_scope": [
+      "生产与IMAP读取、原始邮件/分类变更、MCP门户改造、3030对外开放"
+    ],
+    "allowed_paths": [
+      "insights/**",
+      "assets/**",
+      "tests/**",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/**",
+      "LG_project_docs/README.md",
+      "update_log/**",
+      ".project-governance/**",
+      ".runtime/**"
+    ],
+    "forbidden_actions": [
+      "取消生产隔离、连接生产或修改原件"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [
+      "security-privacy-review"
+    ],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "3030底部与表格列/排序调整",
+          "子问题日志ZIP读取产物和本机下载接口",
+          "相关权限、Feature、审计、测试及交接"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+        ],
+        "verified_at": "2026-10-29T20:32:02.641149+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "容器底部20px自然留白、去掉旧说明，UID首列且无时间主键列；原证据保留",
+      "四种证据有内容优先排序，默认UID；切换不丢邮件、分页和筛选正确",
+      "子问题筛选旁整组日志ZIP入口，35组86日志的归属、原件字节及清单可核对",
+      "ZIP导出独立权限父链、Feature状态、真实身份/资源校验、审计及失败路径通过；生产隔离持续",
+      "原文逐条覆盖、实际测试/浏览器/下载证据与交接日志保存，用户验收Pending"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "为日志子问题组离线生成安全ZIP读取产物并登记能力、权限、Feature及审计",
+      "修改表格列顺序、四项排序、子问题下载工具行和底部留白",
+      "逐条核对原话，执行ZIP字节归属/权限失败测试及浏览器下载验证，保存结果与交接"
+    ],
+    "verification": [
+      "容器底部20px自然留白、去掉旧说明，UID首列且无时间主键列；原证据保留",
+      "四种证据有内容优先排序，默认UID；切换不丢邮件、分页和筛选正确",
+      "子问题筛选旁整组日志ZIP入口，35组86日志的归属、原件字节及清单可核对",
+      "ZIP导出独立权限父链、Feature状态、真实身份/资源校验、审计及失败路径通过；生产隔离持续",
+      "原文逐条覆盖、实际测试/浏览器/下载证据与交接日志保存，用户验收Pending"
+    ],
+    "rollback": [
+      "从本轮before恢复看板代码/报告，保留所有原件、生产隔离及已保存历史结果"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "证据优先浏览、紧凑底部及子问题日志一键下载",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "现有数据包含86个已校验日志，归属35个子问题组；页面请求原本只读模型。",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "保持生产隔离与读取模型性能；仅本机现有身份可下载固定允许日志。",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "排序只改变浏览顺序，不丢失证据；日志集合由源归属决定。",
+        "derived_from": [
+          "F1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "预计算可让交付请求保持固定ID文件读取。",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "按证据存在排序，子问题日志全部打包，避免只下载当前页遗漏。",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "离线打包并固定允许ID，GET不接收路径或执行压缩。",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "保留旧表格与逐个文件下载",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "没有开发成本",
+          "不能满足用户批量导出与排序要求"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "离线按子问题生成日志ZIP，页面选择后只读下载",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "请求轻、集合和摘要可预核对",
+          "占用额外本地压缩包空间"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "请求时按可见筛选动态压缩日志",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "能导出任意筛选子集",
+          "每次占用CPU且分页/过滤含义不稳定"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "容器底部20px自然留白、去掉旧说明，UID首列且无时间主键列；原证据保留",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "四种证据有内容优先排序，默认UID；切换不丢邮件、分页和筛选正确",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "子问题筛选旁整组日志ZIP入口，35组86日志的归属、原件字节及清单可核对",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "ZIP导出独立权限父链、Feature状态、真实身份/资源校验、审计及失败路径通过；生产隔离持续",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      },
+      {
+        "id": "K5",
+        "statement": "原文逐条覆盖、实际测试/浏览器/下载证据与交接日志保存，用户验收Pending",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "为日志子问题组离线生成安全ZIP读取产物并登记能力、权限、Feature及审计",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      },
+      {
+        "plan_step": "修改表格列顺序、四项排序、子问题下载工具行和底部留白",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      },
+      {
+        "plan_step": "逐条核对原话，执行ZIP字节归属/权限失败测试及浏览器下载验证，保存结果与交接",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "容器底部20px自然留白、去掉旧说明，UID首列且无时间主键列；原证据保留",
+      "四种证据有内容优先排序，默认UID；切换不丢邮件、分页和筛选正确",
+      "子问题筛选旁整组日志ZIP入口，35组86日志的归属、原件字节及清单可核对",
+      "ZIP导出独立权限父链、Feature状态、真实身份/资源校验、审计及失败路径通过；生产隔离持续",
+      "原文逐条覆盖、实际测试/浏览器/下载证据与交接日志保存，用户验收Pending"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "3030底部与表格列/排序调整",
+        "子问题日志ZIP读取产物和本机下载接口",
+        "相关权限、Feature、审计、测试及交接"
+      ]
+    },
+    "change_surfaces": [
+      "UI/UX",
+      "API/Integration",
+      "Identity/Security/Privacy",
+      "Deploy/Operations"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+      ],
+      "E04": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+      ],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "Yes",
+      "data_ai_impact": "No",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-TABLE-20261030-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-TABLE-20261030-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T20:31:07.604745Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "authority.authority_assessments",
+      "old_value": [],
+      "new_value": [
+        {
+          "reference": "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md",
+          "source_kind": "UserDirective",
+          "status": "Valid",
+          "scope_refs": [
+            "3030底部与表格列/排序调整",
+            "子问题日志ZIP读取产物和本机下载接口",
+            "相关权限、Feature、审计、测试及交接"
+          ],
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md",
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "verified_at": "2026-10-29T20:32:02.641149+00:00",
+          "expires_at": null
+        }
+      ],
+      "reason": "依据预检补齐当前明确用户指令的范围授权评估、正式知识记录E04和本地服务运维面，声明安全隐私门禁但不填写通过",
+      "basis": "当前用户明确要求本地表格、排序和日志ZIP；原文与勘察证据；正式get_context预检指出缺字段，没有业务副作用",
+      "changed_at": "2026-10-29T20:32:03.441971Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "authority.required_gates",
+      "old_value": [],
+      "new_value": [
+        "security-privacy-review"
+      ],
+      "reason": "依据预检补齐当前明确用户指令的范围授权评估、正式知识记录E04和本地服务运维面，声明安全隐私门禁但不填写通过",
+      "basis": "当前用户明确要求本地表格、排序和日志ZIP；原文与勘察证据；正式get_context预检指出缺字段，没有业务副作用",
+      "changed_at": "2026-10-29T20:32:03.441993Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "3030底部与表格列/排序调整",
+            "子问题日志ZIP读取产物和本机下载接口",
+            "相关权限、Feature、审计、测试及交接"
+          ]
+        },
+        "change_surfaces": [
+          "UI/UX",
+          "API/Integration",
+          "Identity/Security/Privacy"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Inactive",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E04": [],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Revise"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "3030底部与表格列/排序调整",
+            "子问题日志ZIP读取产物和本机下载接口",
+            "相关权限、Feature、审计、测试及交接"
+          ]
+        },
+        "change_surfaces": [
+          "UI/UX",
+          "API/Integration",
+          "Identity/Security/Privacy",
+          "Deploy/Operations"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E02": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E03": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E04": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ],
+          "E05": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/discovery/survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Revise"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-TABLE-20261030-02/requirements/source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "Yes",
+          "data_ai_impact": "No",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "Yes",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "依据预检补齐当前明确用户指令的范围授权评估、正式知识记录E04和本地服务运维面，声明安全隐私门禁但不填写通过",
+      "basis": "当前用户明确要求本地表格、排序和日志ZIP；原文与勘察证据；正式get_context预检指出缺字段，没有业务副作用",
+      "changed_at": "2026-10-29T20:32:03.442023Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+          "reading": "压缩底部留白",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+          "reading": "去掉底部说明",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "去掉时间主键列",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "UID第一列",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "四种有内容优先排序",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "子问题日志ZIP下载",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-007",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "ZIP入口与子问题筛选结合",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+          "reading": "压缩底部留白",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/bottom-final.jpg",
+            ".runtime/daily-table-20261030/browser-result.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "桌面浏览器滚动至文档最底端",
+                "expected": "容器底部自然留20px，不留原56px尾空白",
+                "actual": "真实底部间距19.515625px；CSS padding-bottom=20px",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/bottom-final.jpg"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "底部空白太多了，压缩，让容器底部尽量贴着浏览器底部，但是不要太贴近，自然即可，现在明显过搞，这个话去掉",
+          "reading": "去掉底部说明",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/browser-result.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "加载当前3030读取模型",
+                "expected": "无截图所指旧说明与版本footer",
+                "actual": "真实DOM footerPresent=false，旧尾栏已删除",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "去掉时间主键列",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/browser-result.json",
+            ".runtime/daily-table-20261030/browser-verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "检查真实表头与邮件行",
+                "expected": "删除时间和主键这一列，行与表头对齐",
+                "actual": "9列，无时间/主键表头；详情追溯字段保留",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "UID第一列",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/browser-result.json",
+            ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "查看真实邮件表第一列",
+                "expected": "UID及依据位于第一列",
+                "actual": "第一列表头“游戏 UID / 依据”",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "四种有内容优先排序",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/browser-result.json",
+            ".runtime/daily-table-20261030/browser-verification.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [
+              "邮件具有UID，以该项进行有内容优先排序",
+              "邮件具有日志，以该项进行有内容优先排序",
+              "邮件具有图片，以该项进行有内容优先排序",
+              "邮件具有其他文件，以该项进行有内容优先排序"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "选择有UID优先，遍历全部634封中的有内容邮件",
+                "expected": "有内容在无内容之前且634个ID完整唯一",
+                "actual": "150封有内容均在前；全量634唯一ID无缺失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "选择有UID优先，检查无该内容的其余邮件",
+                "expected": "无内容排在后面但保留所有邮件",
+                "actual": "484封无内容均在后；无过滤丢失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "选择有日志优先，遍历全部634封中的有内容邮件",
+                "expected": "有内容在无内容之前且634个ID完整唯一",
+                "actual": "50封有内容均在前；全量634唯一ID无缺失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "选择有日志优先，检查无该内容的其余邮件",
+                "expected": "无内容排在后面但保留所有邮件",
+                "actual": "584封无内容均在后；无过滤丢失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 2,
+                "branch": "Met",
+                "input": "选择有图片优先，遍历全部634封中的有内容邮件",
+                "expected": "有内容在无内容之前且634个ID完整唯一",
+                "actual": "175封有内容均在前；全量634唯一ID无缺失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 2,
+                "branch": "NotMet",
+                "input": "选择有图片优先，检查无该内容的其余邮件",
+                "expected": "无内容排在后面但保留所有邮件",
+                "actual": "459封无内容均在后；无过滤丢失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 3,
+                "branch": "Met",
+                "input": "选择有其他文件优先，遍历全部634封中的有内容邮件",
+                "expected": "有内容在无内容之前且634个ID完整唯一",
+                "actual": "41封有内容均在前；全量634唯一ID无缺失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              },
+              {
+                "condition": 3,
+                "branch": "NotMet",
+                "input": "选择有其他文件优先，检查无该内容的其余邮件",
+                "expected": "无内容排在后面但保留所有邮件",
+                "actual": "593封无内容均在后；无过滤丢失",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "子问题日志ZIP下载",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/archive-verification.json",
+            ".runtime/daily-table-20261030/browser-result.json",
+            ".runtime/daily-table-20261030/tests.log"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "请求全部35个子问题ZIP并对照归属与原件",
+                "expected": "覆盖全部86日志且清单/路径/字节正确",
+                "actual": "35包86日志全部通过；634封原业务字段不变；浏览器实际下载6份和7份日志两包摘要相同",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/archive-verification.json",
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/tests.log"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-007",
+          "source": "request_snapshot",
+          "quote": "另外，去掉时间，主键这个列，按照有没有uid，有没有日志，有没有图片，有没有其他文件分别排序，有的放前面\n并提供子问题组的log日志批量下载zip入口，入口最好和上面的筛选问题组组件结合，看看怎么设计好一点，UID放第一列",
+          "reading": "ZIP入口与子问题筛选结合",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-table-20261030/browser-result.json",
+            ".runtime/daily-table-20261030/browser-verification.json",
+            ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "428adc322371df24e60468f9fab18a59aa1ddc3a603bff40054014bc91b529cc",
+            "conditions": [
+              "所选具体子问题包含日志"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "选择登录或账号验证失败子问题",
+                "expected": "子问题筛选旁显示整组ZIP和文件/邮件数",
+                "actual": "具体子问题行显示6个日志/3封来信，下载入口可用",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/subgroup-zip-final.jpg"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "选择启动黑屏，无法进入游戏子问题",
+                "expected": "无日志时禁用并说明原因",
+                "actual": "按钮disabled=true、无下载href、显示“该子问题暂无日志”",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-table-20261030/browser-result.json",
+                  ".runtime/daily-table-20261030/browser-verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "按完整用户原话逐条保存实际工程覆盖和条件对照，不更改范围或验收",
+      "basis": "实际634封浏览器ID、35ZIP86日志字节校验及106测试，详见本任务verification/acceptance.md",
+      "changed_at": "2026-10-29T20:57:13.360656Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "ordinal",
+      "old_value": 5,
+      "new_value": 9,
+      "reason": "项目汇总发现与并行MCP任务ordinal=5重复；将本任务结构索引改为当前空闲9，保留全部历史",
+      "basis": "当前任务1至8均已占用，其他任务未依赖本任务；仅修正本任务索引，不变更范围、版本、验收或MCP记录",
+      "changed_at": "2026-10-29T21:01:24.015821Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "767c02fe2344e64a385e87d24488ddef26de7a273e3ebb977fb290be35ac7923",
+    "stage": "S5",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:security_privacy_impact=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:Identity/Security/Privacy",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "7",
+          "9",
+          "10",
+          "13",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

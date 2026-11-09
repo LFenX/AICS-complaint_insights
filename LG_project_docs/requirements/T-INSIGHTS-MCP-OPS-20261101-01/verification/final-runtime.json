@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-31T17:17:13.4556657+00:00",
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 15433,
+      "OwningProcess": 227728
+    },
+    {
+      "LocalAddress": "10.8.61.200",
+      "LocalPort": 3037,
+      "OwningProcess": 288664
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 3036,
+      "OwningProcess": 151136
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 3030,
+      "OwningProcess": 257224
+    },
+    {
+      "LocalAddress": "10.8.61.200",
+      "LocalPort": 3030,
+      "OwningProcess": 257224
+    },
+    {
+      "LocalAddress": "10.8.61.200",
+      "LocalPort": 3029,
+      "OwningProcess": 185292
+    }
+  ],
+  "protected_listeners_unchanged": true,
+  "protected_files": [
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\mcp-server.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\token-desk-admin.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+      "unchanged": true
+    }
+  ],
+  "collector_running": false,
+  "tasks": [
+    {
+      "TaskName": "ComplaintInsights-MCP-3037",
+      "State": 4,
+      "UserId": "Administrator",
+      "LogonType": "S4U",
+      "RunLevel": "Limited",
+      "ExecutionTimeLimit": "PT0S",
+      "MultipleInstances": "IgnoreNew"
+    },
+    {
+      "TaskName": "ComplaintInsights-Portal-3029",
+      "State": 4,
+      "UserId": "Administrator",
+      "LogonType": "S4U",
+      "RunLevel": "Limited",
+      "ExecutionTimeLimit": "PT0S",
+      "MultipleInstances": "IgnoreNew"
+    }
+  ]
+}

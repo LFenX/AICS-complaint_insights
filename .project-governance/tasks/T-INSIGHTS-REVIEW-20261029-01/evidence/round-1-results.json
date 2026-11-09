@@ -1,0 +1,124 @@
+{
+  "started_at": "2026-10-29T10:49:30Z",
+  "reviewer": "review_one",
+  "checks": {
+    "independent_live_full_content": [
+      {
+        "table": "mailboxes",
+        "rows": 8,
+        "all_content_equal": true
+      },
+      {
+        "table": "folders",
+        "rows": 59,
+        "all_content_equal": true
+      },
+      {
+        "table": "messages",
+        "rows": 53119,
+        "all_content_equal": true
+      },
+      {
+        "table": "attachments",
+        "rows": 21974,
+        "all_content_equal": true
+      },
+      {
+        "table": "imap_reconcile_archive",
+        "rows": 91,
+        "all_content_equal": true
+      },
+      {
+        "table": "InboundMail",
+        "rows": 41723,
+        "all_content_equal": true
+      },
+      {
+        "table": "MailAiArtifact",
+        "rows": 35544,
+        "all_content_equal": true
+      },
+      {
+        "table": "MailIssueBinding",
+        "rows": 18396,
+        "all_content_equal": true
+      },
+      {
+        "table": "TaxonomyCandidate",
+        "rows": 2435,
+        "all_content_equal": true
+      },
+      {
+        "table": "IssueTypeProposal",
+        "rows": 6357,
+        "all_content_equal": true
+      },
+      {
+        "table": "TaxonomyCandidateSupport",
+        "rows": 6122,
+        "all_content_equal": true
+      },
+      {
+        "table": "IssueTypeRegistry",
+        "rows": 0,
+        "all_content_equal": true
+      },
+      {
+        "table": "IssueTypeAlias",
+        "rows": 0,
+        "all_content_equal": true
+      },
+      {
+        "table": "IssueGroupLifecycle",
+        "rows": 0,
+        "all_content_equal": true
+      }
+    ],
+    "anchor_reassignment_updates_old_and_new_mail": true,
+    "source_connection_outage_old_api_and_retry": true,
+    "sql_repeatable_read_survives_new_publication": true,
+    "delete_reinsert_revives_record_and_bucket": true,
+    "all_issue_daily_list_context_differential": true,
+    "five_pagination_families_complete_and_reject_tamper": true,
+    "late_mail_and_ai_commit_across_new_worker_objects": true,
+    "unlogged_mutation_and_truncated_log_full_reconcile": true,
+    "remote_tls_strict_ip_and_wrong_hostname_rejected": {
+      "protocol": "TLSv1.3",
+      "passed": true
+    },
+    "remote_auth_host_origin_body_limit": true,
+    "all_11_remote_tools_14_types_and_error_branches": true,
+    "handoff_archive_scope_integrity": {
+      "file_count": 11,
+      "no_sql_credentials_or_private_keys": true
+    }
+  },
+  "observations": {
+    "facts": {
+      "total": 53119,
+      "received": 29904,
+      "first_date": "2025-06-04",
+      "last_date": "2026-10-22"
+    },
+    "reader_role": {
+      "role": "insights_reader",
+      "rolsuper": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolreplication": false,
+      "rolbypassrls": false,
+      "raw_schema": false,
+      "can_insert": false
+    },
+    "source_outage_status": {
+      "status": "DEGRADED",
+      "error_code": "ConnectionTimeout"
+    },
+    "handoff_dependency_min_python": {
+      "documented": "3.10+",
+      "httpx2_requires_python": ">=3.11",
+      "httpx2_pinned": "2.16.0"
+    }
+  },
+  "finished_at": "2026-10-29T10:57:02.707358+00:00"
+}

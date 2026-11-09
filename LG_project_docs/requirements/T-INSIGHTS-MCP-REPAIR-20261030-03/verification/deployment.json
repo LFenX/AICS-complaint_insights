@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-10-29T20:49:23.701445+00:00",
+  "changed_services": [
+    "desk",
+    "mcp"
+  ],
+  "protected_listener_pids_unchanged": {
+    "3030": true,
+    "3036": true,
+    "15433": true
+  },
+  "production_connected": false,
+  "watch_started": false,
+  "concurrent_capabilities": {
+    "previous_sha256": "72f11bacf9d0343e6bb4691d9bae166fc6770d53639917188b1ca25ba25ec2cb",
+    "observed_sha256": "4ba56d2776ec1028b02002878f9ffe88c59bc3acd29687db16c975cfbfc92b60",
+    "root_or_review3_wrote_file": false,
+    "specific_external_actor_verified": false,
+    "delta": "新增附件日志导出权限/能力，MCP及token管理条目未变；保留新字节重新定版，未操作附件实现"
+  }
+}

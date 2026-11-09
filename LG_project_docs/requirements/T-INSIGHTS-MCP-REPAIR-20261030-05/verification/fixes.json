@@ -1,0 +1,42 @@
+{
+  "captured_at": "2026-10-29T23:11:29.410850+00:00",
+  "findings": [
+    {
+      "id": "R7-001",
+      "status": "Fixed",
+      "change": "alert继承overflow-wrap:anywhere，360px合法64字符签发/撤销及重复错误不撑宽，实际scroll/client均345，alert均311",
+      "evidence_refs": [
+        "browser-fixed.json",
+        "../ui-previews/mobile-long-revoked.png"
+      ]
+    },
+    {
+      "id": "R7-002",
+      "status": "Fixed",
+      "change": "共同工具层按真实身份滑动窗口限频；默认6000/60秒，严格可配置1..60000，窗口与并发锁保护、后端前拒绝并给出重试秒数；指南说明等待与版本规则",
+      "evidence_refs": [
+        "tests.log",
+        "live-policy.json",
+        "results.json"
+      ]
+    },
+    {
+      "id": "R7-003",
+      "status": "Fixed",
+      "recurrence_of": "R3-04",
+      "change": "维护交接当前证据指向本次task05报告与实际结果，03/04明确为历史，冻结清单以正式after快照指针为准",
+      "evidence_refs": [
+        "report.md",
+        "../../T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md"
+      ]
+    }
+  ],
+  "test_count": 49,
+  "real_https_groups": 17,
+  "new_tests": [
+    "test_tool_limit_applies_to_stdio_and_recovers_on_sliding_boundary",
+    "test_rate_configuration_rejects_coercion_and_disabled_limits",
+    "test_http_quota_is_per_identity_shared_by_tools_and_survives_token_reissue",
+    "test_concurrent_http_calls_cannot_overshoot_identity_quota"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存3030内网入口和GitHub已推送提交的实际工程结果，两条用户原文已逐条覆盖，24测试与远端SHA已验证，人工安全隐私门禁没有答复时保留Pending与Deferred，不伪造通过",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "49db2cd95113cab68a4d2024a1b0f5208eab39ffe4947853102c14da9b29f2fc",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

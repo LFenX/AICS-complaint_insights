@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "UID纠偏十封、815文件完整归档、76项回归与新6封独立前向及真实UI已完成，保存新工程版本交已Accepted父审查，保留真实数据水位/首次调度限制，不冒填最终验收或干净轮次",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "4774d3483230c885d496bbf6a9c7406eb69991e68ac59fa1ca5959a83aedf951",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02"
+}

@@ -1,0 +1,9 @@
+{
+  "start": "2026-10-29",
+  "end": "2026-10-30",
+  "level": 3,
+  "scope": "primary",
+  "direction": "RECEIVED",
+  "limit": 200,
+  "source_id": "production-ai-customer"
+}

@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-29T11:00:38.494453+00:00",
+  "tests": {
+    "count": 50,
+    "result": "Passed",
+    "log_sha256": "e6acc86d72b2dfa4f658be0a4881afd0d43935968708ea665f338d7255373af3"
+  },
+  "https_mcp": {
+    "strict_tls": true,
+    "discovered_tools": 11,
+    "source_id": "development-local",
+    "status": "READY",
+    "data_version": 3
+  },
+  "handoff": {
+    "files": 11,
+    "python_minimum": "3.11",
+    "zip_sha256": "5b32df104ccfc727bfbee1476b3bf78417685a97cddfdd0f4acf9263feb3fbad"
+  },
+  "production_connected": false,
+  "actual_different_computer_tested": false
+}

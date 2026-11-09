@@ -1,0 +1,993 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "LOCAL-ANALYTICS-FOUNDATION",
+  "task_id": "T-INSIGHTS-REPAIR-20261029-02",
+  "ordinal": 3,
+  "revision": 3,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-29T12:15:02.503773Z",
+  "frozen_at": "2026-10-29T12:23:09.943726Z",
+  "objective": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "先把修复做了呗",
+    "captured_at": "2026-10-29T12:15:02.414994Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "你的需求已经描述的非常清楚了，并且和项目现状一致，本次跳过向你提问的阶段",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+    ],
+    "rounds": [],
+    "basis": "已核对第二轮反例、连接串解析和现有显式配置；用户要求直接修复，没有新的目标、范围或授权分歧",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-01",
+      "source": "request_snapshot",
+      "quote": "先把修复做了呗",
+      "reading": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷，不扩大读取范围，不连接生产",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2
+      ],
+      "review": {
+        "source_sha256": "cc130a7863c9e48c94ec21e3c551fc0a12b15e2475a1b9b7d6d05152ad3da2e3",
+        "conditions": [
+          "省略主机、端口或数据库名的连接串在连接前被拒绝",
+          "已写明的主机、端口和数据库名不被 PGHOST、PGPORT、PGDATABASE 改写"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "省略主机、端口或数据库名，并设置对应环境变量",
+            "expected": "连接前抛出 explicit",
+            "actual": "unittest 中三个省略用例均抛出 explicit",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "本地显式 source URL",
+            "expected": "不因缺少目的地被拒绝",
+            "actual": "Settings.validate(source=True) 通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "Met",
+            "input": "显式 URL 加上指向其他地址的 PGHOST、PGPORT、PGDATABASE",
+            "expected": "身份仍为 127.0.0.1:5432/ai_complaint_mail",
+            "actual": "connection_identity 返回该显式身份",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "NotMet",
+            "input": "显式 URL 且不设置这三个环境变量",
+            "expected": "身份仍来自连接串",
+            "actual": "同一显式 URL 在原环境中通过既有规则测试",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-REPAIR-PROCEED",
+      "kind": "Proceed",
+      "presented": "第二轮已确认：省略主机或端口时 PGHOST/PGPORT 改变实际连接地址，原校验仍按 localhost:5432 放行。修复要求连接串写明主机、端口和数据库名，并保持显式配置不受环境默认值影响。",
+      "response": "先把修复做了呗",
+      "decided_by": "lfenink",
+      "decided_at": "2026-10-29T12:15:02.311854+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-REVIEW-20261029-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T12:15:02.451527Z"
+  },
+  "scope": {
+    "in_scope": [
+      "连接前拒绝缺少主机、端口或数据库名的连接串"
+    ],
+    "out_of_scope": [
+      "生产接入与重启、数据库结构或数据变更、监听或权限变更、扩大读取范围"
+    ],
+    "allowed_paths": [
+      "insights/config.py",
+      "tests/test_rules.py",
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/**",
+      "update_log/**",
+      ".project-governance/**"
+    ],
+    "forbidden_actions": [
+      "写开发源库、连接或重启生产、修改父任务封存账本"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [
+      "security-privacy-review"
+    ],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "连接前拒绝缺少主机、端口或数据库名的连接串"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+        ],
+        "verified_at": "2026-10-29T12:15:02.311854+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "省略主机、端口或数据库名的连接串在建立连接前被拒绝，PGHOST、PGPORT、PGDATABASE 不能代替这三项",
+      "已写明主机、端口和数据库名的连接串，在上述环境变量指向其他地址时身份保持为连接串中的值",
+      "既有 hostaddr 与 service 拒绝仍然有效，当前显式本地配置的规则测试通过"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "拒绝缺省主机、端口或数据库名的连接串",
+      "验证显式连接参数不受环境缺省值影响并回归规则测试",
+      "保存返修结果并归属已授权的父审查会话"
+    ],
+    "verification": [
+      "省略主机、端口或数据库名的连接串在建立连接前被拒绝，PGHOST、PGPORT、PGDATABASE 不能代替这三项",
+      "已写明主机、端口和数据库名的连接串，在上述环境变量指向其他地址时身份保持为连接串中的值",
+      "既有 hostaddr 与 service 拒绝仍然有效，当前显式本地配置的规则测试通过"
+    ],
+    "rollback": [
+      "回退 insights/config.py 与 tests/test_rules.py 的本次改动；数据和权限不变"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Deep",
+    "outcome": "缺少主机、端口或数据库名的连接配置在连接前失败，显式配置的实际目的地与校验身份一致",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "conninfo_to_dict 不补齐省略的主机、端口和数据库名；connection_identity 自行填入 localhost、5432 和空库名",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "第二轮隔离连接复现：省略主机和端口时 PGHOST/PGPORT 决定实际连接，校验身份仍是 localhost:5432",
+        "evidence_refs": [
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "不写开发源库，不连接或重启生产，不改变监听、权限或读取范围",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "目的地身份必须在连接前绑定，不能与 libpq 实际地址分离",
+        "source_refs": [
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+        ]
+      }
+    ],
+    "assumptions": [
+      {
+        "id": "A1",
+        "statement": "当前交付的本地配置和生产示例 URL 已写明主机、端口和数据库名",
+        "validation": "对这两份配置调用 connection_identity，确认三项均来自连接串"
+      }
+    ],
+    "unknowns": [
+      {
+        "id": "U1",
+        "statement": "生产监听范围变更是否已经生效、凭据是否已交付到采集端",
+        "owner": "lfenink",
+        "resolution_condition": "用户通知监听完成后，再做生产连通和只读预检",
+        "blocking": false
+      }
+    ],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "校验使用的主机、端口和数据库名必须就是连接串中的显式值",
+        "derived_from": [
+          "F1",
+          "F2",
+          "C2"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "环境默认值只在参数省略时介入，因此省略必须在连接前失败",
+        "derived_from": [
+          "F2",
+          "C2"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "已写明的参数优先于进程环境，不能为了防绕过而改写显式配置",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "省略参数时拒绝连接，环境默认值不再进入身份计算",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "失败发生在连接前，避免先连到未声明地址再解释身份",
+        "evidence_refs": [
+          ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+        ]
+      },
+      {
+        "from_ref": "P3",
+        "to_ref": "O1",
+        "rationale": "显式连接串保持原值，现有交付配置不需要改写",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O1",
+        "description": "强制主机、端口和数据库名显式，保留既有 hostaddr 与 service 拒绝",
+        "status": "Selected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "省略目的地的配置不再可用；现有交付 URL 已显式，无需改配置"
+        ]
+      },
+      {
+        "id": "O0",
+        "description": "保持现状",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "环境默认值仍可改变真实源，而身份摘要不变"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "解析并固化全部 libpq 环境与 service 缺省后再连接",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "要追踪可变全局环境和外部 service 文件；本期不需要隐式配置"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "隐式目的地在连接前失败",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "显式配置的身份不被环境默认值改写，现有拒绝规则保持有效",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "拒绝缺省主机、端口或数据库名的连接串",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "验证显式连接参数不受环境缺省值影响并回归规则测试",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "保存返修结果并归属已授权的父审查会话",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+      ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "连接前拒绝缺少主机、端口或数据库名的连接串"
+      ]
+    },
+    "change_surfaces": [
+      "API/Integration",
+      "Identity/Security/Privacy"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Inactive",
+      "E02": "Active",
+      "E03": "Inactive",
+      "E04": "Inactive",
+      "E05": "Inactive"
+    },
+    "extension_evidence_refs": {
+      "E01": [],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+      ],
+      "E03": [],
+      "E04": [],
+      "E05": []
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "High",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "Yes",
+      "data_ai_impact": "No",
+      "formal_knowledge_records": "No",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REPAIR-20261029-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REPAIR-20261029-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T12:15:02.451527Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REPAIR-20261029-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REPAIR-20261029-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T12:15:02.451527Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REPAIR-20261029-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REPAIR-20261029-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T12:15:02.451527Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "authority.required_gates",
+      "old_value": [],
+      "new_value": [
+        "security-privacy-review"
+      ],
+      "reason": "安全影响事实要求登记 security-privacy-review 门禁",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+      "changed_at": "2026-10-29T12:15:49.628112Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-01",
+          "source": "request_snapshot",
+          "quote": "先把修复做了呗",
+          "reading": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷，不扩大读取范围，不连接生产",
+          "state": "Open",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+            ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-01",
+          "source": "request_snapshot",
+          "quote": "先把修复做了呗",
+          "reading": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷，不扩大读取范围，不连接生产",
+          "state": "Covered",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2
+          ],
+          "review": {
+            "source_sha256": "cc130a7863c9e48c94ec21e3c551fc0a12b15e2475a1b9b7d6d05152ad3da2e3",
+            "conditions": [
+              "省略主机、端口或数据库名的连接串在连接前被拒绝",
+              "已写明的主机、端口和数据库名不被 PGHOST、PGPORT、PGDATABASE 改写"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "省略主机、端口或数据库名，并设置对应环境变量",
+                "expected": "连接前抛出 explicit",
+                "actual": "unittest 中三个省略用例均抛出 explicit",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "本地显式 source URL",
+                "expected": "不因缺少目的地被拒绝",
+                "actual": "Settings.validate(source=True) 通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "显式 URL 加上指向其他地址的 PGHOST、PGPORT、PGDATABASE",
+                "expected": "身份仍为 127.0.0.1:5432/ai_complaint_mail",
+                "actual": "connection_identity 返回该显式身份",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "显式 URL 且不设置这三个环境变量",
+                "expected": "身份仍来自连接串",
+                "actual": "同一显式 URL 在原环境中通过既有规则测试",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "修复已通过规则测试，按原文核对为已覆盖",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/verification/results.json",
+      "changed_at": "2026-10-29T12:27:44.427167Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "7631928102d810f53f9722addd89b9461de3df794eaa4b5a330cbf889b9f2d4c",
+    "stage": "S5",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E02"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E02"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:security_privacy_impact=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Identity/Security/Privacy",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Inactive",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Inactive",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Inactive",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Inactive",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "7",
+          "9",
+          "10",
+          "13",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 96,
+      "total": 137,
+      "sha256": "4467bf86f59f91a92f2e53ce11660087dde5502000d02106ab3a16c21bdad09e"
+    }
+  }
+}

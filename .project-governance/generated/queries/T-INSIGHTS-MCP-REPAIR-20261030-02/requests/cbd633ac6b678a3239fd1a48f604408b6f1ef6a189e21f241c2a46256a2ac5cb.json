@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "开始已授权第二轮三项MCP返修，仅SDK字符串原值、客户端先限权再写及故障清理、非法信封协议错误，保留生产隔离与原任务门禁",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "49c90451e7bba5c94440a30fe8b0c483af16061e5c7d973d45631681e7c7b90f",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02"
+}

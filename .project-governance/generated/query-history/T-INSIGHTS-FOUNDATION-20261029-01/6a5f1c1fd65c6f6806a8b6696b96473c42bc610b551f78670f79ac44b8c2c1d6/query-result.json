@@ -1,0 +1,2996 @@
+{
+  "blocker_reasons": [],
+  "budget": {
+    "candidate_limit": 80,
+    "escalation_limit": 2,
+    "escalations_used": 1,
+    "omitted_count": 33,
+    "overflow_reason": "P0/P1-source-soft-limit,clause-context-soft-limit",
+    "profile": "standard",
+    "requested_chars": 12000,
+    "source_limit": 4,
+    "sources_used": 6,
+    "used_chars": 19433
+  },
+  "citations": [
+    {
+      "chunk_sha256": "d81d2e63c1fa4dcd7e3a92e4a0e581ec9b42e599c2be28dba60947bb22475e7a",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 1,
+        "semantic": null
+      },
+      "line_end": 434,
+      "line_start": 434,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:322:d81d2e63",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "1. Delete、Deploy、External Mutation、生产操作、权限变化、不可逆操作和 High/Critical Risk Action 至少为 Approval Required；Prohibited 仍禁止。"
+    },
+    {
+      "chunk_sha256": "f5a1c28da041c6f123b1b8626c66dbbbb40caa846000f14abbe778125158dfe4",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 2,
+        "semantic": null
+      },
+      "line_end": 437,
+      "line_start": 437,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:325:f5a1c28d",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "4. 执行前必须记录 Before Snapshot、影响范围、可恢复性、备份/回滚、幂等策略、观察窗口和验证。"
+    },
+    {
+      "chunk_sha256": "c4bf94d58e24ba41e37dde72d6cc53ce4571180c67ea767fba291aaa4f79a14b",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 3,
+        "semantic": null
+      },
+      "line_end": 439,
+      "line_start": 439,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:327:c4bf94d5",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "6. Deploy 必须引用 C11 Release Configuration、C12 Gate/Approval、窗口、监测、回滚和 Owner。"
+    },
+    {
+      "chunk_sha256": "befa959271b50237127fe128a94b7f68d49b8f0183e8da38f78adf7b9163d832",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 4,
+        "semantic": null
+      },
+      "line_end": 440,
+      "line_start": 440,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:328:befa9592",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "7. “清理”“修复”“格式化”“回滚”“恢复”不得扩大批准目标。"
+    },
+    {
+      "chunk_sha256": "48963d8d09cc9926f8e1eeb92c41be8d27d215363bf2c42c1444c9a10407dcc4",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 5,
+        "semantic": null
+      },
+      "line_end": 441,
+      "line_start": 441,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:329:48963d8d",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "8. Retry 高影响 Action 前必须先确认上次 Attempt 的外部副作用和幂等状态。"
+    },
+    {
+      "chunk_sha256": "0e9a1176c3bc133e0b43da0ca6e760516b7932fddae7f483378963650798166d",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 6,
+        "semantic": null
+      },
+      "line_end": 443,
+      "line_start": 443,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:331:0e9a1176",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "10. 操作后必须验证 Actual Effect；只有命令成功但目标状态未知时为 Blocked。"
+    },
+    {
+      "chunk_sha256": "af7a1d0d1a258bd2bcd32cb062b45242d79f22eea8c3d1210d71a0a7c88048e4",
+      "control_types": [
+        "authority",
+        "background",
+        "change",
+        "evidence",
+        "gate",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "2. 目的"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 7,
+        "semantic": null
+      },
+      "line_end": 45,
+      "line_start": 45,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:28e7276d:36:af7a1d0d",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "10. 使 Agent 和自动化工具可以计算、检查和起草，但不能自批高风险输出或风险接受；"
+    },
+    {
+      "chunk_sha256": "edb98f496574b15b8872ef5ddec381dca1d7ac3609b4edb6791c0b1cfcb00975",
+      "control_types": [
+        "applicability",
+        "change",
+        "definition",
+        "gate",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "5. 规范性用语与受控判定",
+        "5.1 中文关键词"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 8,
+        "semantic": null
+      },
+      "line_end": 127,
+      "line_start": 127,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:e1e3a126:100:edb98f49",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "“必须、禁止、应、不应、可以、可选”直接适用 VC-PPG-COM-001 的规范性用语定义；唯一语义以该公共基线为准，本文件不得复制或改写。"
+    },
+    {
+      "chunk_sha256": "6775b2192165b27b14d4bb2a165c143f2fa2c661f654d184d5d473b54c50b7fa",
+      "control_types": [
+        "authority",
+        "change",
+        "data",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C12 评审、质量门禁与产品健康规范",
+        "5. 规范性用语与受控判定",
+        "5.1 中文关键词"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 9,
+        "semantic": null
+      },
+      "line_end": 129,
+      "line_start": 129,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C12:508ab626:e1e3a126:101:6775b219",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C12",
+      "source_sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565",
+      "source_version": "V6.3 Candidate",
+      "text": "“必须”和“禁止”规则不得通过普通 EWR 绕过。法律、监管、合同、Safety、Security、Privacy、不可逆数据和明确 Non-waivable Gate 项不得豁免。"
+    },
+    {
+      "chunk_sha256": "8502f89593e77eeeba8075a12f8da763739258867d611348ae768d09e7c7d0eb",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 10,
+        "semantic": null
+      },
+      "line_end": 435,
+      "line_start": 435,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:323:8502f895",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. 目标必须解析为精确仓库、路径、资源、记录、租户、账户、环境和版本。"
+    },
+    {
+      "chunk_sha256": "2a399565ecc24a3da1e20a1f2d6589ea842fd470d65e508dd941c506d79a8c05",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 11,
+        "semantic": null
+      },
+      "line_end": 436,
+      "line_start": 436,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:324:2a399565",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "3. 工作区根、用户主目录、系统根、整个账户/租户、未解析变量、宽泛通配符或计算后未复核目标禁止作为破坏性 Target。"
+    },
+    {
+      "chunk_sha256": "32ce4083442182d1b5e73e25ebdc3ac822c98ea338e3b6d402525c76f1d711c7",
+      "control_types": [
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "records",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 12,
+        "semantic": null
+      },
+      "line_end": 438,
+      "line_start": 438,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:326:32ce4083",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "5. External Mutation 必须使用服务支持的 Idempotency Key 或记录不可幂等及补偿措施。"
+    },
+    {
+      "chunk_sha256": "7404e2137ff77d01d583361ccd699c19a334d790fb805bfddbbf0af561d8646f",
+      "control_types": [
+        "authority",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.8 高影响、破坏性与外部操作"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": 13,
+        "semantic": null
+      },
+      "line_end": 442,
+      "line_start": 442,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P0",
+      "retrieval_locator": "C09:6897694e:47ee626b:330:7404e213",
+      "retrieval_reason": [
+        "pinned_control"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "9. 删除或覆盖前必须识别用户已有、未提交、未跟踪和并行 Agent 变化；未知时 Stop。"
+    },
+    {
+      "chunk_sha256": "ee534cd399dbfe103c4cf90cac0f646f89beb3adcadd461618b4744b95b81835",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C11 配置、版本、基线与变更控制规范",
+        "8. 正式产物与唯一事实源",
+        "8.0 V6.3 三阶段修订与生成边界"
+      ],
+      "lane_ranks": {
+        "exact": 62,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 225,
+      "line_start": 225,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C11:88ec56f7:0c539819:171:ee534cd3",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C11",
+      "source_sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1",
+      "source_version": "V6.3 Candidate",
+      "text": "TaskContract 在首个 `run_started` Event 时冻结。之后 Scope、Acceptance、Authority、Plan 或 Task Profile 的变化必须增加 Revision 并写入 `amendments[]`，包含旧值、新值、原因、依据和时间。TaskOutcome 形成后采用同一纠错规则，禁止静默覆盖终态事实。"
+    },
+    {
+      "chunk_sha256": "5db3cf5f2f283ec7835ceff11a0c4c5579a9431746be1b701479d0827034050d",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "data",
+        "definition",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.4 项目状态与唯一事实源"
+      ],
+      "lane_ranks": {
+        "exact": 83,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 201,
+      "line_start": 201,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P1",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:1708baa2:154:5db3cf5f",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| TaskContract/RunLedger/TaskOutcome Schema 与生成器 | `run-governed-product-workflow`；不得重定义上述语义 |"
+    },
+    {
+      "chunk_sha256": "b3346062af035fd86c2f0aab39cf2270284b8a845f9b76eca04ba3cc8dc25da1",
+      "control_types": [
+        "applicability",
+        "authority",
+        "data",
+        "evidence",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 203,
+      "line_start": 203,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:159:b3346062",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "3. 空值禁止代替 Unknown、Not Applicable 或 Not Evaluated；"
+    },
+    {
+      "chunk_sha256": "c7dfbc1b5c82b2ecc765007c9aa46410af8bcf826362a39b79710fcf8aa47572",
+      "control_types": [
+        "applicability",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 204,
+      "line_start": 204,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:160:c7dfbc1b",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "4. 未知的许可、Privacy、Security 或 Legal Hold 禁止由 Agent 推断；"
+    },
+    {
+      "chunk_sha256": "22992d0fcdfca947d79f1f0ce5340d2655b819cf75f6bcd28fffebf23b812c9e",
+      "control_types": [
+        "applicability",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 205,
+      "line_start": 205,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:161:22992d0f",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "5. 未知阈值禁止由 Tool Default、行业惯例或任意百分比填充；"
+    },
+    {
+      "chunk_sha256": "a8c014d8dd95a7439ab95cfee56d659c3c1d08aab87e65a419be5f3658d35484",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 206,
+      "line_start": 206,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:162:a8c014d8",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "6. 未知 Consumer 禁止批准 Breaking Change；"
+    },
+    {
+      "chunk_sha256": "bc86dfc6521370ffde517d325801d2ed7650e0394ac22990342cb381f75c581a",
+      "control_types": [
+        "applicability",
+        "authority",
+        "data",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 207,
+      "line_start": 207,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:163:bc86dfc6",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "7. 未知 Dataset Revision 禁止作为训练、测试、RAG 或 Gate 输入。"
+    },
+    {
+      "chunk_sha256": "f851c872a2686fbb8d94934b0016ce5093fe6373349705d0e6d287311e537e28",
+      "control_types": [
+        "applicability",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "7. 角色、职责与职责分离",
+        "7.3 Agent 使用规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 315,
+      "line_start": 315,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:91ca75d1:249:f851c872",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "Agent 禁止："
+    },
+    {
+      "chunk_sha256": "6b0fd6e7dfc2b0d3e1aca978117ee5ca2729cb6d80b94420f87cd67cf8cd251f",
+      "control_types": [
+        "applicability",
+        "authority",
+        "data",
+        "freshness",
+        "prohibition",
+        "records",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 201,
+      "line_start": 201,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:157:6b0fd6e7",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "1. 字段不适用时必须记录理由、Scope、依据和批准人；"
+    },
+    {
+      "chunk_sha256": "ddd9f24fc5c3f8a90d4ee55278163f00b63b055f6913363d58d9a4abeaf6f050",
+      "control_types": [
+        "applicability",
+        "authority",
+        "data",
+        "evidence",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "5. 规范性用语与受控判定",
+        "5.5 不适用和未知规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 202,
+      "line_start": 202,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:41d8365f:158:ddd9f24f",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "2. 未知来源、许可、数据主体、Schema、Owner、阈值、Consumer、Lineage 或 Retention 必须显式标为 Pending/Unknown；"
+    },
+    {
+      "chunk_sha256": "958d7c5de995916f731a332f6b60f16e8d2b0753b172991e998a40d67d9593bb",
+      "control_types": [
+        "applicability",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "7. 角色、职责与职责分离",
+        "7.3 Agent 使用规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 306,
+      "line_start": 306,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:91ca75d1:242:958d7c5d",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "Agent 可以："
+    },
+    {
+      "chunk_sha256": "70be0f3c725b35cf0db63eac306102c2bec6b3cb6877a21ddf368b4477a1abd7",
+      "control_types": [
+        "applicability",
+        "data",
+        "freshness",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "7. 角色、职责与职责分离",
+        "7.3 Agent 使用规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 320,
+      "line_start": 320,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:91ca75d1:253:70be0f3c",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "- 推断未知许可、法律权属、PII 合法性或跨境允许性；"
+    },
+    {
+      "chunk_sha256": "67a8b9f41ad8a4834cc9a04c838d46e0d2f39ade6a98b484e3ad99c52cad46be",
+      "control_types": [
+        "applicability",
+        "data",
+        "evidence",
+        "freshness",
+        "permission",
+        "prohibition",
+        "scope"
+      ],
+      "heading_path": [
+        "E03 数据与 AI 数据治理扩展规范",
+        "7. 角色、职责与职责分离",
+        "7.3 Agent 使用规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 311,
+      "line_start": 311,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "E03:bb6a1042:91ca75d1:246:67a8b9f4",
+      "retrieval_reason": [
+        "required_control_recovery"
+      ],
+      "source_id": "E03",
+      "source_sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b",
+      "source_version": "V6.3 Candidate",
+      "text": "- 汇总公开或已授权 Evidence；"
+    },
+    {
+      "chunk_sha256": "23a84cb686811d9c572b22b3929f7abb8d45b2412c1b1cccc015a74d1317660e",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C05 验收、验证与确认规范",
+        "10. 强制规则",
+        "10.15 Failure、Waiver、Risk Acceptance 与 Acceptance"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 2,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 492,
+      "line_start": 492,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C05:7973bcb4:8d60943e:337:23a84cb6",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C05",
+      "source_sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7",
+      "source_version": "V6.3 Candidate",
+      "text": "2. Blocked 必须记录阻塞原因、解除条件、责任人和重新执行计划。"
+    },
+    {
+      "chunk_sha256": "88e4e04f1b88929c6d1de1cb9f9858b240843ad66892685026e2ad88a82653e2",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "7. 角色与职责"
+      ],
+      "lane_ranks": {
+        "exact": 46,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 119,
+      "line_start": 119,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P1",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:fb42d478:90:88e4e04f",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| Agent | 检查环境和 Baseline；起草 TaskContract、Task Profile、Artifact Manifest、Evidence 汇总和检查结果 | 不得自批、虚构 Evidence 或扩大 Scope |"
+    },
+    {
+      "chunk_sha256": "28110c09713ce8941f6e952415bbc7b349d392f14ca365e5377874887c74d562",
+      "control_types": [
+        "authority",
+        "change",
+        "data",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "13. 必填信息",
+        "13.1 通用必填信息"
+      ],
+      "lane_ranks": {
+        "exact": 58,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 663,
+      "line_start": 663,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P1",
+      "retrieval_locator": "C09:6897694e:9e280442:495:28110c09",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "TaskContract、RunLedger 和 TaskOutcome 必须满足对应 JSON Schema；独立 AuthorityAsset/DerivedView Profile 必须引用 VC-PPG-COM-002 第 3 章通用信息和第 3.1 节公共字段组。以下旧 Profile 字段作为兼容信息按需嵌入，不要求拆成九份文件。"
+    },
+    {
+      "chunk_sha256": "0541dcf72127508787893adf47187353abe8a6f0252c2267076f1d81187300bf",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "15. 验证与符合性检查",
+        "15.2 执行就绪检查"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 1,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 609,
+      "line_start": 609,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:8b9280f4:447:0541dcf7",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- 唯一执行计划已固定；"
+    },
+    {
+      "chunk_sha256": "719a0bb9f7386f2c5b953615f43b39c084cc7c797ed25e15daf318aab254b4c8",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "13. 三阶段记录必填信息",
+        "13.1 TaskContract / before.json"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 3,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 528,
+      "line_start": 528,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:e16b56ff:388:719a0bb9",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- 唯一执行计划、验证、回退、Stop Condition；"
+    },
+    {
+      "chunk_sha256": "d238a05ec71e6911173fc9a2e6ef157e739e4fca141b372ac2a1c69ce03375a1",
+      "control_types": [
+        "applicability",
+        "evidence",
+        "execution",
+        "prohibition",
+        "records"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "13. 三阶段记录必填信息",
+        "13.3 RunLedger / run.jsonl"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": 3,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 557,
+      "line_start": 557,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:1fd4e52a:410:d238a05e",
+      "retrieval_reason": [
+        "fts_word"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "RunLedger 禁止默认保存完整命令、完整输出、文件正文、Token、凭据或其他敏感值。需要保留原始日志时只保存受控 Evidence 引用。"
+    },
+    {
+      "chunk_sha256": "5c1c9a04c80f6a66ef8381cdf9d331eafd05945cdf39bd7d78d732abc25afdec",
+      "control_types": [
+        "authority",
+        "background",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "2. 目的"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 4,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 31,
+      "line_start": 31,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:cd365db2:24:5c1c9a04",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "本规范规定 Coding Agent 从需求理解、执行计划、工具调用、命令运行、资产修改、验证、失败、重试、回滚、人类复核到交付的可审计记录。"
+    },
+    {
+      "chunk_sha256": "93f1264491065b5dd26d15dce7251cf6da6c28d9b31dac1aa4e7a25a7885b32e",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "9. 生命周期或工作机制",
+        "9.1 统一八阶段主流程"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": 5,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 230,
+      "line_start": 230,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:3151121b:164:93f12644",
+      "retrieval_reason": [
+        "fts_trigram"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| S4 计划 | Scope 已固定到受控 Revision/Snapshot；Blocking Risk/Unknown 已处置；被触发设计输入达到所属规范的计划就绪条件 | 形成唯一执行计划；按 VC-PPG-TAIL-001 重新计算裁剪快照和阶段上下文；列步骤、目标、工具、路径、验证、回退、Stop 和 Gate；生产发布适用时固定 RBP、MAP Revision | `tailoring_resolution` 为 S4 或更晚、与 Task Profile/规则表哈希一致且无 blocker；计划可执行、可验证、可回退；所需事前批准可解析 |"
+    },
+    {
+      "chunk_sha256": "c26a57d26227701250486c5de374dd80af4e4acf005544f95ff473bfb4e7dbd5",
+      "control_types": [
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "prohibition",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "10. 强制规则",
+        "10.17 敏感信息与日志"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": 10,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 543,
+      "line_start": 543,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:3b9b0163:413:c26a57d2",
+      "retrieval_reason": [
+        "fts_word"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "2. 明文密钥、Token、密码、私钥、Session Cookie 和可复用认证材料禁止进入 AEP/RUN/TIL/VDR/FER/HRR 或 Raw Log。"
+    },
+    {
+      "chunk_sha256": "977f0a8f2bb093dadfba31b65b493a43f7b063bb147ded65f0d3c688c7af4792",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "8. 治理对象与关系",
+        "8.0 V6.3 最小执行记录覆盖规则"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": 11,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 196,
+      "line_start": 196,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:b1dd146f:146:977f0a8f",
+      "retrieval_reason": [
+        "fts_word"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "9. 明文密钥、Token、密码、私钥、Session Cookie 和可复用认证材料在所有情况下均禁止写入任务记录。"
+    },
+    {
+      "chunk_sha256": "853657b77f418d72fd1e3c3297d452a5bb3376c368d372abd98b8c2d92b2cc7d",
+      "control_types": [
+        "applicability",
+        "background",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.2 执行中记录：RunLedger"
+      ],
+      "lane_ranks": {
+        "exact": null,
+        "fts_trigram": null,
+        "fts_word": 14,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 170,
+      "line_start": 170,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:5963b45f:131:853657b7",
+      "retrieval_reason": [
+        "fts_word"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "RunLedger 保存结构化摘要、时间、状态、结果码、Evidence 引用、副作用和脱敏说明；禁止默认保存完整命令输出、文件内容、凭据、Token 或其他敏感值。普通读取、目录查看和搜索不记录。Git Commit/Diff 作为变化证据引用，不要求在账本复制 Diff。"
+    },
+    {
+      "chunk_sha256": "7e4a919974796f3f9f12a56f84cfea6520487558806afcfc72ee48ab9ea08694",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "definition",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.4 项目状态与唯一事实源"
+      ],
+      "lane_ranks": {
+        "exact": 16,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 192,
+      "line_start": 192,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:1708baa2:145:7e4a9199",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| 六类元类型、Task Profile 与 Artifact Manifest 术语 | VC-PPG-COM-001 |"
+    },
+    {
+      "chunk_sha256": "1380db6511954ac93bf9177bb29510c60fe892f50d273925f9f747bfcadd1071",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "9. 生命周期或工作机制",
+        "9.1 统一八阶段主流程"
+      ],
+      "lane_ranks": {
+        "exact": 17,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 229,
+      "line_start": 229,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:3151121b:163:1380db65",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| S3 条件深化 | `Proceed` 且专业触发成立 | 按任务类型深化产品、需求、验收、设计、扩展规范或影响分析 | 被触发规范的输入达到计划就绪；稳定资产已在 Artifact Manifest 中记录 `Reference`，不适用的正式类型已记录带规则依据的 `N/A` |"
+    },
+    {
+      "chunk_sha256": "d332662eb5af5b16c1c067f46f0c714a2850afbee3f7e901541fc739d2627505",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "9. 生命周期或工作机制",
+        "9.1 统一八阶段主流程"
+      ],
+      "lane_ranks": {
+        "exact": 18,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 234,
+      "line_start": 234,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:3151121b:168:d332662e",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| S8 收尾 | 当前交付不再继续执行 | 形成 TaskOutcome，更新终态 Artifact Manifest、Trace、Change、遗留问题和后继项；重建 ProjectState 和派生审核视图 | 结果为 Implemented、Deferred、Cancelled、Blocked 或 Superseded；事实、Owner、理由和 Evidence 完整 |"
+    },
+    {
+      "chunk_sha256": "d76565872b9b37f15cbffee19144ef3972dd62e144db526cfb633ec06d10b9e2",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.7 DT-04 需求澄清流程"
+      ],
+      "lane_ranks": {
+        "exact": 19,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 327,
+      "line_start": 327,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:496786d5:238:d7656587",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "4. 纯澄清没有实际产品变化时，TaskOutcome 记录未执行产品变更的事实、检查方法和范围，S7 记录无发布或运行观察范围的规则依据；相关 Profile 按 Artifact Manifest 规则使用 `N/A`，S6 执行需求质量复核而非产品验收。"
+    },
+    {
+      "chunk_sha256": "147a1e639ccd281bdb83e3f67b3d50ccb83172624934bdc37df4e036f6f2cf45",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 20,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 402,
+      "line_start": 402,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:295:147a1e63",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "### 10.16 Artifact Manifest 规则"
+    },
+    {
+      "chunk_sha256": "818dea020ca7d1fae9e7c5e9299209c1cfe5c64ea83bf69353fba34fd3682d38",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 21,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 404,
+      "line_start": 404,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:296:818dea02",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "1. `Create/Revise` 只用于本任务实际创建或修订的权威实例。"
+    },
+    {
+      "chunk_sha256": "9e2282329565ce520cf54351b28de7b2099e805e237135d173ebbee42b34ed54",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 22,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 405,
+      "line_start": 405,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:297:9e228232",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "2. `Reference` 必须解析到固定 Revision/Snapshot 和有效范围。"
+    },
+    {
+      "chunk_sha256": "f27c9fb86ad022c588058e4b786622934ef1f2e458ab55351cd8407ae01af59a",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 23,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 406,
+      "line_start": 406,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:298:f27c9fb8",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "3. `Generate` 只用于可从权威事实重建的矩阵、报告或查询视图。"
+    },
+    {
+      "chunk_sha256": "a193fabe7f2c621b1b4bc9db90deba0e8230b52f9d63348504d7125a11ecd4b0",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 24,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 407,
+      "line_start": 407,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:299:a193fabe",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "4. `On Event` 只在 Failure、Incident、Waiver、Risk Acceptance、Release 等事实发生后创建。"
+    },
+    {
+      "chunk_sha256": "eac0ee9c7af8ac65b8a7c4d5f03795effd3ec71590c0a42e8b1da7a83e9433b9",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "data",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 25,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 408,
+      "line_start": 408,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:300:eac0ee9c",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "5. `N/A` 必须记录规则和范围；Risk 为 High/Critical，或安全、隐私、数据、不可逆性、生产影响、Extension Trigger、Authority 任一项为 Unknown 时禁止使用。"
+    },
+    {
+      "chunk_sha256": "cd6a381c8aaff0a9b6b3d810bcd8268f6277c52ce29ca2432a111885af077a17",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 26,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 409,
+      "line_start": 409,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:301:cd6a381c",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "6. Artifact Manifest 不复制全量 137 项 Profile；未列项必须能通过 VC-PPG-IDX-001 和 VC-PPG-MAP-001 解析。"
+    },
+    {
+      "chunk_sha256": "476e6ab2f6f1760bd3295f5f851621dd94d963dabe4501dbf08f27d9ab142e57",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 27,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 410,
+      "line_start": 410,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:302:476e6ab2",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "7. 执行前 Manifest 位于 `before.json`；执行结束后实际动作和结果写入 `after.json`，禁止单独维护第三份 Manifest 文件。"
+    },
+    {
+      "chunk_sha256": "97ba4c3c7fbe6b0ced7743ed70b0968f258882fc33797d3fff43ed4511408ae9",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 28,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 411,
+      "line_start": 411,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:303:97ba4c3c",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "8. 终态 Manifest 不得删除执行前计划项，也不得改写其计划字段；只在原项上增加 Outcome。"
+    },
+    {
+      "chunk_sha256": "59533946e7e9fb2985291dd123d26e5363c48b36eb849167b0e62937d46d0dba",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.16 Artifact Manifest 规则"
+      ],
+      "lane_ranks": {
+        "exact": 29,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 412,
+      "line_start": 412,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:57b857f9:304:59533946",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "9. 终态 Manifest 可追加收尾时实际发生的资产，追加项的 Outcome 只能是 `Created / Revised / Referenced / Generated`；TaskOutcome 建立后的追加必须通过 Amendment 记录。"
+    },
+    {
+      "chunk_sha256": "e94d064443c218cae70e9084e7403c648fe01b6db31e9242e3b671cdf1563a7c",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "17. 裁剪规则",
+        "17.1 不可裁剪项"
+      ],
+      "lane_ranks": {
+        "exact": 30,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 681,
+      "line_start": 681,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:72144562:504:e94d0644",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- TaskContract/TaskOutcome 中的 Artifact Manifest；"
+    },
+    {
+      "chunk_sha256": "a5450b31611ba30b94b75870c79a1ffc4254614d5f356b801e75582cc64c04f5",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "10. 强制规则",
+        "10.1 分类顺序"
+      ],
+      "lane_ranks": {
+        "exact": 31,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 269,
+      "line_start": 269,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:72c75244:195:a5450b31",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "10. 生成 TaskContract，其中包含 Artifact Manifest；"
+    },
+    {
+      "chunk_sha256": "493812fbd739354a9aa05eafa764b09938ede553bcdb9395c3cd24687349bcd0",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "12. 最小物理产物与条件 Profile",
+        "12.1 所有任务的最低集合"
+      ],
+      "lane_ranks": {
+        "exact": 32,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 478,
+      "line_start": 478,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:73fc5ef5:349:493812fb",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| 执行前 | TaskContract / `before.json` | 身份链、任务关系、目标、Scope、权限、Task Profile、Artifact Manifest、Acceptance、计划、验证、回退、Gate、Source Snapshot |"
+    },
+    {
+      "chunk_sha256": "3cc70dc76e6e6af01c8f48cb49ced082459c7459bf69a2d8bdd7940ccd8ffd56",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "12. 最小物理产物与条件 Profile",
+        "12.1 所有任务的最低集合"
+      ],
+      "lane_ranks": {
+        "exact": 33,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 483,
+      "line_start": 483,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:73fc5ef5:353:3cc70dc7",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "Task Profile 和 Artifact Manifest 是 TaskContract/TaskOutcome 字段，不再是独立物理产物。长期需求、设计、决定、证据和基线按触发条件保存为 AuthorityAsset；审核报告、矩阵和索引保存为 DerivedView。"
+    },
+    {
+      "chunk_sha256": "c9edd00e2fc831ade43ad69e71abcdee6c3179a87e783a2358b5478219d04bc5",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "12. 最小物理产物与条件 Profile",
+        "12.2 条件产物"
+      ],
+      "lane_ranks": {
+        "exact": 34,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 489,
+      "line_start": 489,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:7865df37:356:c9edd00e",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "下表只汇总跨任务高频触发，不是 137 个领域 Profile 的第二套目录。未列 Profile 必须通过 VC-PPG-IDX-001、VC-PPG-MAP-001 和所属专业规范解析；专业触发一旦成立，即使本表未单列也必须进入 Artifact Manifest。"
+    },
+    {
+      "chunk_sha256": "8dac3976ec4546ba8b90dc7f4635e13e6a8d7a08693a308f152148894ad12502",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "definition",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "6. 术语与定义"
+      ],
+      "lane_ranks": {
+        "exact": 35,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 103,
+      "line_start": 103,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:8c711bde:78:8dac3976",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| TaskContract | 执行前目标、范围、权限、验收、计划、Task Profile 和 Artifact Manifest 的结构化契约 | Run 开始时冻结，后续变化通过 Amendment 留痕 |"
+    },
+    {
+      "chunk_sha256": "e93b46a0062ce058f6524b499539dcb4016d08d858ad3464efc6be7572f4e80b",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "definition",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "6. 术语与定义"
+      ],
+      "lane_ranks": {
+        "exact": 36,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 108,
+      "line_start": 108,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:8c711bde:83:e93b46a0",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "| 阶段缩短 | 某阶段的适用控制目标已由有效 Baseline 覆盖，或该阶段在当前 Scope 内无适用控制活动 | 阶段仍保留进入、活动与退出记录；必须记录覆盖或不适用依据、适用范围和关联 Artifact Manifest 项，不得对阶段使用产物实例动作 |"
+    },
+    {
+      "chunk_sha256": "4ffda6f893393409f22ea83c6ed595be9f94994f0c8c6fe769bdd13141d9d076",
+      "control_types": [
+        "applicability",
+        "change",
+        "definition",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "6. 术语与定义"
+      ],
+      "lane_ranks": {
+        "exact": 37,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 110,
+      "line_start": 110,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:8c711bde:84:4ffda6f8",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "TaskContract、Task Profile、Artifact Manifest、RunLedger、TaskOutcome、ProjectState、Delivery Scenario、Development Type、Change Surface、Risk Level、Extension Trigger、Baseline Inheritance、Execution Mode 和五类实例动作的唯一术语来源是 VC-PPG-COM-001 与 VC-PPG-COM-002。"
+    },
+    {
+      "chunk_sha256": "e9b33fe0ad1d4ddd3d6cfb9cda08760e523d1916cbb20bc55bd8729a0c5e96d3",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "9. 生命周期或工作机制",
+        "9.3 最小流程与完整流程"
+      ],
+      "lane_ranks": {
+        "exact": 38,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 248,
+      "line_start": 248,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:a0be4851:178:e9b33fe0",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- 默认最小流程仍必须经过 S1、S2、S4、S6 和 S8。专业规范未触发时可以缩短 S3；没有执行动作时可以缩短 S5；没有发布或运行观察范围时可以缩短 S7。每个被缩短阶段仍必须在 TaskContract 或 TaskOutcome 记录适用性依据、活动事实和退出结论，相关 Profile 在 Artifact Manifest 中使用受控实例动作。"
+    },
+    {
+      "chunk_sha256": "ce3bb034a083772cdc2e4898e82a830fb3c64856397588d26d7d6af466a5679e",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "release",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.5 最低追踪关系"
+      ],
+      "lane_ranks": {
+        "exact": 39,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 219,
+      "line_start": 206,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:a1d7e147:157:ce3bb034",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "流程必须能够追踪：\n\n```text\nProjectID / WorkItemID / TaskID\n  → TaskContract / Task Profile\n  → Scope / Requirement / Change 来源\n  → Artifact Manifest\n  → RunLedger / Git Change\n  → Changed Asset\n  → Verification / Validation Evidence\n  → Acceptance / Gate / Release Decision\n  → TaskOutcome / Follow-up\n  → ProjectState\n```"
+    },
+    {
+      "chunk_sha256": "e6b6ff1c8b6ef017597592904c88399e974bf189c4a401edcd9e4d3526c34711",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.1 执行前输入：TaskContract"
+      ],
+      "lane_ranks": {
+        "exact": 40,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 155,
+      "line_start": 155,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:b19a9e27:121:e6b6ff1c",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- Artifact Manifest。"
+    },
+    {
+      "chunk_sha256": "8373133f87f139c9e24f374bf3b32799a0170779c2b61c00edd6c60b28ebee24",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "13. 三阶段记录必填信息",
+        "13.4 TaskOutcome / after.json"
+      ],
+      "lane_ranks": {
+        "exact": 41,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 568,
+      "line_start": 568,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:bc3580a9:418:8373133f",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- 终态 Artifact Manifest 和 amendments。"
+    },
+    {
+      "chunk_sha256": "933372cc79e9420cae062f91578bc1529ba159b4fd6e46e0d9b7833112f70b9b",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "15. 验证与符合性检查",
+        "15.1 流程就绪检查"
+      ],
+      "lane_ranks": {
+        "exact": 42,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 602,
+      "line_start": 602,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:d9098f34:443:933372cc",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- TaskContract 中的 Artifact Manifest 无无据 N/A；"
+    },
+    {
+      "chunk_sha256": "5832e0bfb2d824d5d4f2d64b7cfab26a26d62ae875b9e40490c1694d95da3c23",
+      "control_types": [
+        "applicability",
+        "change",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "13. 三阶段记录必填信息",
+        "13.1 TaskContract / before.json"
+      ],
+      "lane_ranks": {
+        "exact": 43,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 527,
+      "line_start": 527,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:e16b56ff:387:5832e0bf",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- Artifact Manifest；"
+    },
+    {
+      "chunk_sha256": "5641775f6a67a3836f86745ccd3379f5090fb13c7ab8583828390f4d950b903a",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "8. 管理对象与关系",
+        "8.3 任务终态：TaskOutcome"
+      ],
+      "lane_ranks": {
+        "exact": 44,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 184,
+      "line_start": 184,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:f3e42a70:141:5641775f",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "- 终态 Artifact Manifest。"
+    },
+    {
+      "chunk_sha256": "5fd38f5b262fdd2d2bc8f536f9dcbd268112ab666cf56ac8692c928d9b3bddf7",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "任务类型裁剪与统一执行流程规范",
+        "9. 生命周期或工作机制",
+        "9.2 转换规则"
+      ],
+      "lane_ranks": {
+        "exact": 45,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 244,
+      "line_start": 244,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+      "priority": "P2",
+      "retrieval_locator": "VC-PPG-PRO-001:548a810a:f68986e2:176:5fd38f5b",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "VC-PPG-PRO-001",
+      "source_sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329",
+      "source_version": "V6.3 Candidate",
+      "text": "7. 重新分类必须通过 TaskContract Amendment 更新 Task Profile、Artifact Manifest、影响分析和计划，不得只修改标签。"
+    },
+    {
+      "chunk_sha256": "4d7c2faed11dbbf809f5539001bd26af3dcdd23c6bfdcf8b1a88f38cfae363e8",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "12. V6.3 必需载体与条件 Profile"
+      ],
+      "lane_ranks": {
+        "exact": 54,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 651,
+      "line_start": 651,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:0a9756f4:487:4d7c2fae",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "| TaskContract / `before.json` | 每个拟执行任务在 Run 前创建并冻结 | AEP、ECP、Scope、Authorization、计划、验证、回退和 Stop |"
+    },
+    {
+      "chunk_sha256": "2dfd4b0a77b3142d3766fa2e269d00f7412f7380fe714873176e4bf61d90f264",
+      "control_types": [
+        "applicability",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "17. P2 裁剪与扩展适用性",
+        "17.0 Task Profile 驱动的适用性"
+      ],
+      "lane_ranks": {
+        "exact": 55,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 944,
+      "line_start": 944,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:39226036:715:2dfd4b0a",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "实际 Agent 变更任务必须具有 TaskContract 和 RunLedger；计划深化通过 TaskContract Amendment 更新，不创建第二份“执行方案”。重要运行事件进入 RunLedger，CAS/CCS/FER 语义进入 TaskOutcome；HRR/RRS 只在实际人类复核或剩余风险事件发生时 `On Event` 创建。"
+    },
+    {
+      "chunk_sha256": "62a587fdd572580b7701314ff582a67f7a8a313e010c1a2e7b21d220eb4ddfd0",
+      "control_types": [
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "15. 评审、批准与 Run 接受",
+        "15.5 阻断条件"
+      ],
+      "lane_ranks": {
+        "exact": 56,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 897,
+      "line_start": 897,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:434e9ab2:683:62a587fd",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "- 无法重建主要副作用、TaskContract Revision 或 End Snapshot。"
+    },
+    {
+      "chunk_sha256": "76d821d474e322f0fd0cc25973924c1aaeb78b59d2552b33f741cdefade0e2c0",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "19. 符合性检查",
+        "19.2 强制检查项"
+      ],
+      "lane_ranks": {
+        "exact": 57,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 1054,
+      "line_start": 1054,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:4fe40d94:806:76d821d4",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "54. 是否能重建主要副作用、TaskContract Revision、Diff 和验证；"
+    },
+    {
+      "chunk_sha256": "10b8517cd69d48235140c56346e8dccadfb8448a01fb6928cd1e956ce79dc41d",
+      "control_types": [
+        "change",
+        "evidence",
+        "execution",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "8. 治理对象与关系",
+        "8.0 V6.3 最小执行记录覆盖规则"
+      ],
+      "lane_ranks": {
+        "exact": 59,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 188,
+      "line_start": 188,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:b1dd146f:138:10b8517c",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "1. AEP 与 ECP 语义进入 TaskContract（`before.json`）。"
+    },
+    {
+      "chunk_sha256": "031088512789f201ab209d6e09bb7d4e54232364890eec7890c2458bb969f65c",
+      "control_types": [
+        "applicability",
+        "authority",
+        "change",
+        "evidence",
+        "execution",
+        "freshness",
+        "gate",
+        "integrity",
+        "permission",
+        "prohibition",
+        "records",
+        "scope",
+        "validation"
+      ],
+      "heading_path": [
+        "C09 Agent 执行与证据规范",
+        "17. P2 裁剪与扩展适用性",
+        "17.2 未来档位"
+      ],
+      "lane_ranks": {
+        "exact": 60,
+        "fts_trigram": null,
+        "fts_word": null,
+        "pinned": null,
+        "semantic": null
+      },
+      "line_end": 958,
+      "line_start": 958,
+      "locator_kind": "derived-retrieval-locator",
+      "logical_path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+      "priority": "P2",
+      "retrieval_locator": "C09:6897694e:dd4b3fe5:724:03108851",
+      "retrieval_reason": [
+        "exact_identifier"
+      ],
+      "source_id": "C09",
+      "source_sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e",
+      "source_version": "V6.3 Candidate",
+      "text": "P1/P2 可以通过 TaskContract、RunLedger、TaskOutcome 和 DerivedView 联合展示旧 Profile 语义，但必须保留 Run/Event/Asset ID、关键动作、Evidence、Failure、Risk、State 和逻辑身份。HRR、RRS 在触发时仍需独立权威记录。"
+    }
+  ],
+  "consistency_report_sha256": "acf4b56cd3a104183aff14466cb061beae4c01bb8c7f26b930ca9af9724998f1",
+  "coverage": {
+    "missing": [],
+    "present": [
+      "change",
+      "data",
+      "gate",
+      "integrity",
+      "permission",
+      "prohibition",
+      "scope",
+      "validation"
+    ],
+    "required": [
+      "change",
+      "data",
+      "gate",
+      "integrity",
+      "permission",
+      "prohibition",
+      "scope",
+      "validation"
+    ]
+  },
+  "event_ref": "query-event:6a5f1c1fd65c6f6806a8b6696b96473c42bc610b551f78670f79ac44b8c2c1d6:expanded",
+  "fallback": {
+    "heading_path": [
+      "C09 Agent 执行与证据规范",
+      "10. 强制规则"
+    ],
+    "kind": "section",
+    "page": null,
+    "page_count": null,
+    "reason": "P0/P1-soft-budget-expanded",
+    "source_id": "C09"
+  },
+  "index_digest": "6ecc4a89f2c95a0331c2718b576f62e5e5a60131795d61caad8bcd4327a8a94c",
+  "meta_type": "DerivedView",
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_digest": "6a5f1c1fd65c6f6806a8b6696b96473c42bc610b551f78670f79ac44b8c2c1d6",
+  "schema_version": "6.3-candidate",
+  "status": "Expanded",
+  "tailoring_resolution_sha256": "f07481bb881ace5fbceafae106b6b74bb018ca83507227cd629310137009aaef"
+}

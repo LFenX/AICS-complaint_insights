@@ -1,0 +1,3350 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01",
+  "ordinal": 24,
+  "revision": 16,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-31T06:33:17.011132Z",
+  "frozen_at": "2026-10-31T06:36:25.863835Z",
+  "objective": "补齐并发布2026-10-30完整客诉日报，完成后保持生产隔离",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成\n\n本轮实际补充答复：取不到估计就是撤回了，不用管\n原问题和五件ID的精确范围见 .runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+    "captured_at": "2026-10-31T06:33:16.917956Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Asked",
+    "notice": "补采边界已获明确授权，不再重复确认。本次只补报10月30日，沿用已确认的分类、UID、附件和白底布局标准；10月29日历史版保持不变。",
+    "survey_refs": [
+      ".runtime/daily-work/2026-10-30/task-survey.md",
+      ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/readonly-message-location.json"
+    ],
+    "rounds": [
+      {
+        "ordinal": 1,
+        "asked_at": "2026-10-31T07:11:19.171Z",
+        "exchanges": [
+          {
+            "question": "请提供邮件104621这5个原件的只读下载链接，或离线ZIP在此电脑的绝对路径。当前IMAP已取不到原邮件，本机也无副本；生产Agent取件提示词已准备好：D:/LFEN_project/dev_project/complaint-insights/.runtime/daily-work/2026-10-30/production-agent-five-attachments.md。我会继续完成其余审阅，待原件到位后核验并发布完整日报。",
+            "changes": "Acceptance",
+            "recommended_default": "",
+            "answer": "取不到估计就是撤回了，不用管",
+            "answer_state": "Answered"
+          }
+        ]
+      }
+    ],
+    "basis": "本轮新增问题与用户答复已实际发生，并有宿主journal原始事件时间/SHA绑定；用户明确允许跳过具体五件原件，未授权扩大例外；原阶段零轮历史不删除。",
+    "reopened_by": [
+      "amendment:scope",
+      "amendment:acceptance"
+    ]
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+      "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/local-import-result.json",
+        ".runtime/daily-work/2026-10-30/local-status-final.json",
+        ".runtime/daily-work/2026-10-30/source-capture-result.json",
+        ".runtime/daily-work/2026-10-30/source-preflight-result.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "本轮真实数据与运行环境",
+            "expected": "一次性只读补采完整闭日数据，保持生产隔离和全局游标",
+            "actual": "真实只读TLS捕获完成并结束；本地data_version25，冻结921封/757元数据；持久读取false、全局DEGRADED及原53167/224212游标不变",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/source-preflight-result.json",
+              ".runtime/daily-work/2026-10-30/source-capture-result.json",
+              ".runtime/daily-work/2026-10-30/local-import-result.json",
+              ".runtime/daily-work/2026-10-30/local-status-final.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+      "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+        ".runtime/daily-work/2026-10-30/review.json",
+        ".runtime/daily-work/2026-10-30/root-adjudications.json",
+        ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "本轮真实数据与运行环境",
+            "expected": "921封全部有语义审阅/摘要/分类依据与UID来源角色；全主子组及残余复核，752可取得原件和完整子组ZIP核验",
+            "actual": "3分区各307封，根端39裁决/11补译；16主类355子类及22残余复核；752原件、40ZIP的122原日志/原包与源逐字节匹配，5件缺件保留757全元数据",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/review.json",
+              ".runtime/daily-work/2026-10-30/root-adjudications.json",
+              ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json",
+              ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+      "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+        ".runtime/daily-work/2026-10-30/published-http-verification.json",
+        ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+        ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "本轮真实数据与运行环境",
+            "expected": "按既有最终白底布局发布真实2026-10-30日报，默认昨天/历史/缺报和所有既有交互有效，29日不覆盖",
+            "actual": "真实3030默认30日921封；29日634原SHA，31日整页未生成；实际921详情/752原件入口/688预览/40ZIP、原译独立/4排序/分页/小时筛选通过，用户验收Pending",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/published-http-verification.json",
+              ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+              ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+              ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+              "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "本轮实际补充答复：取不到估计就是撤回了，不用管",
+      "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+        ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+        ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+        ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+        ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+        ".runtime/daily-work/2026-10-30/published-http-verification.json",
+        ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+        ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+        "conditions": [
+          "原件确未取得且用户针对具体范围明确允许跳过",
+          "所选子问题包含未取得的原日志"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "真实用户允许跳过的5个缺件",
+            "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+            "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+              ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+              ".runtime/daily-work/2026-10-30/published-http-verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+            "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+            "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+              ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+              ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "Met",
+            "input": "104621所在子组含60925/60926缺失日志",
+            "expected": "子问题含未取得日志时不提供不完整ZIP",
+            "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+              ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "NotMet",
+            "input": "原件完整的手册登录等子组",
+            "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+            "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+              ".runtime/daily-work/2026-10-30/published-http-verification.json",
+              ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "request_snapshot",
+      "quote": "原问题和五件ID的精确范围见 .runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "reading": "来源定位指针，说明原问题与具体五件范围证据保存位置，不是新增产品行为；不可从中推定其他文件或未来日期的跳过授权。",
+      "state": "NotARequirement",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+      ],
+      "acceptance_refs": []
+    },
+    {
+      "id": "R-006",
+      "source": "clarification:r1.e1",
+      "quote": "取不到估计就是撤回了，不用管",
+      "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+        ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+        ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+        ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+        ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+        ".runtime/daily-work/2026-10-30/published-http-verification.json",
+        ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+        ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "6db1ca7cf9280f6401c7cf673a214a257e12570fb7ed38cb11bcce4136bd7980",
+        "conditions": [
+          "原件确未取得且用户针对具体范围明确允许跳过",
+          "所选子问题包含未取得的原日志"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "真实用户允许跳过的5个缺件",
+            "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+            "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+              ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+              ".runtime/daily-work/2026-10-30/published-http-verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+            "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+            "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+              ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+              ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "Met",
+            "input": "104621所在子组含60925/60926缺失日志",
+            "expected": "子问题含未取得日志时不提供不完整ZIP",
+            "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+              ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+            ]
+          },
+          {
+            "condition": 1,
+            "branch": "NotMet",
+            "input": "原件完整的手册登录等子组",
+            "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+            "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+              ".runtime/daily-work/2026-10-30/published-http-verification.json",
+              ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-DAILY-BACKFILL-PROCEED",
+      "kind": "Proceed",
+      "presented": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 10 月 30 日日报所需的邮件、分类和附件元数据？不重启或写入生产库，不启动常驻采集；完成后保持隔离。当前本地只有 72 封，水位停在 10 月 30 日 01:13。",
+      "response": "允许一次性只读补采（推荐）",
+      "decided_by": "user",
+      "decided_at": "2026-10-31T06:20:26.440415+00:00",
+      "evidence_ref": ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+      "outcome": "Approved"
+    },
+    {
+      "id": "D-DAILY-FIVE-UNAVAILABLE-PROCEED",
+      "kind": "Proceed",
+      "presented": "请提供邮件104621这5个原件的只读下载链接，或离线ZIP在此电脑的绝对路径。当前IMAP已取不到原邮件，本机也无副本；生产Agent取件提示词已准备好：D:/LFEN_project/dev_project/complaint-insights/.runtime/daily-work/2026-10-30/production-agent-five-attachments.md。我会继续完成其余审阅，待原件到位后核验并发布完整日报。",
+      "response": "取不到估计就是撤回了，不用管",
+      "decided_by": "user",
+      "decided_at": "2026-10-31T07:20:43.972Z",
+      "evidence_ref": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-REPAIR-20261031-04",
+    "T-INSIGHTS-DAILY-AUTO-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-31T06:33:16.967656Z"
+  },
+  "scope": {
+    "in_scope": [
+      "一次性受限源捕获、本地日期数据整合与闭合证明",
+      "10月30日逐封审阅及完整附件/ZIP",
+      "沿现有3030日期发布与验证",
+      "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+    ],
+    "out_of_scope": [
+      "生产重启/写入/watch，其他日期正式日报/历史/权限/凭据/网络/调度/MCP变更及Git推送；本次例外之外不放宽附件完整性"
+    ],
+    "allowed_paths": [
+      ".runtime/daily-work/2026-10-30/**",
+      ".runtime/daily-reports/2026-10-30/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+      ".project-governance/generated/**",
+      ".project-governance/project-state.json",
+      ".project-governance/README.md",
+      "update_log/2026-10-31-daily-20261030-publication.md",
+      "insights/daily_generation.py",
+      "assets/daily-board.js",
+      "tests/test_daily_generation.py",
+      "tests/test_daily_board.py",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/execution.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+    ],
+    "forbidden_actions": [
+      "扩大源采集用途、推进全局增量游标或把全局DEGRADED改READY、伪造完整数据或覆盖历史"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      ".runtime/daily-work/2026-10-30/task-source.md",
+      ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+    ],
+    "authority_assessments": [
+      {
+        "reference": ".runtime/daily-work/2026-10-30/task-source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "一次性受限源捕获、本地日期数据整合与闭合证明",
+          "10月30日逐封审阅及完整附件/ZIP",
+          "沿现有3030日期发布与验证"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md",
+          ".runtime/daily-work/2026-10-30/source-read-authorization.json"
+        ],
+        "verified_at": "2026-10-31T06:33:16.784887+00:00",
+        "expires_at": null
+      },
+      {
+        "reference": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ],
+        "verified_at": "2026-10-31T07:23:14.888455+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+      "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+      "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+      "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+      "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+      "本地reader一致冻结后逐封语义及UID/角色审阅；核验可取得752原件，按用户具体决定保留五件不可取元数据及完整限制，复核全主组/残余",
+      "实现与本日来源绑定的具体附件缺失证据契约、界面未取得标注及来源/子组ZIP完整关系检查，正反向测试防止全局放宽",
+      "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档"
+    ],
+    "verification": [
+      "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+      "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+      "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+      "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+    ],
+    "rollback": [
+      "入库前保存受影响镜像及投影/全局状态前像；本地事务错误整体回滚。发布前保持日期不可见；正式发布后保留不可变原件及证据，必要纠偏另行可追溯归档，不删除历史"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "交付有真实全天来源且质量对齐最终标准的10月30日日报，补采后保持生产隔离",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "原副本只有72封且水位不足，prepare真实阻断；不是0封日",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/backfill-status.json"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "已获明确一次性只读授权并取得同一RR源快照921封/757附件元数据，持久配置未变",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+          ".runtime/daily-work/2026-10-30/source-capture-result.json"
+        ]
+      },
+      {
+        "id": "F3",
+        "statement": "752原件已实际取得；104621原UID不存在，六文件夹按Message-ID均未找到，五件不能从现有邮箱取得",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/result.json",
+          ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/readonly-message-location.json"
+        ]
+      },
+      {
+        "id": "F4",
+        "statement": "用户对五件原件明确回复不用管，允许跳过获取；撤回仅为用户推测",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "生产只读不重启不写入不watch，不推进全局游标或宣称常驻采集已追平；沿用原读模型和界面，不改29日历史",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "逐封语义不能用源细分类/关键词脚本替代；UID证据与附件/ZIP/来源关系须真实；已授权补报不等于人的最终验收",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "id": "C3",
+        "statement": "例外仅适用用户明确决定及冻结身份；不得丢邮件、删元数据、伪造ready或冒称撤回已核实，也不授权其他缺失文件或安全/权限豁免",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "完整自然日日报由一致来源集合及实际证据支撑，不能以调度触发、低报数量或状态改名证明完整",
+        "derived_from": [
+          "F1",
+          "F2",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "邮件分类的现象/阶段/诉求与证据必须逐封解释，统计应在真实语义结果上构造",
+        "derived_from": [
+          "C2"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "完整邮件集合、实际可得附件和具体经授权缺口是独立事实；读取模型须同时保留而非以一项覆盖另一项",
+        "derived_from": [
+          "F3",
+          "F4",
+          "C3"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "明确日期范围捕获、局部入库及闭合证明既可补报，也保留全局未追平事实",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "逐封审阅并在同日证据上聚合，防止复用细碎原组或旧结论",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md"
+        ]
+      },
+      {
+        "from_ref": "P3",
+        "to_ref": "O1",
+        "rationale": "显式来源绑定例外并保存未取得状态，可继续921封分析并阻止未授权或错误附件被当作已校验",
+        "evidence_refs": [
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "将旧72封或29日作为30日完整日报发布",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "无需补采",
+          "违反完整日和日期要求"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "一次性日期限定只读捕获、局部入库、独立全天审阅并发布；例外证据保存在本日不可变报告内，逐ID/快照验证，缺失原件真实标注",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "tradeoffs": [
+          "保留全部邮件与元数据，实际附件和经授权缺口分别计数，可追溯",
+          "需要输入契约、校验和界面状态同步，不能把人工决定当成真实文件"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "恢复常驻全量同步并擅自重启生产",
+        "status": "Rejected",
+        "derived_from": [
+          "C1"
+        ],
+        "tradeoffs": [
+          "可更新更大范围",
+          "超出本次明确授权"
+        ]
+      },
+      {
+        "id": "O3",
+        "description": "将每次批准缺失ID保存在全局共享例外注册表，再由报告读取",
+        "status": "Rejected",
+        "derived_from": [
+          "P3"
+        ],
+        "tradeoffs": [
+          "同样能表达逐ID批准",
+          "引入跨日期共享状态与额外配置依赖，报告移交无法仅凭本日证据复核"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "本地reader一致冻结后逐封语义及UID/角色审阅；核验可取得752原件，按用户具体决定保留五件不可取元数据及完整限制，复核全主组/残余",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "实现与本日来源绑定的具体附件缺失证据契约、界面未取得标注及来源/子组ZIP完整关系检查，正反向测试防止全局放宽",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+      "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+      "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+      "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+    ],
+    "source_refs": [
+      ".runtime/daily-work/2026-10-30/task-source.md",
+      ".runtime/daily-work/2026-10-30/task-survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-05",
+      "DT-06",
+      "DT-08"
+    ],
+    "primary_development_type": "DT-05",
+    "development_type_scopes": {
+      "DT-05": [
+        "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+      ],
+      "DT-06": [
+        "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+      ],
+      "DT-08": [
+        "一次性受限源捕获、本地日期数据整合与闭合证明",
+        "10月30日逐封审阅及完整附件/ZIP",
+        "沿现有3030日期发布与验证"
+      ]
+    },
+    "change_surfaces": [
+      "AI/Data Governance",
+      "UI/UX",
+      "Agent/Collaboration"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        ".runtime/daily-work/2026-10-30/task-survey.md"
+      ],
+      "E02": [
+        ".runtime/daily-work/2026-10-30/task-survey.md"
+      ],
+      "E03": [
+        ".runtime/daily-work/2026-10-30/task-survey.md"
+      ],
+      "E04": [
+        ".runtime/daily-work/2026-10-30/task-survey.md"
+      ],
+      "E05": [
+        ".runtime/daily-work/2026-10-30/task-survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Reference"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      ".runtime/daily-work/2026-10-30/task-source.md",
+      ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-31T06:33:16.967656Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-31T06:33:16.967656Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-31T06:33:16.967656Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "task_profile.applicability_facts.external_behavior_change",
+      "old_value": "Yes",
+      "new_value": "No",
+      "reason": "既有能力的日期内容补报不改变产品行为/契约，保留DT-08及数据AI影响，纠正初始化将新数据误归行为变更",
+      "basis": ".runtime/daily-work/2026-10-30/profile-correction.md",
+      "changed_at": "2026-10-31T06:34:55.044772Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "request_snapshot",
+      "old_value": {
+        "language": "zh",
+        "text": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+        "captured_at": "2026-10-31T06:33:16.917956Z"
+      },
+      "new_value": {
+        "language": "zh",
+        "text": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成\n\n本轮实际补充答复：取不到估计就是撤回了，不用管\n原问题和五件ID的精确范围见 .runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+        "captured_at": "2026-10-31T06:33:16.917956Z"
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225617Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "scope",
+      "old_value": {
+        "in_scope": [
+          "一次性受限源捕获、本地日期数据整合与闭合证明",
+          "10月30日逐封审阅及完整附件/ZIP",
+          "沿现有3030日期发布与验证"
+        ],
+        "out_of_scope": [
+          "生产重启/写入/watch，其他日期正式日报/历史/产品源码/权限/凭据/网络/调度/MCP变更及Git推送"
+        ],
+        "allowed_paths": [
+          ".runtime/daily-work/2026-10-30/**",
+          ".runtime/daily-reports/2026-10-30/**",
+          ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+          ".project-governance/generated/**",
+          ".project-governance/project-state.json",
+          ".project-governance/README.md",
+          "update_log/2026-10-31-daily-20261030-publication.md"
+        ],
+        "forbidden_actions": [
+          "扩大源采集用途、推进全局增量游标或把全局DEGRADED改READY、伪造完整数据或覆盖历史"
+        ]
+      },
+      "new_value": {
+        "in_scope": [
+          "一次性受限源捕获、本地日期数据整合与闭合证明",
+          "10月30日逐封审阅及完整附件/ZIP",
+          "沿现有3030日期发布与验证",
+          "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+        ],
+        "out_of_scope": [
+          "生产重启/写入/watch，其他日期正式日报/历史/权限/凭据/网络/调度/MCP变更及Git推送；本次例外之外不放宽附件完整性"
+        ],
+        "allowed_paths": [
+          ".runtime/daily-work/2026-10-30/**",
+          ".runtime/daily-reports/2026-10-30/**",
+          ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/**",
+          ".project-governance/generated/**",
+          ".project-governance/project-state.json",
+          ".project-governance/README.md",
+          "update_log/2026-10-31-daily-20261030-publication.md",
+          "insights/daily_generation.py",
+          "assets/daily-board.js",
+          "tests/test_daily_generation.py",
+          "tests/test_daily_board.py",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/execution.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/source-map.md"
+        ],
+        "forbidden_actions": [
+          "扩大源采集用途、推进全局增量游标或把全局DEGRADED改READY、伪造完整数据或覆盖历史"
+        ]
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225651Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-08"
+        ],
+        "primary_development_type": "DT-08",
+        "development_type_scopes": {
+          "DT-08": [
+            "一次性受限源捕获、本地日期数据整合与闭合证明",
+            "10月30日逐封审阅及完整附件/ZIP",
+            "沿现有3030日期发布与验证"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/2026-10-30/task-source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "No",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-05",
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-05",
+        "development_type_scopes": {
+          "DT-05": [
+            "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+          ],
+          "DT-06": [
+            "来源、原日志ZIP及子组绑定校验"
+          ],
+          "DT-08": [
+            "一次性受限源捕获、本地日期数据整合与闭合证明",
+            "10月30日逐封审阅及完整附件/ZIP",
+            "沿现有3030日期发布与验证"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "UI/UX",
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225679Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "acceptance",
+      "old_value": {
+        "criteria": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending"
+        ],
+        "decision_owner": "task-initiator"
+      },
+      "new_value": {
+        "criteria": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+        ],
+        "decision_owner": "task-initiator"
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225694Z"
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "path": "plan",
+      "old_value": {
+        "steps": [
+          "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+          "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+          "本地reader一致冻结后，逐封语义及UID/角色审阅、全部附件只读获取，复核主组/残余和本日结论",
+          "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档"
+        ],
+        "verification": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending"
+        ],
+        "rollback": [
+          "入库前保存受影响镜像及投影/全局状态前像；本地事务错误整体回滚。发布前保持日期不可见；正式发布后保留不可变原件及证据，必要纠偏另行可追溯归档，不删除历史"
+        ]
+      },
+      "new_value": {
+        "steps": [
+          "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+          "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+          "本地reader一致冻结后逐封语义及UID/角色审阅；核验可取得752原件，按用户具体决定保留五件不可取元数据及完整限制，复核全主组/残余",
+          "实现与本日来源绑定的具体附件缺失证据契约、界面未取得标注及来源/子组ZIP完整关系检查，正反向测试防止全局放宽",
+          "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档"
+        ],
+        "verification": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+        ],
+        "rollback": [
+          "入库前保存受影响镜像及投影/全局状态前像；本地事务错误整体回滚。发布前保持日期不可见；正式发布后保留不可变原件及证据，必要纠偏另行可追溯归档，不删除历史"
+        ]
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225711Z"
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "交付有真实全天来源且质量对齐最终标准的10月30日日报，补采后保持生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "原副本只有72封且水位不足，prepare真实阻断；不是0封日",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/backfill-status.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "已获明确一次性只读授权并取得同一RR源快照921封/757附件元数据，持久配置未变",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+              ".runtime/daily-work/2026-10-30/source-capture-result.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "生产只读不重启不写入不watch，不推进全局游标或宣称常驻采集已追平；沿用原读模型和界面，不改29日历史",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "逐封语义不能用源细分类/关键词脚本替代；UID证据与附件/ZIP/来源关系须真实；已授权补报不等于人的最终验收",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "完整自然日日报由一致来源集合及实际证据支撑，不能以调度触发、低报数量或状态改名证明完整",
+            "derived_from": [
+              "F1",
+              "F2",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "邮件分类的现象/阶段/诉求与证据必须逐封解释，统计应在真实语义结果上构造",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "明确日期范围捕获、局部入库及闭合证明既可补报，也保留全局未追平事实",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "逐封审阅并在同日证据上聚合，防止复用细碎原组或旧结论",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "将旧72封或29日作为30日完整日报发布",
+            "status": "Rejected",
+            "derived_from": [
+              "P1"
+            ],
+            "tradeoffs": [
+              "无需补采",
+              "违反完整日和日期要求"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "一次性日期限定只读捕获、局部入库、独立全天审阅并发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "符合已明确授权且质量可核验",
+              "须完成921封语义及757附件真实核对"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "恢复常驻全量同步并擅自重启生产",
+            "status": "Rejected",
+            "derived_from": [
+              "C1"
+            ],
+            "tradeoffs": [
+              "可更新更大范围",
+              "超出本次明确授权"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "本地reader一致冻结后，逐封语义及UID/角色审阅、全部附件只读获取，复核主组/残余和本日结论",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "交付有真实全天来源且质量对齐最终标准的10月30日日报，补采后保持生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "原副本只有72封且水位不足，prepare真实阻断；不是0封日",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/backfill-status.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "已获明确一次性只读授权并取得同一RR源快照921封/757附件元数据，持久配置未变",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+              ".runtime/daily-work/2026-10-30/source-capture-result.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "752原件已实际取得；104621原UID不存在，六文件夹按Message-ID均未找到，五件不能从现有邮箱取得",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/result.json",
+              ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/readonly-message-location.json"
+            ]
+          },
+          {
+            "id": "F4",
+            "statement": "用户对五件原件明确回复不用管，允许跳过获取；撤回仅为用户推测",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "生产只读不重启不写入不watch，不推进全局游标或宣称常驻采集已追平；沿用原读模型和界面，不改29日历史",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "逐封语义不能用源细分类/关键词脚本替代；UID证据与附件/ZIP/来源关系须真实；已授权补报不等于人的最终验收",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "例外仅适用用户明确决定及冻结身份；不得丢邮件、删元数据、伪造ready或冒称撤回已核实，也不授权其他缺失文件或安全/权限豁免",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "完整自然日日报由一致来源集合及实际证据支撑，不能以调度触发、低报数量或状态改名证明完整",
+            "derived_from": [
+              "F1",
+              "F2",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "邮件分类的现象/阶段/诉求与证据必须逐封解释，统计应在真实语义结果上构造",
+            "derived_from": [
+              "C2"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "完整邮件集合、实际可得附件和具体经授权缺口是独立事实；读取模型须同时保留而非以一项覆盖另一项",
+            "derived_from": [
+              "F3",
+              "F4",
+              "C3"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "明确日期范围捕获、局部入库及闭合证明既可补报，也保留全局未追平事实",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "逐封审阅并在同日证据上聚合，防止复用细碎原组或旧结论",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md"
+            ]
+          },
+          {
+            "from_ref": "P3",
+            "to_ref": "O1",
+            "rationale": "显式来源绑定例外并保存未取得状态，可继续921封分析并阻止未授权或错误附件被当作已校验",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "将旧72封或29日作为30日完整日报发布",
+            "status": "Rejected",
+            "derived_from": [
+              "P1"
+            ],
+            "tradeoffs": [
+              "无需补采",
+              "违反完整日和日期要求"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "一次性日期限定只读捕获、局部入库、独立全天审阅并发布；例外证据保存在本日不可变报告内，逐ID/快照验证，缺失原件真实标注",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "tradeoffs": [
+              "保留全部邮件与元数据，实际附件和经授权缺口分别计数，可追溯",
+              "需要输入契约、校验和界面状态同步，不能把人工决定当成真实文件"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "恢复常驻全量同步并擅自重启生产",
+            "status": "Rejected",
+            "derived_from": [
+              "C1"
+            ],
+            "tradeoffs": [
+              "可更新更大范围",
+              "超出本次明确授权"
+            ]
+          },
+          {
+            "id": "O3",
+            "description": "将每次批准缺失ID保存在全局共享例外注册表，再由报告读取",
+            "status": "Rejected",
+            "derived_from": [
+              "P3"
+            ],
+            "tradeoffs": [
+              "同样能表达逐ID批准",
+              "引入跨日期共享状态与额外配置依赖，报告移交无法仅凭本日证据复核"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md"
+            ]
+          },
+          {
+            "id": "K4",
+            "statement": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+            "source_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "核对授权和一致捕获，冻结本地将变记录及全局游标前像",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "在本地原事务导入日期与必要上下文，重建既有读取模型并验证严格集合与原始字节，保存日期范围证明",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "本地reader一致冻结后逐封语义及UID/角色审阅；核验可取得752原件，按用户具体决定保留五件不可取元数据及完整限制，复核全主组/残余",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "实现与本日来源绑定的具体附件缺失证据契约、界面未取得标注及来源/子组ZIP完整关系检查，正反向测试防止全局放宽",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          },
+          {
+            "plan_step": "运行build及独立ZIP原件/子组绑定/review来源审计；验证真实日期页面后原子发布并留档",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3",
+              "K4"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ]
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225768Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "path": "authority",
+      "old_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          ".runtime/daily-work/2026-10-30/task-source.md"
+        ],
+        "authority_assessments": [
+          {
+            "reference": ".runtime/daily-work/2026-10-30/task-source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "一次性受限源捕获、本地日期数据整合与闭合证明",
+              "10月30日逐封审阅及完整附件/ZIP",
+              "沿现有3030日期发布与验证"
+            ],
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md",
+              ".runtime/daily-work/2026-10-30/source-read-authorization.json"
+            ],
+            "verified_at": "2026-10-31T06:33:16.784887+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "new_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ],
+        "authority_assessments": [
+          {
+            "reference": ".runtime/daily-work/2026-10-30/task-source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "一次性受限源捕获、本地日期数据整合与闭合证明",
+              "10月30日逐封审阅及完整附件/ZIP",
+              "沿现有3030日期发布与验证"
+            ],
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/task-source.md",
+              ".runtime/daily-work/2026-10-30/task-survey.md",
+              ".runtime/daily-work/2026-10-30/source-read-authorization.json"
+            ],
+            "verified_at": "2026-10-31T06:33:16.784887+00:00",
+            "expires_at": null
+          },
+          {
+            "reference": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+            ],
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+            ],
+            "verified_at": "2026-10-31T07:23:14.888455+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225782Z"
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Open",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+          ],
+          "acceptance_refs": [
+            3
+          ]
+        }
+      ],
+      "reason": "用户实际允许跳过104621五件不可取得附件；将严格全原件条件修订为可核对的具体来源绑定例外，保留全部邮件与元数据、不伪造成功，并同步必要代码/界面/技能契约和来源ZIP关系校验",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:31:27.225800Z"
+    },
+    {
+      "from_revision": 10,
+      "to_revision": 11,
+      "path": "clarification",
+      "old_value": {
+        "state": "Open",
+        "mode": "Skipped",
+        "notice": "补采边界已获明确授权，不再重复确认。本次只补报10月30日，沿用已确认的分类、UID、附件和白底布局标准；10月29日历史版保持不变。",
+        "survey_refs": [
+          ".runtime/daily-work/2026-10-30/task-survey.md"
+        ],
+        "rounds": [],
+        "basis": "日期、质量基准、补采边界和授权已由既有原话及本次明确答复确定，无新增待确认项，不重复提问",
+        "reopened_by": [
+          "amendment:scope",
+          "amendment:acceptance"
+        ]
+      },
+      "new_value": {
+        "state": "Settled",
+        "mode": "Asked",
+        "notice": "补采边界已获明确授权，不再重复确认。本次只补报10月30日，沿用已确认的分类、UID、附件和白底布局标准；10月29日历史版保持不变。",
+        "survey_refs": [
+          ".runtime/daily-work/2026-10-30/task-survey.md",
+          ".runtime/daily-work/2026-10-30/attachment-fetch-attempt-01/readonly-message-location.json"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-10-31T07:11:19.171Z",
+            "exchanges": [
+              {
+                "question": "请提供邮件104621这5个原件的只读下载链接，或离线ZIP在此电脑的绝对路径。当前IMAP已取不到原邮件，本机也无副本；生产Agent取件提示词已准备好：D:/LFEN_project/dev_project/complaint-insights/.runtime/daily-work/2026-10-30/production-agent-five-attachments.md。我会继续完成其余审阅，待原件到位后核验并发布完整日报。",
+                "changes": "Acceptance",
+                "recommended_default": "",
+                "answer": "取不到估计就是撤回了，不用管",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "本轮新增问题与用户答复已实际发生，并有宿主journal原始事件时间/SHA绑定；用户明确允许跳过具体五件原件，未授权扩大例外；原阶段零轮历史不删除。",
+        "reopened_by": [
+          "amendment:scope",
+          "amendment:acceptance"
+        ]
+      },
+      "reason": "保留修订重开事实，登记已实际提问和明确答复的真实轮次及journal时间，使用精确在范围字符串修正类型映射；不伪造或重新请求已有授权",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:34:34.482189Z"
+    },
+    {
+      "from_revision": 11,
+      "to_revision": 12,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-05",
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-05",
+        "development_type_scopes": {
+          "DT-05": [
+            "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+          ],
+          "DT-06": [
+            "来源、原日志ZIP及子组绑定校验"
+          ],
+          "DT-08": [
+            "一次性受限源捕获、本地日期数据整合与闭合证明",
+            "10月30日逐封审阅及完整附件/ZIP",
+            "沿现有3030日期发布与验证"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "UI/UX",
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-05",
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-05",
+        "development_type_scopes": {
+          "DT-05": [
+            "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+          ],
+          "DT-06": [
+            "按实际用户决定支持来源绑定的具体附件缺失例外，真实显示752/757和未取得元数据、禁用不完整子组ZIP，并校验来源与ZIP关系"
+          ],
+          "DT-08": [
+            "一次性受限源捕获、本地日期数据整合与闭合证明",
+            "10月30日逐封审阅及完整附件/ZIP",
+            "沿现有3030日期发布与验证"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "UI/UX",
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/2026-10-30/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/2026-10-30/task-source.md",
+          ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "Yes",
+          "external_behavior_change": "Yes",
+          "design_change": "Yes",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "保留修订重开事实，登记已实际提问和明确答复的真实轮次及journal时间，使用精确在范围字符串修正类型映射；不伪造或重新请求已有授权",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:34:34.482234Z"
+    },
+    {
+      "from_revision": 12,
+      "to_revision": 13,
+      "path": "decisions",
+      "old_value": [
+        {
+          "id": "D-DAILY-BACKFILL-PROCEED",
+          "kind": "Proceed",
+          "presented": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 10 月 30 日日报所需的邮件、分类和附件元数据？不重启或写入生产库，不启动常驻采集；完成后保持隔离。当前本地只有 72 封，水位停在 10 月 30 日 01:13。",
+          "response": "允许一次性只读补采（推荐）",
+          "decided_by": "user",
+          "decided_at": "2026-10-31T06:20:26.440415+00:00",
+          "evidence_ref": ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+          "outcome": "Approved"
+        }
+      ],
+      "new_value": [
+        {
+          "id": "D-DAILY-BACKFILL-PROCEED",
+          "kind": "Proceed",
+          "presented": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 10 月 30 日日报所需的邮件、分类和附件元数据？不重启或写入生产库，不启动常驻采集；完成后保持隔离。当前本地只有 72 封，水位停在 10 月 30 日 01:13。",
+          "response": "允许一次性只读补采（推荐）",
+          "decided_by": "user",
+          "decided_at": "2026-10-31T06:20:26.440415+00:00",
+          "evidence_ref": ".runtime/daily-work/2026-10-30/source-read-authorization.json",
+          "outcome": "Approved"
+        },
+        {
+          "id": "D-DAILY-FIVE-UNAVAILABLE-PROCEED",
+          "kind": "Proceed",
+          "presented": "请提供邮件104621这5个原件的只读下载链接，或离线ZIP在此电脑的绝对路径。当前IMAP已取不到原邮件，本机也无副本；生产Agent取件提示词已准备好：D:/LFEN_project/dev_project/complaint-insights/.runtime/daily-work/2026-10-30/production-agent-five-attachments.md。我会继续完成其余审阅，待原件到位后核验并发布完整日报。",
+          "response": "取不到估计就是撤回了，不用管",
+          "decided_by": "user",
+          "decided_at": "2026-10-31T07:20:43.972Z",
+          "evidence_ref": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+          "outcome": "Approved"
+        }
+      ],
+      "reason": "保留修订重开事实，登记已实际提问和明确答复的真实轮次及journal时间，使用精确在范围字符串修正类型映射；不伪造或重新请求已有授权",
+      "basis": ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+      "changed_at": "2026-10-31T07:34:34.482252Z"
+    },
+    {
+      "from_revision": 13,
+      "to_revision": 14,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Open",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+          ],
+          "acceptance_refs": [
+            3
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/local-import-result.json",
+            ".runtime/daily-work/2026-10-30/local-status-final.json",
+            ".runtime/daily-work/2026-10-30/source-capture-result.json",
+            ".runtime/daily-work/2026-10-30/source-preflight-result.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "一次性只读补采完整闭日数据，保持生产隔离和全局游标",
+                "actual": "真实只读TLS捕获完成并结束；本地data_version25，冻结921封/757元数据；持久读取false、全局DEGRADED及原53167/224212游标不变",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/source-preflight-result.json",
+                  ".runtime/daily-work/2026-10-30/source-capture-result.json",
+                  ".runtime/daily-work/2026-10-30/local-import-result.json",
+                  ".runtime/daily-work/2026-10-30/local-status-final.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/review.json",
+            ".runtime/daily-work/2026-10-30/root-adjudications.json",
+            ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "921封全部有语义审阅/摘要/分类依据与UID来源角色；全主子组及残余复核，752可取得原件和完整子组ZIP核验",
+                "actual": "3分区各307封，根端39裁决/11补译；16主类355子类及22残余复核；752原件、40ZIP的122原日志/原包与源逐字节匹配，5件缺件保留757全元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/review.json",
+                  ".runtime/daily-work/2026-10-30/root-adjudications.json",
+                  ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "按既有最终白底布局发布真实2026-10-30日报，默认昨天/历史/缺报和所有既有交互有效，29日不覆盖",
+                "actual": "真实3030默认30日921封；29日634原SHA，31日整页未生成；实际921详情/752原件入口/688预览/40ZIP、原译独立/4排序/分页/小时筛选通过，用户验收Pending",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+            ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+            ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [
+              "原件确未取得且用户针对具体范围明确允许跳过",
+              "所选子问题包含未取得的原日志"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "真实用户允许跳过的5个缺件",
+                "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+                "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+                  ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+                "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+                "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+                  ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "104621所在子组含60925/60926缺失日志",
+                "expected": "子问题含未取得日志时不提供不完整ZIP",
+                "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "原件完整的手册登录等子组",
+                "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+                "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "真实补报已发布并核验，逐条交代原话及条件反例；本轮既有日报管线修复归入此前已授权原审查，新增直接依赖以便后续绑定当前交付，不重复询问审查授权",
+      "basis": ".runtime/daily-work/2026-10-30/published-independent-audit.json；published-http-verification.json；published-ui-verification.json；已授权原审查T-INSIGHTS-DAILY-AUTO-20261030-01",
+      "changed_at": "2026-10-31T09:25:31.654709Z"
+    },
+    {
+      "from_revision": 14,
+      "to_revision": 15,
+      "path": "depends_on",
+      "old_value": [
+        "T-INSIGHTS-DAILY-REPAIR-20261031-04"
+      ],
+      "new_value": [
+        "T-INSIGHTS-DAILY-REPAIR-20261031-04",
+        "T-INSIGHTS-DAILY-AUTO-20261030-01"
+      ],
+      "reason": "真实补报已发布并核验，逐条交代原话及条件反例；本轮既有日报管线修复归入此前已授权原审查，新增直接依赖以便后续绑定当前交付，不重复询问审查授权",
+      "basis": ".runtime/daily-work/2026-10-30/published-independent-audit.json；published-http-verification.json；published-ui-verification.json；已授权原审查T-INSIGHTS-DAILY-AUTO-20261030-01",
+      "changed_at": "2026-10-31T09:25:31.654732Z"
+    },
+    {
+      "from_revision": 15,
+      "to_revision": 16,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/local-import-result.json",
+            ".runtime/daily-work/2026-10-30/local-status-final.json",
+            ".runtime/daily-work/2026-10-30/source-capture-result.json",
+            ".runtime/daily-work/2026-10-30/source-preflight-result.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "一次性只读补采完整闭日数据，保持生产隔离和全局游标",
+                "actual": "真实只读TLS捕获完成并结束；本地data_version25，冻结921封/757元数据；持久读取false、全局DEGRADED及原53167/224212游标不变",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/source-preflight-result.json",
+                  ".runtime/daily-work/2026-10-30/source-capture-result.json",
+                  ".runtime/daily-work/2026-10-30/local-import-result.json",
+                  ".runtime/daily-work/2026-10-30/local-status-final.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/review.json",
+            ".runtime/daily-work/2026-10-30/root-adjudications.json",
+            ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "921封全部有语义审阅/摘要/分类依据与UID来源角色；全主子组及残余复核，752可取得原件和完整子组ZIP核验",
+                "actual": "3分区各307封，根端39裁决/11补译；16主类355子类及22残余复核；752原件、40ZIP的122原日志/原包与源逐字节匹配，5件缺件保留757全元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/review.json",
+                  ".runtime/daily-work/2026-10-30/root-adjudications.json",
+                  ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "按既有最终白底布局发布真实2026-10-30日报，默认昨天/历史/缺报和所有既有交互有效，29日不覆盖",
+                "actual": "真实3030默认30日921封；29日634原SHA，31日整页未生成；实际921详情/752原件入口/688预览/40ZIP、原译独立/4排序/分页/小时筛选通过，用户验收Pending",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+            ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+            ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [
+              "原件确未取得且用户针对具体范围明确允许跳过",
+              "所选子问题包含未取得的原日志"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "真实用户允许跳过的5个缺件",
+                "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+                "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+                  ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+                "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+                "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+                  ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "104621所在子组含60925/60926缺失日志",
+                "expected": "子问题含未取得日志时不提供不完整ZIP",
+                "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "原件完整的手册登录等子组",
+                "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+                "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "仅一次性读取10月30日日报所需源数据及必要上下文，真实只读/TLS、无生产重启写入或watch，持久隔离配置不变；本地入库源PK和原件元数据与一致捕获闭合，全局游标及未追平状态不伪造",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/local-import-result.json",
+            ".runtime/daily-work/2026-10-30/local-status-final.json",
+            ".runtime/daily-work/2026-10-30/source-capture-result.json",
+            ".runtime/daily-work/2026-10-30/source-preflight-result.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "一次性只读补采完整闭日数据，保持生产隔离和全局游标",
+                "actual": "真实只读TLS捕获完成并结束；本地data_version25，冻结921封/757元数据；持久读取false、全局DEGRADED及原53167/224212游标不变",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/source-preflight-result.json",
+                  ".runtime/daily-work/2026-10-30/source-capture-result.json",
+                  ".runtime/daily-work/2026-10-30/local-import-result.json",
+                  ".runtime/daily-work/2026-10-30/local-status-final.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "从完整921封和757附件冻结集合逐封分析，全部有中文摘要、独立业务主子问题、状态口径、UID命名空间及真实链/账号角色；全主类与残余复核，原信及发件/送达/原ToCc保留，实际附件及全子组日志ZIP绑定同一版本；用户仅允许跳过104621的五件未取得原件，保留全部757元数据和921封邮件，不冒称757件全部取得，其他752件须实际核验",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/review.json",
+            ".runtime/daily-work/2026-10-30/root-adjudications.json",
+            ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "921封全部有语义审阅/摘要/分类依据与UID来源角色；全主子组及残余复核，752可取得原件和完整子组ZIP核验",
+                "actual": "3分区各307封，根端39裁决/11补译；16主类355子类及22残余复核；752原件、40ZIP的122原日志/原包与源逐字节匹配，5件缺件保留757全元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/review.json",
+                  ".runtime/daily-work/2026-10-30/root-adjudications.json",
+                  ".runtime/daily-work/2026-10-30/root-subgroup-adjudication.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "建议你先完成昨天的日报生成，由于某种原因，昨天的日报定时任务没有按时生成",
+          "reading": "以原最终布局在3030发布2026-10-30真实日报，计数/Top10/增长/时图/来源和质量闭合，默认今天看昨天且手选历史有效；不覆盖29日，不复制旧数字，完整来源审阅、HTTP/GUI与真实限制留档，最终用户验收Pending",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "本轮真实数据与运行环境",
+                "expected": "按既有最终白底布局发布真实2026-10-30日报，默认昨天/历史/缺报和所有既有交互有效，29日不覆盖",
+                "actual": "真实3030默认30日921封；29日634原SHA，31日整页未生成；实际921详情/752原件入口/688预览/40ZIP、原译独立/4排序/分页/小时筛选通过，用户验收Pending",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-ui-sort-comparison.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261031-01/verification/publication.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "本轮实际补充答复：取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+            ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+            ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "f0dc0366811ff2f8d429e46cac300b504e0ef27482f6949ddae1747d5fbcf149",
+            "conditions": [
+              "原件确未取得且用户针对具体范围明确允许跳过",
+              "所选子问题包含未取得的原日志"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "真实用户允许跳过的5个缺件",
+                "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+                "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+                  ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+                "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+                "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+                  ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "104621所在子组含60925/60926缺失日志",
+                "expected": "子问题含未取得日志时不提供不完整ZIP",
+                "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "原件完整的手册登录等子组",
+                "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+                "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "原问题和五件ID的精确范围见 .runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+          "reading": "来源定位指针，说明原问题与具体五件范围证据保存位置，不是新增产品行为；不可从中推定其他文件或未来日期的跳过授权。",
+          "state": "NotARequirement",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json"
+          ],
+          "acceptance_refs": []
+        },
+        {
+          "id": "R-006",
+          "source": "clarification:r1.e1",
+          "quote": "取不到估计就是撤回了，不用管",
+          "reading": "没有有效具体授权时缺任意附件继续阻断；例外与本日快照、邮件、附件ID和原文件身份一致且随发布证据保存，不能掩盖已有字节损坏；涉及缺失日志的子组不提供不完整ZIP，页面明确标注未取得。正常完整报告及29日历史资源不变。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+            ".runtime/daily-work/2026-10-30/legacy-29-regression.json",
+            ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+            ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+            ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+            ".runtime/daily-work/2026-10-30/published-http-verification.json",
+            ".runtime/daily-work/2026-10-30/published-independent-audit.json",
+            ".runtime/daily-work/2026-10-30/published-ui-verification.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "6db1ca7cf9280f6401c7cf673a214a257e12570fb7ed38cb11bcce4136bd7980",
+            "conditions": [
+              "原件确未取得且用户针对具体范围明确允许跳过",
+              "所选子问题包含未取得的原日志"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "真实用户允许跳过的5个缺件",
+                "expected": "具体五件无法取得且用户明确允许跳过时，保留未取得及全部元数据，不认证撤回",
+                "actual": "60925–60929绑定同日/源/邮件/附件身份，原始答复与宿主事件SHA可核对；752/757分别计数，5件未ready且原件/预览404",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/missing-attachments-user-decision.json",
+                  ".runtime/daily-work/2026-10-30/attachment-exceptions.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "负例夹具无授权/错身份/现存坏字节；正常29完整原件",
+                "expected": "缺具体有效授权、来源或身份错绑、已有坏字节均继续阻断，不扩大例外",
+                "actual": "对应缺件默认阻断、错源/日期/归属/大小/原名/源ID/决定、已有坏字节和额外缺件反例全部通过；完整29日报告保持0例外",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/policy-related-tests-final.log",
+                  ".runtime/daily-work/2026-10-30/policy-code-verification.final.json",
+                  ".runtime/daily-work/2026-10-30/legacy-29-regression.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "Met",
+                "input": "104621所在子组含60925/60926缺失日志",
+                "expected": "子问题含未取得日志时不提供不完整ZIP",
+                "actual": "40万撤离价值任务子组按钮disabled，无下载链接，两个缺失原日志仍保留元数据",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              },
+              {
+                "condition": 1,
+                "branch": "NotMet",
+                "input": "原件完整的手册登录等子组",
+                "expected": "完整子组提供全部日志，不受临时搜索或分页影响",
+                "actual": "40个ZIP实际字节及122原日志/原包核对；手册登录子组6日志/3邮件，搜索无结果时仍为同一完整ZIP",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-30/published-ui-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-http-verification.json",
+                  ".runtime/daily-work/2026-10-30/published-independent-audit.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "首轮close按原话完整源检查指出前缀句、来源指针和独立澄清来源未逐项交代，保留真实原话并补完整来源覆盖，不改变产品或授权",
+      "basis": ".runtime/daily-work/2026-10-30/engineering-close-FER.md；官方validate_requirement_items require_discharge完整通过",
+      "changed_at": "2026-10-31T09:34:10.299565Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "0148a6e98e00f4c50c13246e82e58abb75da70e6db99c9fe5ab50abb6a4f39a5",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Reference",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-05",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:development_types:DT-08",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

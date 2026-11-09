@@ -1,0 +1,140 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03",
+  "revision": 1,
+  "status": "Implemented",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-30T13:12:50.378514Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T13:12:50.378725Z"
+  },
+  "established_facts": [
+    "新候选从已核验原件重新转换预览；无关有效图、空图与日志不再重签；正式已发布读取不重新转换",
+    "原版815文件完整按SHA归档，已授权三封历史归属纠偏以7d64a539修订原子切换；总数634/405/35、原信UID邮箱时间和资源字节保持",
+    "默认昨天、白底、00:30本会话、生产隔离及所有服务PID保持；旧API元数据仍未热部署"
+  ],
+  "actual_changes": [
+    "预览适配器增加候选重建控制，build使用；固定两个已审旧格式SHA兼容，修订版强制预览摘要校验",
+    "三封历史分类和派生导航/排行/搜索修订，原版完整保留；安装skill1.0.3、质量基准、测试与交接日志同步"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "75项相关回归与新缓存反例、坏原件及PDF失败正反通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/preview-history-repair/tests-A02.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "候选/旧版全量原件、358预览摘要与ZIP、815文件归档、CAS过期拒绝均通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/preview-history-repair/revision-published.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "安装skill完整读取与两地址默认/详情/图片/文本/PDF/ZIP及日期版本边界通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/preview-history-repair/verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "真实浏览器同切图8封含原信与补件、脚本2封合组、版本ZIP、634行与白底通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/preview-history-repair/ui-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "原文逐条及条件正反和限制留档",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-03/verification/coverage.md"
+      ]
+    }
+  ],
+  "incomplete_items": [],
+  "legacy_issues": [
+    {
+      "summary": "未来真实新日日报受既有生产隔离与副本水位限制",
+      "reason": "生产采集原已隔离，本地副本DEGRADED且水位未覆盖后续完整业务日",
+      "impact": "未来真实新日报在本地数据达到READY且覆盖日终前不能发布；自动化保留配置并报告实际阻塞",
+      "owner": "生产采集维护者（本任务未指定具体个人；需用户另行授权）",
+      "reentry_condition": "用户另行明确授权恢复采集；本地副本READY、源和辅助水位覆盖对应日终后再按skill生成"
+    }
+  ],
+  "decisions": [
+    "沿用父Accepted审查修复授权，返修用户验收Pending；后续完整轮次以本次保存版本重新计数"
+  ],
+  "evidence_refs": [
+    ".runtime/daily-automation-20261030/preview-history-repair/delivery-manifest.json",
+    ".runtime/daily-automation-20261030/preview-history-repair/source-changes.patch",
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-03/release/handoff.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-03/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T12:56:55.543628Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-03/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T12:56:55.543628Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-03/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T12:56:55.543628Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "0aa92af74656d6d05a569ba1f23ce767fe681db903c0f0254584563b28c752d6",
+    "scope_sha256": "38d47e5370b119244377136675245cb779c082a009796dd01c42f7b42c39db36",
+    "delivery_sha256": "9b6c6bd3a99913bf32dc60121efd39c619e85a53081648ad0274824758586a0c",
+    "report_sha256": "a5a123fcf022e601106fd591ed2b5ebc74dfbcf80fa466e25358ad62fd11cca9"
+  },
+  "adversarial_review_parent": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

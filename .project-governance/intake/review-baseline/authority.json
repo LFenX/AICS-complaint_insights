@@ -1,0 +1,18 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "本地独立数据库与原始邮件、AI 分类副本",
+      "增量同步、补充对账和日期分类读取模型",
+      "agent 只读 SQL/API 及生产源切换准备",
+      "MCP 只读查询工具、数据类型说明和交接配置"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "verified_at": "2026-10-29T10:43:57.188199+00:00",
+    "expires_at": null
+  }
+]

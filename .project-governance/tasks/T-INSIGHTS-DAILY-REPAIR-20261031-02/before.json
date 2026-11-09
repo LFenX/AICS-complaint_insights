@@ -1,0 +1,1298 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02",
+  "ordinal": 21,
+  "revision": 2,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-30T18:59:25.475512Z",
+  "frozen_at": "2026-10-30T19:00:26.000630Z",
+  "objective": "按原文纠正3封UID确认及7封角色，完整归档后发布可追溯读取模型并继续父审查",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "启动多轮对抗性审查",
+    "captured_at": "2026-10-30T18:59:25.393887Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "门禁决定已保存。UID纠偏范围已明确，本次跳过提问阶段：3封撤回确认状态、7封补齐原文明确的账号角色，候选数字和来源证据全部保留；切换前完整归档当前版本。",
+    "survey_refs": [
+      ".runtime/daily-automation-20261030/uid-correction/survey.md"
+    ],
+    "rounds": [],
+    "basis": "已有原话、Accepted修复授权和逐封源证据给出单义答案，不新增账号认证、数据访问或权限范围",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+        ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+        ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "原文与附件有游戏UID命名空间支持"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "原/主/误建账号明确的7封及未改的其他有效UID记录",
+            "expected": "保留数值和真实来源，只把7封未指定角色改为明确角色",
+            "actual": "十封HTTP UID对象逐项等于来源绑定候选；7封数值未变，角色沿真实引用闭包继承，其他624封原字段不变",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+              ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+              ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "103199/103290/103337纯数字，原日志/图片无UID补证",
+            "expected": "撤回单值确认，保留候选数字并标待核验，不虚构正确UID",
+            "actual": "三封值为空/state=unverified，fields/candidates.verified=false，UI均显示—/待核验，证据排序不把它们当已确认；单值140/冲突7/待核验5",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+              ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+              ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+        ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+        ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+        ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "当前正式前像与归档校验满足发布条件"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "815文件按SHA归档，完整候选及原源快照",
+            "expected": "全量核对原件/预览/ZIP、十封允许差异后原子切换；旧版完整保留",
+            "actual": "归档与正式非report资源逐字节一致，634/405/35通过audit，358预览有SHA，坏预览反例被拒绝，新829de9与7d64a/b2658历史可核验",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+              ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+              ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+              ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "再次运行单次修订发布器，当前已为新SHA",
+            "expected": "拒绝过期前像，不覆盖或重新发布",
+            "actual": "非0退出且正式SHA保持829de9，拒绝发生于替换前，日志保存",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+              ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+              ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+              ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/uid-correction/tests-A02.log",
+        ".runtime/daily-automation-20261030/uid-correction/forward-input/forward-result.json",
+        ".runtime/daily-automation-20261030/uid-correction/verification.json",
+        ".runtime/daily-automation-20261030/uid-correction/ui-verification.json"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "安装skill1.0.5、新6封独立前向执行、76项回归和双地址HTTP/真实UI",
+            "expected": "纯数字不认证，角色继承明确；未来按真实语义生成，页面既有日期和下载行为保持",
+            "actual": "独立Agent完成6封新原始输入并build/check/私有publish；原始产物和失败记录留存。76项通过，安装10文件/完整634索引/最长正文读取及两地址详情/图片日志PDF/ZIP和日期版本边界通过，真实UI三封待核验/主账号角色/140统计及昨天缺报返回通过",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/uid-correction/tests-A02.log",
+              ".runtime/daily-automation-20261030/uid-correction/forward-input/forward-result.json",
+              ".runtime/daily-automation-20261030/uid-correction/verification.json",
+              ".runtime/daily-automation-20261030/uid-correction/ui-verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/uid-correction/delivery-manifest.json",
+        ".runtime/daily-automation-20261030/uid-correction/source-changes.patch",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-02/release/handoff.md"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "原始授权、工程清单/差异、逐项证据与真实限制",
+            "expected": "保存返修结果归属父会话，后续同版两轮完整审查才可声称通过",
+            "actual": "原文四项及条件正反均已核验；全量旧版、逐封差异和独立前向产物保存。用户最终验收Pending，不把6封工程复核或中断第四轮算干净完整轮次",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/uid-correction/delivery-manifest.json",
+              ".runtime/daily-automation-20261030/uid-correction/source-changes.patch",
+              "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-02/release/handoff.md"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-UID-CORRECTION-PROCEED",
+      "kind": "Proceed",
+      "presented": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+      "response": "启动多轮对抗性审查",
+      "decided_by": "user",
+      "decided_at": "2026-10-30T11:23:42.949803+00:00",
+      "evidence_ref": ".runtime/daily-automation-20261030/review-authorization.json",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-AUTO-20261030-01",
+    "T-INSIGHTS-DAILY-REPAIR-20261031-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T18:59:25.433771Z"
+  },
+  "scope": {
+    "in_scope": [
+      "来源绑定UID状态与角色纠偏",
+      "读取模型完整归档和有限指纹兼容",
+      "安装skill与验证交接同步"
+    ],
+    "out_of_scope": [
+      "数据库写入或启停、真实IMAP/生产、其他服务/调度、公开接口变更、源邮件/附件改动、Git推送"
+    ],
+    "allowed_paths": [
+      "insights/daily_generation.py",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-02/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-02/**",
+      ".project-governance/generated/**",
+      ".project-governance/project-state.json",
+      ".project-governance/README.md",
+      ".runtime/daily-automation-20261030/**",
+      ".runtime/daily-reports/2026-10-29/report.json",
+      ".runtime/report-history/2026-10-29/7d64a5390f87b8bc374351147918ecbd60b29068a1b08b8a698b43a677cb7a2c/**",
+      "update_log/2026-10-31-daily-uid-correction.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+    ],
+    "forbidden_actions": [
+      "覆盖旧版归档、改变源数字和原件、恢复生产或启动其他服务"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      ".runtime/daily-automation-20261030/uid-correction/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": ".runtime/daily-automation-20261030/uid-correction/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "来源绑定UID状态与角色纠偏",
+          "读取模型完整归档和有限指纹兼容",
+          "安装skill与验证交接同步"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md",
+          ".runtime/daily-automation-20261030/review-authorization.json"
+        ],
+        "verified_at": "2026-10-30T18:59:25.245638+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+      "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+      "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+      "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "冻结独立原文和十封差异，完整归档当前读取模型及815资源",
+      "离线纠正UID及派生统计并以全部资源/源字段核对候选后原子切换",
+      "固化skill规则，验证前向语义/回归/真实UI与隔离并保存后交父审查"
+    ],
+    "verification": [
+      "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+      "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+      "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+      "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收"
+    ],
+    "rollback": [
+      "从按SHA完整保留的7d64a归档原子恢复report.json，恢复before代码与skill；不删除修订证据"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "显示的UID确认状态与角色只表达真实原文可证明的含义，历史修订完整可追溯",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "独立逐封原文和附件复核证明3封仅有数字却认证，7封角色未保留，传播闭包穷尽634行",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/survey.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "既有Accepted覆盖同范围质量修复；保留源邮件与候选数字、全量旧版和所有原件，不增加访问或权限",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "数字出现及源结构化标签不能证明游戏UID命名空间，原文明示的账号角色不能丢失",
+        "derived_from": [
+          "F1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "可追溯纠偏需同时保留旧决策字节、原文依据和受限字段差异",
+        "derived_from": [
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "撤销无证据的确认而保留候选、按原文补角色，不臆造正确账号",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "全量归档和离线差异核验使修订可审核与回滚，服务仍读取预计算模型",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "保持现状只补说明",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "没有数据修订",
+          "已确认状态继续超过原文证据"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "完整保留旧版，以10封有限差异生成新读取模型",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "纠正证据含义且保留来源和旧版",
+          "需要全资源核验与新指纹兼容"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "从源重算全部634封UID与分类并重做所有附件",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "完整重建",
+          "独立复核已定位有限变化，重算无关分类扩大本轮变更"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/uid-correction/source.md",
+          ".runtime/daily-automation-20261030/uid-correction/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "冻结独立原文和十封差异，完整归档当前读取模型及815资源",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "离线纠正UID及派生统计并以全部资源/源字段核对候选后原子切换",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      },
+      {
+        "plan_step": "固化skill规则，验证前向语义/回归/真实UI与隔离并保存后交父审查",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+      "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+      "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+      "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收"
+    ],
+    "source_refs": [
+      ".runtime/daily-automation-20261030/uid-correction/source.md",
+      ".runtime/daily-automation-20261030/uid-correction/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "来源绑定UID状态与角色纠偏",
+        "读取模型完整归档和有限指纹兼容",
+        "安装skill与验证交接同步"
+      ]
+    },
+    "change_surfaces": [
+      "AI/Data Governance",
+      "Agent/Collaboration"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        ".runtime/daily-automation-20261030/uid-correction/survey.md"
+      ],
+      "E02": [
+        ".runtime/daily-automation-20261030/uid-correction/survey.md"
+      ],
+      "E03": [
+        ".runtime/daily-automation-20261030/uid-correction/survey.md"
+      ],
+      "E04": [
+        ".runtime/daily-automation-20261030/uid-correction/survey.md"
+      ],
+      "E05": [
+        ".runtime/daily-automation-20261030/uid-correction/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      ".runtime/daily-automation-20261030/uid-correction/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "No",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:59:25.433771Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T18:59:25.433771Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:59:25.433771Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            3
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "三封无命名空间证据的数字撤销确认但保留候选，七封明确角色及真实跨信引用角色全部纠正，单值140/冲突7/待核验5，其他原文/分类/邮箱/时间/资源保持",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+            ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+            ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "原文与附件有游戏UID命名空间支持"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "原/主/误建账号明确的7封及未改的其他有效UID记录",
+                "expected": "保留数值和真实来源，只把7封未指定角色改为明确角色",
+                "actual": "十封HTTP UID对象逐项等于来源绑定候选；7封数值未变，角色沿真实引用闭包继承，其他624封原字段不变",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+                  ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+                  ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "103199/103290/103337纯数字，原日志/图片无UID补证",
+                "expected": "撤回单值确认，保留候选数字并标待核验，不虚构正确UID",
+                "actual": "三封值为空/state=unverified，fields/candidates.verified=false，UI均显示—/待核验，证据排序不把它们当已确认；单值140/冲突7/待核验5",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+                  ".runtime/daily-automation-20261030/uid-correction/uid-revision.json",
+                  ".runtime/daily-automation-20261030/uid-correction/uid-http-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "完整按SHA归档当前815文件，候选全量核验源字段/原件/358预览/35ZIP及逐封差异后原子切换；过期前像拒绝，原版与上一修订均可核验",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+            ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+            ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+            ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "当前正式前像与归档校验满足发布条件"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "815文件按SHA归档，完整候选及原源快照",
+                "expected": "全量核对原件/预览/ZIP、十封允许差异后原子切换；旧版完整保留",
+                "actual": "归档与正式非report资源逐字节一致，634/405/35通过audit，358预览有SHA，坏预览反例被拒绝，新829de9与7d64a/b2658历史可核验",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+                  ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+                  ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+                  ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "再次运行单次修订发布器，当前已为新SHA",
+                "expected": "拒绝过期前像，不覆盖或重新发布",
+                "actual": "非0退出且正式SHA保持829de9，拒绝发生于替换前，日志保存",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/uid-correction/revision-prepared.json",
+                  ".runtime/daily-automation-20261030/uid-correction/revision-published.json",
+                  ".runtime/daily-automation-20261030/uid-correction/original-file-manifest.json",
+                  ".runtime/daily-automation-20261030/uid-correction/stale-publication-rejection.log"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "skill同步纯数字不能确认游戏UID、明确角色继承与当前基准/修订来源；新输入前向检查、全部相关测试、双地址HTTP及真实日期/UID/筛选预览ZIP验证通过，默认昨天与00:30保持",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/uid-correction/tests-A02.log",
+            ".runtime/daily-automation-20261030/uid-correction/forward-input/forward-result.json",
+            ".runtime/daily-automation-20261030/uid-correction/verification.json",
+            ".runtime/daily-automation-20261030/uid-correction/ui-verification.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "安装skill1.0.5、新6封独立前向执行、76项回归和双地址HTTP/真实UI",
+                "expected": "纯数字不认证，角色继承明确；未来按真实语义生成，页面既有日期和下载行为保持",
+                "actual": "独立Agent完成6封新原始输入并build/check/私有publish；原始产物和失败记录留存。76项通过，安装10文件/完整634索引/最长正文读取及两地址详情/图片日志PDF/ZIP和日期版本边界通过，真实UI三封待核验/主账号角色/140统计及昨天缺报返回通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/uid-correction/tests-A02.log",
+                  ".runtime/daily-automation-20261030/uid-correction/forward-input/forward-result.json",
+                  ".runtime/daily-automation-20261030/uid-correction/verification.json",
+                  ".runtime/daily-automation-20261030/uid-correction/ui-verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "保存来源、旧版、逐封差异、测试、未验项与新工程版本，直接归属父审查；不冒填完整干净轮次、首次定时执行或最终用户验收",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/uid-correction/delivery-manifest.json",
+            ".runtime/daily-automation-20261030/uid-correction/source-changes.patch",
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-02/release/handoff.md"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "原始授权、工程清单/差异、逐项证据与真实限制",
+                "expected": "保存返修结果归属父会话，后续同版两轮完整审查才可声称通过",
+                "actual": "原文四项及条件正反均已核验；全量旧版、逐封差异和独立前向产物保存。用户最终验收Pending，不把6封工程复核或中断第四轮算干净完整轮次",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/uid-correction/delivery-manifest.json",
+                  ".runtime/daily-automation-20261030/uid-correction/source-changes.patch",
+                  "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-02/release/handoff.md"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "按真实Accepted原文与逐封证据交代UID修复、归档正反、独立前向和UI，保持冻结验收与原授权",
+      "basis": ".runtime/daily-automation-20261030/uid-correction/source.md",
+      "changed_at": "2026-10-30T19:15:09.593636Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "b506243f208d70e7cf833847ad16fc434cea134befe04345d25a5436fe62eb3f",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "实现3030日报显式内网监听与回环监听、真实对端允许清单、Host和Origin校验、只读权限与审计，测试后按用户授权配置内网防火墙并只重启board，再交付源码到GitHub",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "9e05a933db3ca2d002eab31bd1a7c4f906d957f5cbde94df7d95051482677874",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

@@ -1,0 +1,15 @@
+{
+  "source": "本对话实际 request_user_input_async 询问；记录时尚无回答",
+  "prompt": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+  "options": [
+    "暂不启动，先使用工具",
+    "启动多轮对抗性审查",
+    "稍后决定"
+  ],
+  "entry": {
+    "event": "Offer",
+    "recorded_at": "2026-10-29T10:19:17.741159+00:00",
+    "prompt": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+    "evidence_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/evidence/adversarial-offer.json"
+  }
+}

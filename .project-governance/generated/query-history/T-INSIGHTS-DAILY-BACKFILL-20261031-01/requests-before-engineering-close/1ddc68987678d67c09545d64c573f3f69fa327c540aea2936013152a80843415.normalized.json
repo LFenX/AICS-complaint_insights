@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按已记录实际用户答复实现逐快照日期附件身份绑定的具体原件缺失例外，保持未取得状态及全部邮件元数据、不提供不完整ZIP，修复来源审阅及原日志/子组绑定；同步现有只读UI/生成技能输入契约，正反向验证，无生产写入或历史覆盖",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3b906cc0f8fa7687584709aeb39d2fd57308142fb85660594d64ea5ed9bbd199",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "reason": "另一台内网电脑路由、浏览器CA及接收人客户端未实测",
+    "impact": "服务端通过内网IP严格TLS已验证，异机路径仍须接收人复验",
+    "owner": "接收人",
+    "reentry_condition": "接收人在其电脑按门户快速开始取得11工具与查询结果",
+    "summary": "另一台内网电脑路由、浏览器CA及接收人客户端未实测"
+  },
+  {
+    "reason": "independent-review与security-privacy-review尚无真实通过决定",
+    "impact": "功能与工程验证已交付，正式门禁保持Pending，结果不得标为门禁通过",
+    "owner": "用户或有权独立审查者",
+    "reentry_condition": "对当前交付与证据作出真实可核对的独立和安全审查决定",
+    "summary": "independent-review与security-privacy-review尚无真实通过决定"
+  }
+]

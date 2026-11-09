@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "开始已授权第三轮审查问题返修，保留人工门禁 Pending 与原任务 Deferred；处理新增交接文档过时，保留能力文件并发变更。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "be56458abaa0da2ee20df269165579fd046fe02e603946daadcb843cf13387de",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03"
+}

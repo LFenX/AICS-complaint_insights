@@ -1,0 +1,29 @@
+[
+  {
+    "phase": "BeforeRun",
+    "symptom": "design_change=Yes与纯Deploy/Operations分类冲突",
+    "correction": "官方refresh纠正产品设计变化为No，运维变化保留，重新检索和execution-ready通过",
+    "runtime_effect": "None"
+  },
+  {
+    "phase": "A01",
+    "symptom": "Windows PowerShell5将File.Replace的null备份参数绑定为空路径，托管器写状态退出",
+    "correction": "同版本复现并验证显式NullString，A02修正；两worker已启动，未重复注册任务",
+    "evidence": [
+      "attempt1-mcp-host.jsonl",
+      "attempt1-desk-host.jsonl"
+    ]
+  },
+  {
+    "phase": "VerificationContext",
+    "symptom": "validate_artifact不是合法action，两个猜测脚本路径不存在",
+    "correction": "读取实际norm-action-taxonomy.json后使用S6 validate_change，完整上下文通过",
+    "runtime_effect": "None"
+  },
+  {
+    "phase": "EvidenceSave",
+    "symptom": "大型混合shell保存命令被policy拒绝，随后一次JS文档代码围栏导致语法错误",
+    "correction": "均未执行；改用apply_patch分步编辑清晰文件和短Python命令保存",
+    "runtime_effect": "None"
+  }
+]

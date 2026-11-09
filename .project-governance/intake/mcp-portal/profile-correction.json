@@ -1,0 +1,39 @@
+[
+  {
+    "path": "task_profile.development_types",
+    "value": [
+      "DT-02"
+    ]
+  },
+  {
+    "path": "task_profile.primary_development_type",
+    "value": "DT-02"
+  },
+  {
+    "path": "task_profile.development_type_scopes",
+    "value": {
+      "DT-02": [
+        "HTTPS 内网接入门户及单一发放管理员登录、会话、CSRF、审计、发放撤销",
+        "原生 MCP 协议说明、全部11工具实际 schema、无令牌客户端包及明确选源",
+        "本工程3029/3037部署、权限及真实协议验证；保留生产隔离和撤销失效关闭"
+      ]
+    }
+  },
+  {
+    "path": "task_profile.extension_triggers.E02",
+    "value": "Active"
+  },
+  {
+    "path": "task_profile.extension_evidence_refs.E02",
+    "value": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+    ]
+  },
+  {
+    "path": "authority.required_gates",
+    "value": [
+      "independent-review",
+      "security-privacy-review"
+    ]
+  }
+]

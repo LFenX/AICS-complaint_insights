@@ -1,0 +1,15 @@
+{
+  "action": "publish_release",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按用户授权只更新并重启本项目3030日期看板，保持此前内网允许范围和生产隔离，安装客诉日报skill并以本会话heartbeat创建每天北京时间00:30任务；核对幂等与回滚",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S7",
+  "tailoring_resolution_sha256": "b3578a1375cd39d9f113b45a504f1fb980911e0b1e7fdcd897c470fccd1a8b79",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

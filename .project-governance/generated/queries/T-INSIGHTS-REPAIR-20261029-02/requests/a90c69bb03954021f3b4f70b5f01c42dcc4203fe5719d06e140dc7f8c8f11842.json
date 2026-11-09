@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "开始修复连接串隐式主机端口和数据库名校验",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "f748254fb1891d0ee91c7d8d0ea2bc279e190ad15509e282bec0b0d64c2fb6b2",
+  "task_id": "T-INSIGHTS-REPAIR-20261029-02"
+}

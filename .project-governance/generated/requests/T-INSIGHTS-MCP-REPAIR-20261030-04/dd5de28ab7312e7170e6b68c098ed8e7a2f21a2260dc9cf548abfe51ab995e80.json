@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "局部修复MCP原始JSON数字整数契约、并发登录计数、原生表单Referrer策略、配置示例和移动长身份布局",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "9219867bc925846ea42607e31f7fbc960907e1a675a580b0d7fee5cfbaf6087a",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04"
+}

@@ -1,0 +1,15 @@
+{
+  "action": "publish_release",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "依据原用户内网部署及开始审查含返修授权，只重启当前项目desk3029与mcp3037；保留前后监听与PID、代码备份、观察和不恢复令牌的回滚，不操作3030或3036，不代表正式人工门禁已通过",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S7",
+  "tailoring_resolution_sha256": "d332004c667721a2aba1743c569fbc6d6eb33d9700b89f3ae514767c5246e2a9",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01"
+}

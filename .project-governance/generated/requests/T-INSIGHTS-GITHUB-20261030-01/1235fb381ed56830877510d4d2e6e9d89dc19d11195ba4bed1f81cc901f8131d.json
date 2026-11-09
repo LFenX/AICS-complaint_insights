@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按用户明确指令将当前3030看板源码提交到LFenX/AICS-CCDD私有空仓库：在隔离克隆中保留源码目录，排除全部业务数据与凭据，核验依赖、合成测试和暂存区后commit/push并核对远端SHA；不部署不接生产。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "8a9a10fdcccc1ecff175f59aa50eeaa3a5069448ea15a77008f978206dff18ed",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01"
+}

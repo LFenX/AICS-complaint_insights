@@ -1,0 +1,12 @@
+[
+  {
+    "id": "D-MCP-REPAIR-START",
+    "kind": "Proceed",
+    "presented": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+    "response": "开始审查",
+    "decided_by": "当前聊天用户",
+    "decided_at": "2026-10-29T19:40:20.310121+00:00",
+    "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md",
+    "outcome": "Approved"
+  }
+]

@@ -1,0 +1,192 @@
+{
+  "captured_at": "2026-10-29T20:14:54.222387+00:00",
+  "version_sha256": "974965546ff8c800f6aea4ec1355b5c2443f5a1646345fdbd28d441a66b06930",
+  "vcs": "unavailable",
+  "files": [
+    {
+      "path": ".runtime/mcp-portal-public/SHA256SUMS.txt",
+      "sha256": "fb4a3b6064f531ea090f17e48e957e19838e78855d4fdf0e1c604fd3a51d9c4b"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.html",
+      "sha256": "78f57ffe8cb92b3f4a7847fc03f4f3d207bea06e151c5e38e7e28c4e452c51c2"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.md",
+      "sha256": "2d64fdc4bbb3e85d6c1ed922c117e376afce299506082641f2447adbd68961a5"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-ca.crt",
+      "sha256": "b65f85f59835a8277c254a6f41861f7f02ce9302e02c1fa9098dba71e3460d3f"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client-kit.zip",
+      "sha256": "92d900f7681504b23e179cccb3e9f0fd686c34bbd3c5c84b48ca1ac6d999cba7"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client.example.json",
+      "sha256": "f437e0b92f6dc859e4a07815a5b318e50fc972cb4e575f917fcc23e2b5cd8092"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-endpoint.json",
+      "sha256": "e65f3339fc69edfa11c5c5a18b57f345da7b07010d4bca716a8d885d9907b4bc"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/tools-schema.json",
+      "sha256": "7abe4acccd2ed166d9b27869a62f2bec8be11ab808d504880f12a98e54a762ea"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+      "sha256": "2d64fdc4bbb3e85d6c1ed922c117e376afce299506082641f2447adbd68961a5"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.template.md",
+      "sha256": "5d4cf667a1524fafc04d6f957eaf4382753d1e67deef132394b8c7a09ed535c7"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "sha256": "54cc358ed0190008a80722c12c137681c021ebd4fe59df4a0b0e5943474af2bb"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/tools-schema.json",
+      "sha256": "7abe4acccd2ed166d9b27869a62f2bec8be11ab808d504880f12a98e54a762ea"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/design/repair.md",
+      "sha256": "08db5c0c9067d873d1ec1c09691bf5320d38e50679eb93ab49e06557700210a7"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md",
+      "sha256": "515d09989f7fc1c2c3941d5947e04944d2114e5e21b0de189567577e40e2ab12"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/client-acl-results.json",
+      "sha256": "0026e450ab8d8a6599600b5e09c658f5beebb1b2b1b64fb324b4882440ef77c3"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/coverage.json",
+      "sha256": "504bc36def7f4caa6eee734a74c87821b50e8b34401eb4c04d179574e8fe5f2f"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/fixes.json",
+      "sha256": "858f5fc483fe47d040f24e389d97740d755edf69bb81826387afbfa408a1db11"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/report.md",
+      "sha256": "3428fe23e69dbc25fdacac426f55652c4ed1337249b7d98d42943fc3416ff9ea"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json",
+      "sha256": "31f2981e0cb28391be6bde6425780d6977dbb98babaed4704ce145df40dea25a"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "sha256": "4cc316bffa7248136500b2a1af8bafc9cfc909ac9b701cfe76918f6f57daafdf"
+    },
+    {
+      "path": "assets/token-desk.js",
+      "sha256": "0dc1f11f0306b3c09915ef68cb45331027e69c02dffad95ed1096c00c04d41c1"
+    },
+    {
+      "path": "config/mcp-queries/ai-records.json",
+      "sha256": "f093231cda54400aee6b20519ce6a8cf23751c2511d53ebacbf5e270f5ec5113"
+    },
+    {
+      "path": "config/mcp-queries/context.json",
+      "sha256": "47eaec865ec9397cf021e0ec34ad390beb3c571c30be17c28dd3fa123cd9f67d"
+    },
+    {
+      "path": "config/mcp-queries/daily.json",
+      "sha256": "9835aa1d3c6258745f1aabf8c75c6f0e0cb585264fb7579d111fba325d371697"
+    },
+    {
+      "path": "config/mcp-queries/mails.json",
+      "sha256": "f5b0754cb8572b9df2e4a34f73381426a23783df6e005b4b36c09b4c13e7b4ff"
+    },
+    {
+      "path": "config/mcp-queries/source-records.json",
+      "sha256": "a5fd07baa008e0ba8ea3b52b38ef6afb25a2be3f9d1501db9061ab5b8376ce78"
+    },
+    {
+      "path": "config/mcp-queries/status.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/tables.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/taxonomy.json",
+      "sha256": "95fc99a669cafb7fa96963f8766ec1ce991396ee7c524b0505cfbc13787fdfeb"
+    },
+    {
+      "path": "insights/capabilities.py",
+      "sha256": "72f11bacf9d0343e6bb4691d9bae166fc6770d53639917188b1ca25ba25ec2cb"
+    },
+    {
+      "path": "insights/mcp_http.py",
+      "sha256": "11c6ddb768391d664e8e25d980e1745109632c8dc35d234bfefafefe6fc101b1"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "sha256": "bc140c49604fc173ba298e843f7a87db9958f8fc8fa3ec897160e80c09edc0e8"
+    },
+    {
+      "path": "insights/mcp_tokens.py",
+      "sha256": "c4d9f5903d1d2743362991921a98d7a2af25094d580f413ef6ff9ca7486097c0"
+    },
+    {
+      "path": "insights/token_desk.py",
+      "sha256": "8d016b5ed7b67dc6f156df85fb861c4c7919aad54484bf0bf6f5776740253b7b"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "d366b516a5ae452e35e26a245f57245bd86aaed291df05260c019da2bd494b47"
+    },
+    {
+      "path": "scripts/build_mcp_handoff.py",
+      "sha256": "688c120e79d3439ba583ced6590e0fc8a1231556c4f3f38a8514a0cef9ebcbd1"
+    },
+    {
+      "path": "scripts/mcp-firewall.ps1",
+      "sha256": "73f28188fe42f85905a5fbf6165dfe8ca42de9468955664bd9a0b94084065fa6"
+    },
+    {
+      "path": "scripts/mcp_client.py",
+      "sha256": "7ebc4f38245f6895ee31952e9d74d8f9234744232bb9cf4c4d4de7aee77dca70"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "sha256": "83c558f2ae54a5481f740843c7008f290b8e10b990ca51e071704663ce6e03b0"
+    },
+    {
+      "path": "scripts/mcp_portal_verify.py",
+      "sha256": "2265ca6b77e4e135cc0248df80eb03b08edd04a6fd72973a2d2bb42c7a4019cf"
+    },
+    {
+      "path": "scripts/mcp_protocol_client.py",
+      "sha256": "9b44d68ecfb8619d9fcf81b83a83cc54af78feced8ee41eb5b4bba933d8ef246"
+    },
+    {
+      "path": "scripts/mcp_workflow.py",
+      "sha256": "4930934c9c752d4f64b39f9742a61757dd9f899e6c7ca17c55af3d18e63c5b10"
+    },
+    {
+      "path": "scripts/token_desk_admin.py",
+      "sha256": "b7804a1a97eb4ada5f2101d25621545e17f2610ad51f8cbef443c1c0df26a6ff"
+    },
+    {
+      "path": "scripts/verify_mcp.py",
+      "sha256": "7b25747980e56e64170c2a2467297769d9b7a0007ff37efda1bd46711adc82d2"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "98a31f14cc127efa901dfd1974ecfc6fb8c42896bba0c346c630157cb7f160ae"
+    },
+    {
+      "path": "tests/test_token_desk.py",
+      "sha256": "1d0e234d555783442b092100009d7e5eedbf1c92c4e42087097cf53b2f1e2135"
+    }
+  ],
+  "contains_secrets": false
+}

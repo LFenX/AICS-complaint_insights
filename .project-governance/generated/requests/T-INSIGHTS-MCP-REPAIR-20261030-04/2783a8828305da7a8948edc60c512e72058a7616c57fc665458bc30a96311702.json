@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "45回归及隔离原生浏览器通过；同已授权范围更新本地desk/mcp工程实例并进行严格CA真实只读复验，仅3029/3037，保护3030/3036/15433不动，人工发布验收仍Pending",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "9219867bc925846ea42607e31f7fbc960907e1a675a580b0d7fee5cfbaf6087a",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04"
+}

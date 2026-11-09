@@ -1,0 +1,26 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-DAILY-BACKFILL-20261102-01-S5-RETRIEVAL-PLAN",
+  "view_kind": "compiled-norm-retrieval-plan",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:00:15.776073Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "48efa9a562b055948456d7f06c06ce52a59e97fb163568c88fa5f45204961b9d",
+  "source_snapshot_method": "retrieval-contract-projection-v1",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/before.json",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-BACKFILL-20261102-01/S5/norm-packet.json",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-BACKFILL-20261102-01/S5/norm-packet.md",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-BACKFILL-20261102-01/S5/norm-source-pack.md",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\norm-action-taxonomy.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query.schema.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query-result.schema.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\query_norm_context.py",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\compile_norm_context.py",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\governance_artifacts.py"
+  ],
+  "content_ref": ".project-governance/generated/contexts/T-INSIGHTS-DAILY-BACKFILL-20261102-01/S5/retrieval-plan.json",
+  "integrity_status": "Complete"
+}

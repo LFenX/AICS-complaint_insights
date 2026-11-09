@@ -1,0 +1,40 @@
+{
+  "captured_at": "2026-10-31T17:06:59.1667962+00:00",
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 15433,
+      "OwningProcess": 227728
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 3036,
+      "OwningProcess": 151136
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 3030,
+      "OwningProcess": 257224
+    },
+    {
+      "LocalAddress": "10.8.61.200",
+      "LocalPort": 3030,
+      "OwningProcess": 257224
+    }
+  ],
+  "protected_hashes": [
+    {
+      "Path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\mcp-server.json",
+      "Hash": "7141ACC906B610068E4B35A84F05994CA3F2D07EDCAC8ABCB781A8770D819938"
+    },
+    {
+      "Path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\token-desk-admin.json",
+      "Hash": "04F84A5A4C9096FF4F59AB834BD2A7B70D95ED54D72D74A37814A34E0D1D74BD"
+    },
+    {
+      "Path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+      "Hash": "B607ABA3869BE4103C81D09A0BF8A4490B52E7982049419577696F78701C983D"
+    }
+  ],
+  "current_account": "HZPCC1360433\\Administrator"
+}

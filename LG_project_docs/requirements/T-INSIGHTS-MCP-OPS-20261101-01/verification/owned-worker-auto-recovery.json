@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-31T17:14:48.3978290+00:00",
+  "service": "mcp",
+  "before_pid": 254240,
+  "after_pid": 288664,
+  "seconds": 11.81,
+  "automatic_recovery": true,
+  "exit_event": {
+    "at": "2026-11-01T01:14:36.6114179+08:00",
+    "host_pid": 165372,
+    "event": "worker_exited",
+    "service": "mcp",
+    "wrapper_pid": 259252,
+    "exit_code": -1,
+    "retry_after_seconds": 10
+  },
+  "host_pid_unchanged": true
+}

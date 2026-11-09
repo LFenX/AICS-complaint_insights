@@ -1,0 +1,13 @@
+# 第8轮stdio返修工程结果
+
+第8轮独立完整审查按68条原文及16领域核对，确认2项P2；本次已局部修复复验，原报告/结果保存在round-8-report.md和round-8-results.json。新反例涉及真实保留CLI：数学非整数被float取整后进入后端；数学整数形式的请求ID被SDK联合解析误当通知。原始反例、HTTP控制及影响未改写。
+
+HTTP与stdio共享原始JSON/Decimal解码及数学整数请求ID检查。可选stdio在SDK前保留每条原始参数，按SDK上下文流传播到共同Schema层；合法1.0/2e0参数和702.0/703e0等ID按值处理，非整数、非法ID及非JSON常量拒绝。原生stdio错误响应固定且不回显输入，错误后下一条合法请求恢复。输入与输出继续复用锁定mcp2.3.0已经核对的标准句柄claim/restore和context streams；输出整条消息加锁，工具/子进程不能消费协议stdin或把杂散print写入stdout。未改依赖、结构、工具签名、限频、权限或业务查询。
+
+52项回归在Git源码及原运行项目各通过，含3项真实scripts/mcp_server.py子进程测试，唯一patch是ReadAPI.load返回FakeAPI。覆盖精度、极端指数、非法ID、畸形JSON/UTF8、后续恢复、中文/JSON形字符串、并发消息原始值隔离及stdin/stdout保护。初始3项通过后扩展有意义的极端值与句柄对照，再跑完整52项；所有TEMP/TMP指向本次repair6。没有以SDK内存Client替代真实stdio验证。
+
+真实内网3029/3037严格CA的17组验证通过，含11工具、14表入口、正文/完整源行、客户端完整分页、原owner登录签发/使用/撤销/退出和公开材料一致性。当前23文件通用包由实际tools/list重建，摘要见results.json；不是另一次本地重建副本。运行来源production-ai-customer为版本24/DEGRADED历史本地快照，详见results.json，不声称实时线上一致。原管理员未重置；本次没有重新读取或交付历史私聊口令。
+
+本次备份并同步4个MCP代码/测试/维护文档文件，仅重启mcp3037。3029、3030、3036、15433监听PID不变，生产读取false、watch停止、没有连接任何数据库/生产源。早期治理预检顺序及补账Attempt错误无产品副作用，实际失败和纠正均保留在failure-notes.json及只追加账本。当前维护交接指向本报告与results，不再称旧返修为当前证据。
+
+工程结果保存时新版本两轮完整独立审查尚未开始；此前干净轮因问题/版本变化归零，不提前计数。正式人类Gate与用户验收Pending、原父Deferred导致官方Offer登记拒绝的限制保持，不伪造ManagedByParent或官方Passed。另一电脑的路由/CA/本人客户端与历史私聊交付本轮未重新验证；未来生产分支保持禁止连接的既有条件。本记录不替代独立下一轮重新读取全部原始需求。

@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "验证三项预审修复：目标覆盖失败关闭、分类文件失败原子保留水位和可见DEGRADED、交接依赖一致；运行50项隔离/契约测试并以真实HTTPS验证现有11工具",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3abe87bcbb78087efa3ca546fccd12ae06332792e98ec39820521aea8b62033f",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

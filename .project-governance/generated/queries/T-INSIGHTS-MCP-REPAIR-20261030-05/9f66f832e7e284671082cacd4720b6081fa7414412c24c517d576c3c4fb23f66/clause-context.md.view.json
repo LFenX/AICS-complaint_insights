@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-MCP-REPAIR-20261030-05-CLAUSE-CONTEXT-9f66f832e7e28467",
+  "view_kind": "clause-context",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T23:04:11.330219Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "33a0576476a2eb2fdd7d462740af94151d1115ba55fa2d6239fcd2358a7c9e39",
+  "sources": [
+    ".project-governance/generated/queries/T-INSIGHTS-MCP-REPAIR-20261030-05/9f66f832e7e284671082cacd4720b6081fa7414412c24c517d576c3c4fb23f66/query-result.json"
+  ],
+  "content_ref": ".project-governance/generated/queries/T-INSIGHTS-MCP-REPAIR-20261030-05/9f66f832e7e284671082cacd4720b6081fa7414412c24c517d576c3c4fb23f66/clause-context.md",
+  "integrity_status": "Complete"
+}

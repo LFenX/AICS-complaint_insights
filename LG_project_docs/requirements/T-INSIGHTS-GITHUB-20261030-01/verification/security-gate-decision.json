@@ -1,0 +1,29 @@
+{
+  "gate_id": "security-privacy-review",
+  "outcome": "Passed",
+  "presented": "内网看板已运行：仅监听 127.0.0.1 与 10.8.61.200:3030，仅允许 10.8.0.0/16 访问，提供原信与附件的只读读取；没有独立网页登录，使用内网范围控制访问。24 项测试及两个地址的页面、数据、附件和 ZIP 校验通过，生产库保持隔离；尚未从另一台电脑实测。是否通过本轮安全隐私门禁？GitHub 源码提交会继续进行。",
+  "response": "通过本轮门禁",
+  "decided_by": "user",
+  "recorded_at": "2026-10-30T14:14:06.678441+08:00",
+  "time_semantics": "登记时间；原始用户消息未暴露精确决定时间，不推断或倒填决定时间。",
+  "source": {
+    "kind": "user_message_question_reply",
+    "questionItemId": "[\"request_user_input_async\",\"call_a8e489ad167441fbaa38ececba23e3b1\",0]"
+  },
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01",
+  "engineering_subject_sha256": "6f3559562f876b46d52758a878f5cfeb3d1055415a42547d5e6654df03e8ab88",
+  "saved_outcome_subject_sha256": "d16014d218f3a90fb7525d5cfcacfcc0e8bf6a1959387edafe06e26759a6d603",
+  "source_commit": "d36486b27f1a9a92edb35aa825df09a8dd0edb5b",
+  "report_sha256": "b2658daf25058d0ce07ee620d60266039998b5c767ddd0d81721698b3de93760",
+  "scope": [
+    "本轮3030内网只读看板的安全隐私门禁，采用提问中展示的监听、访问范围和验证限制"
+  ],
+  "verification": {
+    "source_files_unchanged": 22,
+    "lan_http": 200,
+    "records": 634,
+    "independent_remote_computer_tested": false
+  },
+  "acceptance_scope": "仅本轮安全隐私门禁；整体用户Acceptance仍独立记录，多轮对抗性审查仍未启动。",
+  "recording_method": "原Run已结束，使用独立AuthorityAsset和TaskOutcome正式Amendment保存后续真实决定，不向旧Run补写。"
+}

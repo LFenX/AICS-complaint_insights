@@ -1,0 +1,18 @@
+[
+  {
+    "id": "R-01",
+    "source": "request_snapshot",
+    "quote": "先把修复做了呗",
+    "reading": "修复第二轮确认的连接串隐式主机、端口和数据库名校验缺陷，不扩大读取范围，不连接生产",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+      ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2
+    ]
+  }
+]

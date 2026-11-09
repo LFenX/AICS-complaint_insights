@@ -1,0 +1,1640 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02",
+  "ordinal": 18,
+  "revision": 2,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-30T12:00:56.837152Z",
+  "frozen_at": "2026-10-30T12:02:40.555989Z",
+  "objective": "修复日报状态口径、已发布复用校验和读取工具分页边界",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "启动多轮对抗性审查",
+    "captured_at": "2026-10-30T12:00:56.755847Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "已获本轮审查及返修授权，状态与口径规则明确，本次跳过提问阶段。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+    ],
+    "rounds": [],
+    "basis": "沿用用户已授权父审查及既有语义、完整性与分页标准，反例可在隔离数据上复现；不扩大生产访问或新权限",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_generation.py",
+        ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "显式非客诉主状态却填写complaint"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "resolved/inquiry/notice/suggestion分别误填complaint",
+            "expected": "组装/审计拒绝，不能发布并入榜",
+            "actual": "四种矛盾均拒绝；独立7封原始样本中把正常咨询改为complaint也被阻断",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "合法non_complaint、可定位的new_issue/follow_up/materials",
+            "expected": "非客诉不入榜，客诉跟进按证据归组",
+            "actual": "四种non_complaint的rank为0；7封独立样本合法生成，启动组rank=3",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+      "state": "Covered",
+      "evidence_refs": [
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        ".runtime/daily-automation-20261030/status-repair/installed-skill-manifest.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "读取安装skill最终标准/运行方法/审阅契约",
+            "expected": "明确主诉求、非客诉排除、全部required_followups、实际发布目录完整性",
+            "actual": "1.0.2已同步；保持未知根因不排除定位、跟进补件可归原组，脚本结构/链接/资源/无客户指纹通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              ".runtime/daily-automation-20261030/status-repair/installed-skill-manifest.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/status-repair/verification.json",
+        ".runtime/daily-automation-20261030/status-repair/runtime-verification.json",
+        ".runtime/daily-automation-20261030/status-repair/tests-A04.log"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "历史原件与所有附件/ZIP，默认两地址及进程/隔离",
+            "expected": "原件SHA、634/405/35，默认昨日、00:30当前会话及生产隔离不变",
+            "actual": "73项测试通过；历史全量字节、两地址详情/图片/文本/PDF/ZIP通过；3030原PID、其他服务原PID、生产false、无watch；配置回读保持ACTIVE 00:30当前会话",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/status-repair/verification.json",
+              ".runtime/daily-automation-20261030/status-repair/runtime-verification.json",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/release/handoff.md",
+        ".runtime/daily-automation-20261030/review-authorization.json"
+      ],
+      "acceptance_refs": [
+        3
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "实际用户已授权父审查及直接依赖的返修工程记录",
+            "expected": "修复版本保存由父审查接续，不重复询问或预填通过",
+            "actual": "7条原文拆项及实际证据齐全；close使用review-parent，父会话保留原授权；本轮不声称最终两轮或用户验收通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/release/handoff.md",
+              ".runtime/daily-automation-20261030/review-authorization.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_generation.py",
+        ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+      ],
+      "acceptance_refs": [
+        4
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "实际已发布证据损坏或缺失"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "隔离正式目录的原件/文本预览/ZIP/source/review/quality/manifest逐项破坏或删除",
+            "expected": "重复publish及prepare阻断，不自动覆盖修复",
+            "actual": "所有损坏/缺失分支被阻断；逐项保留人工破坏字节，未被自动修复",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "完整7封4附件候选发布后再次publish，及历史prepare",
+            "expected": "校验实际目标后already_published",
+            "actual": "隔离publish→already_published，恢复测试目录原字节后幂等成功；历史prepare通过且正式SHA未改",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-006",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_skill_reader.py",
+        ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/status-repair/verification.json"
+      ],
+      "acceptance_refs": [
+        5
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "单封主题或元数据超过批次预算"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "32000字符subject/25000摘要/28000正文，batch/index预算1000及100",
+            "expected": "输出小记录和显式metadata/subject等followups，全部字段可完整重组，不错报正文完整",
+            "actual": "两种模式有界并完整覆盖3封；长subject/metadata/body逐页重组与原文相等，body_included=false",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_skill_reader.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "634封真实冻结索引及最长正文30714字",
+            "expected": "完整覆盖并按普通/字段路径读取",
+            "actual": "634唯一PK覆盖、最长正文逐页重组完整，skill资源和入口验证通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_skill_reader.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/verification.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-007",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_generation.py",
+        ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+        ".runtime/daily-automation-20261030/status-repair/verification.json"
+      ],
+      "acceptance_refs": [
+        6
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "原始subject/原To/Cc/收件时间偏离快照"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "依次修改subject/recipients_original/cc/at而保持其他计数",
+            "expected": "check --snapshot拒绝原始字段漂移",
+            "actual": "四个字段均以REPORT_SOURCE_HEADER_MISMATCH拒绝",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/verification.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "原字段不变，仅display to格式投影",
+            "expected": "通过，不把展示归一化误判为原始证据篡改",
+            "actual": "投影正分支通过；历史634封真实subject/recipients_original/cc/at与冻结一致，完整audit通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_generation.py",
+              ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+              ".runtime/daily-automation-20261030/status-repair/verification.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-STATUS-REPAIR-PROCEED",
+      "kind": "Proceed",
+      "presented": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+      "response": "启动多轮对抗性审查",
+      "decided_by": "user",
+      "decided_at": "2026-10-30T11:23:42.949803+00:00",
+      "evidence_ref": ".runtime/daily-automation-20261030/review-authorization.json",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-AUTO-20261030-01",
+    "T-INSIGHTS-DAILY-REPAIR-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T12:00:56.793681Z"
+  },
+  "scope": {
+    "in_scope": [
+      "本地日报生成状态/口径与已发布完整性修复",
+      "安装skill语义契约、有界完整读取与隔离反例",
+      "已授权父审查的验证与返修交付"
+    ],
+    "out_of_scope": [
+      "生产/本地数据库写入、采集watch、MCP令牌台、端口及调度变更、历史重写、GitHub推送"
+    ],
+    "allowed_paths": [
+      "insights/daily_generation.py",
+      "tests/test_daily_generation.py",
+      "tests/test_daily_skill_reader.py",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-02/**",
+      ".project-governance/generated/**",
+      ".project-governance/README.md",
+      ".runtime/daily-automation-20261030/**",
+      "update_log/2026-10-30-daily-status-review-repair.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+    ],
+    "forbidden_actions": [
+      "自动把矛盾分类改成通过、解除生产隔离、改既有日报、重启其他服务"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "本地日报生成状态/口径与已发布完整性修复",
+          "安装skill语义契约、有界完整读取与隔离反例",
+          "已授权父审查的验证与返修交付"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          ".runtime/daily-automation-20261030/review-authorization.json",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ],
+        "verified_at": "2026-10-30T12:00:56.645656+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+      "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+      "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+      "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+      "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+      "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+      "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "冻结全部确认反例与原文约束，保留本次前像",
+      "修复状态口径、已发布复用校验和读取工具预算，更新skill并验证正反输入",
+      "保存原文覆盖、不可变版本和验证，交回父审查继续完整复查"
+    ],
+    "verification": [
+      "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+      "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+      "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+      "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+      "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+      "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+      "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误"
+    ],
+    "rollback": [
+      "按本次before前像恢复生成器/测试及安装skill，不触碰历史与采集"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "日报可计算契约与冻结证据一致，读取有界且完整，幂等复用核验实际已发布对象",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "4种非客诉状态误填complaint能在临时目录正式组装/发布并rank_count=2",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md",
+          ".runtime/daily-automation-20261030/review-root/status-probe-results.json"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "独立前向确认长主题读包超预算/缺显式翻页、复用未校验已发布原件，以及check未核对原始主题与recipients_original",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "只拦可计算矛盾，不自动重写Agent分类；历史原件、默认昨日、调度与生产隔离保持",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "状态和计数口径共同描述同封主问题，显式非客诉与complaint不能同时成立",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "机器只拒绝矛盾，语义选择与多问题主次仍由逐封证据审阅负责",
+        "derived_from": [
+          "C1"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "完整性针对实际返回对象与冻结原件，有界读取覆盖所有可变长字段且能完整续页",
+        "derived_from": [
+          "F2",
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "发布前验证显式状态/口径避免已知错误统计，同时保留复核修订的证据链",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P3",
+        "to_ref": "O1",
+        "rationale": "重用时检查目标目录、对照原始头字段、超预算主字段显式续页，防止假成功或漏读",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "只靠prompt提醒而不改校验",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "无代码修改",
+          "已知矛盾仍可入榜"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "组装与审计验证状态/原始证据、复用时核验目标目录、读取工具对全部长字段明确续页；矛盾拒绝，不自动改数据",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "可复现且不重写分类",
+          "需增加明确状态语义与正反例"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "按状态自动改scope并继续发布",
+        "status": "Rejected",
+        "derived_from": [
+          "P2"
+        ],
+        "tradeoffs": [
+          "自动修正数字",
+          "掩盖审阅矛盾和主次问题选择，不能确保正确语义"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K4",
+        "statement": "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K5",
+        "statement": "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K6",
+        "statement": "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K7",
+        "statement": "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "冻结全部确认反例与原文约束，保留本次前像",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7"
+        ]
+      },
+      {
+        "plan_step": "修复状态口径、已发布复用校验和读取工具预算，更新skill并验证正反输入",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7"
+        ]
+      },
+      {
+        "plan_step": "保存原文覆盖、不可变版本和验证，交回父审查继续完整复查",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3",
+          "K4",
+          "K5",
+          "K6",
+          "K7"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+      "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+      "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+      "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+      "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+      "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+      "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "本地日报生成状态/口径与已发布完整性修复",
+        "安装skill语义契约、有界完整读取与隔离反例",
+        "已授权父审查的验证与返修交付"
+      ]
+    },
+    "change_surfaces": [
+      "AI/Data Governance",
+      "Agent/Collaboration"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+      ],
+      "E04": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+      ],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "No",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-02/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T12:00:56.793681Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-02/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T12:00:56.793681Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261030-02/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T12:00:56.793681Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            3
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            4
+          ]
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            5
+          ]
+        },
+        {
+          "id": "R-007",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            6
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "明确非客诉状态与scope矛盾时组装和审计拒绝，不能进入Top10；合法非客诉与客诉跟进/补件正分支仍可发布",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "显式非客诉主状态却填写complaint"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "resolved/inquiry/notice/suggestion分别误填complaint",
+                "expected": "组装/审计拒绝，不能发布并入榜",
+                "actual": "四种矛盾均拒绝；独立7封原始样本中把正常咨询改为complaint也被阻断",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "合法non_complaint、可定位的new_issue/follow_up/materials",
+                "expected": "非客诉不入榜，客诉跟进按证据归组",
+                "actual": "四种non_complaint的rank为0；7封独立样本合法生成，启动组rank=3",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "安装skill明确状态语义与本封主问题选择，已解决/正常咨询/商务/纯建议不入榜，不以未知根因排除可定位客诉",
+          "state": "Covered",
+          "evidence_refs": [
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            ".runtime/daily-automation-20261030/status-repair/installed-skill-manifest.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "读取安装skill最终标准/运行方法/审阅契约",
+                "expected": "明确主诉求、非客诉排除、全部required_followups、实际发布目录完整性",
+                "actual": "1.0.2已同步；保持未知根因不排除定位、跟进补件可归原组，脚本结构/链接/资源/无客户指纹通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  ".runtime/daily-automation-20261030/status-repair/installed-skill-manifest.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "原文追踪与已确认问题修复证据完备，历史10月29原件与67项既有功能保持，默认昨天/00:30当前会话/生产隔离不变",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/status-repair/verification.json",
+            ".runtime/daily-automation-20261030/status-repair/runtime-verification.json",
+            ".runtime/daily-automation-20261030/status-repair/tests-A04.log"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "历史原件与所有附件/ZIP，默认两地址及进程/隔离",
+                "expected": "原件SHA、634/405/35，默认昨日、00:30当前会话及生产隔离不变",
+                "actual": "73项测试通过；历史全量字节、两地址详情/图片/文本/PDF/ZIP通过；3030原PID、其他服务原PID、生产false、无watch；配置回读保持ACTIVE 00:30当前会话",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-automation-20261030/status-repair/verification.json",
+                  ".runtime/daily-automation-20261030/status-repair/runtime-verification.json",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "保存可复验工程版本并直接归属父审查；审查轮次和两轮收敛由父任务接续，不重复询问或冒填验收",
+          "state": "Covered",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/release/handoff.md",
+            ".runtime/daily-automation-20261030/review-authorization.json"
+          ],
+          "acceptance_refs": [
+            3
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "实际用户已授权父审查及直接依赖的返修工程记录",
+                "expected": "修复版本保存由父审查接续，不重复询问或预填通过",
+                "actual": "7条原文拆项及实际证据齐全；close使用review-parent，父会话保留原授权；本轮不声称最终两轮或用户验收通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/release/handoff.md",
+                  ".runtime/daily-automation-20261030/review-authorization.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "相同报告重复发布及prepare复用时校验实际已发布目录的原件/ZIP及新格式源和审阅质量绑定；损坏或缺失应阻断且不能自动覆写修复历史",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+          ],
+          "acceptance_refs": [
+            4
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "实际已发布证据损坏或缺失"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "隔离正式目录的原件/文本预览/ZIP/source/review/quality/manifest逐项破坏或删除",
+                "expected": "重复publish及prepare阻断，不自动覆盖修复",
+                "actual": "所有损坏/缺失分支被阻断；逐项保留人工破坏字节，未被自动修复",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "完整7封4附件候选发布后再次publish，及历史prepare",
+                "expected": "校验实际目标后already_published",
+                "actual": "隔离publish→already_published，恢复测试目录原字节后幂等成功；历史prepare通过且正式SHA未改",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/forward-repair-results.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "read_packet批量/索引输出记录受预算约束，长主题/基础元数据可显式字段分页完整重组，不遗漏required_followups或错报正文完整，仍覆盖全部邮件",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_skill_reader.py",
+            ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/status-repair/verification.json"
+          ],
+          "acceptance_refs": [
+            5
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "单封主题或元数据超过批次预算"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "32000字符subject/25000摘要/28000正文，batch/index预算1000及100",
+                "expected": "输出小记录和显式metadata/subject等followups，全部字段可完整重组，不错报正文完整",
+                "actual": "两种模式有界并完整覆盖3封；长subject/metadata/body逐页重组与原文相等，body_included=false",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_skill_reader.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "634封真实冻结索引及最长正文30714字",
+                "expected": "完整覆盖并按普通/字段路径读取",
+                "actual": "634唯一PK覆盖、最长正文逐页重组完整，skill资源和入口验证通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_skill_reader.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/verification.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-007",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "check带snapshot时核对原始主题、recipients_original/cc及收件时间；不将旧版展示to的归一化形式误判为原To证据错误",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_generation.py",
+            ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+            ".runtime/daily-automation-20261030/status-repair/verification.json"
+          ],
+          "acceptance_refs": [
+            6
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "原始subject/原To/Cc/收件时间偏离快照"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "依次修改subject/recipients_original/cc/at而保持其他计数",
+                "expected": "check --snapshot拒绝原始字段漂移",
+                "actual": "四个字段均以REPORT_SOURCE_HEADER_MISMATCH拒绝",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/verification.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "原字段不变，仅display to格式投影",
+                "expected": "通过，不把展示归一化误判为原始证据篡改",
+                "actual": "投影正分支通过；历史634封真实subject/recipients_original/cc/at与冻结一致，完整audit通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_generation.py",
+                  ".runtime/daily-automation-20261030/status-repair/tests-A04.log",
+                  ".runtime/daily-automation-20261030/status-repair/verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "按真实授权原话逐条绑定4项已确认修复及正反证据，保持冻结验收和父审查边界",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261030-02/requirements/source.md",
+      "changed_at": "2026-10-30T12:19:34.268000Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "fb4a806198a0eeb18ca4187740a8543ca51d647b08c21cbac54839d59680ac35",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

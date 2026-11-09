@@ -1,0 +1,236 @@
+{
+  "task_id": "T-INSIGHTS-MCP-OPS-20261101-01",
+  "captured_at": "2026-10-31T17:29:45.270122+00:00",
+  "request_snapshot": [
+    "把MCP和门户服务启动起来，查一下为什么停了。",
+    "脱离ChatGPT绘画独立运行。"
+  ],
+  "restoration": {
+    "at": "2026-10-31T17:10:57.494308+00:00",
+    "result": "Passed",
+    "strict_ca": true,
+    "portal": {
+      "/": 200,
+      "/admin/login": 200,
+      "/guide": 200
+    },
+    "protocol_version": "2025-11-25",
+    "tools": 11,
+    "source_tables": 14,
+    "sample_mail_count": 1,
+    "source": {
+      "source_id": "production-ai-customer",
+      "data_version": 25,
+      "status": "DEGRADED"
+    },
+    "existing_key_works": true,
+    "missing_bearer_status": 401,
+    "credentials_printed": false
+  },
+  "recoveries": [
+    {
+      "at": "2026-10-31T17:13:44.7473297+00:00",
+      "service": "mcp",
+      "before_pid": 64252,
+      "after_pid": 254240,
+      "seconds": 3.42,
+      "automatic_recovery": true,
+      "manual_restart_after_kill": false,
+      "task_state": "Running"
+    },
+    {
+      "at": "2026-10-31T17:14:04.5647081+00:00",
+      "service": "desk",
+      "before_pid": 262324,
+      "after_pid": 185292,
+      "seconds": 4.63,
+      "automatic_recovery": true,
+      "manual_restart_after_kill": false,
+      "task_state": "Running"
+    },
+    {
+      "at": "2026-10-31T17:14:48.3978290+00:00",
+      "service": "mcp",
+      "before_pid": 254240,
+      "after_pid": 288664,
+      "seconds": 11.81,
+      "automatic_recovery": true,
+      "exit_event": {
+        "at": "2026-11-01T01:14:36.6114179+08:00",
+        "host_pid": 165372,
+        "event": "worker_exited",
+        "service": "mcp",
+        "wrapper_pid": 259252,
+        "exit_code": -1,
+        "retry_after_seconds": 10
+      },
+      "host_pid_unchanged": true
+    }
+  ],
+  "protected_runtime": {
+    "at": "2026-10-31T17:17:13.4556657+00:00",
+    "listeners": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 15433,
+        "OwningProcess": 227728
+      },
+      {
+        "LocalAddress": "10.8.61.200",
+        "LocalPort": 3037,
+        "OwningProcess": 288664
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 3036,
+        "OwningProcess": 151136
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 3030,
+        "OwningProcess": 257224
+      },
+      {
+        "LocalAddress": "10.8.61.200",
+        "LocalPort": 3030,
+        "OwningProcess": 257224
+      },
+      {
+        "LocalAddress": "10.8.61.200",
+        "LocalPort": 3029,
+        "OwningProcess": 185292
+      }
+    ],
+    "protected_listeners_unchanged": true,
+    "protected_files": [
+      {
+        "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\mcp-server.json",
+        "unchanged": true
+      },
+      {
+        "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\token-desk-admin.json",
+        "unchanged": true
+      },
+      {
+        "path": "D:\\LFEN_project\\dev_project\\complaint-insights\\.secrets\\production.json",
+        "unchanged": true
+      }
+    ],
+    "collector_running": false,
+    "tasks": [
+      {
+        "TaskName": "ComplaintInsights-MCP-3037",
+        "State": 4,
+        "UserId": "Administrator",
+        "LogonType": "S4U",
+        "RunLevel": "Limited",
+        "ExecutionTimeLimit": "PT0S",
+        "MultipleInstances": "IgnoreNew"
+      },
+      {
+        "TaskName": "ComplaintInsights-Portal-3029",
+        "State": 4,
+        "UserId": "Administrator",
+        "LogonType": "S4U",
+        "RunLevel": "Limited",
+        "ExecutionTimeLimit": "PT0S",
+        "MultipleInstances": "IgnoreNew"
+      }
+    ]
+  },
+  "independent_runtime": {
+    "task_names": [
+      "ComplaintInsights-MCP-3037",
+      "ComplaintInsights-Portal-3029"
+    ],
+    "account": "current Windows account",
+    "logon_type": "S4U",
+    "run_level": "Limited",
+    "ancestor_chain": [
+      "powershell.exe",
+      "svchost.exe",
+      "services.exe",
+      "wininit.exe"
+    ],
+    "boot_delay_seconds": 20,
+    "heartbeat_minutes": 1,
+    "execution_time_limit": "PT0S",
+    "worker_restart_delay_seconds": 10,
+    "chatgpt_parent_dependency": false
+  },
+  "reason_investigation": {
+    "confirmed_management_gap": "原普通Start-Process无独立托管或退出自动恢复",
+    "direct_stop_trigger": "Unknown; insufficient retained evidence",
+    "os_reboot_in_window": false,
+    "process_termination_audit_events_in_window": 0,
+    "not_proven": [
+      "连接重置导致进程退出",
+      "ChatGPT会话结束导致旧进程退出"
+    ]
+  },
+  "source_change": {
+    "path": "scripts/mcp-service-host.ps1",
+    "sha256": "abbd98731843c17c5a88aca6fa5b5d587d2be723b06307413a297a28bbf7379a",
+    "scope": "本机运维托管；未改MCP业务代码/协议/依赖/证书/管理员/令牌"
+  },
+  "failures_and_corrections": [
+    {
+      "phase": "BeforeRun",
+      "symptom": "design_change=Yes与纯Deploy/Operations分类冲突",
+      "correction": "官方refresh纠正产品设计变化为No，运维变化保留，重新检索和execution-ready通过",
+      "runtime_effect": "None"
+    },
+    {
+      "phase": "A01",
+      "symptom": "Windows PowerShell5将File.Replace的null备份参数绑定为空路径，托管器写状态退出",
+      "correction": "同版本复现并验证显式NullString，A02修正；两worker已启动，未重复注册任务",
+      "evidence": [
+        "attempt1-mcp-host.jsonl",
+        "attempt1-desk-host.jsonl"
+      ]
+    },
+    {
+      "phase": "VerificationContext",
+      "symptom": "validate_artifact不是合法action，两个猜测脚本路径不存在",
+      "correction": "读取实际norm-action-taxonomy.json后使用S6 validate_change，完整上下文通过",
+      "runtime_effect": "None"
+    },
+    {
+      "phase": "EvidenceSave",
+      "symptom": "大型混合shell保存命令被policy拒绝，随后一次JS文档代码围栏导致语法错误",
+      "correction": "均未执行；改用apply_patch分步编辑清晰文件和短Python命令保存",
+      "runtime_effect": "None"
+    }
+  ],
+  "limits": [
+    {
+      "summary": "原进程直接停止触发无法追溯",
+      "reason": "旧日志没有退出时间、退出码或明确关停记录；Windows未记录相应进程终止审计",
+      "owner": "系统维护者",
+      "impact": "不把连接重置或ChatGPT会话结束推断为已证实停止原因",
+      "reentry_condition": "取得当时外部进程终止或操作记录后继续追溯"
+    },
+    {
+      "summary": "未执行整机重启或注销验证",
+      "reason": "不影响其它业务服务和当前用户会话；已核对S4U、开机触发、无限执行配置并实测独立父链和服务恢复",
+      "owner": "系统维护者",
+      "impact": "开机与无登录运行已配置，未声明整机重启/注销已实测",
+      "reentry_condition": "明确维护窗口重启或注销后复验"
+    },
+    {
+      "summary": "完整配置回滚未演练",
+      "reason": "保留已恢复服务；旧日志与任务XML保全，维护说明限定停用/回滚目标",
+      "owner": "系统维护者",
+      "impact": "不声称完整禁用/注销回滚已实际执行",
+      "reentry_condition": "维护窗口按说明演练并复验"
+    }
+  ],
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "requirement_summary": {
+    "Covered": 2,
+    "Deferred": 1,
+    "reason": "运行恢复与独立托管完成；调查已执行，但原停止直接触发Unknown，不计为已查明"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存已运行MCP门户的工程结果，原话逐条证据及11工具14表真实验证通过；独立安全人类门禁Pending，Deferred收尾且用户决定Pending，不自批门禁",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "2ce1e2795b2608e9987e53608f924b088f89fe43fc0b50343255a09ee4cfd22a",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+}

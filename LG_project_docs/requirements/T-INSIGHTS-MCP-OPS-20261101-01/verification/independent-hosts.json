@@ -1,0 +1,70 @@
+[
+  {
+    "service": "mcp",
+    "state": {
+      "at": "2026-11-01T01:11:06.4511697+08:00",
+      "host_pid": 165372,
+      "event": "listener_already_present",
+      "port": 3037,
+      "service": "mcp",
+      "listener_pid": 64252,
+      "retry_after_seconds": 10
+    },
+    "ancestry": [
+      {
+        "pid": 165372,
+        "parent_pid": 2284,
+        "name": "powershell.exe"
+      },
+      {
+        "pid": 2284,
+        "parent_pid": 1012,
+        "name": "svchost.exe"
+      },
+      {
+        "pid": 1012,
+        "parent_pid": 2008,
+        "name": "services.exe"
+      },
+      {
+        "pid": 2008,
+        "parent_pid": 1128,
+        "name": "wininit.exe"
+      }
+    ]
+  },
+  {
+    "service": "desk",
+    "state": {
+      "at": "2026-11-01T01:11:16.8466125+08:00",
+      "host_pid": 270072,
+      "event": "listener_already_present",
+      "port": 3029,
+      "service": "desk",
+      "listener_pid": 262324,
+      "retry_after_seconds": 10
+    },
+    "ancestry": [
+      {
+        "pid": 270072,
+        "parent_pid": 2284,
+        "name": "powershell.exe"
+      },
+      {
+        "pid": 2284,
+        "parent_pid": 1012,
+        "name": "svchost.exe"
+      },
+      {
+        "pid": 1012,
+        "parent_pid": 2008,
+        "name": "services.exe"
+      },
+      {
+        "pid": 2008,
+        "parent_pid": 1128,
+        "name": "wininit.exe"
+      }
+    ]
+  }
+]

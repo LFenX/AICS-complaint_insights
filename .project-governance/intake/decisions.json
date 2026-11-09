@@ -1,0 +1,12 @@
+[
+  {
+    "id": "D-LOCAL-PROCEED",
+    "kind": "Proceed",
+    "presented": "独立数据库、同步器和查询 API 尚未创建，可以在生产重启前推进；本期使用开发数据，不操作生产服务。",
+    "response": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+    "decided_by": "当前聊天用户",
+    "decided_at": "2026-10-29T08:27:18.139677+00:00",
+    "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md",
+    "outcome": "Approved"
+  }
+]

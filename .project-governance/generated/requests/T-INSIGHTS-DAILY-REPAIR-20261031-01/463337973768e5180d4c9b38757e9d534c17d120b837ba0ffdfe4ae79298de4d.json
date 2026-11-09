@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "完成本需求README索引后的IMAP逐封身份修复收口：76项及真实3030日期验证，安全隐私门须真实人工通过，保留中断、失败、重试、原始报告与副本不可用限制",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "2a31a3ccbe81afdc050a80ce5c4e379f9295ae9df87ef3f48f88f559ff43c0bd",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01"
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-DAILY-AUTO-20261030-01-S8-RETRIEVAL-PLAN",
+  "view_kind": "compiled-norm-retrieval-plan",
+  "legacy_kind": null,
+  "generated_at": "2026-10-30T09:26:15.345926Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "b86cb71442a845f357f8b5244020da2918494be9f2c7ae4f65a1fa2a605c4f00",
+  "source_snapshot_method": "retrieval-contract-projection-v1",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/before.json",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-AUTO-20261030-01/S8/norm-packet.json",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-AUTO-20261030-01/S8/norm-packet.md",
+    ".project-governance/generated/contexts/T-INSIGHTS-DAILY-AUTO-20261030-01/S8/norm-source-pack.md",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\norm-action-taxonomy.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query.schema.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-query-result.schema.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\query_norm_context.py",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\compile_norm_context.py",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\governance_artifacts.py"
+  ],
+  "content_ref": ".project-governance/generated/contexts/T-INSIGHTS-DAILY-AUTO-20261030-01/S8/retrieval-plan.json",
+  "integrity_status": "Complete"
+}

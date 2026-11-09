@@ -1,0 +1,1750 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01",
+  "ordinal": 20,
+  "revision": 9,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-30T18:11:53.915563Z",
+  "frozen_at": "2026-10-30T18:13:25.521579Z",
+  "objective": "修复只读附件下载的连接复用UIDVALIDITY遗漏并以正反证据保存",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "启动多轮对抗性审查",
+    "captured_at": "2026-10-30T18:11:53.830237Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "本轮修复范围明确：每封附件取信前核对当前连接的 UIDVALIDITY，并验证连接复用、切换文件夹和失败重连。本次沿用已授权的审查修复范围，跳过提问阶段。",
+    "survey_refs": [
+      ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+    ],
+    "rounds": [],
+    "basis": "实际反例与原只读身份要求单义明确，现有Accepted覆盖同范围修复，无新增访问或发布授权",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+      "state": "Covered",
+      "evidence_refs": [
+        "insights/attachment_fetcher.py",
+        ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "冻结epoch与当前连接实际值相同"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "同INBOX连续77/77，两封MIME、part与摘要正确",
+            "expected": "两封ready，同一连接仅一次EXAMINE，FETCH前身份一致",
+            "actual": "ready2/failed0/EXAMINE1；8组参数正反还核验每次FETCH的真实命名空间",
+            "result": "Passed",
+            "evidence_refs": [
+              "insights/attachment_fetcher.py",
+              ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+              ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "同INBOX首封77次封66，服务实际77",
+            "expected": "次封拒绝、不FETCH、不认证且无bin文件",
+            "actual": "ready1/failed1/UIDVALIDITY_MISMATCH；原独立反例从旧ready2变为拒绝第二封",
+            "result": "Passed",
+            "evidence_refs": [
+              "insights/attachment_fetcher.py",
+              ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+              ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+      "state": "Covered",
+      "evidence_refs": [
+        "tests/test_daily_report.py",
+        ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+        ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [
+          "文件夹或连接发生变化"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "切换Archive、瞬断重连，正确与错误epoch",
+            "expected": "重新EXAMINE取得实际值，正确继续、错误拒绝；每次EXAMINE只读",
+            "actual": "8组单元正反及7组原独立控制通过；新连接实际88对冻结77拒绝；失败后下一封正确可继续",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_report.py",
+              ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+              ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "正常复用同INBOX同epoch，已核验缓存再次恢复",
+            "expected": "保留复用效率和原只读读取/缓存恢复契约",
+            "actual": "76项测试通过；同epoch仅一次EXAMINE，既有resume不重新连接测试通过",
+            "result": "Passed",
+            "evidence_refs": [
+              "tests/test_daily_report.py",
+              ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+              ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "启动多轮对抗性审查",
+      "reading": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+      "state": "Covered",
+      "evidence_refs": [
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+        ".runtime/daily-automation-20261030/imap-identity-repair/verification.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/ui-verification.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/runtime-verification.json"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "安装skill1.0.4，真实双地址HTTP及日期UI、默认昨天、76项回归",
+            "expected": "固化每封epoch身份；保持默认昨天、历史634/405/35、白底与00:30同会话；保存可复核资料",
+            "actual": "安装10文件合法、完整634索引和最长正文30714读取；双地址默认10/30未生成且历史29可读，详情/图/日志/PDF/ZIP和日期版本边界通过，UI日期选择及昨天返回通过；代码清单和交接已保存，最终Implemented与父新版本审查仍待安全隐私门",
+            "result": "Passed",
+            "evidence_refs": [
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/verification.json",
+              ".runtime/daily-automation-20261030/imap-identity-repair/ui-verification.json",
+              ".runtime/daily-automation-20261030/imap-identity-repair/runtime-verification.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-IMAP-REPAIR-PROCEED",
+      "kind": "Proceed",
+      "presented": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+      "response": "启动多轮对抗性审查",
+      "decided_by": "user",
+      "decided_at": "2026-10-30T11:23:42.949803+00:00",
+      "evidence_ref": ".runtime/daily-automation-20261030/review-authorization.json",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-AUTO-20261030-01",
+    "T-INSIGHTS-DAILY-REPAIR-20261030-03"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T18:11:53.875496Z"
+  },
+  "scope": {
+    "in_scope": [
+      "只读附件逐封UIDVALIDITY边界修复",
+      "模拟IMAP正反与已有功能回归",
+      "安装skill与父审查交接证据同步"
+    ],
+    "out_of_scope": [
+      "真实IMAP、生产、数据库写入、日报历史/页面、其他服务/端口/调度、Git推送"
+    ],
+    "allowed_paths": [
+      "insights/attachment_fetcher.py",
+      "tests/test_daily_report.py",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+      ".project-governance/generated/**",
+      ".project-governance/README.md",
+      ".runtime/daily-automation-20261030/**",
+      "update_log/2026-10-31-daily-imap-identity-repair.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report",
+      ".runtime/processes.json",
+      ".runtime/board.log",
+      ".runtime/board.err.log"
+    ],
+    "forbidden_actions": [
+      "恢复生产、连接真实IMAP、改变邮件状态、修改历史报告或重启其他服务"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [
+      "security-privacy-review"
+    ],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      ".runtime/daily-automation-20261030/imap-identity-repair/source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "只读附件逐封UIDVALIDITY边界修复",
+          "模拟IMAP正反与已有功能回归",
+          "安装skill与父审查交接证据同步"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+          ".runtime/daily-automation-20261030/review-authorization.json"
+        ],
+        "verified_at": "2026-10-30T18:11:53.693876+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+      "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+      "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+      "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+      "仅恢复已授权3030原地址，验证只读边界与未改对象，保存版本并接续父完整审查"
+    ],
+    "verification": [
+      "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+      "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+      "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查"
+    ],
+    "rollback": [
+      "恢复本轮before代码、测试和安装skill；正式读取模型和资源从未修改"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "任何附件都只在本封冻结身份与当前选中IMAP命名空间一致时取回并认证",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "新内存MIME反例证明同folder复用时第二封跨epoch仍ready",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+          ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "跨日复验3030连接拒绝且没有监听，既有IP仍在，原PID记录已失效",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/verification.log",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "沿用父Accepted同范围修复；不连接真实IMAP/生产，不改报告、页面、调度或其他服务；保留原只读取信契约",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "沿用既有人类开启内网看板指令，仅恢复3030原绑定及现有允许网段；不恢复其他服务",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "UID身份必须同时绑定邮箱、folder、UIDVALIDITY和UID，连接复用不能替代逐封比较",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "选中folder的实际epoch属于当前IMAP连接状态，切换或重连必须重新建立",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P3",
+        "statement": "实际HTTP验证以当前服务可达性为前提，旧PID不证明当前服务仍运行",
+        "derived_from": [
+          "F2",
+          "C2"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "把逐封比较放在是否切换folder之外，防止次封沿用首封结论",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "缓存实际响应随连接清空，既省去重复EXAMINE又不混用epoch",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P3",
+        "to_ref": "O1",
+        "rationale": "恢复已授权同配置3030后重做失败的HTTP验证，数据和其他服务不受影响",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "保持现状仅补文档",
+        "status": "Rejected",
+        "derived_from": [
+          "P1"
+        ],
+        "tradeoffs": [
+          "没有额外请求",
+          "复用连接绕过身份比较"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "当前连接保存实际选中epoch，每封FETCH前比较",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "变更局部且无额外网络请求",
+          "须验证切换和重连状态清空"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "每封都重新EXAMINE并读取UIDVALIDITY",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "自然重建选中身份",
+          "每封增加IMAP往返，既有会话复用无需牺牲"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      },
+      {
+        "plan_step": "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      },
+      {
+        "plan_step": "仅恢复已授权3030原地址，验证只读边界与未改对象，保存版本并接续父完整审查",
+        "derived_from": [
+          "P1",
+          "P2",
+          "P3"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+      "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+      "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查"
+    ],
+    "source_refs": [
+      ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+      ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-06"
+    ],
+    "primary_development_type": "DT-06",
+    "development_type_scopes": {
+      "DT-06": [
+        "只读附件逐封UIDVALIDITY边界修复",
+        "模拟IMAP正反与已有功能回归",
+        "安装skill与父审查交接证据同步"
+      ]
+    },
+    "change_surfaces": [
+      "API/Integration",
+      "Identity/Security/Privacy",
+      "AI/Data Governance",
+      "Agent/Collaboration",
+      "Deploy/Operations"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+      ],
+      "E02": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+      ],
+      "E03": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+      ],
+      "E04": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+      ],
+      "E05": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      ".runtime/daily-automation-20261030/imap-identity-repair/source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "No",
+      "architecture_impact": "No",
+      "security_privacy_impact": "Yes",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "task_profile.change_surfaces",
+      "old_value": [
+        "API/Integration",
+        "Identity/Security/Privacy",
+        "Agent/Collaboration"
+      ],
+      "new_value": [
+        "API/Integration",
+        "Identity/Security/Privacy",
+        "AI/Data Governance",
+        "Agent/Collaboration"
+      ],
+      "reason": "按真实身份与数据影响补足Profile和安全隐私门声明，门尚未通过，不改授权或结果",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:12:39.720946Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "authority.required_gates",
+      "old_value": [],
+      "new_value": [
+        "security-privacy-review"
+      ],
+      "reason": "按真实身份与数据影响补足Profile和安全隐私门声明，门尚未通过，不改授权或结果",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:12:39.720969Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "scope.allowed_paths",
+      "old_value": [
+        "insights/attachment_fetcher.py",
+        "tests/test_daily_report.py",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        "update_log/2026-10-31-daily-imap-identity-repair.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report"
+      ],
+      "new_value": [
+        "insights/attachment_fetcher.py",
+        "tests/test_daily_report.py",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+        ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/**",
+        ".project-governance/generated/**",
+        ".project-governance/README.md",
+        ".runtime/daily-automation-20261030/**",
+        "update_log/2026-10-31-daily-imap-identity-repair.md",
+        "C:/Users/Administrator/.codex/skills/complaint-daily-report",
+        ".runtime/processes.json",
+        ".runtime/board.log",
+        ".runtime/board.err.log"
+      ],
+      "reason": "实际HTTP失败因3030无监听，沿用既有开启内网看板授权仅恢复同配置服务，保留生产及其他服务边界",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:17:12.787967Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "plan.steps",
+      "old_value": [
+        "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+        "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+        "验证只读边界与未改对象，保存可复验版本并接续父完整审查"
+      ],
+      "new_value": [
+        "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+        "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+        "仅恢复已授权3030原地址，验证只读边界与未改对象，保存版本并接续父完整审查"
+      ],
+      "reason": "实际HTTP失败因3030无监听，沿用既有开启内网看板授权仅恢复同配置服务，保留生产及其他服务边界",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:17:12.787992Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "任何附件都只在本封冻结身份与当前选中IMAP命名空间一致时取回并认证",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "新内存MIME反例证明同folder复用时第二封跨epoch仍ready",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+              ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "沿用父Accepted同范围修复；不连接真实IMAP/生产，不改报告、页面、调度或其他服务；保留原只读取信契约",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "UID身份必须同时绑定邮箱、folder、UIDVALIDITY和UID，连接复用不能替代逐封比较",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "选中folder的实际epoch属于当前IMAP连接状态，切换或重连必须重新建立",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "把逐封比较放在是否切换folder之外，防止次封沿用首封结论",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "缓存实际响应随连接清空，既省去重复EXAMINE又不混用epoch",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "保持现状仅补文档",
+            "status": "Rejected",
+            "derived_from": [
+              "P1"
+            ],
+            "tradeoffs": [
+              "没有额外请求",
+              "复用连接绕过身份比较"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "当前连接保存实际选中epoch，每封FETCH前比较",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "变更局部且无额外网络请求",
+              "须验证切换和重连状态清空"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "每封都重新EXAMINE并读取UIDVALIDITY",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "自然重建选中身份",
+              "每封增加IMAP往返，既有会话复用无需牺牲"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "验证只读边界与未改对象，保存可复验版本并接续父完整审查",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+          "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+          "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查"
+        ],
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "任何附件都只在本封冻结身份与当前选中IMAP命名空间一致时取回并认证",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "新内存MIME反例证明同folder复用时第二封跨epoch仍ready",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+              ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "跨日复验3030连接拒绝且没有监听，既有IP仍在，原PID记录已失效",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/verification.log",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "沿用父Accepted同范围修复；不连接真实IMAP/生产，不改报告、页面、调度或其他服务；保留原只读取信契约",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "沿用既有人类开启内网看板指令，仅恢复3030原绑定及现有允许网段；不恢复其他服务",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "UID身份必须同时绑定邮箱、folder、UIDVALIDITY和UID，连接复用不能替代逐封比较",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "选中folder的实际epoch属于当前IMAP连接状态，切换或重连必须重新建立",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P3",
+            "statement": "实际HTTP验证以当前服务可达性为前提，旧PID不证明当前服务仍运行",
+            "derived_from": [
+              "F2",
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "把逐封比较放在是否切换folder之外，防止次封沿用首封结论",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "缓存实际响应随连接清空，既省去重复EXAMINE又不混用epoch",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "from_ref": "P3",
+            "to_ref": "O1",
+            "rationale": "恢复已授权同配置3030后重做失败的HTTP验证，数据和其他服务不受影响",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "保持现状仅补文档",
+            "status": "Rejected",
+            "derived_from": [
+              "P1"
+            ],
+            "tradeoffs": [
+              "没有额外请求",
+              "复用连接绕过身份比较"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "当前连接保存实际选中epoch，每封FETCH前比较",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "变更局部且无额外网络请求",
+              "须验证切换和重连状态清空"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "每封都重新EXAMINE并读取UIDVALIDITY",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "tradeoffs": [
+              "自然重建选中身份",
+              "每封增加IMAP往返，既有会话复用无需牺牲"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+            "source_refs": [
+              ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+              ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "冻结反例和代码前像，定位连接/文件夹状态生命周期",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保留实际选中epoch并逐封比较，补齐同连接/切换/重连正反",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "仅恢复已授权3030原地址，验证只读边界与未改对象，保存版本并接续父完整审查",
+            "derived_from": [
+              "P1",
+              "P2",
+              "P3"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+          "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+          "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查"
+        ],
+        "source_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+          ".runtime/daily-automation-20261030/imap-identity-repair/survey.md"
+        ]
+      },
+      "reason": "实际HTTP失败因3030无监听，沿用既有开启内网看板授权仅恢复同配置服务，保留生产及其他服务边界",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:17:12.788043Z"
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "path": "task_profile.applicability_facts.operations_impact",
+      "old_value": "No",
+      "new_value": "Yes",
+      "reason": "实际HTTP失败因3030无监听，沿用既有开启内网看板授权仅恢复同配置服务，保留生产及其他服务边界",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:17:12.788051Z"
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "path": "task_profile.change_surfaces",
+      "old_value": [
+        "API/Integration",
+        "Identity/Security/Privacy",
+        "AI/Data Governance",
+        "Agent/Collaboration"
+      ],
+      "new_value": [
+        "API/Integration",
+        "Identity/Security/Privacy",
+        "AI/Data Governance",
+        "Agent/Collaboration",
+        "Deploy/Operations"
+      ],
+      "reason": "对齐新增的原配置3030服务恢复运维变更面，不增加外部服务范围",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/survey.md",
+      "changed_at": "2026-10-30T18:17:28.237654Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "每封FETCH前比较冻结UIDVALIDITY与当前选中文件夹实际值，复用连接不能跳过；不匹配明确失败且不下载或认证该封附件",
+          "state": "Covered",
+          "evidence_refs": [
+            "insights/attachment_fetcher.py",
+            ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+            ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "冻结epoch与当前连接实际值相同"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "同INBOX连续77/77，两封MIME、part与摘要正确",
+                "expected": "两封ready，同一连接仅一次EXAMINE，FETCH前身份一致",
+                "actual": "ready2/failed0/EXAMINE1；8组参数正反还核验每次FETCH的真实命名空间",
+                "result": "Passed",
+                "evidence_refs": [
+                  "insights/attachment_fetcher.py",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "同INBOX首封77次封66，服务实际77",
+                "expected": "次封拒绝、不FETCH、不认证且无bin文件",
+                "actual": "ready1/failed1/UIDVALIDITY_MISMATCH；原独立反例从旧ready2变为拒绝第二封",
+                "result": "Passed",
+                "evidence_refs": [
+                  "insights/attachment_fetcher.py",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "同epoch复用、切换folder、瞬断重连及失败后继续的正反用例通过，现有只读EXAMINE/BODY.PEEK、来源摘要和恢复行为不回退",
+          "state": "Covered",
+          "evidence_refs": [
+            "tests/test_daily_report.py",
+            ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+            ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [
+              "文件夹或连接发生变化"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "切换Archive、瞬断重连，正确与错误epoch",
+                "expected": "重新EXAMINE取得实际值，正确继续、错误拒绝；每次EXAMINE只读",
+                "actual": "8组单元正反及7组原独立控制通过；新连接实际88对冻结77拒绝；失败后下一封正确可继续",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_report.py",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "正常复用同INBOX同epoch，已核验缓存再次恢复",
+                "expected": "保留复用效率和原只读读取/缓存恢复契约",
+                "actual": "76项测试通过；同epoch仅一次EXAMINE，既有resume不重新连接测试通过",
+                "result": "Passed",
+                "evidence_refs": [
+                  "tests/test_daily_report.py",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "启动多轮对抗性审查",
+          "reading": "安装skill同步逐封epoch边界，全部相关回归、隔离与当前读取模型校验通过，默认昨天与00:30本会话安排保持；保存版本交回父审查",
+          "state": "Covered",
+          "evidence_refs": [
+            "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+            ".runtime/daily-automation-20261030/imap-identity-repair/verification.json",
+            ".runtime/daily-automation-20261030/imap-identity-repair/ui-verification.json",
+            ".runtime/daily-automation-20261030/imap-identity-repair/runtime-verification.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "3895c17df2116237d64ec458bd565d90fa1e2ea9842faf5db2915e94a80b4b3c",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "安装skill1.0.4，真实双地址HTTP及日期UI、默认昨天、76项回归",
+                "expected": "固化每封epoch身份；保持默认昨天、历史634/405/35、白底与00:30同会话；保存可复核资料",
+                "actual": "安装10文件合法、完整634索引和最长正文30714读取；双地址默认10/30未生成且历史29可读，详情/图/日志/PDF/ZIP和日期版本边界通过，UI日期选择及昨天返回通过；代码清单和交接已保存，最终Implemented与父新版本审查仍待安全隐私门",
+                "result": "Passed",
+                "evidence_refs": [
+                  "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/verification.json",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/ui-verification.json",
+                  ".runtime/daily-automation-20261030/imap-identity-repair/runtime-verification.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "按真实反例与原文逐条核验工程结果，安全隐私门独立保持未通过，不将已保存证据冒充最终审查通过",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/source.md",
+      "changed_at": "2026-10-30T18:22:14.464828Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "8c1227b40c6668f9b4d69503dd3574aaf0216694510ec5345b374e8cb6e8a120",
+    "stage": "S8",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:security_privacy_impact=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:Identity/Security/Privacy",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

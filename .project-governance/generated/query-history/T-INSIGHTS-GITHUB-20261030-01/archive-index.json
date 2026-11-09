@@ -1,0 +1,216 @@
+{
+  "schema_version": "6.3-candidate",
+  "task_id": "T-INSIGHTS-GITHUB-20261030-01",
+  "reconciled_at": "2026-10-29T21:52:25.797533Z",
+  "reason": "按最终契约与S8保存此前有效阶段的查询原件，重建官方历史索引",
+  "legacy_index_archived_at": null,
+  "publications": [
+    {
+      "query_digest": "1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d",
+      "generated_at": "2026-10-29T21:21:59.635332Z",
+      "archived_at": "2026-10-29T21:28:00.990098Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d",
+      "files": {
+        "clause-context.md": "042119b27697f161a9c74b45fc683021ccbe26bdb5fd9ba1a2d6612bfa1cac3f",
+        "clause-context.md.view.json": "1f820dd0abb7b105292b0185df06b816023e0edf6b1dde4f6ce6e08fd4f08829",
+        "query-result.json": "77834c647c86fbe0861a30cb758937ed4428c5f5d363b9b5b6c7957c12da981f",
+        "query-result.json.view.json": "96aca1973da7078ef691eea6d6e0f3c80c2df1823e98d5ddb20ec314d28a8f1c"
+      }
+    },
+    {
+      "query_digest": "293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f",
+      "generated_at": "2026-10-29T21:48:38.169024Z",
+      "archived_at": "2026-10-29T21:52:25.797533Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f",
+      "files": {
+        "clause-context.md": "0b75385cee8e4eccd49e3bc74fcdc3ae695f641d3fec3c3483269f22559f72e6",
+        "clause-context.md.view.json": "1ab98982619ac3bd67dc87dc93295abe228759bb9a9cf86e5cbcbbc69e0e42dd",
+        "query-result.json": "7574ce6618f983209c1b4dc0408406beb1fb2a840e5cae25259077700b21dc5b",
+        "query-result.json.view.json": "0b63d8c5f051184e5a575d591b3d274f7a92d3c9d010ee71045dbb79b152f4ce"
+      }
+    },
+    {
+      "query_digest": "94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865",
+      "generated_at": "2026-10-29T21:37:44.630878Z",
+      "archived_at": "2026-10-29T21:40:16.412337Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865",
+      "files": {
+        "clause-context.md": "45d505f90d5528d72b2e0879ea3e04bfc2011e5d966a2a84a0c7d8b861fd4362",
+        "clause-context.md.view.json": "1d75b7fa11b16d878d4ca7691af7ce6cd59abec9f954af7349a36b6485876b7b",
+        "query-result.json": "08820009ca34a0f9dd8afc2ae74b72c79cfef8139206c8c4a31a25e31de2fdc5",
+        "query-result.json.view.json": "2ad5f9f17037dc9e2437e5ca184516285b96128c00136fb51bf10d62c7c3b263"
+      }
+    },
+    {
+      "query_digest": "a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15",
+      "generated_at": "2026-10-29T21:39:33.918908Z",
+      "archived_at": "2026-10-29T21:52:25.797533Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15",
+      "files": {
+        "clause-context.md": "add19515c69bd4fafe985c188b62594950f4c87b554330e7935cc5fe41ca2aaf",
+        "clause-context.md.view.json": "3bb1aa3ace6ca93e02724d78527613f03c2449c3c59dc015287881547317a566",
+        "query-result.json": "a0695ed354054385116e059b782a663b00746aabc9ec5cc5592b8245b7769412",
+        "query-result.json.view.json": "df93b7bfd0550fcfc5222f8514497e89cbc2a8c65f76c6b4d3744b78006b130c"
+      }
+    },
+    {
+      "query_digest": "a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511",
+      "generated_at": "2026-10-29T21:24:09.914758Z",
+      "archived_at": "2026-10-29T21:40:16.412337Z",
+      "original_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511",
+      "archived_path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511",
+      "files": {
+        "clause-context.md": "76ebaae34eead363d090fab81efd60bb95e0913a544a2abef3aafe095cbb35f5",
+        "clause-context.md.view.json": "71c41b0a5ae297a4ec65f320209604a5b7e52ee09216fb113098d020c3313857",
+        "query-result.json": "ea1cfae5ec3b5198284b18f71572ecea9a23b4ee2acaaaedc1f55efaed90b612",
+        "query-result.json.view.json": "3d990097a46cea8aec6bc292465673880636b3e56c8078df1004e524999a699e"
+      }
+    }
+  ],
+  "archived_request_sets": [
+    {
+      "path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/requests-pre-close",
+      "files": {
+        "293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f.json": "a8935265b64d79a5e71840259288595d469dbd36b74d39270d24504c1e197025",
+        "a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15.json": "5e730037f646519f581448276cb67cc7588f245fd29e9739887d8dee194f9349"
+      }
+    },
+    {
+      "path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/requests-pre-e03",
+      "files": {
+        "1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d.json": "c441e99f4b188e18595d40a204ee28332f0a8da787a197ac9e8aa19dd5dbbfb9"
+      }
+    },
+    {
+      "path": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/requests-pre-lan",
+      "files": {
+        "94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865.json": "6c21331dc987b0d96a40c1933ffbfa3bcc5cd07136a26931502ca51dde3b6e16",
+        "a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511.json": "e1e14d3c2f0df480df3fca132a594aa5369c42826db045ec3697162d9a24f3fa"
+      }
+    }
+  ],
+  "evidence_redirects": [
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/clause-context.md",
+      "sha256": "042119b27697f161a9c74b45fc683021ccbe26bdb5fd9ba1a2d6612bfa1cac3f"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/clause-context.md.view.json",
+      "sha256": "1f820dd0abb7b105292b0185df06b816023e0edf6b1dde4f6ce6e08fd4f08829"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json",
+      "sha256": "77834c647c86fbe0861a30cb758937ed4428c5f5d363b9b5b6c7957c12da981f"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/1235fb381ed56830877510d4d2e6e9d89dc19d11195ba4bed1f81cc901f8131d/query-result.json.view.json",
+      "sha256": "96aca1973da7078ef691eea6d6e0f3c80c2df1823e98d5ddb20ec314d28a8f1c"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/clause-context.md",
+      "sha256": "0b75385cee8e4eccd49e3bc74fcdc3ae695f641d3fec3c3483269f22559f72e6"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/clause-context.md.view.json",
+      "sha256": "1ab98982619ac3bd67dc87dc93295abe228759bb9a9cf86e5cbcbbc69e0e42dd"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/query-result.json",
+      "sha256": "7574ce6618f983209c1b4dc0408406beb1fb2a840e5cae25259077700b21dc5b"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/293da4ac8f9a0679e61a1baa90e637ffa7e7212629a7a8d0b19a43b26abdbe7f/query-result.json.view.json",
+      "sha256": "0b63d8c5f051184e5a575d591b3d274f7a92d3c9d010ee71045dbb79b152f4ce"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/clause-context.md",
+      "sha256": "45d505f90d5528d72b2e0879ea3e04bfc2011e5d966a2a84a0c7d8b861fd4362"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/clause-context.md.view.json",
+      "sha256": "1d75b7fa11b16d878d4ca7691af7ce6cd59abec9f954af7349a36b6485876b7b"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/query-result.json",
+      "sha256": "08820009ca34a0f9dd8afc2ae74b72c79cfef8139206c8c4a31a25e31de2fdc5"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/94c575a4bfb55b54f00e1e122b26567192de200b3a6c7c4ee199f40eff945865/query-result.json.view.json",
+      "sha256": "2ad5f9f17037dc9e2437e5ca184516285b96128c00136fb51bf10d62c7c3b263"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/clause-context.md",
+      "sha256": "add19515c69bd4fafe985c188b62594950f4c87b554330e7935cc5fe41ca2aaf"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/clause-context.md.view.json",
+      "sha256": "3bb1aa3ace6ca93e02724d78527613f03c2449c3c59dc015287881547317a566"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/query-result.json",
+      "sha256": "a0695ed354054385116e059b782a663b00746aabc9ec5cc5592b8245b7769412"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a4b7dbe3e8eb2b5ab109ac4e0b2bd66a2959cfa3cb5c6fc82a3afd36f7bf8d15/query-result.json.view.json",
+      "sha256": "df93b7bfd0550fcfc5222f8514497e89cbc2a8c65f76c6b4d3744b78006b130c"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/clause-context.md",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/clause-context.md",
+      "sha256": "76ebaae34eead363d090fab81efd60bb95e0913a544a2abef3aafe095cbb35f5"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/clause-context.md.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/clause-context.md.view.json",
+      "sha256": "71c41b0a5ae297a4ec65f320209604a5b7e52ee09216fb113098d020c3313857"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/query-result.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/query-result.json",
+      "sha256": "ea1cfae5ec3b5198284b18f71572ecea9a23b4ee2acaaaedc1f55efaed90b612"
+    },
+    {
+      "original_ref": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/query-result.json.view.json",
+      "archived_ref": ".project-governance/generated/query-history/T-INSIGHTS-GITHUB-20261030-01/a763aeaef4a627dd69233f8985aaf2f49101a46dd789918f7b796a9df98ba511/query-result.json.view.json",
+      "sha256": "3d990097a46cea8aec6bc292465673880636b3e56c8078df1004e524999a699e"
+    }
+  ],
+  "active_publications": [
+    {
+      "query_digest": "ca6bcdb658d12f19a70321854415a1657af4edd162007f4e57a9bdbb40121e22",
+      "task_id": "T-INSIGHTS-GITHUB-20261030-01",
+      "action": "close_task",
+      "generated_at": "2026-10-29T21:51:50.016861Z",
+      "result_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/ca6bcdb658d12f19a70321854415a1657af4edd162007f4e57a9bdbb40121e22/query-result.json",
+      "files": {
+        "clause-context.md": "32c36a305322713a08c8497ff6bf32e88c08182fc96d1f7a1d38fa03fbd0db6c",
+        "clause-context.md.view.json": "4f0fa72703a822ee8566592c56b8b6956ee13acb2613c1b545d1d91eadf6bae1",
+        "query-result.json": "b957bf6e17fa72fe6efb4e5ea82a6d39b5018bc6096ad3cba2fc3af2a7a2226c",
+        "query-result.json.view.json": "a7698514b1c0791c1efe4edb70fcc4cdc7fdebfeb6ab8ab1abc18cca7a3ff50c"
+      },
+      "request_path": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/requests/ca6bcdb658d12f19a70321854415a1657af4edd162007f4e57a9bdbb40121e22.json",
+      "request_sha256": "f9e5408a2b2b22479d3ce5de7c5df509cb2f79f3026b1d7a64163a4069f63d47"
+    }
+  ],
+  "current_active_query_result": ".project-governance/generated/queries/T-INSIGHTS-GITHUB-20261030-01/ca6bcdb658d12f19a70321854415a1657af4edd162007f4e57a9bdbb40121e22/query-result.json"
+}

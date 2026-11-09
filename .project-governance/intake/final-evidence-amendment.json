@@ -1,0 +1,106 @@
+[
+  {
+    "path": "requirement_items",
+    "value": [
+      {
+        "id": "R-01",
+        "source": "request_snapshot",
+        "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+        "reading": "本期使用开发数据完成已讨论的独立数据库、日期分类读取模型、增量与 agent 只读接口；生产准备与实际联调分开交代",
+        "state": "Covered",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+          "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/acceptance.md"
+        ],
+        "acceptance_refs": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "review": {
+          "source_sha256": "60659a92d08c5fe3cc00b3cec850af87a10d6c981ded6c08deeba4928526568d",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "开发源只读一致快照、真实目标副本与 HTTP 查询",
+              "expected": "独立副本保留完整源记录并支持日期分类和 agent 原文访问",
+              "actual": "十四表全部内容指纹一致，53119 封源邮件/事实/主归属对齐，38 项测试通过，九端点实际鉴权及原文查询通过",
+              "result": "Passed",
+              "evidence_refs": [
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+                "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/acceptance.md"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "path": "artifact_manifest",
+    "value": [
+      {
+        "meta_type": "TaskContract",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-before",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/before.json",
+        "reason": "freeze execution input",
+        "rule_reference": "VC-PPG-PRO-001 §8.1",
+        "owner": "task-initiator",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "RunLedger",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-run",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/run.jsonl",
+        "reason": "record material execution events",
+        "rule_reference": "VC-PPG-PRO-001 §8.2",
+        "owner": "execution-agent",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "TaskOutcome",
+        "legacy_kind": null,
+        "action": "Create/Revise",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-after",
+        "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/after.json",
+        "reason": "record terminal facts and residue",
+        "rule_reference": "VC-PPG-PRO-001 §8.3",
+        "owner": "task-initiator",
+        "source_snapshot": "2026-10-29T08:27:18.290309Z",
+        "human_confirmation_refs": []
+      },
+      {
+        "meta_type": "DerivedView",
+        "legacy_kind": null,
+        "action": "Generate",
+        "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-source-manifest",
+        "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+        "reason": "绑定实际交付的三十个源码、配置、目录和依赖文件摘要",
+        "rule_reference": "C09 execution evidence; C05 verification",
+        "owner": "execution-agent",
+        "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+        "human_confirmation_refs": []
+      }
+    ]
+  },
+  {
+    "path": "authority.execution_permissions",
+    "value": [
+      "read",
+      "edit-in-scope",
+      "validate",
+      "external-effect",
+      "rollback"
+    ]
+  }
+]

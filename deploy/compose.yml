@@ -1,0 +1,24 @@
+name: complaint-insights
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: complaint-insights-postgres
+    env_file:
+      - ../.secrets/postgres.env
+    ports:
+      - "127.0.0.1:15433:5432"
+    volumes:
+      - insights-pgdata:/var/lib/postgresql/data
+    labels:
+      com.lfen.project: complaint-insights
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U insights_owner -d complaint_insights"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  insights-pgdata:
+    name: complaint-insights-pgdata
+    labels:
+      com.lfen.project: complaint-insights

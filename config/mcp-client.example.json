@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "complaint-insights": {
+      "url": "https://10.8.61.200:3037/mcp",
+      "headers": {
+        "Authorization": "Bearer REPLACE_WITH_MCP_TOKEN"
+      }
+    }
+  }
+}

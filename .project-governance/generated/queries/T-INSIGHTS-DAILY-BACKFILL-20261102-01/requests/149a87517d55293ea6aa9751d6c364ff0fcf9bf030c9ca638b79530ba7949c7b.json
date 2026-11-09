@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "两日600及520封冻结RECEIVED邮件全部审阅，按业务主类归并并复核UID、真实RFC、1156原件与全子问题ZIP，准备生成离线候选及独立来源校验；不改变生产长期隔离或旧日报",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3da4c20e4f93c1f04fb1eed6e6ff9e460422606b8127f786ee1dc37ac2cca5f2",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01"
+}

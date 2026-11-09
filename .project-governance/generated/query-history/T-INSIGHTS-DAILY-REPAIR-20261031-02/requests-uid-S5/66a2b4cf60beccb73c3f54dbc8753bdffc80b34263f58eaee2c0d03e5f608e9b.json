@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "纠正3封无命名空间UID确认及7封角色，完整SHA归档815文件后限字段原子切换，源数字/邮箱/原件ZIP不变；同步skill有限指纹兼容与逐项验证，不增加访问和权限",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "e0aa89671f543bd2f02823a6c01f631338c63cf79ee7a65b72d6755351bc1e32",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02"
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "mobile",
+    "width": 430,
+    "height": 1600,
+    "viewport": 430,
+    "document": 415,
+    "missingStyles": false,
+    "links": 15,
+    "result": "Passed"
+  },
+  {
+    "name": "desktop",
+    "width": 1440,
+    "height": 1200,
+    "viewport": 1440,
+    "document": 1425,
+    "missingStyles": false,
+    "links": 15,
+    "result": "Passed"
+  }
+]

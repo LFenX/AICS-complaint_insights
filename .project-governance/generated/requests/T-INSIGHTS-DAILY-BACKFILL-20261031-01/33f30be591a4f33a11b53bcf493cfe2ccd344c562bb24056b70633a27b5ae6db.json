@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保持现有生产隔离和同一冻结757附件白名单，为邮件104621五件失败附件执行只读IMAP UIDVALIDITY与RFC822.SIZE诊断，保存失败FER和新Attempt，确认上次752原件及无邮件状态副作用后同范围重试；同时继续本地完整语义审阅与预览，不扩大权限或改正式历史",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "f09809933948643e13f9d2704083724b16ca1141ce2a8899507daa737ca8e781",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

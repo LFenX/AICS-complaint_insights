@@ -1,0 +1,19 @@
+[
+  {
+    "id": "R-01",
+    "source": "request_snapshot",
+    "quote": "你可以先用本地开发数据先推进本地的数据库建立，后续只要生产数据库连接接通，可以快速实现我后续的规划",
+    "reading": "用开发数据交付此前已讨论的独立库、同步器、日期分类读取模型及 agent 查询接口，并预留生产接入",
+    "state": "Open",
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/discovery/survey.md"
+    ],
+    "acceptance_refs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+]

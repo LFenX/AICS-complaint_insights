@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "修复已确认预览缓存真实性，归档旧版后生成来源绑定的历史语义纠偏读取模型，并同步skill及反例验证",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "bee418d5e1a38142a1c053ad052aa0331cd3f27276f71876219dece5ba34b629",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03"
+}

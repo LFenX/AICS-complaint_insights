@@ -1,0 +1,509 @@
+{
+  "captured_at": "2026-10-29T23:13:58.941045+00:00",
+  "git_commit": "88ef76cc582c2cb36eeb51febace6ada57afef00",
+  "version_sha256": "7fb70b2a88eff771a9da327c80ec5c6ca9aad039bfefdcbe616071ae381acb47",
+  "root": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "005ceada17e59e7e2aea9a2aebfe2a510df995bf90490f7dda63027bb14a4e9e"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/SHA256SUMS.txt",
+      "sha256": "a7c563c32226529bc360b645dcdfa056d2f5c802f449fcb523151085929e8875"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.html",
+      "sha256": "69b2d842159ba35789fe2b8a552dc05ed32cde85b8e7f37f09517ea2281d1376"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/client-guide.md",
+      "sha256": "4064b4649bbaf7f9cc546a0bbff98eb07ef750909c205089ae7eaa41e0f93ee3"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-ca.crt",
+      "sha256": "b65f85f59835a8277c254a6f41861f7f02ce9302e02c1fa9098dba71e3460d3f"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client-kit.zip",
+      "sha256": "4f6562cdb6ab351a97a440ca025507d7d149b362c9da4101f5d6a9445839be52"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-client.example.json",
+      "sha256": "f437e0b92f6dc859e4a07815a5b318e50fc972cb4e575f917fcc23e2b5cd8092"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/mcp-endpoint.json",
+      "sha256": "e65f3339fc69edfa11c5c5a18b57f345da7b07010d4bca716a8d885d9907b4bc"
+    },
+    {
+      "path": ".runtime/mcp-portal-public/tools-schema.json",
+      "sha256": "502f60a374dee0f1f09e129f1abec73cc12e33c9c9d53c13dacf9c2b0222c6ae"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/release/production-switch.md",
+      "sha256": "07dba77efb4857a738614327df30b35474f6bc88668f5072a6b566cd90d2a56b"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.md",
+      "sha256": "4064b4649bbaf7f9cc546a0bbff98eb07ef750909c205089ae7eaa41e0f93ee3"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/client-guide.template.md",
+      "sha256": "16e929f93ec786c5d36469d702846994f325248b714c8f6edfd10332c31bd2c9"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "sha256": "969f562d1086c3d9b608bc79419f157d67bd4ec03d6123d0b4d9096b266980f4"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/tools-schema.json",
+      "sha256": "502f60a374dee0f1f09e129f1abec73cc12e33c9c9d53c13dacf9c2b0222c6ae"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/design/repair.md",
+      "sha256": "9b413c938fe84dab19980508e64d98e557ddc8bfbac016be52b6e6ea1d34b9a0"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/coverage.json",
+      "sha256": "efa68544c8feaee29e28cceab3ff2f17b4297bd04d7f9ef5ebc6883b7eb1c181"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/delivery-files.json",
+      "sha256": "b36746900d4b1b54e346cad74c9b59747a7731a48052f2c72e65257b13031d85"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/fixes.json",
+      "sha256": "1e63f4966656a189abf60f375bcb0cab7ace6dd4e1bdbfe61b00cb47b5a1315d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/report.md",
+      "sha256": "04c8b50276ff650ee43c0659c569d073c86be3ac991885a32605ee7bad872650"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/results.json",
+      "sha256": "79bd9b54dbd5bbed5d5f4e6a1c01cf6a767c78f8ac089eeda89b00d5c10e803e"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/README.md",
+      "sha256": "aa1cb73198f23eb0935faf6f51f1759a5b18c7aabe8ed6d97fa401fd781d4c1e"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md",
+      "sha256": "bd756139508179ec1c9535daa12be38802332b8b19e209e8781ce9ac35b5fe06"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/ui-previews/admin-mobile-fixed.png",
+      "sha256": "e7e2cbd576e8419e5b5955221c01e8d599a9699de658a56c3ad59321514fe700"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/ui-previews/portal-fixed-desktop.png",
+      "sha256": "9ca7a3f39a05548764e7de7583645840194f5934a5e9bc8b4f17d6f690df0729"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json",
+      "sha256": "6763c0a8c0e33a6d71d6b3f245601aafa82ece072f360fcc3f4174657047c4e0"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+      "sha256": "629c567137cf639a4aeeacd5a411f04f7f8ca169b429ff34cdcb67ce80dae563"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/deployment.json",
+      "sha256": "0ef184f5d4a83db4b788cda99e5a41e435c1998d0aa2e809906951ba12a879f8"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/evidence-recovery.json",
+      "sha256": "c53f226d7953021a1c9ba1e2c550d7cecd45e1ce03a16f916e25dd327e658f47"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/fixes.json",
+      "sha256": "b7df6a7fd23b82a1f53d3727d2c244e11cde31036fed7e41083af02d2b102e8e"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/live-numeric-fixed.json",
+      "sha256": "75cee8eab94ae576d2015fc78f56dbd251d75dd5c87bc38b845415522d996f38"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/report.md",
+      "sha256": "c25592ae18155b1300dc3cf70133c7920dfb4e14dc89204389820f50fac099ff"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+      "sha256": "b92f2fa2afed6f2d5f752048427ba5e059d29a564f7d60916c1679a938d2beb5"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/round-5-report.md",
+      "sha256": "5e6a5cf3980a6c3a831f8e812d976947ba373448f243d2ae9a96c1e00a70d0ae"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+      "sha256": "78333fc09f4b44ff9ac7065950580ca60670213edd1ece7595bbcad049317890"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/README.md",
+      "sha256": "8c983fad1fd62751d2ad6182db53d5b328a894b23c114533c629ae29dd8b5f1f"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/discovery/survey.md",
+      "sha256": "3a9ebae645261a62d7f27721aae79bc7cbc259b414a1cc53d4133da879a0578a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/ui-previews/mobile-long-revoked.png",
+      "sha256": "8116e66135af9053b51abbe797deb4de580203c0b320677580b0d65cf02c9f81"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/browser-fixed.json",
+      "sha256": "8894efe2e28290807b09f31349a64824c555f20f13d6116307308d7829fc8a2c"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/coverage.json",
+      "sha256": "618ca9793dbfd4a34a8bed7755d1d47216bbcbe28d57eebfaacea77bbe8ee4a2"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/deployed-tests.log",
+      "sha256": "00844a5f26540d7e620765861afe297dcd38bd9c9d1dd133db17570264f690dd"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/deployment.json",
+      "sha256": "d47f843b6eef46418595d9741af6271921de329bbaba5bd21fb8a6e6d5456ea7"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/failure-notes.json",
+      "sha256": "553d5af62aa62cb0da0a45812c6f1b305a7e59e4f096b4b6994ff5fe7bb940bf"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/fixes.json",
+      "sha256": "e8c3f1e840e467cadd71740fbfe4f334f5e469af61e51866fa12f2ba3b35ba53"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/live-policy.json",
+      "sha256": "1721fb185078024f79fd6f4313395e4e5aef99e3542778e310e194f14d8fe0a8"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/report.md",
+      "sha256": "dd4efa847110c4653329a1acf96d096420210a06cae1ecaf4c304968af6d90c9"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/results.json",
+      "sha256": "520a8c99d2e9b9c7d919707c1eb3517ea7dad8aabdd6d575729d68f2d3f8726d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/round-7-report.md",
+      "sha256": "860c10727b48cdd025e20b61b45b9273a1ee9fe44b112fd4d197b2ea6c3a241a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/round-7-results.json",
+      "sha256": "3c056dcc27d71c5ad710c25b4bb4734bc7e86d3800dec752a45caf3da3ce021d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-05/verification/tests.log",
+      "sha256": "cd1561dde36b85a023f8ce825fb4a907f340bd75062de211f2a8d27570424472"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3cd99f5dca2506b5ebbd8ad9b9b82caa5bd2771925604280348a293c1a079729"
+    },
+    {
+      "path": "assets/daily-board.css",
+      "sha256": "418c8d94f3942debba2f9869b0f4801622dabac846aee943273e5962d5669f91"
+    },
+    {
+      "path": "assets/daily-board.html",
+      "sha256": "89967b1326c9e735e9e8f998333e791a5f8c62051a7ec03f52d950536385c16e"
+    },
+    {
+      "path": "assets/daily-board.js",
+      "sha256": "2487b2c647f4f1e48f6ba7897e7fe30f500b0254aa6b94aec766330f65d2b096"
+    },
+    {
+      "path": "assets/echarts-LICENSE.txt",
+      "sha256": "634293835b43a6dd2094fa39182a3d9a6b9ca43b7fdb9ac354e8037af2a3093a"
+    },
+    {
+      "path": "assets/echarts-NOTICE.txt",
+      "sha256": "d491d358344f842685c1b1585970999db65fe30ecf7ef3867af8814f4016c016"
+    },
+    {
+      "path": "assets/echarts.min.js",
+      "sha256": "b66b25aeb4df84e33199dc21694014d336d222cbd9deb0e5a7c14bd6aa0d0fd0"
+    },
+    {
+      "path": "assets/taxonomy/embedding-adjudication-decisions.json",
+      "sha256": "83e8f1868029364f15c17ebe8f48b0949f7e346a782fabf6b2367d96655c762d"
+    },
+    {
+      "path": "assets/taxonomy/severity-baseline.json",
+      "sha256": "e064fc7afff032f15f5928534d1ce152f04431ebf2e6ef6a632648690048c535"
+    },
+    {
+      "path": "assets/taxonomy/taxonomy-v2.json",
+      "sha256": "a5e1b67934bd7ce7127f747d471e66e6393b5283f939b1c4be923e7314f6e83c"
+    },
+    {
+      "path": "assets/token-desk.css",
+      "sha256": "332dbd76790e82b915c9f7a99ca3439ce59c02b90ab6fa494e337e4e6698d54a"
+    },
+    {
+      "path": "assets/token-desk.js",
+      "sha256": "307461efb828e4a9a3d947dfa537b3746fdf0b8670ad5a22c14133d23ddc1262"
+    },
+    {
+      "path": "client-dependencies.txt",
+      "sha256": "5c6e7dc498f48f8be4eb60a108e2ec64e2408783827b867dc1dc6588ab2f4732"
+    },
+    {
+      "path": "config/daily-theme-aliases.json",
+      "sha256": "49c3f3473e2ec491f06de2e7927e4518b8be597d0c1ab2c92cfe79efb8febe82"
+    },
+    {
+      "path": "config/echarts-vendor.json",
+      "sha256": "1ade59566debfcec4a9fb5e660462df73fa3eee98b6265d8c58e05b9f1fea6ea"
+    },
+    {
+      "path": "config/mcp-ca.crt",
+      "sha256": "b65f85f59835a8277c254a6f41861f7f02ce9302e02c1fa9098dba71e3460d3f"
+    },
+    {
+      "path": "config/mcp-client.example.json",
+      "sha256": "9f8853a4a4078ee57c6eb9a8c4a7c3b46aba2ab4d8c0e6532c5c00f83c4508bf"
+    },
+    {
+      "path": "config/mcp-endpoint.json",
+      "sha256": "6546054f3ba0796fb243b0eef99ec6216b01af28e487698a14092ff95986cead"
+    },
+    {
+      "path": "config/mcp-queries/ai-records.json",
+      "sha256": "f093231cda54400aee6b20519ce6a8cf23751c2511d53ebacbf5e270f5ec5113"
+    },
+    {
+      "path": "config/mcp-queries/context.json",
+      "sha256": "47eaec865ec9397cf021e0ec34ad390beb3c571c30be17c28dd3fa123cd9f67d"
+    },
+    {
+      "path": "config/mcp-queries/daily.json",
+      "sha256": "9835aa1d3c6258745f1aabf8c75c6f0e0cb585264fb7579d111fba325d371697"
+    },
+    {
+      "path": "config/mcp-queries/mails.json",
+      "sha256": "f5b0754cb8572b9df2e4a34f73381426a23783df6e005b4b36c09b4c13e7b4ff"
+    },
+    {
+      "path": "config/mcp-queries/source-records.json",
+      "sha256": "a5fd07baa008e0ba8ea3b52b38ef6afb25a2be3f9d1501db9061ab5b8376ce78"
+    },
+    {
+      "path": "config/mcp-queries/status.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/tables.json",
+      "sha256": "b62421adc10ec898c32f86d114c798d76b1d1ad3b798c1f23b0900d2c32c21ed"
+    },
+    {
+      "path": "config/mcp-queries/taxonomy.json",
+      "sha256": "95fc99a669cafb7fa96963f8766ec1ce991396ee7c524b0505cfbc13787fdfeb"
+    },
+    {
+      "path": "config/production.example.json",
+      "sha256": "7fd21cb227eb69fae1476f2e26162fcad4fbd18f3aa3d07785fb9f0963ee5c4a"
+    },
+    {
+      "path": "deploy/compose.yml",
+      "sha256": "58d5d7a16bbef35b7caa507815571fb4685819de8c6703d90449e6fd0005d549"
+    },
+    {
+      "path": "dev-dependencies.txt",
+      "sha256": "934fbb549ab3209320a68f549631f92ffa7dcd1372d15620c148eb5f55bd7735"
+    },
+    {
+      "path": "insights/__init__.py",
+      "sha256": "8d9d750321768f63f2024c3727ee050b4232136b27a39ab608e676f77d907bd0"
+    },
+    {
+      "path": "insights/api.py",
+      "sha256": "e087b0182ac73af2c674703778cbe48df0ac020df4b7d4d6f79f903c30e4a64f"
+    },
+    {
+      "path": "insights/attachment_fetcher.py",
+      "sha256": "738663cbc71ed7544c6eb34b154b2fe24c859e919d3f19fa16099f6b350a4469"
+    },
+    {
+      "path": "insights/attachment_preview.py",
+      "sha256": "3a3aecca0f29ae8db211ec4fa0aa6a36b06e80d11be08de229b24711cf533258"
+    },
+    {
+      "path": "insights/capabilities.py",
+      "sha256": "4ba56d2776ec1028b02002878f9ffe88c59bc3acd29687db16c975cfbfc92b60"
+    },
+    {
+      "path": "insights/catalog.py",
+      "sha256": "eecd6a0f82a6fbd7b4504fcc254284b453fd88324fa555fd4efab8b70c8d15a8"
+    },
+    {
+      "path": "insights/cli.py",
+      "sha256": "da745b4ca7ac4a347b34d66a378f20f272ddecb28d2780ba850e00f1f640defc"
+    },
+    {
+      "path": "insights/config.py",
+      "sha256": "3955e58b7b7f806f157e00a358ff700c5737b56382184217aba1860a55727671"
+    },
+    {
+      "path": "insights/daily_board.py",
+      "sha256": "e0cdf94c0fc423bfeddabf85825f3caf6a4bb1051208cd2329016915cef46dc4"
+    },
+    {
+      "path": "insights/daily_report.py",
+      "sha256": "b9260743145648b06d76351fd162d0f340edfe83a059295a48ab32ec35d1f168"
+    },
+    {
+      "path": "insights/datasets.py",
+      "sha256": "e50cfa2a56602a7dbe84a1fca7cc9c7e1abe7311ed1466a73ab8fda7cceb6785"
+    },
+    {
+      "path": "insights/db.py",
+      "sha256": "8ebaca7d801635cff550d997f2d50e8e2ac75947d6fef00faff6a50e64795f93"
+    },
+    {
+      "path": "insights/initialize.py",
+      "sha256": "fad0ee197e13972c1d699c7d0bb8e0f9ef0351dd6db16612f031290aa645b118"
+    },
+    {
+      "path": "insights/log_archive.py",
+      "sha256": "015bdc53c93b6e6bc9947ce43722b94a3064883bffd6b9d9dc5eec6986b18905"
+    },
+    {
+      "path": "insights/mcp_http.py",
+      "sha256": "714e3033a73bfde57deb5253780dd54e2fce9322e0a11fb0daf5a2a4b7961a51"
+    },
+    {
+      "path": "insights/mcp_server.py",
+      "sha256": "c656064173942f5b2151c1a00699a3f4c666933e47adda7ec7a1de7ba87620d5"
+    },
+    {
+      "path": "insights/mcp_tokens.py",
+      "sha256": "c4d9f5903d1d2743362991921a98d7a2af25094d580f413ef6ff9ca7486097c0"
+    },
+    {
+      "path": "insights/model.py",
+      "sha256": "1fc17ddab39bd2ea1d611ed61e5a0fd4605aef306a88245689c8dc033e2958c2"
+    },
+    {
+      "path": "insights/projection.py",
+      "sha256": "f1f87f7c803df936987f80fc0662389178449239a82fcabdf6b5cb5a6fe23b64"
+    },
+    {
+      "path": "insights/source.py",
+      "sha256": "10e9e18711ae548331c1d8cdf7195f0813f3e4df772f0bb2d038b44b1f4bd782"
+    },
+    {
+      "path": "insights/syncer.py",
+      "sha256": "8131f2e63412471bf961a2161ad7cfd39dffd670ba40dc9b8049ee4fe1f87492"
+    },
+    {
+      "path": "insights/time_rules.py",
+      "sha256": "d017b98cd73372f45c706d59ff2adfc83bbfccd80697e16fc12a92f049442a1c"
+    },
+    {
+      "path": "insights/token_desk.py",
+      "sha256": "2b8c00ca3c6f381c235de147f3f7736bbacd07adef350a65417ec668c1b5b650"
+    },
+    {
+      "path": "requirements.lock",
+      "sha256": "1a7b240cead88f910b59071ae10c25dae3e338ad8ff40d1559949a93f780ceeb"
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "d366b516a5ae452e35e26a245f57245bd86aaed291df05260c019da2bd494b47"
+    },
+    {
+      "path": "scripts/agent_client.py",
+      "sha256": "8d80f8fd26dc13c65abe0c90753777f4c1a7043201fe3ce54db9cce9a96b70a2"
+    },
+    {
+      "path": "scripts/build_mcp_handoff.py",
+      "sha256": "688c120e79d3439ba583ced6590e0fc8a1231556c4f3f38a8514a0cef9ebcbd1"
+    },
+    {
+      "path": "scripts/manage.ps1",
+      "sha256": "2d147f5aabf072c33e4c1debfef8cfb205172e6d6e827f244cafd8c2580760e4"
+    },
+    {
+      "path": "scripts/mcp-firewall.ps1",
+      "sha256": "73f28188fe42f85905a5fbf6165dfe8ca42de9468955664bd9a0b94084065fa6"
+    },
+    {
+      "path": "scripts/mcp_client.py",
+      "sha256": "7ebc4f38245f6895ee31952e9d74d8f9234744232bb9cf4c4d4de7aee77dca70"
+    },
+    {
+      "path": "scripts/mcp_portal_materials.py",
+      "sha256": "7a208e2e49652c4be65af9e2c8d7d135b8b41ae80d8c32fcd7a7e50e4a44064e"
+    },
+    {
+      "path": "scripts/mcp_portal_verify.py",
+      "sha256": "621d7f2bc811cc273af1ea883f1e0df91b418dcd30e637ba80943e9a14141cbf"
+    },
+    {
+      "path": "scripts/mcp_protocol_client.py",
+      "sha256": "9b44d68ecfb8619d9fcf81b83a83cc54af78feced8ee41eb5b4bba933d8ef246"
+    },
+    {
+      "path": "scripts/mcp_server.py",
+      "sha256": "83ad2c7f96f1b75a07f3733f02278cfcf449d3a6097f311631e0a0e8a2993a77"
+    },
+    {
+      "path": "scripts/mcp_workflow.py",
+      "sha256": "4930934c9c752d4f64b39f9742a61757dd9f899e6c7ca17c55af3d18e63c5b10"
+    },
+    {
+      "path": "scripts/provision_mcp.py",
+      "sha256": "6bec1188cb8b2467ab136790d25e0f0defc7ae2fa2a7ac6114eb2fa879bb9b83"
+    },
+    {
+      "path": "scripts/token_desk_admin.py",
+      "sha256": "b7804a1a97eb4ada5f2101d25621545e17f2610ad51f8cbef443c1c0df26a6ff"
+    },
+    {
+      "path": "scripts/verify_local.py",
+      "sha256": "e0770d567f61615d58f2c55405c892ae49eeefdb83f1ea5d0bf95ace5c81a902"
+    },
+    {
+      "path": "scripts/verify_mcp.py",
+      "sha256": "7b25747980e56e64170c2a2467297769d9b7a0007ff37efda1bd46711adc82d2"
+    },
+    {
+      "path": "sql/001_foundation.sql",
+      "sha256": "de6cf001b2ba8ebe5dd64d7d1c3376ad7522a3f6fecd758a50a73de2fb3ec1b0"
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/test_daily_report.py",
+      "sha256": "cc908fe11ab4299b485f8916299bdf2dc96a3aab39d47ce783098c5e219fa403"
+    },
+    {
+      "path": "tests/test_integration.py",
+      "sha256": "9ea4857cca3a55aeadf07557a1815a73c4343cbcc5a17ed871b042ae3986bb7a"
+    },
+    {
+      "path": "tests/test_log_archive.py",
+      "sha256": "42d35844a9fed7e4e38110b184a18e380c8627f2934c25dc4f9f8292a8790d08"
+    },
+    {
+      "path": "tests/test_mcp.py",
+      "sha256": "96837db6fd8884cfc42c81a19eb751e04744e4596b4374096330beaf5734d966"
+    },
+    {
+      "path": "tests/test_rules.py",
+      "sha256": "fc99e36550468948a7ea7b599fd9235e01067f2cee0f0a6a4afa0216f091b37f"
+    },
+    {
+      "path": "tests/test_token_desk.py",
+      "sha256": "eeb4ddee746dda12fc730cd6bf58117957f37c673aadf94f04f758d574f3ad9e"
+    }
+  ],
+  "excludes": "Git metadata, real credentials, runtime test fixtures and subsequent independent review evidence"
+}

@@ -1,0 +1,21 @@
+{
+  "transport": "Disposable loopback UI fixture; current product header, no response-header override, no injected authenticated session; synthetic admin/tokens only; not proof of actual TLS/peer/cookie flags",
+  "login": "native POST303 -> /admin200",
+  "issue": "native POST200, 64-char identity, single-use reveal, copy feedback success",
+  "closeReveal": true,
+  "filter": true,
+  "revoke": {
+    "flash": "已撤销 fixed-bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb，其后续 MCP 请求将被拒绝",
+    "identityPresent": false,
+    "url": "http://127.0.0.1:3041/admin"
+  },
+  "logout": "native POST303 -> /admin/login200",
+  "homeJsonValid": true,
+  "mobileInputWithinViewport": true,
+  "mobileConfirmationFullyVisibleAfterToggle": true,
+  "evidence": [
+    "preview.out.log",
+    "admin-mobile-fixed.png",
+    "portal-fixed-desktop.png"
+  ]
+}

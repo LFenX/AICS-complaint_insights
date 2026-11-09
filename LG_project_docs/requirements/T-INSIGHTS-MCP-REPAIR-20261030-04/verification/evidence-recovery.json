@@ -1,0 +1,18 @@
+{
+  "captured_at": "2026-10-29T22:12:10.021283+00:00",
+  "incident": "根执行者报告：返修时重放numeric_schema.py，其默认输出覆盖了已结束第5轮numeric-schema.json。",
+  "overwrite_time": "NotKnown; no exact time invented",
+  "fixed_evidence_backup": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\restart-20261030\\numeric-schema-fixed.json",
+  "fixed_evidence_sha256": "4a1c0a8e50260d38bb022c5faf1f3508da983536e507d9fb6e9da04503880b88",
+  "recovery_source": "本独立审查者本轮真实工具输出所捕获的全部5个原始观察对象；使用原脚本json.dumps(checks,indent=2)与Windows CRLF写出。",
+  "recovery_basis": "候选LF与CRLF序列化分别求摘要；仅CRLF与已结束results.json.evidence_file_hashes中的原件SHA256精确相同，因此恢复的是精确原字节，不是重跑产品或推算结果。",
+  "restored_path": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round5\\numeric-schema.json",
+  "original_ended_sha256": "802d247e1b516d3ac2a8836653b03bc547a094637b87274f26bc1683e764d995",
+  "restored_sha256": "802d247e1b516d3ac2a8836653b03bc547a094637b87274f26bc1683e764d995",
+  "original_bytes_restored": true,
+  "line_endings": "CRLF",
+  "report_unchanged": true,
+  "results_unchanged": true,
+  "product_actions": "None; no source read/test/edit performed",
+  "review_conclusion_changed": false
+}

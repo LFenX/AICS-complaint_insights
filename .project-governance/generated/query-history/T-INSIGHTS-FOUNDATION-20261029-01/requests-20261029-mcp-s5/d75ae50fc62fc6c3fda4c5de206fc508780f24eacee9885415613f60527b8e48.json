@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "验证内网 HTTPS MCP 工具发现、参数及结构化结果、分页冲突、TLS/令牌/来源网段拒绝；核对分类、邮件全文和十四类源记录；测试只使用新实例隔离库，不操作生产",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "2bcb5b343289ef92f4624427dc81a936323bd777e64d61a5df72d21f0c81bf39",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01"
+}

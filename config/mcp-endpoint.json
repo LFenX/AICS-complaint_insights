@@ -1,0 +1,12 @@
+{
+  "url": "https://10.8.61.200:3037/mcp",
+  "transport": "streamable-http",
+  "allowed_networks": [
+    "10.8.0.0/16"
+  ],
+  "ca_certificate": "mcp-ca.crt",
+  "ca_sha256": "6ae4dee46fcebdf1c2d2137973a8c655b871b216aaf6fecb9e6a9ccae053c879",
+  "server_certificate_sha256": "080b812fb762c8b194ff8cdb57710a6719a172d9b37ffa7cfbca0bb479795493",
+  "server_certificate_expires_at": "2027-10-29T09:58:17+00:00",
+  "credentials_file": ".secrets/mcp-client.json"
+}

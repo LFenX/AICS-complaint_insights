@@ -1,0 +1,6 @@
+{"at":"2026-10-31T17:07:54.8571715+00:00","host_pid":241684,"event":"host_started","port":3037,"service":"mcp","account":"HZPCC1360433\\Administrator"}
+{"at":"2026-10-31T17:07:55.4881669+00:00","host_pid":241684,"event":"worker_started","port":3037,"service":"mcp","wrapper_pid":248176}
+{"at":"2026-10-31T17:07:55.5051706+00:00","host_pid":241684,"event":"worker_start_failed","service":"mcp","error_type":"MethodInvocationException","retry_after_seconds":10}
+{"host_pid":241684,"error_type":"MethodInvocationException","service":"mcp","event":"host_failed","at":"2026-10-31T17:07:55.5081669+00:00"}
+{"at":"2026-10-31T17:08:49.3935311+00:00","host_pid":126812,"event":"host_started","port":3037,"service":"mcp","account":"HZPCC1360433\\Administrator"}
+{"host_pid":126812,"error_type":"MethodInvocationException","service":"mcp","event":"host_failed","at":"2026-10-31T17:08:49.4345313+00:00"}

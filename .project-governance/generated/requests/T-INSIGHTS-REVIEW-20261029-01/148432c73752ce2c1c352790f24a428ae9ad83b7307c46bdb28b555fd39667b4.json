@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "只读证据承接与已获授权的审查协作；已有产品仅被检查，本次不修改业务数据安全或部署",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "125135cdcb077ad418fb713f40a1a22c22e3fd3933b5435e1b7b7c4942a305ce",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

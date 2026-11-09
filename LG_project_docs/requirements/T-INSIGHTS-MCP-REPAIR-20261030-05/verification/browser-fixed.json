@@ -1,0 +1,38 @@
+{
+  "fixture": "synthetic loopback HTTP UI only; real TLS/peer/cookie boundaries verified separately",
+  "viewport": {
+    "width": 360,
+    "height": 800
+  },
+  "cases": [
+    {
+      "case": "long-identity-issued",
+      "observedAt": "2026-10-29T23:06:28.773Z",
+      "alert": "已为 repair5-zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz 生成令牌",
+      "alertClient": 311,
+      "alertWidth": 311,
+      "client": 345,
+      "scroll": 345,
+      "wrap": "anywhere"
+    },
+    {
+      "case": "long-identity-revoked",
+      "observedAt": "2026-10-29T23:06:41.041Z",
+      "alert": "已撤销 repair5-zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz，其后续 MCP 请求将被拒绝",
+      "alertClient": 311,
+      "alertWidth": 311,
+      "client": 345,
+      "scroll": 345,
+      "wrap": "anywhere"
+    },
+    {
+      "case": "duplicate-identity-error",
+      "observedAt": "2026-10-29T23:06:45.515Z",
+      "alert": "身份 fixture-one 已有有效令牌；如需重新发放，请先在列表中撤销",
+      "alertClient": 311,
+      "alertWidth": 311,
+      "client": 345,
+      "scroll": 345
+    }
+  ]
+}

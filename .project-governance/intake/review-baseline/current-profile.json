@@ -1,0 +1,69 @@
+{
+  "delivery_scenario": "DS-01",
+  "development_types": [
+    "DT-01"
+  ],
+  "primary_development_type": "DT-01",
+  "development_type_scopes": {
+    "DT-01": [
+      "本地独立数据库与原始邮件、AI 分类副本",
+      "增量同步、补充对账和日期分类读取模型",
+      "agent 只读 SQL/API 及生产源切换准备",
+      "MCP 只读查询工具、数据类型说明和交接配置"
+    ]
+  },
+  "change_surfaces": [
+    "Agent/Collaboration"
+  ],
+  "risk_level": "Medium",
+  "extension_triggers": {
+    "E01": "Inactive",
+    "E02": "Inactive",
+    "E03": "Inactive",
+    "E04": "Inactive",
+    "E05": "Inactive"
+  },
+  "extension_evidence_refs": {
+    "E01": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "E02": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "E03": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ],
+    "E04": [],
+    "E05": [
+      "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+    ]
+  },
+  "baseline_inheritance": [
+    "Reference"
+  ],
+  "mode": "Normal",
+  "confidence": "Medium",
+  "basis": [
+    "当前任务增量只有只读证据承接和Agent审查协作，未修改数据模型、数据库、API、认证、监听、防火墙或部署；已有产品范围是被审查对象，不能误作此次变更面。原版本安全批准在真实用户指令中保留。"
+  ],
+  "open_questions": [],
+  "applicability_facts": {
+    "product_intent_change": "No",
+    "initiative_scope_change": "No",
+    "requirement_change": "No",
+    "external_behavior_change": "No",
+    "design_change": "No",
+    "architecture_impact": "No",
+    "security_privacy_impact": "No",
+    "data_ai_impact": "No",
+    "formal_knowledge_records": "No",
+    "operations_impact": "No",
+    "production_release": "No",
+    "irreversible_change": "No",
+    "actual_execution": "Yes",
+    "authority_available": "Yes",
+    "migration_retirement": "No",
+    "external_system_effect": "No",
+    "formal_review_or_gate": "Yes"
+  }
+}

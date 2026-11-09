@@ -1,0 +1,23 @@
+[
+  {
+    "summary": "正式人类门禁Pending",
+    "reason": "independent-review与security-privacy-review没有真实通过决定",
+    "impact": "工程已验证，正式Gate不可标为通过",
+    "owner": "用户或有权审查者",
+    "reentry_condition": "对当前交付给出真实可核对决定"
+  },
+  {
+    "summary": "异机路径未实测",
+    "reason": "另一内网电脑路由和CA安装未测试",
+    "impact": "仅本机经内网IP严格CA已验证",
+    "owner": "接收人",
+    "reentry_condition": "另一电脑按公开指南复验"
+  },
+  {
+    "summary": "修复版后续审查进行中及机器登记受限",
+    "reason": "父Deferred导致Offer拒绝；当前返修已验证，独立后续轮次尚未完成",
+    "impact": "不能宣称官方审查Passed或两轮收敛",
+    "owner": "当前任务执行者",
+    "reentry_condition": "完成同版本两轮真实完整审查；官方登记仍需合法父工程前置状态，不绕过门禁"
+  }
+]

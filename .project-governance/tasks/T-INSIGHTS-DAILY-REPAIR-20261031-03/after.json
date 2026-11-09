@@ -1,0 +1,156 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03",
+  "revision": 1,
+  "status": "Implemented",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-30T20:09:50.096328Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T20:09:50.096541Z"
+  },
+  "established_facts": [
+    "首次候选及复制后的暂存均通过完整目录证据校验后才使日期可见，清单缺失/错绑/撤销身份等均阻断，正常与零附件首发/复用保持",
+    "4封仅按完整原文与真实RFC补当前/主账号角色，当前c5150286；140单值/7冲突/5待核验，634邮件/405原件/358预览/35ZIP及分类Top10保持",
+    "829de9全部815文件完整按SHA归档，旧7d64与b2658归档保持；源数字、原文、邮箱、收件时间、非报告资源字节不变",
+    "默认北京昨天和00:30 ACTIVE原会话不变，10/30真实未生成、最近reader超时/首次真实触发及持续时效未验；无生产/真实IMAP/DB写入/服务重启或权限扩大"
+  ],
+  "actual_changes": [
+    "daily_generation在首发与暂存复用完整证据审计，新增两项有真实失效输入的回归；有限旧格式兼容仅增加本次确定报告SHA",
+    "原子修订4封UID及来源元数据，安装skill1.0.6同步发布检查点与基准/归档，保存全量历史、逐封差异、原文覆盖与交接"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "78项相关回归0失败/错误/跳过，私有临时目录无残留",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/tests-A01.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "8候选证据失效及3复制后暂存损坏均拒绝且不可见，正常首发/复用通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/publication-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "完整归档/来源及允许字段差异、358预览与原件ZIP及坏预览拒绝通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/revision-published.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "双地址14封UID对象及两个历史版本409、过期发布前像拒绝通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/uid-http-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "安装skill10文件、634索引和最长原文续页、双地址日期详情图片日志PDF/ZIP通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "真实GUI当前/主角色可见、重置634/140和默认昨天缺报及切回历史通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-repair/ui-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "原话四项及所有真实条件正反逐项核验，运行限制独立保留",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-03/verification/coverage.md"
+      ]
+    }
+  ],
+  "incomplete_items": [],
+  "legacy_issues": [
+    {
+      "summary": "真实新日报仍受本地副本与日终水位限制",
+      "reason": "最近一次127.0.0.1:15433 reader只读连接超时；本次不重测或恢复采集，生产仍隔离",
+      "impact": "10/30日报未生成；首次真实00:30触发/成功结果、线上当前完整一致和持续一小时时效未验证",
+      "owner": "本地副本与采集维护者（本任务未指定具体个人）",
+      "reentry_condition": "本地reader可达且READY、源及辅助水位覆盖日终后按已安装skill生成；生产恢复另行明确授权"
+    }
+  ],
+  "decisions": [
+    "沿用父会话真实Accepted同范围返修授权，不新增访问或发布权限；当前工程已保存，最终用户验收Pending，新版完整审查连续计数从0开始"
+  ],
+  "evidence_refs": [
+    ".runtime/daily-automation-20261030/publication-repair/delivery-manifest.json",
+    ".runtime/daily-automation-20261030/publication-repair/source-changes.patch",
+    ".runtime/daily-automation-20261030/publication-repair/uid-revision.json",
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-03/release/handoff.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T19:54:42.733233Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T19:54:42.733233Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-03/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T19:54:42.733233Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "9a345b70aafcea00561d30061e4262509f9c459c35440b914db96fb1ca79b5ce",
+    "scope_sha256": "63ee69d337c7c9fecf1fcfeb7b681378f9b51697a7bdb4d286aac3316f8fb300",
+    "delivery_sha256": "dcbe973f0bec6f88f10c04dafe2908bee12f0811f03eac27a97bfe5bbdb6039f",
+    "report_sha256": "758b2f8e95b42b986bce7483337f70ab7f4187b5e0ad9198965b814344da38f6"
+  },
+  "adversarial_review_parent": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

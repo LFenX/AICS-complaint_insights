@@ -1,0 +1,123 @@
+{
+  "captured_at": "2026-10-31T17:29:45.270122+00:00",
+  "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+  "files": [
+    {
+      "path": "scripts/mcp-service-host.ps1",
+      "sha256": "abbd98731843c17c5a88aca6fa5b5d587d2be723b06307413a297a28bbf7379a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/discovery/survey.md",
+      "sha256": "5c9f190e4fbb422988939496de5fe68b0ebaa08368471969e8a02a0f9c79b2fa"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/README.md",
+      "sha256": "2a8b2ab0b5f470589f9c5bec36a36a7557c6e9d5c49b71f9fcd0b2863fc8d2e6"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/release/runtime-operations.md",
+      "sha256": "443ec14e85414f16c95fd2a61f1ff1c7f2a4e8a48288dac1bea172fe7907d68a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/attempt1-desk-host.jsonl",
+      "sha256": "78d16e7a35366aeb6a49e41954df67fb44bcc806d49932b76b8782cb93a2af79"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/attempt1-mcp-host.jsonl",
+      "sha256": "af89e8eb8175e306790b5a5daebee493e794f720a9c37458ad6a0b4bca6c191d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before/desk.err.log",
+      "sha256": "b6e22a798fd356accbef0529e9612f52848c2fdddcc8097004bc19183d0b23e0"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before/desk.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before/mcp.err.log",
+      "sha256": "7a9573e1e15eb1fa409f1c546c2bfd22a670f0c64e71843cc8baab7286b8f829"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before/mcp.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before/processes.json",
+      "sha256": "7e6033750376b111fad2240a8ddad00f564335ef8f1eab5891de6bf90596f67d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before-files.json",
+      "sha256": "233cb24ca2919ee03261133e303572ef5a7cb11932bdd00a37b7237e77180aac"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/before-runtime.json",
+      "sha256": "f3e7bfd74c358f77bf8b9f49ce201af3a1e9ce1f4a45df4ace1ac200bf01e451"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/coverage.json",
+      "sha256": "11557b89667feed328114949534f4fc4e6831967fc1ef2386a9a299d73c9aa8f"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/desk-host.jsonl",
+      "sha256": "ef115a13c5b7af4febd8904347754a6b5bda48838c50cc52e8e867d454baa18a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/failure-notes.json",
+      "sha256": "fc0421fc968d29ad090a5ffc3b008ab628903b0c9f482bd293e46440653e0673"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json",
+      "sha256": "ab18f737472172b6b2f37368350b370d922d0366b464096380a2cd3de44af008"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+      "sha256": "790a2bfb44048f5d10995f8b401c88a5ba672c22bae021320cada8deef88b58b"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/init.log",
+      "sha256": "fe6ceff4b8f99538932dd878dd4b46c788a21cb3008da2f9b0ab1e4a57f2f90a"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/mcp-auto-recovery.json",
+      "sha256": "900badd22b82c268bb990864de90538a21fb99bef23c0bd83bacd514cbf23350"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/mcp-host.jsonl",
+      "sha256": "d782a56b05633b89439616a24a3b2183e46efbe37e9105deeed46e9bf4262507"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/mcp-task.xml",
+      "sha256": "0e31d30bc05aab40770478d392cb6875471b29cdd73278ddcfd90405f72df1aa"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/owned-worker-auto-recovery.json",
+      "sha256": "6788c390018010157326a165756be1188027f254891f2e8fab35ddbe27d49b8d"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/portal-auto-recovery.json",
+      "sha256": "f0b033a063b51a3d13e46873ad0e7563fa14fef8caefaf02970c2229afa8abe8"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/portal-task.xml",
+      "sha256": "3874d36acdfe6c92afaf77a57debcf1665981a0ff7e5e05d44351d6ba2fcb2f7"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/report.md",
+      "sha256": "57b5654bee141f6468673e3f4db51b9c70c7b64024982bce2b29831c4e939e3b"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/restored-smoke.json",
+      "sha256": "2e2b33f9e38ebb3b32354e20d3f7cdc2852050c377ccd80c5734af3eedeb5c44"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+      "sha256": "3eaeb06beab7db0555d4a3cff1a8d1c88bfce93cda6838f28ee968162a8d8970"
+    },
+    {
+      "path": "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/security-process-evidence.json",
+      "sha256": "4937f2aec140f215acf9f053fe82b4704a980a873502b82fe0025f47d23edae8"
+    }
+  ],
+  "excludes": "实时日志与治理before/run/after；旧日志和本次验证作为冻结副本保留"
+}

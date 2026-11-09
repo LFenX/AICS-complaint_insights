@@ -1,0 +1,25 @@
+{
+  "state": "Settled",
+  "mode": "Asked",
+  "notice": "针对权限这一处未明确项，需要先确认发放管理员范围；协议文档和只读门户可以继续实现。",
+  "survey_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/discovery/survey.md"
+  ],
+  "rounds": [
+    {
+      "ordinal": 1,
+      "asked_at": "2026-10-29T18:46:46.028511+00:00",
+      "exchanges": [
+        {
+          "question": "令牌发放保留哪种管理员范围？普通内网访客均只能阅读文档、下载无凭据客户端；只有登录管理员才能生成或撤销 MCP 令牌。",
+          "changes": "Authority",
+          "recommended_default": "仅我持有独立管理员凭据并发放",
+          "answer": "继续",
+          "answer_state": "Answered"
+        }
+      ]
+    }
+  ],
+  "basis": "继续沿用原已明确由本人下发的所有者范围，不解释为新增管理员或匿名签发；依据原话及继续指令，具体见survey解释边界。",
+  "reopened_by": []
+}

@@ -1,0 +1,281 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-REPAIR-6",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-06",
+  "revision": 4,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T23:50:54.096371Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T23:50:23.091950+00:00",
+    "reviewed_git_root": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP",
+    "reviewed_git_commit": "be6b6c7e7e84a4d52d512097286c2e90988ce888",
+    "file_manifest": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/delivery-files.json",
+    "file_manifest_sha256": "c810c07c2b58fdbf61f9998d4f16acc7181cdb9de1027ad964707fc3b135006d"
+  },
+  "established_facts": [
+    "真实stdio数值精度与合法整数表示ID两个P2反例已修复，工程结果和原始反例证据保存",
+    "3029/3030/3036/15433监听PID未变、watch停止、生产读取false；没有数据库连接、管理员重置或历史口令重新交付",
+    "工程保存后，第9轮和第10轮在同一138文件交付394610f667cd75378be565733a84fc80d58ee438a57e709f7be33cc3d87789b4独立完整审查，均无新增/未决/未检查的当前必需产品项，21项历史问题在两轮分别复验；实际报告与哈希可核对",
+    "本次技术审查收敛不改变原Deferred、Pending与官方Offer登记限制，不写正式审查数组或已结束Run"
+  ],
+  "actual_changes": [
+    "共享HTTP/stdio原始JSON和数学整数ID预检，stdio逐消息保留参数；固定错误响应后可恢复并保留SDK标准句柄保护",
+    "同步4个代码/测试/交接文件，仅重启mcp，更新当前工程证据指针与实际tools/list公开包；不改结构依赖工具签名",
+    "预检顺序和补账Attempt错误及纠正保留，没有产品测试失败或隐去记录"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "Git和运行项目各52项通过，包含真实stdio启动脚本原始协议子进程",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/deployed-tests.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "严格CA真实HTTPS17组覆盖11工具14表、客户端完整分页及原管理员链路",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "4部署文件与Git逐字节相同，保护监听PID不变",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/deployment.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "正式人类门禁Pending",
+      "reason": "正式独立复核/安全隐私人类Gate与用户验收Pending，不能由Agent批准",
+      "owner": "当前任务用户",
+      "impact": "工程验证不等于正式Gate批准",
+      "reentry_condition": "有权人对当前对象给出真实决定"
+    },
+    {
+      "summary": "异机路径未实测",
+      "reason": "另一内网电脑的路由及CA未实测，已完成本机真实内网地址严格CA复验",
+      "owner": "当前任务用户",
+      "impact": "不能声明另一电脑的环境已经验证",
+      "reentry_condition": "接收人按公开指南在另一电脑复验"
+    },
+    {
+      "summary": "原生浏览器缓存POST历史重绘未实测",
+      "reason": "IAB后退POST结果触发ERR_CACHE_MISS和URL策略拦截；没有绕过或将该场景标为已执行",
+      "owner": "当前任务用户及可用浏览器环境",
+      "impact": "不声明缓存POST历史重绘已实测；关闭后新GET、退出后后退刷新及原生确认已验证",
+      "reentry_condition": "在可用且已信任CA的实际浏览器环境补充该场景"
+    },
+    {
+      "summary": "历史口令交付消息未追溯核验",
+      "reason": "当前无可回读的旧assistant交付消息原件；没有重新读取、重发或重置初始口令",
+      "owner": "当前任务用户",
+      "impact": "当前登录签发功能已验证；不把历史口令消息交付当作本轮已核证事实",
+      "reentry_condition": "提供可核对的原消息来源后追溯核对，无需改动当前账号"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/coverage.json",
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/delivery-files.json",
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round9\\report.md",
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round9\\results.json",
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round10\\report.md",
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round10\\results.json",
+    "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\repair6\\actual-review-completion.json"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-06-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-06/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T23:39:43.274906Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-06-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-06/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T23:39:43.274906Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-06-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-06/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T23:39:43.274906Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "VER",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-06-ver",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/results.json",
+      "reason": "当前版本实际验证与完整原文对照",
+      "rule_reference": "C05/C09/C12",
+      "owner": "根执行Agent",
+      "source_snapshot": "2026-10-29T23:50:23.091950+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": "RCR",
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-06-rcr",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/coverage.json",
+      "reason": "当前版本实际验证与完整原文对照",
+      "rule_reference": "C05/C09/C12",
+      "owner": "根执行Agent",
+      "source_snapshot": "2026-10-29T23:50:23.091950+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Generated"
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "established_facts",
+      "old_value": [
+        "真实stdio数值精度与合法整数表示ID两个P2反例已修复，工程结果和原始反例证据保存",
+        "3029/3030/3036/15433监听PID未变、watch停止、生产读取false；没有数据库连接、管理员重置或历史口令重新交付"
+      ],
+      "new_value": [
+        "真实stdio数值精度与合法整数表示ID两个P2反例已修复，工程结果和原始反例证据保存",
+        "3029/3030/3036/15433监听PID未变、watch停止、生产读取false；没有数据库连接、管理员重置或历史口令重新交付",
+        "工程保存后，第9轮和第10轮在同一138文件交付394610f667cd75378be565733a84fc80d58ee438a57e709f7be33cc3d87789b4独立完整审查，均无新增/未决/未检查的当前必需产品项，21项历史问题在两轮分别复验；实际报告与哈希可核对",
+        "本次技术审查收敛不改变原Deferred、Pending与官方Offer登记限制，不写正式审查数组或已结束Run"
+      ],
+      "reason": "补记保存交付后两轮实际完整独立技术审查及明确限制；不更改正式审批、审查数组、交付或已结束账本",
+      "basis": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\repair6\\actual-review-completion.json",
+      "changed_at": "2026-10-30T00:45:32.952482Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "incomplete_items",
+      "old_value": [
+        {
+          "summary": "正式人类门禁Pending",
+          "reason": "正式独立复核/安全隐私人类Gate与用户验收Pending，不能由Agent批准",
+          "owner": "当前任务用户",
+          "impact": "工程验证不等于正式Gate批准",
+          "reentry_condition": "有权人对当前对象给出真实决定"
+        },
+        {
+          "summary": "异机路径未实测",
+          "reason": "另一内网电脑的路由及CA未实测，已完成本机真实内网地址严格CA复验",
+          "owner": "当前任务用户",
+          "impact": "不能声明另一电脑的环境已经验证",
+          "reentry_condition": "接收人按公开指南在另一电脑复验"
+        },
+        {
+          "summary": "已授权后续审查待开展",
+          "reason": "用户已明确重启；新版本连续两轮完整独立审查须在本工程保存后开展。父Deferred导致官方Offer登记拒绝限制保留",
+          "owner": "根执行Agent",
+          "impact": "尚不能宣称两轮收敛或官方Passed",
+          "reentry_condition": "同一保存版本完成两轮独立完整无问题审查；官方登记仍遵守原机器限制"
+        }
+      ],
+      "new_value": [
+        {
+          "summary": "正式人类门禁Pending",
+          "reason": "正式独立复核/安全隐私人类Gate与用户验收Pending，不能由Agent批准",
+          "owner": "当前任务用户",
+          "impact": "工程验证不等于正式Gate批准",
+          "reentry_condition": "有权人对当前对象给出真实决定"
+        },
+        {
+          "summary": "异机路径未实测",
+          "reason": "另一内网电脑的路由及CA未实测，已完成本机真实内网地址严格CA复验",
+          "owner": "当前任务用户",
+          "impact": "不能声明另一电脑的环境已经验证",
+          "reentry_condition": "接收人按公开指南在另一电脑复验"
+        },
+        {
+          "summary": "原生浏览器缓存POST历史重绘未实测",
+          "reason": "IAB后退POST结果触发ERR_CACHE_MISS和URL策略拦截；没有绕过或将该场景标为已执行",
+          "owner": "当前任务用户及可用浏览器环境",
+          "impact": "不声明缓存POST历史重绘已实测；关闭后新GET、退出后后退刷新及原生确认已验证",
+          "reentry_condition": "在可用且已信任CA的实际浏览器环境补充该场景"
+        },
+        {
+          "summary": "历史口令交付消息未追溯核验",
+          "reason": "当前无可回读的旧assistant交付消息原件；没有重新读取、重发或重置初始口令",
+          "owner": "当前任务用户",
+          "impact": "当前登录签发功能已验证；不把历史口令消息交付当作本轮已核证事实",
+          "reentry_condition": "提供可核对的原消息来源后追溯核对，无需改动当前账号"
+        }
+      ],
+      "reason": "补记保存交付后两轮实际完整独立技术审查及明确限制；不更改正式审批、审查数组、交付或已结束账本",
+      "basis": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\repair6\\actual-review-completion.json",
+      "changed_at": "2026-10-30T00:45:32.952519Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "evidence_refs",
+      "old_value": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/delivery-files.json"
+      ],
+      "new_value": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-06/verification/delivery-files.json",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round9\\report.md",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round9\\results.json",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round10\\report.md",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\round10\\results.json",
+        "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\repair6\\actual-review-completion.json"
+      ],
+      "reason": "补记保存交付后两轮实际完整独立技术审查及明确限制；不更改正式审批、审查数组、交付或已结束账本",
+      "basis": "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\repair6\\actual-review-completion.json",
+      "changed_at": "2026-10-30T00:45:32.952531Z"
+    }
+  ],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "9a548a464fbc2c2430b11850a55c0a08396a7dcfd26fcaef197c422904a010c7",
+    "scope_sha256": "574229a754c43553c54bd3624b3f080283c1df8fe67bc133c0e33bbd78ea1fba",
+    "delivery_sha256": "5b187b39d8d10b969fff34fb5f0b2bf05de8b173fe12dadd2d39822882cefa7a",
+    "report_sha256": "e8669e3d4cff918a39078866ddf536b5c643f5f7172630bb283d440810cc4e46"
+  }
+}

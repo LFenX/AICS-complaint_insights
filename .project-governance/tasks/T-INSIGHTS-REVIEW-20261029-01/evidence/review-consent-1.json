@@ -1,0 +1,8 @@
+{
+  "event": "Decision",
+  "outcome": "Accepted",
+  "response": "启动多轮对抗性审查",
+  "decided_by": "当前聊天用户",
+  "evidence_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+  "recorded_at": "2026-10-29T11:04:47.247898+00:00"
+}

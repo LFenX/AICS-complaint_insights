@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "修复已确认的四项日报生成边界并同步已安装skill运行说明，保留历史正式日报和生产隔离",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "8c04a91fc9749524f6199cc68336c754135679a3e0deec668b89cf4975adeadc",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02"
+}

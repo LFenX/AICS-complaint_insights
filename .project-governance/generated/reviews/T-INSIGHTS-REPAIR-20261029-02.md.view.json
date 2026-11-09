@@ -1,0 +1,17 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-T-INSIGHTS-REPAIR-20261029-02",
+  "view_kind": "task-review",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:12.728973Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "1bfbfbb0161672da336ada1bbee695096c9384a1290259b228679fb94dcafbcd",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-REPAIR-20261029-02/before.json",
+    ".project-governance/tasks/T-INSIGHTS-REPAIR-20261029-02/run.jsonl"
+  ],
+  "content_ref": ".project-governance/generated/reviews/T-INSIGHTS-REPAIR-20261029-02.md",
+  "integrity_status": "Complete"
+}

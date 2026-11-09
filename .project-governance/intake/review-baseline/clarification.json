@@ -1,0 +1,51 @@
+{
+  "state": "Settled",
+  "mode": "Asked",
+  "notice": "这里缺少的是独立的安全门禁决定。",
+  "survey_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/discovery/survey.md"
+  ],
+  "rounds": [
+    {
+      "ordinal": 1,
+      "asked_at": "2026-10-29T09:49:25.764883+00:00",
+      "exchanges": [
+        {
+          "question": "MCP 工具需要在哪里调用？这决定连接配置和服务监听方式。",
+          "changes": "Scope",
+          "recommended_default": "先供这台采集电脑上的 Agent 使用，交接本地 stdio 配置",
+          "answer": "需要其他内网电脑的 Agent 直接远程调用",
+          "answer_state": "Answered"
+        }
+      ]
+    },
+    {
+      "ordinal": 2,
+      "asked_at": "2026-10-29T10:43:57.188199+00:00",
+      "exchanges": [
+        {
+          "question": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+          "changes": "Authority",
+          "recommended_default": "暂不启动，先使用工具",
+          "answer": "启动多轮对抗性审查",
+          "answer_state": "Answered"
+        }
+      ]
+    },
+    {
+      "ordinal": 3,
+      "asked_at": "2026-10-29T10:43:57.188199+00:00",
+      "exchanges": [
+        {
+          "question": "审查启动授权已收到。当前正式结果因 security-privacy-review 待审而处于 Deferred，流程工具只接受 Implemented 结果进入对抗审查。是否通过当前本地副本与内网只读 MCP 的安全隐私门禁？已验证源只读、HTTPS、独立令牌、内网限制；门禁材料：D:/LFEN_project/dev_project/complaint-insights/LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-acceptance.md",
+          "changes": "Authority",
+          "recommended_default": "通过本次安全隐私门禁，继续审查",
+          "answer": "通过本次安全隐私门禁，继续审查",
+          "answer_state": "Answered"
+        }
+      ]
+    }
+  ],
+  "basis": "原功能与实际交付、用户的审查及门禁回答已实查明确；旧记录封存，承接同一份字节交付；时间为采集/登记时刻。",
+  "reopened_by": []
+}

@@ -1,0 +1,28 @@
+{
+  "captured_at": "2026-10-29T23:48:50.575914+00:00",
+  "findings": [
+    {
+      "id": "R8-001",
+      "status": "Fixed",
+      "change": "HTTP与stdio共享Decimal原始JSON解码；stdio在SDK解码前按消息传播原始参数，共同Schema层拒绝精度被float抹去的非整数，后端零调用",
+      "evidence_refs": [
+        "tests.log::test_real_stdio_cli_preserves_integer_argument_precision",
+        "tests.log::test_stdio_message_context_strings_and_stdout_isolation"
+      ]
+    },
+    {
+      "id": "R8-002",
+      "status": "Fixed",
+      "change": "共享数学整数请求ID校验归一，在SDK联合解析前保留请求身份；非法ID/畸形JSON返回固定错误后继续读下一行，错误输出与SDK消息同一锁写端",
+      "evidence_refs": [
+        "tests.log::test_real_stdio_ids_errors_and_recovery",
+        "deployed-tests.log"
+      ]
+    }
+  ],
+  "test_count": 52,
+  "real_https_groups": 17,
+  "pinned_sdk": "mcp==2.3.0",
+  "new_tests": 3,
+  "runtime_compatibility": "SDK descriptor claim/restore and context streams verified from pinned source and real subprocess behavior"
+}

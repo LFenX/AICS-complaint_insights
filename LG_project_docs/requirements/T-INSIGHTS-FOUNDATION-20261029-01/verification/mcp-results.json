@@ -1,0 +1,141 @@
+{
+  "checked_at": "2026-10-29T10:13:10.490058+00:00",
+  "result": "Passed",
+  "endpoint": "https://10.8.61.200:3037/mcp",
+  "tls": {
+    "version": "TLSv1.3",
+    "strict_certificate_verification": true,
+    "server_certificate_sha256": "080b812fb762c8b194ff8cdb57710a6719a172d9b37ffa7cfbca0bb479795493"
+  },
+  "protocol_version": "2026-07-28",
+  "discovered_readonly_tools": [
+    "get_capabilities",
+    "get_data_guide",
+    "get_mail_detail",
+    "get_report_context",
+    "get_source_record",
+    "get_sync_status",
+    "list_mails",
+    "list_source_records",
+    "list_source_tables",
+    "list_taxonomy",
+    "query_daily_statistics"
+  ],
+  "successful_tool_calls": 26,
+  "checks": [
+    {
+      "check": "missing_mcp_token",
+      "http_status": 401,
+      "result": "Passed"
+    },
+    {
+      "check": "invalid_mcp_token",
+      "http_status": 401,
+      "result": "Passed"
+    },
+    {
+      "check": "authenticated_health",
+      "http_status": 200,
+      "result": "Passed"
+    },
+    {
+      "check": "classic_initialize_2025_06_18",
+      "result": "Passed"
+    },
+    {
+      "check": "host_rebinding",
+      "http_status": 421,
+      "result": "Passed"
+    },
+    {
+      "check": "untrusted_origin",
+      "http_status": 403,
+      "result": "Passed"
+    }
+  ],
+  "all_fourteen_source_types": [
+    {
+      "table": "mailboxes",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "folders",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "messages",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "attachments",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "imap_reconcile_archive",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "InboundMail",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "MailAiArtifact",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "MailIssueBinding",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "TaxonomyCandidate",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "IssueTypeProposal",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "TaxonomyCandidateSupport",
+      "sample_record_matches_readonly_sql": true,
+      "empty": false
+    },
+    {
+      "table": "IssueTypeRegistry",
+      "sample_record_matches_readonly_sql": true,
+      "empty": true
+    },
+    {
+      "table": "IssueTypeAlias",
+      "sample_record_matches_readonly_sql": true,
+      "empty": true
+    },
+    {
+      "table": "IssueGroupLifecycle",
+      "sample_record_matches_readonly_sql": true,
+      "empty": true
+    }
+  ],
+  "resource_read": true,
+  "optional_stdio_entry": true,
+  "handoff_archive_client_verified": true,
+  "handoff_archive_sha256": "56925f7959f348717ae46c9b204ed2fd81a328558a25679863a0cb6cbadd6dd1",
+  "tests": {
+    "count": 47,
+    "result": "Passed",
+    "log_sha256": "747836669b8ad26b831f278349eb562fcbc68c2ceb31b4b70ceb4c75485138a1"
+  },
+  "source_id": "development-local",
+  "data_version": 2,
+  "actual_different_computer_tested": false,
+  "production_connected": false
+}

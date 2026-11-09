@@ -1,0 +1,21 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-FOUNDATION-20261029-01-RUNTIME-BOOTSTRAP-INDEX-METADATA",
+  "view_kind": "norm-index-metadata",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T08:27:47.780219Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "d2bd66cd52559b629b4c2f648c03274dea073c6a7cfef77f2db0fda5343ebaea",
+  "sources": [
+    ".project-governance/generated/evaluations/runtime-bootstrap/T-INSIGHTS-FOUNDATION-20261029-01/norm-consistency-audit.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\scripts\\build_norm_index.py",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\embedded-manifest.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\schemas\\norm-index-metadata.schema.json",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\norm-action-taxonomy.json",
+    ".project-governance/runtime-cache/norm-index/6ecc4a89f2c95a0331c2718b576f62e5e5a60131795d61caad8bcd4327a8a94c.sqlite3"
+  ],
+  "content_ref": ".project-governance/generated/evaluations/runtime-bootstrap/T-INSIGHTS-FOUNDATION-20261029-01/norm-index-metadata.json",
+  "integrity_status": "Complete"
+}

@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "第7轮3确认问题同范围返修，新增每身份工具滑动窗口限频与反馈换行/证据链接，保护服务和原权限保持",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "15d62401fde9a11deb2aaf563b9698c2ef4c071754ec79685d2e61e8810710af",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-05"
+}

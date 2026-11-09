@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "修复逐封UIDVALIDITY验证并模拟正反，security-privacy-review的实际审查角色与已有授权边界，先完成可核验代码和证据不冒填门通过",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3bea210f7405203d9a90fb487136d91beaa06f92ec85df69705324fb9f8fd1d5",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01"
+}

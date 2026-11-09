@@ -1,0 +1,189 @@
+{
+  "method_version": "first-principles-v1",
+  "depth": "Deep",
+  "outcome": "管理员认证内容与会话版本来自同一快照，轮换期间旧口令不能获得匹配新凭据的可用会话",
+  "facts": [
+    {
+      "id": "F1",
+      "statement": "第三轮三个反例独立复现；旧七项原反例和真实完整使用范围有复验",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "F2",
+      "statement": "SDK宽松消息联合分支会把含非法ID请求当通知；后端空cursor使用首页",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    }
+  ],
+  "constraints": [
+    {
+      "id": "C1",
+      "statement": "原单管理员权限、生产隔离和保护路径保持，正式Gate不由Agent批准",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "当前CA证书覆盖内网IP，可复用3029TLS",
+      "validation": "校验证书SAN、有效期并严格CA验证真实HTTPS"
+    }
+  ],
+  "unknowns": [
+    {
+      "id": "U1",
+      "statement": "接收人另一台电脑路由与CA导入未实测",
+      "owner": "接收人",
+      "resolution_condition": "接收人按下载包执行验证",
+      "blocking": false
+    }
+  ],
+  "fundamentals": [
+    {
+      "id": "P1",
+      "statement": "认证事实与版本必须同源，非法分页状态不能默认为有效首页",
+      "derived_from": [
+        "F1",
+        "C1"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "消息类别不能丢失请求ID或误伤合法响应",
+      "derived_from": [
+        "F2",
+        "C1"
+      ]
+    }
+  ],
+  "causal_links": [
+    {
+      "from_ref": "P1",
+      "to_ref": "O1",
+      "rationale": "从同一管理员对象计算摘要，游标边界拒绝空字符串",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    },
+    {
+      "from_ref": "P2",
+      "to_ref": "O1",
+      "rationale": "SDK前保留原始ID存在性和类型，正常消息仍交SDK处理",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "O1",
+      "description": "局部修复同快照、请求ID边界和非空cursor",
+      "status": "Selected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "须回归SDK消息接收重放与合法整数表示"
+      ]
+    },
+    {
+      "id": "O0",
+      "description": "保持当前版本",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "三个已证实反例继续存在"
+      ]
+    },
+    {
+      "id": "O2",
+      "description": "替换认证及协议框架或修改3036",
+      "status": "Rejected",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "tradeoffs": [
+        "扩大影响且无需改动既有API"
+      ]
+    }
+  ],
+  "decision_criteria": [
+    {
+      "id": "K1",
+      "statement": "新旧反例与正常路径均通过",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    },
+    {
+      "id": "K2",
+      "statement": "原值/原权限/保护边界和真实证据保持",
+      "source_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+      ]
+    }
+  ],
+  "selected_approach": "O1",
+  "derivation": [
+    {
+      "plan_step": "保存第三轮独立证据与原文授权，确认最小局部修复设计",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "同快照绑定管理员版本、在SDK前守卫请求ID并拒绝空cursor，运行所有反例与合法控制",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "部署必要进程、捕获实际Schema重建材料并完整真实复验",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    },
+    {
+      "plan_step": "保存工程结果后进行新的独立完整审查，实际满足停止条件才收口",
+      "derived_from": [
+        "P1",
+        "P2"
+      ],
+      "supports": [
+        "K1",
+        "K2"
+      ]
+    }
+  ],
+  "validation_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/verification/results.json"
+  ],
+  "source_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-03/discovery/survey.md"
+  ]
+}

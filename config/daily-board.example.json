@@ -1,0 +1,5 @@
+{
+  "lan_host": "192.168.10.20",
+  "allowed_networks": ["192.168.10.0/24"],
+  "frame_ancestor_origins": []
+}

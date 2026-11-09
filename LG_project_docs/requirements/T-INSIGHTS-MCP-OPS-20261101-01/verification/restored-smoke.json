@@ -1,0 +1,22 @@
+{
+  "at": "2026-10-31T17:10:57.494308+00:00",
+  "result": "Passed",
+  "strict_ca": true,
+  "portal": {
+    "/": 200,
+    "/admin/login": 200,
+    "/guide": 200
+  },
+  "protocol_version": "2025-11-25",
+  "tools": 11,
+  "source_tables": 14,
+  "sample_mail_count": 1,
+  "source": {
+    "source_id": "production-ai-customer",
+    "data_version": 25,
+    "status": "DEGRADED"
+  },
+  "existing_key_works": true,
+  "missing_bearer_status": 401,
+  "credentials_printed": false
+}

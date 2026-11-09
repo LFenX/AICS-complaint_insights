@@ -1,0 +1,28 @@
+{
+  "issues": [
+    {
+      "time_context": "A01",
+      "symptom": "unknown action external_effect",
+      "effect": "No service mutation",
+      "cause": "Action name is not the official query taxonomy",
+      "correction": "Read taxonomy; edit_in_scope A02 query succeeded",
+      "closed_when": "Correct context consumed before update"
+    },
+    {
+      "time_context": "A02",
+      "symptom": "Git blob comparison rejected CSS before deployment",
+      "effect": "Only two exact prior-byte backups created; no source overwrite/restart",
+      "cause": "Git normalized CRLF; deployed raw bytes match frozen manifest for all five targets",
+      "correction": "All-file frozen SHA preflight and preserve identical backups; A03 succeeded",
+      "closed_when": "Five deployed files equal new source and protected listener PIDs unchanged"
+    },
+    {
+      "time_context": "A03",
+      "symptom": "Material builder also writes generated release guide/schema and query examples omitted from allowed-path listing",
+      "effect": "Generated guide changed, schema/query examples same content; no new service/source access",
+      "cause": "Task allowed public guide scope but omitted secondary generated output paths",
+      "correction": "Retain actual effect and officially amend exact generated paths before further build/copy",
+      "closed_when": "Amended paths guarded and generated outputs verified against intended guide"
+    }
+  ]
+}

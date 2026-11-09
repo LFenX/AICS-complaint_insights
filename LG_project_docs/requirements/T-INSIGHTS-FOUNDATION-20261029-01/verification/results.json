@@ -1,0 +1,230 @@
+{
+  "checked_at": "2026-10-29T09:18:26.059968+00:00",
+  "source_id": "development-local",
+  "content_comparison": {
+    "mailboxes": {
+      "source_rows": 8,
+      "target_rows": 8,
+      "matched": true,
+      "source_digest": "6b295730bcb51c43a9686b15dd410b381bd88430f1395abcafdfb709d02a3e75",
+      "target_digest": "6b295730bcb51c43a9686b15dd410b381bd88430f1395abcafdfb709d02a3e75"
+    },
+    "folders": {
+      "source_rows": 59,
+      "target_rows": 59,
+      "matched": true,
+      "source_digest": "2282f117d58afefb76d5ba52d13e85230d9a86a27a38c302669d1820d059866c",
+      "target_digest": "2282f117d58afefb76d5ba52d13e85230d9a86a27a38c302669d1820d059866c"
+    },
+    "messages": {
+      "source_rows": 53119,
+      "target_rows": 53119,
+      "matched": true,
+      "source_digest": "a6e4c86ef8e1677bdb54bdec29217f99e1064b4f1e727749731ed942f127ba67",
+      "target_digest": "a6e4c86ef8e1677bdb54bdec29217f99e1064b4f1e727749731ed942f127ba67"
+    },
+    "attachments": {
+      "source_rows": 21974,
+      "target_rows": 21974,
+      "matched": true,
+      "source_digest": "24e2af7bfc42c17a4e8684d8fdd13a1f2e0c249e413b581df18c798f630c6141",
+      "target_digest": "24e2af7bfc42c17a4e8684d8fdd13a1f2e0c249e413b581df18c798f630c6141"
+    },
+    "imap_reconcile_archive": {
+      "source_rows": 91,
+      "target_rows": 91,
+      "matched": true,
+      "source_digest": "2488d4fc6c127e7feacb0c0a8deef221415298e9387316c42d98e82b6d6ae580",
+      "target_digest": "2488d4fc6c127e7feacb0c0a8deef221415298e9387316c42d98e82b6d6ae580"
+    },
+    "InboundMail": {
+      "source_rows": 41723,
+      "target_rows": 41723,
+      "matched": true,
+      "source_digest": "cea1f6663a67397ba8eeb5e2f28a4c5f3e52321d38cbbbafb1eecf8b39f33ff5",
+      "target_digest": "cea1f6663a67397ba8eeb5e2f28a4c5f3e52321d38cbbbafb1eecf8b39f33ff5"
+    },
+    "MailAiArtifact": {
+      "source_rows": 35544,
+      "target_rows": 35544,
+      "matched": true,
+      "source_digest": "05f5be777de9fa0ad515311a5c54d00cc368441112844a419c906928504252e2",
+      "target_digest": "05f5be777de9fa0ad515311a5c54d00cc368441112844a419c906928504252e2"
+    },
+    "MailIssueBinding": {
+      "source_rows": 18396,
+      "target_rows": 18396,
+      "matched": true,
+      "source_digest": "bb96341c082f41409145a489ad015b35c5d713b8facfbc9096797db8e3eddde3",
+      "target_digest": "bb96341c082f41409145a489ad015b35c5d713b8facfbc9096797db8e3eddde3"
+    },
+    "TaxonomyCandidate": {
+      "source_rows": 2435,
+      "target_rows": 2435,
+      "matched": true,
+      "source_digest": "934bb399f65c714f4bd87a438cf5719e087c5580ef5d6f98f20ceb7e00672b1e",
+      "target_digest": "934bb399f65c714f4bd87a438cf5719e087c5580ef5d6f98f20ceb7e00672b1e"
+    },
+    "IssueTypeProposal": {
+      "source_rows": 6357,
+      "target_rows": 6357,
+      "matched": true,
+      "source_digest": "ea1e6f33cd2e65687162a8d3b45f41e757dcf678d17f7f9fb9e0d091b0c46c73",
+      "target_digest": "ea1e6f33cd2e65687162a8d3b45f41e757dcf678d17f7f9fb9e0d091b0c46c73"
+    },
+    "TaxonomyCandidateSupport": {
+      "source_rows": 6122,
+      "target_rows": 6122,
+      "matched": true,
+      "source_digest": "ff5b1f6ac9f06edf16833ca843f8b16d1ee8d9c6dcbc35ba969aca32f7154cd5",
+      "target_digest": "ff5b1f6ac9f06edf16833ca843f8b16d1ee8d9c6dcbc35ba969aca32f7154cd5"
+    },
+    "IssueTypeRegistry": {
+      "source_rows": 0,
+      "target_rows": 0,
+      "matched": true,
+      "source_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "target_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    "IssueTypeAlias": {
+      "source_rows": 0,
+      "target_rows": 0,
+      "matched": true,
+      "source_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "target_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    "IssueGroupLifecycle": {
+      "source_rows": 0,
+      "target_rows": 0,
+      "matched": true,
+      "source_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "target_digest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    }
+  },
+  "http": [
+    {
+      "path": "/health",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/openapi.json",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/capabilities",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/sync/status",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/taxonomy",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/daily",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/mails",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    },
+    {
+      "path": "/v1/mails/{mail_pk}",
+      "authorized_status": 200,
+      "raw_record_present": true
+    },
+    {
+      "path": "/v1/report-context",
+      "authorized_status": 200,
+      "unauthorized_status": 401
+    }
+  ],
+  "production_connected": false,
+  "source_read_only": "on",
+  "source_database": {
+    "name": "ai_complaint_mail",
+    "version": "17.10"
+  },
+  "target_database": {
+    "name": "complaint_insights",
+    "version": "17.11"
+  },
+  "typed_facts": {
+    "all_mail_count": 53119,
+    "incoming_mail_count": 29904,
+    "analyzed_mail_count": 21867,
+    "first_day": "2025-06-04",
+    "last_day": "2026-10-22"
+  },
+  "taxonomy": [
+    {
+      "level": 1,
+      "status": "ACTIVE",
+      "n": 10
+    },
+    {
+      "level": 1,
+      "status": "PENDING",
+      "n": 1
+    },
+    {
+      "level": 2,
+      "status": "ACTIVE",
+      "n": 40
+    },
+    {
+      "level": 3,
+      "status": "ACTIVE",
+      "n": 103
+    },
+    {
+      "level": 3,
+      "status": "PENDING",
+      "n": 2332
+    },
+    {
+      "level": 3,
+      "status": "REVIEW",
+      "n": 52
+    }
+  ],
+  "catalog_files": [
+    {
+      "filename": "embedding-adjudication-decisions.json",
+      "sha256": "83e8f1868029364f15c17ebe8f48b0949f7e346a782fabf6b2367d96655c762d"
+    },
+    {
+      "filename": "severity-baseline.json",
+      "sha256": "e064fc7afff032f15f5928534d1ce152f04431ebf2e6ef6a632648690048c535"
+    },
+    {
+      "filename": "taxonomy-v2.json",
+      "sha256": "a5e1b67934bd7ce7127f747d471e66e6393b5283f939b1c4be923e7314f6e83c"
+    }
+  ],
+  "role": {
+    "username": "insights_reader",
+    "read_only": "on"
+  },
+  "unit_and_isolated_postgres_tests": {
+    "result": "Passed",
+    "log_sha256": "abfd63e23e4602cdccad0ba2efe6277dc655a8a3f60cc066ade9fe713d5080a3",
+    "summary": [
+      "----------------------------------------------------------------------",
+      "Ran 38 tests in 17.588s",
+      "",
+      "OK"
+    ]
+  },
+  "duration_ms": 11356,
+  "result": "Passed"
+}

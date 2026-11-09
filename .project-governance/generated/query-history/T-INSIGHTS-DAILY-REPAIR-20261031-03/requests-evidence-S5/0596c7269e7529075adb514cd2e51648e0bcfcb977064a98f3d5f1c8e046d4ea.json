@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "按父Accepted修复R05首发与暂存完整证据校验和四封UID角色，归档829de9全815文件保留数值状态分类资源，仅有限字段修订并同步skill基准；离线反例及回归，不动生产网络调度服务",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "f8571a3fcb6dba4e3b69797153b0182cb5733b9af9bc2ab2355243c074f1696b",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03"
+}

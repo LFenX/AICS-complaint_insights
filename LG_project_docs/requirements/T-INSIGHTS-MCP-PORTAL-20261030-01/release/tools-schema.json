@@ -1,0 +1,843 @@
+{
+  "tools": [
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "首次调用：说明每类数据该用什么工具、日期/分类口径、字段含义、分页和边界。",
+      "inputSchema": {
+        "properties": {},
+        "type": "object",
+        "title": "get_data_guideArguments",
+        "additionalProperties": false
+      },
+      "name": "get_data_guide",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_data_guideDictOutput"
+      },
+      "title": "工具选择与数据口径"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "确认当前是开发还是生产来源、数据版本、最近同步时间、失败状态和轮询周期。",
+      "inputSchema": {
+        "properties": {
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "type": "object",
+        "title": "get_sync_statusArguments",
+        "additionalProperties": false
+      },
+      "name": "get_sync_status",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_sync_statusDictOutput"
+      },
+      "title": "来源与同步状态"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "查看只读能力、权限父链、动作及启用/禁用原因。",
+      "inputSchema": {
+        "properties": {
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "type": "object",
+        "title": "get_capabilitiesArguments",
+        "additionalProperties": false
+      },
+      "name": "get_capabilities",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_capabilitiesDictOutput"
+      },
+      "title": "能力和权限目录"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "取一级/二级/三级分类 ID、名称、父链与候选状态；不传 status 保留全部源状态，返回分页。",
+      "inputSchema": {
+        "properties": {
+          "level": {
+            "anyOf": [
+              {
+                "maximum": 3,
+                "minimum": 1,
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "maxLength": 32,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Status"
+          },
+          "limit": {
+            "default": 100,
+            "maximum": 1000,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "原样传回上一页非空 next_cursor；首页省略或传null，其他筛选参数保持一致；版本变化需从首页重查",
+            "title": "Cursor"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "type": "object",
+        "title": "list_taxonomyArguments",
+        "additionalProperties": false
+      },
+      "name": "list_taxonomy",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "list_taxonomyDictOutput"
+      },
+      "title": "查询分类目录"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "完整统计入口，按北京时间 [start,end) 和分类级别分页返回邮件数/问题数/待判断数；遍历全部页后再合计。",
+      "inputSchema": {
+        "properties": {
+          "start": {
+            "format": "date",
+            "title": "Start",
+            "type": "string"
+          },
+          "end": {
+            "format": "date",
+            "title": "End",
+            "type": "string"
+          },
+          "level": {
+            "default": 1,
+            "maximum": 3,
+            "minimum": 1,
+            "title": "Level",
+            "type": "integer"
+          },
+          "scope": {
+            "default": "primary",
+            "enum": [
+              "primary",
+              "all_issues"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "direction": {
+            "default": "RECEIVED",
+            "enum": [
+              "RECEIVED",
+              "SENT",
+              "EXCLUDED",
+              "ALL"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "mailbox": {
+            "anyOf": [
+              {
+                "maxLength": 320,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mailbox"
+          },
+          "limit": {
+            "default": 200,
+            "maximum": 1000,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "原样传回上一页非空 next_cursor；首页省略或传null，其他筛选参数保持一致；版本变化需从首页重查",
+            "title": "Cursor"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "type": "object",
+        "title": "query_daily_statisticsArguments",
+        "additionalProperties": false
+      },
+      "name": "query_daily_statistics",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "query_daily_statisticsDictOutput"
+      },
+      "title": "按日和分类查询统计"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "按日期、分类 ID、邮箱和方向找邮件，默认不加载正文；返回 mail_pk、主题、AI 摘要及分类，供选中后读取原文。",
+      "inputSchema": {
+        "properties": {
+          "start": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Start"
+          },
+          "end": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "End"
+          },
+          "scope": {
+            "default": "primary",
+            "enum": [
+              "primary",
+              "all_issues"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "direction": {
+            "default": "ALL",
+            "enum": [
+              "RECEIVED",
+              "SENT",
+              "EXCLUDED",
+              "ALL"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "mailbox": {
+            "anyOf": [
+              {
+                "maxLength": 320,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Mailbox"
+          },
+          "level_one": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level One"
+          },
+          "level_two": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level Two"
+          },
+          "issue_type_id": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Issue Type Id"
+          },
+          "limit": {
+            "default": 30,
+            "maximum": 200,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "原样传回上一页非空 next_cursor；首页省略或传null，其他筛选参数保持一致；版本变化需从首页重查",
+            "title": "Cursor"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "type": "object",
+        "title": "list_mailsArguments",
+        "additionalProperties": false
+      },
+      "name": "list_mails",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "list_mailsDictOutput"
+      },
+      "title": "筛选邮件和 AI 摘要"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "读取指定邮件原文/译文、AI 分类、问题绑定和附件元数据；include_raw=true 才附完整源行和 AI 行。",
+      "inputSchema": {
+        "properties": {
+          "mail_pk": {
+            "description": "list_mails 返回的字符串 mail_pk，不是 Message-ID 或业务邮件 ID",
+            "pattern": "^[1-9][0-9]{0,18}$",
+            "title": "Mail Pk",
+            "type": "string"
+          },
+          "include_raw": {
+            "default": false,
+            "title": "Include Raw",
+            "type": "boolean"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "required": [
+          "mail_pk"
+        ],
+        "type": "object",
+        "title": "get_mail_detailArguments",
+        "additionalProperties": false
+      },
+      "name": "get_mail_detail",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_mail_detailDictOutput"
+      },
+      "title": "读取单封邮件原文与 AI 证据"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "按日期→分类→邮件组织当前页材料；需要原文时显式 include_body=true。周期总数必须另查 query_daily_statistics。",
+      "inputSchema": {
+        "properties": {
+          "start": {
+            "format": "date",
+            "title": "Start",
+            "type": "string"
+          },
+          "end": {
+            "format": "date",
+            "title": "End",
+            "type": "string"
+          },
+          "scope": {
+            "default": "primary",
+            "enum": [
+              "primary",
+              "all_issues"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "direction": {
+            "default": "RECEIVED",
+            "enum": [
+              "RECEIVED",
+              "SENT",
+              "EXCLUDED",
+              "ALL"
+            ],
+            "title": "Direction",
+            "type": "string"
+          },
+          "level_one": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level One"
+          },
+          "level_two": {
+            "anyOf": [
+              {
+                "maxLength": 100,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Level Two"
+          },
+          "issue_type_id": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Issue Type Id"
+          },
+          "include_body": {
+            "default": false,
+            "title": "Include Body",
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 100,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "原样传回上一页非空 next_cursor；首页省略或传null，其他筛选参数保持一致；版本变化需从首页重查",
+            "title": "Cursor"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "required": [
+          "start",
+          "end"
+        ],
+        "type": "object",
+        "title": "get_report_contextArguments",
+        "additionalProperties": false
+      },
+      "name": "get_report_context",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_report_contextDictOutput"
+      },
+      "title": "按日期和分类组织分析材料"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "列出十四张业务副本表、用途与主键字段；查附件、提案、候选支持、孤立 AI 和归档前先调用。",
+      "inputSchema": {
+        "properties": {
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "type": "object",
+        "title": "list_source_tablesArguments",
+        "additionalProperties": false
+      },
+      "name": "list_source_tables",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "list_source_tablesDictOutput"
+      },
+      "title": "查看原始数据表目录"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "按固定表名分页查询源副本；默认只取键和同步元数据。需要内容才传 include_payload=true；日期分类筛选请用 list_mails。",
+      "inputSchema": {
+        "properties": {
+          "table": {
+            "$ref": "#/$defs/Dataset"
+          },
+          "include_deleted": {
+            "default": false,
+            "title": "Include Deleted",
+            "type": "boolean"
+          },
+          "include_payload": {
+            "default": false,
+            "title": "Include Payload",
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "原样传回上一页非空 next_cursor；首页省略或传null，其他筛选参数保持一致；版本变化需从首页重查",
+            "title": "Cursor"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "required": [
+          "table"
+        ],
+        "type": "object",
+        "$defs": {
+          "Dataset": {
+            "enum": [
+              "mailboxes",
+              "folders",
+              "messages",
+              "attachments",
+              "imap_reconcile_archive",
+              "InboundMail",
+              "MailAiArtifact",
+              "MailIssueBinding",
+              "TaxonomyCandidate",
+              "IssueTypeProposal",
+              "TaxonomyCandidateSupport",
+              "IssueTypeRegistry",
+              "IssueTypeAlias",
+              "IssueGroupLifecycle"
+            ],
+            "title": "Dataset",
+            "type": "string"
+          }
+        },
+        "title": "list_source_recordsArguments",
+        "additionalProperties": false
+      },
+      "name": "list_source_records",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "list_source_recordsDictOutput"
+      },
+      "title": "分页查询某类原始记录"
+    },
+    {
+      "annotations": {
+        "openWorldHint": false,
+        "readOnlyHint": true
+      },
+      "description": "按 list_source_records 的 record_key 读取完整 payload；原始记录用于追溯，不直接当作邮件统计或最终分类。",
+      "inputSchema": {
+        "properties": {
+          "table": {
+            "$ref": "#/$defs/Dataset"
+          },
+          "record_key": {
+            "maxLength": 512,
+            "minLength": 1,
+            "title": "Record Key",
+            "type": "string"
+          },
+          "include_deleted": {
+            "default": false,
+            "title": "Include Deleted",
+            "type": "boolean"
+          },
+          "source_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "pattern": "^[a-z][a-z0-9_-]{1,63}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "description": "省略时使用服务器配置默认来源；接收人应显式传 production-ai-customer（历史本地副本），并先查 get_sync_status 的版本与同步时间",
+            "title": "Source Id"
+          }
+        },
+        "required": [
+          "table",
+          "record_key"
+        ],
+        "type": "object",
+        "$defs": {
+          "Dataset": {
+            "enum": [
+              "mailboxes",
+              "folders",
+              "messages",
+              "attachments",
+              "imap_reconcile_archive",
+              "InboundMail",
+              "MailAiArtifact",
+              "MailIssueBinding",
+              "TaxonomyCandidate",
+              "IssueTypeProposal",
+              "TaxonomyCandidateSupport",
+              "IssueTypeRegistry",
+              "IssueTypeAlias",
+              "IssueGroupLifecycle"
+            ],
+            "title": "Dataset",
+            "type": "string"
+          }
+        },
+        "title": "get_source_recordArguments",
+        "additionalProperties": false
+      },
+      "name": "get_source_record",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": true,
+        "title": "get_source_recordDictOutput"
+      },
+      "title": "读取一条完整原始记录"
+    }
+  ]
+}

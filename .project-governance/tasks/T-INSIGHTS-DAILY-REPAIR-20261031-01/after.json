@@ -1,0 +1,141 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01",
+  "revision": 1,
+  "status": "Implemented",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-30T18:57:23.822555Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T18:57:23.822786Z"
+  },
+  "established_facts": [
+    "每封FETCH前核对连接选中folder实际UIDVALIDITY，复用不跳过，切换及重连重新取得；错误epoch不下载或认证",
+    "76项测试、独立7组内存MIME控制、安装skill10文件/完整读取及双地址HTTP与跨日真实UI通过；原634/405/35和历史归档未改",
+    "仅按原授权恢复3030原地址与网段，生产读取false，其他服务未启动或重启；本地15433实际连接超时，00:30实际触发结果未验证"
+  ],
+  "actual_changes": [
+    "局部修复attachment_fetcher连接身份生命周期，新增8组实质正反用例，安装skill1.0.4同步逐封边界",
+    "当前需求原文、逐项覆盖、失败重试、运行恢复、差异与交接日志已保存；安全门实际决定单独留档"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "76项相关回归及8组复用/切换/重连/失败继续身份正反通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/tests-A02.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "原独立内存MIME反例变为拒绝次封，7组控制保留实际FETCH及manifest证据",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/imap-controls/summary.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "安装skill、634索引/最长原文、原报告及双地址详情/预览/ZIP/日期版本边界通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "跨日默认10/30缺报、手选29有634、昨天返回30、白底真实浏览器验证",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/ui-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "原文逐项覆盖、条件正反与真实限制明确",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/verification/coverage.md"
+      ]
+    }
+  ],
+  "incomplete_items": [],
+  "legacy_issues": [
+    {
+      "summary": "新真实日报仍受本地副本可用性与日终水位限制",
+      "reason": "本轮实际只读连接127.0.0.1:15433超时，生产采集保持原隔离；不能用旧DEGRADED替代现在状态",
+      "impact": "10/30未生成，默认查询该日显示未生成，00:30启用不保证数据到齐或成功发布",
+      "owner": "本地副本与采集维护者（本任务未指定具体个人）",
+      "reentry_condition": "本地reader可达、状态READY且源/辅助水位覆盖日终后，沿既有授权与skill生成；生产恢复仍需另行明确授权"
+    }
+  ],
+  "decisions": [
+    "沿用父Accepted修复与复验授权，当前门决定以实际独立记录为准，最终用户验收Pending；新完整审查从本已保存版本计数"
+  ],
+  "evidence_refs": [
+    ".runtime/daily-automation-20261030/imap-identity-repair/delivery-manifest.json",
+    ".runtime/daily-automation-20261030/imap-identity-repair/source-changes.patch",
+    ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-decision.json",
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/release/handoff.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-REPAIR-20261031-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T18:11:53.875496Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "4fb87c8a72a213ff787b1daed365fab093a0908d720ce2d098f9c13d81877d73",
+    "scope_sha256": "5e4a4d5d3e0bbb0ff8eb315928a98168b6a9c794b0250fc96210a7800b0504f1",
+    "delivery_sha256": "1eb367376eda9d2fa7b2ee4c0ee2c70581ef952c8b42e94c2cbcd02fa139a025",
+    "report_sha256": "5202433cb4901976d470ddde97327b3cbc2b12c83b08a20cb26e9cf5b410ef01"
+  },
+  "adversarial_review_parent": "T-INSIGHTS-DAILY-AUTO-20261030-01"
+}

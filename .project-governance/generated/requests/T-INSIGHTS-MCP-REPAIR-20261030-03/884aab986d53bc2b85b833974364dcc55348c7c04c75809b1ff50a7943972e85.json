@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "工程结果已保存，41测试17真实检查；保留人类Gate Pending与Deferred，关闭本工程run，继续用户授权的同版本连续两轮完整独立审查。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "c9e401dbec0b3fd094bbd4374823d959b0befb10841743843d5e173b96b787e8",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03"
+}

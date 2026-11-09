@@ -1,0 +1,15 @@
+{
+  "action": "run_started",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "已授权第8轮两stdio返修：精确原始JSON数值和ID预检，保留SDK标准句柄与会话层，真实子进程回归及HTTP不退步，既有生产隔离和人类Pending保持",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S4",
+  "tailoring_resolution_sha256": "ad47f07afab0973b7210af18d579d864703f540d0354c5cd705392705b42aa99",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-06"
+}

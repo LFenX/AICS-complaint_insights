@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-LAYOUT-20261030-01-REVIEW",
+  "view_kind": "task-review",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:12.074746Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "261bdcb3d3d73aac214653614ebbf825d02617f6c75f2e62af6b3f2223736d9d",
+  "sources": [
+    ".project-governance/tasks/T-INSIGHTS-LAYOUT-20261030-01/task-record.json"
+  ],
+  "content_ref": ".project-governance/generated/reviews/T-INSIGHTS-LAYOUT-20261030-01.md",
+  "integrity_status": "Complete"
+}

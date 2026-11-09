@@ -1,0 +1,386 @@
+{
+  "captured_at": "2026-10-29T22:15:54.832030+00:00",
+  "derived_view": true,
+  "original_sources": [
+    ".project-governance/tasks/T-INSIGHTS-MCP-PORTAL-20261030-01/before.json",
+    ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-03/before.json"
+  ],
+  "requirements": [
+    {
+      "id": "O01",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "提供可交给其他接收人的详细MCP介绍",
+      "conditions": [],
+      "previous_observation": "详细指南、11工具与14表、全部schema和客户端齐全；首页配置片段R5-003需修正。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O02",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "说明与程序依照MCP原生协议",
+      "conditions": [],
+      "previous_observation": "固定2025-11-25初始化/通知/资源/错误分层通过，严格数字原值仍R5-002。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O03",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "接收人据此能完成接入并使用全部只读工具",
+      "conditions": [],
+      "previous_observation": "现有Bearer的11工具、3类客户端、完整分页和正文可用；新接收人依赖的浏览器发放被R5-004阻断。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O04",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "优化并复核令牌生成服务",
+      "conditions": [],
+      "previous_observation": "独立认证/权限隔离/轮换/会话/CSRF/限额/存储并发已复核；R5-001与R5-004未解决。 移动长身份布局另见R5-005。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O05",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "内网提供令牌服务入口",
+      "conditions": [],
+      "previous_observation": "实际3029/3037监听10.8.61.200，当前代码保留HTTPS及实际peer限制；新版门户以隔离夹具验证，运行3029仍是旧UI。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O06",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "把MCP协议、介绍和接入方法放于发放服务",
+      "conditions": [],
+      "previous_observation": "当前同一门户路由提供在线完整指南和7项公开下载，23项通用包一致。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O07",
+      "source": "portal:request_snapshot",
+      "quote": "另外MCP工具后续我会给其他人使用，MCP工具的介绍需要比较详细，请按照MCP本身的协议来制作文档或者程序，后续我会给其他要用该MCP的人，让他们能够使用我的MCP，另外MCP token生成所运行的服务你也需要优化并复核一下，然后在内网开放该服务入口（生成token的服务），然后请将该MCP的使用协议介绍方法等，放置在生成token的服务上，后面我会直接给其他需要用到该MCP的人整个服务的内网链接，这样省事很多",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "接收人使用一个内网链接阅读、下载并找到接入路径",
+      "conditions": [],
+      "previous_observation": "一个链接可阅读、下载和找到接入路径；原生管理员表单被R5-004阻断。 移动长身份布局另见R5-005。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O08",
+      "source": "portal:request_snapshot",
+      "quote": "开一个新会话处理MCP相关事宜，本会话继续完成客诉日报看板",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "本审查只处理MCP，不干涉日报及排除服务",
+      "conditions": [],
+      "previous_observation": "仅MCP审查及round5证据；未修改/重启日报、3030/3036/15433、附件、AICS、源生产或旧治理。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已遵守",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O09",
+      "source": "portal:request_snapshot",
+      "quote": "继续",
+      "source_sha256": "e77269c0023755f364d6925428a499d342b101f0c06bc6f73ed97663879d0311",
+      "reading": "沿用已有MCP授权和单一所有者权限，不扩大管理员",
+      "conditions": [],
+      "previous_observation": "继续只沿用所有者发放和MCP范围；未新增管理员/OAuth/生产操作或代批人类门禁。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已遵守",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O10",
+      "source": "survey:existing_authority",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source_sha256": "b9629cfbe0e571caf86402afd4b7e282ad3e6f747a67593972654bf186050911",
+      "reading": "MCP使用必须拥有所有者下发的独立令牌",
+      "conditions": [
+        "存在有效MCP Bearer才授予数据读取；无效、撤销或缺失时拒绝"
+      ],
+      "previous_observation": "真实有效Bearer读取，匿名/错误Bearer401；合成撤销和损坏配置失效关闭均通过。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O11",
+      "source": "survey:existing_authority",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source_sha256": "b9629cfbe0e571caf86402afd4b7e282ad3e6f747a67593972654bf186050911",
+      "reading": "门户使用3029；后续明确内网开放覆盖原localhost绑定",
+      "conditions": [
+        "属于指定内网实际TCP peer且HTTPS/Host正确才允许；伪造代理头无效"
+      ],
+      "previous_observation": "3029当前指定内网IP开放；当前源码+隔离正反验证HTTPS/实际peer/Host/Origin及代理头无效，另一电脑路由/CA保留外部限制。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O12",
+      "source": "portal:clarification:r1.e1",
+      "quote": "继续",
+      "source_sha256": "7c9691192f1b73408bbe4c0cb6d00db94375ca9d8fce0a0d5985e7a5178f083f",
+      "reading": "结合提问、推荐默认和survey：唯一独立owner，访客只读文档；登录管理员才能发放/撤销",
+      "conditions": [
+        "独立管理员会话及同源CSRF有效才允许管理；匿名、MCP Bearer、跨会话、失效会话等拒绝"
+      ],
+      "previous_observation": "唯一owner和管理/MCP身份隔离成立；合法原生浏览器管理遭R5-004拒绝。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O13",
+      "source": "repair:request_snapshot",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "提供唯一管理员账号；原交付为owner，本轮核对唯一凭据机制",
+      "conditions": [],
+      "previous_observation": "原交付账号owner及唯一管理员机制可核对；本轮不重新读取真实管理员凭据。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现（含历史交付分工）",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O14",
+      "source": "repair:request_snapshot",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "有效管理员登录后能生成并交付可用令牌",
+      "conditions": [
+        "有效管理员登录后带CSRF签发成功；未登录与无效凭据拒绝"
+      ],
+      "previous_observation": "合成管理员带正常Origin可登录签发、一次显示并撤销；原生浏览器受R5-004阻断。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O15",
+      "source": "repair:request_snapshot",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "已授权多轮完整对抗审查、返修、复验，同版连续两轮零问题才结束",
+      "conditions": [
+        "同版、完整、零确认且无未决问题方可计干净；发现问题/缺口/漂移归零"
+      ],
+      "previous_observation": "已按授权进行本轮完整审查并保存反例；本轮有问题，必须返修并以新版本重启计数，不能声明两轮收敛。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "部分实现",
+      "actual": "本轮5项反例已修复复验；同版连续两轮尚须在本工程结果保存后实际开展，不提前报告通过。"
+    },
+    {
+      "id": "O16",
+      "source": "repair:request_snapshot",
+      "quote": "开始审查",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "实际开展审查，正式人类Gate和用户验收不代批",
+      "conditions": [],
+      "previous_observation": "实际重新读取原话、构造新反例、执行完整范围审查；不自批正式独立/安全门禁或用户验收。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O17",
+      "source": "session:request_snapshot",
+      "quote": "拉取最新代码并重启审查",
+      "source_sha256": "a240e940f7896818087d2968ec93865f96e44e40f125762e934154980b6c8a45",
+      "reading": "当前最新Git与96文件材料绑定，旧版本轮次不计数",
+      "conditions": [],
+      "previous_observation": "origin/main、HEAD及96项起末hash绑定当前最新7b63ad65；旧D版及前轮不计干净。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O18",
+      "source": "repair:request_snapshot",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "交付管理员口令；仅引用真实历史交付分工，不重新读取或公开秘密",
+      "conditions": [],
+      "previous_observation": "既有工程记录记载口令仅在用户私聊交付；本轮不读真实initial/admin秘密，不重新显示或落盘口令。用户接收及验收由真实原消息/用户决定保留。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现（含历史交付分工）",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O19",
+      "source": "repair:request_snapshot",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "source_sha256": "905df7fe8d6b4cac30c4102bd72cdf1d7920ad58cddbead47bf4e9414c4b2065",
+      "reading": "提供可直接到达的管理员登录入口",
+      "conditions": [],
+      "previous_observation": "/admin/login入口可达，独立口令表单存在；浏览器正常提交因R5-004无法登录。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    },
+    {
+      "id": "O20",
+      "source": "survey:existing_authority",
+      "quote": "另外，做一个简单的权限发放网页，生成访问token，虽然是内网网段，但是需要我下发的token才能够实际访问MCP，部署到3029端口，localhost，",
+      "source_sha256": "b9629cfbe0e571caf86402afd4b7e282ad3e6f747a67593972654bf186050911",
+      "reading": "提供简单权限发放网页，能生成访问令牌",
+      "conditions": [
+        "登录唯一管理员并通过同源CSRF才签发；其它身份拒绝"
+      ],
+      "previous_observation": "新管理页面的发放、确认撤销、一次显示等逻辑通过隔离测试；原生浏览器提交受R5-004影响。 移动长身份布局另见R5-005。",
+      "verification_basis": [
+        "round-5-report.md",
+        "tests.log",
+        "results.json",
+        "browser-fixed.json",
+        "fixes.json"
+      ],
+      "status": "已实现",
+      "actual": "未改行为沿用第五轮完整独立核验，受5项缺陷影响的路径以本次45测试、17真实检查、原生浏览器及5精度对照重新验证。"
+    }
+  ],
+  "future_review_status": "尚未开展新版本的第一轮；不能计为干净轮",
+  "user_decision": {
+    "outcome": "Pending"
+  }
+}

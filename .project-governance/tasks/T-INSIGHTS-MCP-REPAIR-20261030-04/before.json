@@ -1,0 +1,1320 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-REPAIR-4",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-04",
+  "ordinal": 12,
+  "revision": 3,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-10-29T22:00:54.708707Z",
+  "frozen_at": "2026-10-29T22:01:27.283748Z",
+  "objective": "关闭最新Git版第五轮缺陷并完成原需求复核",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token\n\n工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。\n\n开始审查\n\n拉取最新代码并重启审查",
+    "captured_at": "2026-10-29T22:00:54.628900Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Skipped",
+    "notice": "本轮返修沿用你已确认的范围和授权，跳过重复提问。",
+    "survey_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+    ],
+    "rounds": [],
+    "basis": "明确重启与同范围返修已授权，原始安全及生产边界保持",
+    "reopened_by": []
+  },
+  "requirement_items": [
+    {
+      "id": "R-01",
+      "source": "request_snapshot",
+      "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+      "reading": "交付已核对的唯一管理员凭据和可生成token的登录入口，密码仅在用户本次私聊交付",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [
+          "登录该管理员账号后才可生成令牌"
+        ],
+        "cases": [
+          {
+            "condition": 0,
+            "branch": "Met",
+            "input": "有效管理员登录并带同会话CSRF签发",
+            "expected": "合法管理员成功，未认证或校验失败拒绝",
+            "actual": "真实登录303、签发200、令牌使用200、撤销303后401；原生浏览器合成账号同流程正常",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+            ]
+          },
+          {
+            "condition": 0,
+            "branch": "NotMet",
+            "input": "匿名、MCP Bearer、跨源/null Origin或错误CSRF签发",
+            "expected": "合法管理员成功，未认证或校验失败拒绝",
+            "actual": "真实/合成边界检查401/403，权限配置未改变",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-02",
+      "source": "request_snapshot",
+      "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "reading": "依用户明确开始授权，按原需求完整审查、修复及复验，直到同一版本连续两轮完整无问题；保留机器登记限制",
+      "state": "Deferred",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "R-03",
+      "source": "request_snapshot",
+      "quote": "开始审查",
+      "reading": "启动实际审查与同范围返修，不冒称正式人工批准",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "开始审查",
+            "expected": "启动实际审查与同范围返修，不冒称正式人工批准",
+            "actual": "已实际拉取7b63ad65并重启第五轮；5项反例修复复验，保存当前新Git版本；连续两轮尚待开展，不代批人工门禁",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/round-5-report.md"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-04",
+      "source": "request_snapshot",
+      "quote": "拉取最新代码并重启审查",
+      "reading": "以远端最新代码重新开始完整审查，保留暂停历史并重置连续计数",
+      "state": "Covered",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+      ],
+      "acceptance_refs": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "review": {
+        "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": "拉取最新代码并重启审查",
+            "expected": "以远端最新代码重新开始完整审查，保留暂停历史并重置连续计数",
+            "actual": "已实际拉取7b63ad65并重启第五轮；5项反例修复复验，保存当前新Git版本；连续两轮尚待开展，不代批人工门禁",
+            "result": "Passed",
+            "evidence_refs": [
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json",
+              "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/round-5-report.md"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-REVIEW-RESUME",
+      "kind": "Proceed",
+      "presented": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+      "response": "拉取最新代码并重启审查",
+      "decided_by": "当前聊天用户",
+      "decided_at": "2026-10-29T22:00:54.507373+00:00",
+      "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-MCP-PORTAL-20261030-01",
+    "T-INSIGHTS-MCP-REPAIR-20261030-03"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T22:00:54.672362Z"
+  },
+  "scope": {
+    "in_scope": [
+      "关闭最新Git版本的第五轮确认缺陷并保留既有界面和权限",
+      "对照完整原始需求，复验MCP、发放门户和公开材料，保持生产与保护服务隔离",
+      "保存新工程版本后继续已授权的独立完整审查，达到同版连续两轮无问题才结束"
+    ],
+    "out_of_scope": [
+      "生产、采集、3030/3036/15433、日报附件、AICS、多管理员和旧任务改写"
+    ],
+    "allowed_paths": [
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\insights\\token_desk.py",
+      "insights/token_desk.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\insights\\mcp_http.py",
+      "insights/mcp_http.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\insights\\mcp_server.py",
+      "insights/mcp_server.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\assets\\token-desk.css",
+      "assets/token-desk.css",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\assets\\token-desk.js",
+      "assets/token-desk.js",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\scripts\\mcp_portal_materials.py",
+      "scripts/mcp_portal_materials.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\scripts\\mcp_portal_verify.py",
+      "scripts/mcp_portal_verify.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\tests\\test_mcp.py",
+      "tests/test_mcp.py",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\tests\\test_token_desk.py",
+      "tests/test_token_desk.py",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/**",
+      ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-04/**",
+      ".runtime/mcp-portal*/**",
+      ".runtime/processes.json",
+      ".secrets/mcp-handoff.zip",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\restart-20261030",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\.runtime",
+      "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\AICS-database-MCP\\LG_project_docs\\requirements\\T-INSIGHTS-MCP-REPAIR-20261030-04"
+    ],
+    "forbidden_actions": [
+      "数据库连接、watch、保护服务变更、伪造人类Gate"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate",
+      "external-effect",
+      "rollback"
+    ],
+    "required_gates": [
+      "independent-review",
+      "security-privacy-review"
+    ],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "关闭最新Git版本的第五轮确认缺陷并保留既有界面和权限",
+          "对照完整原始需求，复验MCP、发放门户和公开材料，保持生产与保护服务隔离",
+          "保存新工程版本后继续已授权的独立完整审查，达到同版连续两轮无问题才结束"
+        ],
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md",
+          "C:\\Users\\Administrator\\Documents\\Codex\\2026-10-30\\complaint-insights-mcp\\work\\restart-20261030\\session.json"
+        ],
+        "verified_at": "2026-10-29T22:00:54.507373+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "并发成功和失败登录均返回正确结果且会话与限流可用",
+      "JSON原始非整数或越界数字拒绝且后端零调用，合法整数表示正常",
+      "原生浏览器登录签发撤销退出成功；严格Host/Origin/CSRF/peer及安全cookie仍有效",
+      "首页配置为合法JSON，移动端长身份下输入和撤销确认可见可操作",
+      "全部原需求及保护边界有实际证据，未验证项和正式门禁如实保存"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "记录独立反例与持续授权并冻结修复范围",
+      "局部修复并执行反例及合法控制回归",
+      "重建材料并完成隔离浏览器和必要真实服务复验",
+      "保存工程结果与当前版本，继续两轮完整独立审查"
+    ],
+    "verification": [
+      "并发成功和失败登录均返回正确结果且会话与限流可用",
+      "JSON原始非整数或越界数字拒绝且后端零调用，合法整数表示正常",
+      "原生浏览器登录签发撤销退出成功；严格Host/Origin/CSRF/peer及安全cookie仍有效",
+      "首页配置为合法JSON，移动端长身份下输入和撤销确认可见可操作",
+      "全部原需求及保护边界有实际证据，未验证项和正式门禁如实保存"
+    ],
+    "rollback": [
+      "仅恢复本轮MCP门户与协议文件；不恢复撤销令牌；不操作保护服务"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Deep",
+    "outcome": "关闭第五轮反例，保持当前产品结构和权限并取得可核对的新版本",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "最新main为7b63ad65，五类反例有当前代码或浏览器证据",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "普通41测试未覆盖原生浏览器Origin与原始数值精度",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "生产隔离、单管理员、严格同源及保护服务保持；人工Gate不能推定",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "认证与交互在并发及真实浏览器中必须保持可用",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "输入契约按原始JSON值而不是舍入后的值判断",
+        "derived_from": [
+          "F2",
+          "C1"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "安全读取当前失败计数，same-origin策略保持POST正常且不放宽Origin守卫，约束移动grid和确认布局",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "HTTP解析保留十进制精度并在SDK转换前使用工具Schema验证",
+        "evidence_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O1",
+        "description": "局部修复并扩展有实际反例的回归",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "需要跨HTTP/SDK及原生浏览器复验"
+        ]
+      },
+      {
+        "id": "O0",
+        "description": "保留当前实现",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "核心发放流程403且其余反例继续存在"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "改为JS fetch提交并整体替换表格交互",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "tradeoffs": [
+          "增加新交互逻辑及维护面，原生表单和现有布局可局部恢复"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "原始反例拒绝/恢复正确且合法控制保持",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "原需求及边界全覆盖，证据版本可核对",
+        "source_refs": [
+          "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "记录独立反例与持续授权并冻结修复范围",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "局部修复并执行反例及合法控制回归",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "重建材料并完成隔离浏览器和必要真实服务复验",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "保存工程结果与当前版本，继续两轮完整独立审查",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json"
+    ],
+    "source_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-01",
+    "development_types": [
+      "DT-02"
+    ],
+    "primary_development_type": "DT-02",
+    "development_type_scopes": {
+      "DT-02": [
+        "关闭最新Git版本的第五轮确认缺陷并保留既有界面和权限",
+        "对照完整原始需求，复验MCP、发放门户和公开材料，保持生产与保护服务隔离",
+        "保存新工程版本后继续已授权的独立完整审查，达到同版连续两轮无问题才结束"
+      ]
+    },
+    "change_surfaces": [
+      "Identity/Security/Privacy",
+      "API/Integration",
+      "UI/UX",
+      "Deploy/Operations"
+    ],
+    "risk_level": "High",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Inactive",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+      ],
+      "E02": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+      ],
+      "E03": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+      ],
+      "E04": [],
+      "E05": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Revise"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "Yes",
+      "requirement_change": "Yes",
+      "external_behavior_change": "Yes",
+      "design_change": "Yes",
+      "architecture_impact": "No",
+      "security_privacy_impact": "Yes",
+      "data_ai_impact": "No",
+      "formal_knowledge_records": "No",
+      "operations_impact": "Yes",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "Yes",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-04-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-04/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T22:00:54.672362Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-04-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-04/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T22:00:54.672362Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-REPAIR-20261030-04-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-REPAIR-20261030-04/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T22:00:54.672362Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-01",
+          "source": "request_snapshot",
+          "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+          "reading": "交付已核对的唯一管理员凭据和可生成token的登录入口，密码仅在用户本次私聊交付",
+          "state": "Open",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": "R-02",
+          "source": "request_snapshot",
+          "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+          "reading": "依用户明确开始授权，按原需求完整审查、修复及复验，直到同一版本连续两轮完整无问题；保留机器登记限制",
+          "state": "Open",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": "R-03",
+          "source": "request_snapshot",
+          "quote": "开始审查",
+          "reading": "启动实际审查与同范围返修，不冒称正式人工批准",
+          "state": "Open",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": "R-04",
+          "source": "request_snapshot",
+          "quote": "拉取最新代码并重启审查",
+          "reading": "以远端最新代码重新开始完整审查，保留暂停历史并重置连续计数",
+          "state": "Open",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/discovery/survey.md"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-01",
+          "source": "request_snapshot",
+          "quote": "把管理员账号密码给我，然后给一个登录入口，登录该账号即可生成token",
+          "reading": "交付已核对的唯一管理员凭据和可生成token的登录入口，密码仅在用户本次私聊交付",
+          "state": "Covered",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "review": {
+            "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+            "conditions": [
+              "登录该管理员账号后才可生成令牌"
+            ],
+            "cases": [
+              {
+                "condition": 0,
+                "branch": "Met",
+                "input": "有效管理员登录并带同会话CSRF签发",
+                "expected": "合法管理员成功，未认证或校验失败拒绝",
+                "actual": "真实登录303、签发200、令牌使用200、撤销303后401；原生浏览器合成账号同流程正常",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+                ]
+              },
+              {
+                "condition": 0,
+                "branch": "NotMet",
+                "input": "匿名、MCP Bearer、跨源/null Origin或错误CSRF签发",
+                "expected": "合法管理员成功，未认证或校验失败拒绝",
+                "actual": "真实/合成边界检查401/403，权限配置未改变",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-02",
+          "source": "request_snapshot",
+          "quote": "工程结果已保存。依据 [run-governed-product-workflow](C:/Users/Administrator/.codex/skills/run-governed-product-workflow/SKILL.md)「工程完成并保存结果后，必须主动询问用户是否启动对抗性审查」，是否启动多轮审查？发现问题将修复并复验，直至同一版本连续两轮完整审查无问题；此选择不影响现在登录和生成令牌。",
+          "reading": "依用户明确开始授权，按原需求完整审查、修复及复验，直到同一版本连续两轮完整无问题；保留机器登记限制",
+          "state": "Deferred",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "id": "R-03",
+          "source": "request_snapshot",
+          "quote": "开始审查",
+          "reading": "启动实际审查与同范围返修，不冒称正式人工批准",
+          "state": "Covered",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "review": {
+            "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "开始审查",
+                "expected": "启动实际审查与同范围返修，不冒称正式人工批准",
+                "actual": "已实际拉取7b63ad65并重启第五轮；5项反例修复复验，保存当前新Git版本；连续两轮尚待开展，不代批人工门禁",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/round-5-report.md"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-04",
+          "source": "request_snapshot",
+          "quote": "拉取最新代码并重启审查",
+          "reading": "以远端最新代码重新开始完整审查，保留暂停历史并重置连续计数",
+          "state": "Covered",
+          "evidence_refs": [
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+            "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json"
+          ],
+          "acceptance_refs": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "review": {
+            "source_sha256": "8c2024f1424a393b9810055e65e2575dde74d98ba1f0c771f52fd890dd339d38",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": "拉取最新代码并重启审查",
+                "expected": "以远端最新代码重新开始完整审查，保留暂停历史并重置连续计数",
+                "actual": "已实际拉取7b63ad65并重启第五轮；5项反例修复复验，保存当前新Git版本；连续两轮尚待开展，不代批人工门禁",
+                "result": "Passed",
+                "evidence_refs": [
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/results.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/tests.log",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/browser-fixed.json",
+                  "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/round-5-report.md"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "保存当前工程事实；连续两轮须在结果保存后继续，人工门禁Pending",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-04/verification/coverage.json",
+      "changed_at": "2026-10-29T22:17:05.968469Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "ordinal",
+      "old_value": 9,
+      "new_value": 12,
+      "reason": "项目汇总发现ordinal9与并行日报任务重复，只修正本任务为当前未占用12；不改变已保存交付或其他任务",
+      "basis": "C:/Users/Administrator/Documents/Codex/2026-10-30/complaint-insights-mcp/work/restart-20261030/ordinal-correction.json",
+      "changed_at": "2026-10-29T22:32:43.497383Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "70ab988f97957e789a0f79ce13698fce9410de8e3e1ccadf3217c9defb0139ad",
+    "stage": "S8",
+    "applicable_standards": [
+      "C01",
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E05"
+    ],
+    "control_strength": "enhanced",
+    "independent_review": true,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:design_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_system_effect=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:initiative_scope_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:operations_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:requirement_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:security_privacy_impact=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Revise",
+      "VC-PPG-TAIL-001:change_surfaces:API/Integration",
+      "VC-PPG-TAIL-001:change_surfaces:Deploy/Operations",
+      "VC-PPG-TAIL-001:change_surfaces:Identity/Security/Privacy",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-01",
+      "VC-PPG-TAIL-001:development_types:DT-02",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Inactive",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:High"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "9",
+          "14",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C01",
+        "path": "references/02_核心规范/C01_Product_Discovery_Evidence_and_Intent_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C01",
+        "path": "references/02_核心规范/C01_Product_Discovery_Evidence_and_Intent_Standard.md",
+        "sha256": "afd73ffbde490eb2774af346046034692c83093612d0d60e0649cae8744c1773"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 129,
+      "total": 137,
+      "sha256": "a7e09827327715de108c76171ea5a2448a9b0ca9fb178d7457caeb1c91cf43a1"
+    }
+  }
+}

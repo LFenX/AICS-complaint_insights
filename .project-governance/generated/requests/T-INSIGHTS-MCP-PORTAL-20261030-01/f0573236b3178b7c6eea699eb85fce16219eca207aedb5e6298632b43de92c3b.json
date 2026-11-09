@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "对照完整用户原话及继续澄清逐条覆盖，保存11工具14表真实HTTPS验证、25项测试、430/1440无横向溢出UI证据与Pending用户决定；保留正式独立和安全审查未通过事实",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "955955db4a062703de997564e1ffa4490b08a97324ddc63585c519ed884bd71e",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01"
+}

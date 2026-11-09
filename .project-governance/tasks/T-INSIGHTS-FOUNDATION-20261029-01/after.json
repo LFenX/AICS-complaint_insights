@@ -1,0 +1,147 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "LOCAL-ANALYTICS-FOUNDATION",
+  "task_id": "T-INSIGHTS-FOUNDATION-20261029-01",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T10:18:02.755799Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T10:18:02.756054Z"
+  },
+  "established_facts": [
+    "开发副本与内网 MCP 已交付并运行；正式安全隐私 Gate、人工验收和未来真实生产条件尚未完成",
+    "53119 封邮件、35544 条 AI 产物和18396 条问题绑定，开发业务日截至2026-10-22"
+  ],
+  "actual_changes": [
+    "独立 PostgreSQL、可恢复增量、日期分类读取模型、鉴权 API 与只读 SQL",
+    "11 个 MCP 工具、HTTPS 内网入口、独立令牌/网段限制、中文手册与私有交接包"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "47 项单元、隔离 PostgreSQL 与 MCP 契约测试通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "十四张开发源业务表与副本全量内容 SHA256 核对通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "严格 TLS、26 次 MCP 调用、14 类查询与只读 SQL 核对及交接客户端验证通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/mcp-results.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "reason": "security-privacy-review 待真实用户审查；用户回复是 MCP 功能指令，没有通过门禁",
+      "impact": "本地工程和服务已交付，正式工程 Gate 不能标为通过；用户验收独立 Pending",
+      "owner": "task-initiator",
+      "reentry_condition": "有权用户对当前已验证交付作出可核对的安全隐私门禁决定",
+      "summary": "security-privacy-review 待真实用户审查；用户回复是 MCP 功能指令，没有通过门禁"
+    },
+    {
+      "reason": "生产连接是未来条件，尚未接通并验证；没有重启权限",
+      "impact": "当前数据明确标记 development-local，不能称为实时生产数据",
+      "owner": "用户与生产服务器 agent",
+      "reentry_condition": "监听与凭据/证书到位且授权采集端进行生产只读联调",
+      "summary": "生产连接是未来条件，尚未接通并验证；没有重启权限"
+    },
+    {
+      "reason": "尚未从另一台内网电脑执行路由与客户端验收",
+      "impact": "服务端与采集电脑通过内网 IP 的真实协议验证已完成，接收方网络路径仍未实测",
+      "owner": "待指定的接收方",
+      "reentry_condition": "接收方导入专用 CA、配置独立令牌并按交接手册连接验证",
+      "summary": "尚未从另一台内网电脑执行路由与客户端验收"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-FOUNDATION-20261029-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": null,
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-FOUNDATION-20261029-01-source-manifest",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+      "reason": "绑定 59 个实际公开交付文件的 SHA256；私有凭据与运行缓存不纳入公开清单",
+      "rule_reference": "C09 execution evidence; C05 verification",
+      "owner": "execution-agent",
+      "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+      "human_confirmation_refs": [],
+      "outcome": "Generated"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "f45fb9a5282dbc6c099d0220534dca1def5e74d698922bb5a06de3f513a85dd4",
+    "scope_sha256": "6ed11d2bc2787b6786478d216714c17a7d0d5799d3333e8207cc32f17ff57d31",
+    "delivery_sha256": "89b4b594508c01425c43842f764e3ddd524095b88bafb31b0863d94996464f8e",
+    "report_sha256": "e931d7037daaddd3c3783d88d79132832a55f7010a675f34747388b640c99ae8"
+  }
+}

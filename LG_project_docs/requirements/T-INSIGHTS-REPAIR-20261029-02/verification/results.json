@@ -1,0 +1,9 @@
+{
+  "task_id": "T-INSIGHTS-REPAIR-20261029-02",
+  "command": ".venv\\Scripts\\python.exe -m unittest tests.test_rules -v",
+  "result": "Passed",
+  "tests": 20,
+  "failures": 0,
+  "summary": "省略主机、端口或数据库名的连接串在连接前失败；显式连接串在 PGHOST、PGPORT、PGDATABASE 指向其他地址时保持原身份；hostaddr 与 service 拒绝仍然有效。",
+  "production_connection": "未在本次修复中连接或同步生产库"
+}

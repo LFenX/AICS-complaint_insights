@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "用户新答复只允许跳过邮件104621的五个已确认不可取附件，需将原严格全附件发布条件变更为有来源绑定的具体例外、未获取标注和不完整ZIP禁用；请取Task Profile开发类型DT-02 DT-03 DT-08及需求变更/外部行为变更/程序缺陷修复的受控定义、Amendment与验收修订依据，不能将这次具体用户决定变成全局放宽",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "f09809933948643e13f9d2704083724b16ca1141ce2a8899507daa737ca8e781",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

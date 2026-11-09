@@ -1,0 +1,1307 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+  "revision": 12,
+  "status": "Implemented",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [
+    {
+      "event": "Offer",
+      "prompt": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+      "recorded_at": "2026-10-30T09:34:42.020510+00:00",
+      "evidence_ref": ".runtime/daily-automation-20261030/review-question.json"
+    },
+    {
+      "event": "Decision",
+      "outcome": "Accepted",
+      "response": "启动多轮对抗性审查",
+      "decided_by": "user",
+      "recorded_at": "2026-10-30T11:23:42.949803+00:00",
+      "evidence_ref": ".runtime/daily-automation-20261030/review-authorization.json"
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-01-DISCOVERY",
+      "started_at": "2026-10-30T11:26:01.820273+00:00",
+      "recorded_at": "2026-10-30T11:34:22.509310+00:00",
+      "reviewer": "/root/adversarial_initial（新只读审查子Agent）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+      "subject_sha256": "b31680b5864baecf391187fda7a4d498da3e2d5dd1ecfa00ad584d96d5e6eb3b",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-01.md",
+      "coverage": "Incomplete",
+      "unreviewed_items": [
+        "默认日期后续澄清与返修尚未稳定，须对新的已验证交付重新完整审查"
+      ],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+        ".runtime/daily-automation-20261030/default-date-steering.json"
+      ],
+      "findings": [
+        {
+          "id": "ADV-INIT-01",
+          "summary": "子问题同ID异名被静默混入一组",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/probe-results.json"
+          ]
+        },
+        {
+          "id": "ADV-INIT-02",
+          "summary": "领域同ID异名导致导航/颜色/统计矛盾",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/probe-results.json"
+          ]
+        },
+        {
+          "id": "ADV-INIT-03",
+          "summary": "日期重载后分页控件25但实际显示100",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/browser-results.json"
+          ]
+        },
+        {
+          "id": "ADV-INIT-04",
+          "summary": "生成关闭或副本异常仍显示能力启用",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-initial/capability-results.json"
+          ]
+        }
+      ],
+      "resolutions": [],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "3d0920eb8b406953f67500b63e9f678f721b7fda55f3fc0c95068e887ef5b73f",
+      "delivery_completed_at": "2026-10-30T09:33:07.067632Z",
+      "delivery_verified_at": "2026-10-30T09:32:14.144348Z",
+      "session_completed": false
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-02-DISCOVERY",
+      "started_at": "2026-10-30T19:46:43.6946923+08:00",
+      "recorded_at": "2026-10-30T12:02:25.730344+00:00",
+      "reviewer": "/root/adversarial_round02（新的只读独立Agent）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01",
+      "subject_sha256": "81b9ecc01f3680360a139f86173c27904f5004ebb130a30a85b6e5da664b00ea",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-02.md",
+      "coverage": "Complete",
+      "unreviewed_items": [],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-02/independent-report.md",
+        ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json",
+        ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+        ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+      ],
+      "findings": [
+        {
+          "id": "R02-01",
+          "summary": "显式非客诉状态与客诉scope矛盾仍入榜并发布",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+          ]
+        },
+        {
+          "id": "R02-02",
+          "summary": "长主题突破读取预算且缺主题/基础字段续读",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+          ]
+        },
+        {
+          "id": "R02-03",
+          "summary": "同报告重复publish未复核已发布目录原件完整性",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+          ]
+        },
+        {
+          "id": "R02-04",
+          "summary": "check带snapshot仍接受原始主题及recipients_original漂移",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+          ]
+        }
+      ],
+      "resolutions": [
+        {
+          "finding_id": "ADV-INIT-01",
+          "disposition": "Fixed",
+          "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+            ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+          ]
+        },
+        {
+          "finding_id": "ADV-INIT-02",
+          "disposition": "Fixed",
+          "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+            ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+          ]
+        },
+        {
+          "finding_id": "ADV-INIT-03",
+          "disposition": "Fixed",
+          "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+            ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+          ]
+        },
+        {
+          "finding_id": "ADV-INIT-04",
+          "disposition": "Fixed",
+          "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+            ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+          ]
+        }
+      ],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "178c8133ed0a34baa436be17484055906b5a236acfe91d6739146fa5f327cc9d",
+      "delivery_completed_at": "2026-10-30T11:45:56.303562Z",
+      "delivery_verified_at": "2026-10-30T11:44:14.015179Z",
+      "session_completed": false
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-03-DISCOVERY",
+      "started_at": "2026-10-30T12:21:59Z",
+      "recorded_at": "2026-10-30T12:54:22.716425+00:00",
+      "reviewer": "/root/adversarial_round03（新只读独立Agent）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02",
+      "subject_sha256": "7bca1f351e0375a02b8b7432c71f8426b4018fcad32c0c5469c2f38553b4e273",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-03.md",
+      "coverage": "Complete",
+      "unreviewed_items": [],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-03/independent-report.md",
+        ".runtime/daily-automation-20261030/review-03/cases-results.json",
+        ".runtime/daily-automation-20261030/review-03/ui-interactions.json",
+        ".runtime/daily-automation-20261030/review-03/version-end.json"
+      ],
+      "findings": [
+        {
+          "id": "R03-PREVIEW-01",
+          "summary": "候选预览缓存来源未核验，错误或空预览可重签并正式发布",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/preview-cache-results.json"
+          ]
+        },
+        {
+          "id": "R03-HISTORY-01",
+          "summary": "同一真实切图故障会话补件被拆入启动主类",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/historical-expected-revisions.json"
+          ]
+        },
+        {
+          "id": "R03-HISTORY-02",
+          "summary": "同一脚本初始化错误按显示语言拆成两个子问题",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/historical-expected-revisions.json"
+          ]
+        }
+      ],
+      "resolutions": [
+        {
+          "finding_id": "R02-01",
+          "disposition": "Fixed",
+          "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+            ".runtime/daily-automation-20261030/review-03/cases-results.json"
+          ]
+        },
+        {
+          "finding_id": "R02-02",
+          "disposition": "Fixed",
+          "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+            ".runtime/daily-automation-20261030/review-03/cases-results.json"
+          ]
+        },
+        {
+          "finding_id": "R02-03",
+          "disposition": "Fixed",
+          "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+            ".runtime/daily-automation-20261030/review-03/cases-results.json"
+          ]
+        },
+        {
+          "finding_id": "R02-04",
+          "disposition": "Fixed",
+          "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+            ".runtime/daily-automation-20261030/review-03/cases-results.json"
+          ]
+        }
+      ],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "25b7dfae47dc877386aafde2c4740b89bdd87afcb860c4482333ed4382894be4",
+      "delivery_completed_at": "2026-10-30T12:20:49.274946Z",
+      "delivery_verified_at": "2026-10-30T12:20:48.975027Z",
+      "session_completed": false
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-04-INTERRUPTED",
+      "started_at": "2026-10-30T21:14:04.2603521+08:00",
+      "recorded_at": "2026-10-30T18:10:28.851689+00:00",
+      "reviewer": "/root/adversarial_round04（运行中断；root仅汇总实际落盘证据）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03",
+      "subject_sha256": "e7a90e31fdf6f7e57d6fa3d785ce3a3e81cdf23167e28ebe70274e4aa57572ce",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-04.md",
+      "coverage": "Incomplete",
+      "unreviewed_items": [
+        "全量UID原句告警语义裁决",
+        "PDF/视频等附件类型最终UI矩阵",
+        "原文完整逐条最终矩阵及独立完整报告"
+      ],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-04/start.json",
+        ".runtime/daily-automation-20261030/review-04/results.json",
+        ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json",
+        ".runtime/daily-automation-20261030/review-04/imap-controls/summary.json",
+        ".runtime/daily-automation-20261030/review-04/source-http-summary.json",
+        ".runtime/daily-automation-20261030/review-04/ui-evidence.json"
+      ],
+      "findings": [
+        {
+          "id": "R04-IMAP-01",
+          "summary": "同文件夹复用连接跳过逐封UIDVALIDITY比较，跨epoch第二封仍认证并保存附件",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json",
+            ".runtime/daily-automation-20261030/review-04/imap-controls/summary.json"
+          ]
+        }
+      ],
+      "resolutions": [],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "6a7fad10b1d5d1e66a70968e533c787cf6e57e6cdb419f243d17805073a47e6c",
+      "delivery_completed_at": "2026-10-30T13:12:50.378514Z",
+      "delivery_verified_at": "2026-10-30T13:12:50.051361Z",
+      "session_completed": false
+    },
+    {
+      "event": "Blocked",
+      "recorded_at": "2026-10-30T18:27:10.720871+00:00",
+      "reason": "第四轮运行中断已按Incomplete保存；UIDVALIDITY缺口已修复并完成76项与真实3030验证，但新返修的security-privacy-review尚待本次验证版本真实人工决定，不能以旧结果计新版本干净轮次。父Accepted审查授权仍有效，未停止或撤销。",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-request.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/delivery-manifest.json",
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/release/handoff.md"
+      ]
+    },
+    {
+      "event": "Blocked",
+      "recorded_at": "2026-10-30T18:39:47.274227+00:00",
+      "reason": "安全隐私门仍待实际人类决定，IMAP修复验证绑定2c3da673不变。局部UID独立复核另确认UID-NAMESPACE-001（103199/103290/103337仅有数字，不能确认为游戏UID）及UID-ROLE-001（7封明确角色丢失）。离线逐封候选已保存，已确认单值143降为140，其余邮件/分组/原件ZIP不变；正式7d64报告尚未修改。两项新增确认问题仍未正式修复，不计完整干净轮次。门通过并保存IMAP返修后，按原审查授权以另一个来源绑定、完整归档的返修处理，再进行完整轮次。",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-request.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/offline-candidate/proposal-summary.json",
+        ".runtime/daily-automation-20261030/imap-identity-repair/gate-wait-state.json"
+      ]
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-05-DISCOVERY",
+      "started_at": "2026-10-31T03:20:30.018853+08:00",
+      "recorded_at": "2026-10-30T19:54:41.413649+00:00",
+      "reviewer": "/root/adversarial_round05（新只读独立Agent）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02",
+      "subject_sha256": "8b5d1ed66f1cbe8fd53c4bc11fc9f3ac4d8f4a82f428143745fa34d8a0126ddd",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-05.md",
+      "coverage": "Complete",
+      "unreviewed_items": [],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-05/coverage.json",
+        ".runtime/daily-automation-20261030/review-05/source-quotes.json",
+        ".runtime/daily-automation-20261030/review-05/initial-binding.json",
+        ".runtime/daily-automation-20261030/review-05/final-binding.json",
+        ".runtime/daily-automation-20261030/review-05/data-audit.json",
+        ".runtime/daily-automation-20261030/review-05/uid-reader-audit.json",
+        ".runtime/daily-automation-20261030/review-05/forward-result.json",
+        ".runtime/daily-automation-20261030/review-05/boundary-result.json",
+        ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+        ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+        ".runtime/daily-automation-20261030/review-05/ui-filter-all.json",
+        ".runtime/daily-automation-20261030/review-05/ui-sort-comparison.json",
+        ".runtime/daily-automation-20261030/review-05/ui-dates.json",
+        ".runtime/daily-automation-20261030/review-05/wrapper-results.json",
+        ".runtime/daily-automation-20261030/review-05/independent-report.md"
+      ],
+      "findings": [
+        {
+          "id": "R05-PUBLISH-01",
+          "summary": "首发未复核附件manifest，删除、错绑快照或撤回身份认证后仍发布成功",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/forward_probe.py",
+            ".runtime/daily-automation-20261030/review-05/forward-result.json"
+          ]
+        },
+        {
+          "id": "R05-UID-ROLE-01",
+          "summary": "4封原文明示现/主账号的UID仍丢失角色，真实RFC继承未保持来源语义",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/uid-additional-role-gaps.json",
+            ".runtime/daily-automation-20261030/review-05/role-proposals.json",
+            ".runtime/daily-automation-20261030/review-05/uid-all-evidence.json"
+          ]
+        }
+      ],
+      "resolutions": [
+        {
+          "finding_id": "R03-PREVIEW-01",
+          "disposition": "Fixed",
+          "reason": "新原件PNG/log分别注入有效无关JPEG/文本、空JPEG，候选重新生成正确颜色/文字；PDF缺renderer旧缓存拒签回归通过。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+            ".runtime/daily-automation-20261030/review-05/tests-bounded.log"
+          ]
+        },
+        {
+          "finding_id": "R03-HISTORY-01",
+          "disposition": "Fixed",
+          "reason": "原文map transitions明确；真实RFC两封补件归统一performance-controls/scene-loading-stuck；GUI补图不改变阶段，当前三封同子组。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+            ".runtime/daily-automation-20261030/review-05/ui-r03-map.png"
+          ]
+        },
+        {
+          "finding_id": "R03-HISTORY-02",
+          "disposition": "Fixed",
+          "reason": "本轮逐图看到相同启动脚本初始化失败的英文/日文弹窗，当前同一子ID、计数2。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+            ".runtime/daily-automation-20261030/review-05/ui-r03-english.png",
+            ".runtime/daily-automation-20261030/review-05/ui-r03-japanese.png"
+          ]
+        },
+        {
+          "finding_id": "R04-IMAP-01",
+          "disposition": "Fixed",
+          "reason": "6组全新内存MIME控制：同folder/epoch正例，第二封错误epoch、切夹、断线重连正确/错误epoch均符合预期；错误epoch未FETCH/保存/认证。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+            ".runtime/daily-automation-20261030/review-05/tests-bounded.log"
+          ]
+        }
+      ],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "5504727919d616952f571935034a23d6df01072b2b94efa178a2effc0fc81627",
+      "delivery_completed_at": "2026-10-30T19:19:29.565679Z",
+      "delivery_verified_at": "2026-10-30T19:19:29.258189Z",
+      "session_completed": false
+    },
+    {
+      "event": "Blocked",
+      "recorded_at": "2026-10-30T20:15:07.257871+00:00",
+      "reason": "R05-PUBLISH-01补充反例：源/清单声明就绪，但报告ready=false使原件验证跳过，删除原图片并保持quality摘要一致后仍可发布且复用validated；同范围完整性修复尚未完成，当前不进入干净轮次。root局部复核不计完整一轮，正式c515与资源未改。",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/publication-followup-probe/result.json"
+      ]
+    },
+    {
+      "event": "Round",
+      "round_id": "ROUND-06-DISCOVERY",
+      "started_at": "2026-10-30T20:23:22.394857+00:00",
+      "recorded_at": "2026-10-30T20:53:32.044831+00:00",
+      "reviewer": "/root/adversarial_round06（新只读独立Agent）",
+      "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-04",
+      "subject_sha256": "e2a4d063b9181d5a154df300e01b93c2228af7e38b959bc253467c888217a844",
+      "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+      "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-06.md",
+      "coverage": "Incomplete",
+      "unreviewed_items": [
+        "真实10/30完整日报、首次真实00:30成功、当前生产全量一致与持续一小时时效未验证；离线反例不替代运行目标。"
+      ],
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/review-06/requirement-matrix.json",
+        ".runtime/daily-automation-20261030/review-06/condition-cases.json",
+        ".runtime/daily-automation-20261030/review-06/probe-results.json",
+        ".runtime/daily-automation-20261030/review-06/extra-probes.json",
+        ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+        ".runtime/daily-automation-20261030/review-06/actual-audit.json",
+        ".runtime/daily-automation-20261030/review-06/metadata-audit.json",
+        ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json",
+        ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+        ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+        ".runtime/daily-automation-20261030/review-06/residual-review.json",
+        ".runtime/daily-automation-20261030/review-06/residual-neighbor-source.json",
+        ".runtime/daily-automation-20261030/review-06/gui-observations.json",
+        ".runtime/daily-automation-20261030/review-06/sort-verification.json",
+        ".runtime/daily-automation-20261030/review-06/manifest-before.json",
+        ".runtime/daily-automation-20261030/review-06/manifest-after.json",
+        ".runtime/daily-automation-20261030/review-06/independent-report.md"
+      ],
+      "findings": [
+        {
+          "id": "R06-ZIP-SOURCE-01",
+          "summary": "ZIP内包不与原件内容/归属交叉核对，错包仍可完整发布",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/probe.py",
+            ".runtime/daily-automation-20261030/review-06/probe-results.json",
+            ".runtime/daily-automation-20261030/review-06/zip-wrong-original",
+            ".runtime/daily-automation-20261030/review-06/zip-wrong-owner",
+            ".runtime/daily-automation-20261030/review-06/actual-audit.json"
+          ]
+        },
+        {
+          "id": "R06-SUBZIP-BIND-01",
+          "summary": "有原日志的子组丢失下载绑定仍可完整发布，页面禁用下载",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/probe.py",
+            ".runtime/daily-automation-20261030/review-06/probe-results.json",
+            ".runtime/daily-automation-20261030/review-06/subgroup-download-lost",
+            "assets/daily-board.js:118"
+          ]
+        },
+        {
+          "id": "R06-REVIEW-SOURCE-01",
+          "summary": "review快照错绑仅build阻断，完整目录check/publish可接受",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/probe.py",
+            ".runtime/daily-automation-20261030/review-06/probe-results.json",
+            ".runtime/daily-automation-20261030/review-06/review-bind-cross-entry.json",
+            ".runtime/daily-automation-20261030/review-06/review-source-mismatch"
+          ]
+        },
+        {
+          "id": "R06-UID-NAMESPACE-01",
+          "summary": "103506仅昵称旁数字，缺游戏UID命名空间及真实链仍确认为单值",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json",
+            ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+            ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+            ".runtime/daily-automation-20261030/review-06/gui-observations.json"
+          ]
+        },
+        {
+          "id": "R06-FOLLOWUP-SCOPE-01",
+          "summary": "103048/103071/103072可定位未解决跟进误作纯咨询，客诉至少少计3封",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+            ".runtime/daily-automation-20261030/review-06/condition-cases.json",
+            ".runtime/daily-reports/2026-10-29/report.json"
+          ]
+        }
+      ],
+      "resolutions": [
+        {
+          "finding_id": "R05-PUBLISH-01",
+          "disposition": "Fixed",
+          "reason": "原清单缺失/错快照/身份撤回与复制后暂存同类反例均拒绝；低报未就绪补充反例也拒绝。新发现的ZIP来源、导航绑定和review内容绑定是另列关系校验缺口。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+            ".runtime/daily-automation-20261030/review-06/probe-results.json",
+            ".runtime/daily-automation-20261030/review-06/regressions.log"
+          ]
+        },
+        {
+          "finding_id": "R05-UID-ROLE-01",
+          "disposition": "Fixed",
+          "reason": "103106/103259的current_account与103398/103775的primary_or_keep_account均按完整原文和真实RFC来源保留；数字和状态不变。",
+          "evidence_refs": [
+            ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+            ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+            ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json"
+          ]
+        }
+      ],
+      "review_contract_version": "report-bound-v2",
+      "report_sha256": "207114e55b815c27bb0255622d1ac7947ebb1d798bfd8fe3db7cebb135bea4e1",
+      "delivery_completed_at": "2026-10-30T20:21:50.772303Z",
+      "delivery_verified_at": "2026-10-30T20:21:50.465383Z",
+      "session_completed": false
+    }
+  ],
+  "completed_at": "2026-10-30T09:33:07.067632Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-30T09:33:07.067895Z"
+  },
+  "established_facts": [
+    "3030默认北京时间今天、未生成整页状态及历史日期读取已运行，历史10月29日报未改写",
+    "complaint-daily-report十文件skill已安装并在本Run加载/执行；automation-2已ACTIVE并绑定当前会话每日00:30",
+    "生产读取false、watch停止、其他服务PID保持；未实际触发首次定时或生成真实新业务日"
+  ],
+  "actual_changes": [
+    "日期目录API、详情/附件/ZIP日期及版本隔离；前端选择/历史/空状态和竞态保护，白底与最终布局保持",
+    "新增本地日期化冻结、逐封审阅、质量校验与幂等原子发布模块及测试；能力目录和权限父链同步",
+    "完整日报标准、历史修订来源、审阅契约、分页工具、基准和同会话自动化固化；README/PRD/交接/日志与源码摘要和局部diff已保存"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "40项不同日期/生成/网络/附件/ZIP测试通过",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/tests-A02.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "历史634封、405附件、35ZIP校验及两个地址实际HTTP和安装脚本验证",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "实际浏览器日期/未生成/历史、排行/子组日志/原译/详情/小时与快速切换验证",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/browser-verification.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "自动化工具创建回读、目标本会话和每日北京时间00:30配置真实核对；未宣称首次触发",
+      "evidence_refs": [
+        ".runtime/daily-automation-20261030/automation.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "原文逐项及条件正反对照，完整限制和证据已保存",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/verification/coverage.md"
+      ]
+    }
+  ],
+  "incomplete_items": [],
+  "legacy_issues": [
+    {
+      "summary": "未来真实新日日报受既有生产隔离与副本水位限制",
+      "reason": "生产采集原已隔离，本地副本DEGRADED且水位未覆盖后续完整业务日",
+      "impact": "未来真实新日报在本地数据达到READY且覆盖日终前不能发布；自动化保留配置并报告实际阻塞",
+      "owner": "生产采集维护者（本任务未指定具体个人；需用户另行授权）",
+      "reentry_condition": "用户另行明确授权恢复采集；本地副本READY、源和辅助水位覆盖对应日终后再按skill生成"
+    }
+  ],
+  "decisions": [
+    "新任务无用户验收决定，保持Pending；之前布局审查拒绝不移作本任务验收或审查授权"
+  ],
+  "evidence_refs": [
+    ".runtime/daily-automation-20261030/delivery-manifest.json",
+    ".runtime/daily-automation-20261030/source-changes.patch",
+    "LG_project_docs/requirements/T-INSIGHTS-DAILY-AUTO-20261030-01/release/handoff.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-AUTO-20261030-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-30T08:35:53.775124Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "reason": "记录本轮工程保存后的真实可选询问，尚未收到新答复且不开展审查",
+      "basis": ".runtime/daily-automation-20261030/review-question.json",
+      "changed_at": "2026-10-30T09:34:42.020510+00:00",
+      "path": "adversarial_review.0",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Offer",
+        "prompt": "日期看板、日报 skill 和每日 00:30 本会话自动化已完成并保存，40 项测试及实际页面验证通过。是否启动本轮可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查均未发现问题。",
+        "recorded_at": "2026-10-30T09:34:42.020510+00:00",
+        "evidence_ref": ".runtime/daily-automation-20261030/review-question.json"
+      }
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "reason": "用户明确启动本轮多轮对抗性审查",
+      "basis": ".runtime/daily-automation-20261030/review-authorization.json",
+      "changed_at": "2026-10-30T11:23:42.949803+00:00",
+      "path": "adversarial_review.1",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Decision",
+        "outcome": "Accepted",
+        "response": "启动多轮对抗性审查",
+        "decided_by": "user",
+        "recorded_at": "2026-10-30T11:23:42.949803+00:00",
+        "evidence_ref": ".runtime/daily-automation-20261030/review-authorization.json"
+      }
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "reason": "首次独立发现轮确认4项缺陷，最新日期澄清及修复进行中不计干净轮",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-01.md",
+      "changed_at": "2026-10-30T11:34:22.509310+00:00",
+      "path": "adversarial_review.2",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-01-DISCOVERY",
+        "started_at": "2026-10-30T11:26:01.820273+00:00",
+        "recorded_at": "2026-10-30T11:34:22.509310+00:00",
+        "reviewer": "/root/adversarial_initial（新只读审查子Agent）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-AUTO-20261030-01",
+        "subject_sha256": "b31680b5864baecf391187fda7a4d498da3e2d5dd1ecfa00ad584d96d5e6eb3b",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-01.md",
+        "coverage": "Incomplete",
+        "unreviewed_items": [
+          "默认日期后续澄清与返修尚未稳定，须对新的已验证交付重新完整审查"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-initial/independent-report.md",
+          ".runtime/daily-automation-20261030/default-date-steering.json"
+        ],
+        "findings": [
+          {
+            "id": "ADV-INIT-01",
+            "summary": "子问题同ID异名被静默混入一组",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-initial/probe-results.json"
+            ]
+          },
+          {
+            "id": "ADV-INIT-02",
+            "summary": "领域同ID异名导致导航/颜色/统计矛盾",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-initial/probe-results.json"
+            ]
+          },
+          {
+            "id": "ADV-INIT-03",
+            "summary": "日期重载后分页控件25但实际显示100",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-initial/browser-results.json"
+            ]
+          },
+          {
+            "id": "ADV-INIT-04",
+            "summary": "生成关闭或副本异常仍显示能力启用",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-initial/capability-results.json"
+            ]
+          }
+        ],
+        "resolutions": [],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "3d0920eb8b406953f67500b63e9f678f721b7fda55f3fc0c95068e887ef5b73f",
+        "delivery_completed_at": "2026-10-30T09:33:07.067632Z",
+        "delivery_verified_at": "2026-10-30T09:32:14.144348Z",
+        "session_completed": false
+      }
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "reason": "第二次完整独立审查确认4项新增反例，首轮4项在新版本已修复；本轮不计干净轮",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-02.md",
+      "changed_at": "2026-10-30T12:02:25.730344+00:00",
+      "path": "adversarial_review.3",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-02-DISCOVERY",
+        "started_at": "2026-10-30T19:46:43.6946923+08:00",
+        "recorded_at": "2026-10-30T12:02:25.730344+00:00",
+        "reviewer": "/root/adversarial_round02（新的只读独立Agent）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01",
+        "subject_sha256": "81b9ecc01f3680360a139f86173c27904f5004ebb130a30a85b6e5da664b00ea",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-02.md",
+        "coverage": "Complete",
+        "unreviewed_items": [],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-02/independent-report.md",
+          ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json",
+          ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+          ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+        ],
+        "findings": [
+          {
+            "id": "R02-01",
+            "summary": "显式非客诉状态与客诉scope矛盾仍入榜并发布",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+            ]
+          },
+          {
+            "id": "R02-02",
+            "summary": "长主题突破读取预算且缺主题/基础字段续读",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+            ]
+          },
+          {
+            "id": "R02-03",
+            "summary": "同报告重复publish未复核已发布目录原件完整性",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+            ]
+          },
+          {
+            "id": "R02-04",
+            "summary": "check带snapshot仍接受原始主题及recipients_original漂移",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/forward-boundary-results.json"
+            ]
+          }
+        ],
+        "resolutions": [
+          {
+            "finding_id": "ADV-INIT-01",
+            "disposition": "Fixed",
+            "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+              ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+            ]
+          },
+          {
+            "finding_id": "ADV-INIT-02",
+            "disposition": "Fixed",
+            "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+              ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+            ]
+          },
+          {
+            "finding_id": "ADV-INIT-03",
+            "disposition": "Fixed",
+            "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+              ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+            ]
+          },
+          {
+            "finding_id": "ADV-INIT-04",
+            "disposition": "Fixed",
+            "reason": "新只读审查者在81b9交付独立复验原反例及合法正分支，详见本轮报告首轮4项修复处置；运行中的旧API进程未宣称热更新",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-02/identity-prior-freeze-results.json",
+              ".runtime/daily-automation-20261030/review-02/browser-evidence.json"
+            ]
+          }
+        ],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "178c8133ed0a34baa436be17484055906b5a236acfe91d6739146fa5f327cc9d",
+        "delivery_completed_at": "2026-10-30T11:45:56.303562Z",
+        "delivery_verified_at": "2026-10-30T11:44:14.015179Z",
+        "session_completed": false
+      }
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "reason": "第三次完整独立审查发现缓存真实性与两项历史语义不一致；旧4项以新证据修复，连续计数归零",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-03.md",
+      "changed_at": "2026-10-30T12:54:22.716425+00:00",
+      "path": "adversarial_review.4",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-03-DISCOVERY",
+        "started_at": "2026-10-30T12:21:59Z",
+        "recorded_at": "2026-10-30T12:54:22.716425+00:00",
+        "reviewer": "/root/adversarial_round03（新只读独立Agent）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02",
+        "subject_sha256": "7bca1f351e0375a02b8b7432c71f8426b4018fcad32c0c5469c2f38553b4e273",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-03.md",
+        "coverage": "Complete",
+        "unreviewed_items": [],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-03/independent-report.md",
+          ".runtime/daily-automation-20261030/review-03/cases-results.json",
+          ".runtime/daily-automation-20261030/review-03/ui-interactions.json",
+          ".runtime/daily-automation-20261030/review-03/version-end.json"
+        ],
+        "findings": [
+          {
+            "id": "R03-PREVIEW-01",
+            "summary": "候选预览缓存来源未核验，错误或空预览可重签并正式发布",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/preview-cache-results.json"
+            ]
+          },
+          {
+            "id": "R03-HISTORY-01",
+            "summary": "同一真实切图故障会话补件被拆入启动主类",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/historical-expected-revisions.json"
+            ]
+          },
+          {
+            "id": "R03-HISTORY-02",
+            "summary": "同一脚本初始化错误按显示语言拆成两个子问题",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/historical-expected-revisions.json"
+            ]
+          }
+        ],
+        "resolutions": [
+          {
+            "finding_id": "R02-01",
+            "disposition": "Fixed",
+            "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+              ".runtime/daily-automation-20261030/review-03/cases-results.json"
+            ]
+          },
+          {
+            "finding_id": "R02-02",
+            "disposition": "Fixed",
+            "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+              ".runtime/daily-automation-20261030/review-03/cases-results.json"
+            ]
+          },
+          {
+            "finding_id": "R02-03",
+            "disposition": "Fixed",
+            "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+              ".runtime/daily-automation-20261030/review-03/cases-results.json"
+            ]
+          },
+          {
+            "finding_id": "R02-04",
+            "disposition": "Fixed",
+            "reason": "新审查者使用独立原始输入，逐项执行状态口径、长主题/元数据续页、实际正式目录损坏、原始头字段及合法正分支复验；详见本轮报告",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-03/prior-finding-probe-results.json",
+              ".runtime/daily-automation-20261030/review-03/cases-results.json"
+            ]
+          }
+        ],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "25b7dfae47dc877386aafde2c4740b89bdd87afcb860c4482333ed4382894be4",
+        "delivery_completed_at": "2026-10-30T12:20:49.274946Z",
+        "delivery_verified_at": "2026-10-30T12:20:48.975027Z",
+        "session_completed": false
+      }
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "reason": "审查运行中断，按实际Incomplete留档；已复现的IMAP身份缺口进入同范围修复，连续计数保持0",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-04.md",
+      "changed_at": "2026-10-30T18:10:28.851689+00:00",
+      "path": "adversarial_review.5",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-04-INTERRUPTED",
+        "started_at": "2026-10-30T21:14:04.2603521+08:00",
+        "recorded_at": "2026-10-30T18:10:28.851689+00:00",
+        "reviewer": "/root/adversarial_round04（运行中断；root仅汇总实际落盘证据）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-03",
+        "subject_sha256": "e7a90e31fdf6f7e57d6fa3d785ce3a3e81cdf23167e28ebe70274e4aa57572ce",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-04.md",
+        "coverage": "Incomplete",
+        "unreviewed_items": [
+          "全量UID原句告警语义裁决",
+          "PDF/视频等附件类型最终UI矩阵",
+          "原文完整逐条最终矩阵及独立完整报告"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-04/start.json",
+          ".runtime/daily-automation-20261030/review-04/results.json",
+          ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json",
+          ".runtime/daily-automation-20261030/review-04/imap-controls/summary.json",
+          ".runtime/daily-automation-20261030/review-04/source-http-summary.json",
+          ".runtime/daily-automation-20261030/review-04/ui-evidence.json"
+        ],
+        "findings": [
+          {
+            "id": "R04-IMAP-01",
+            "summary": "同文件夹复用连接跳过逐封UIDVALIDITY比较，跨epoch第二封仍认证并保存附件",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-04/imap-uidvalidity-counterexample.json",
+              ".runtime/daily-automation-20261030/review-04/imap-controls/summary.json"
+            ]
+          }
+        ],
+        "resolutions": [],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "6a7fad10b1d5d1e66a70968e533c787cf6e57e6cdb419f243d17805073a47e6c",
+        "delivery_completed_at": "2026-10-30T13:12:50.378514Z",
+        "delivery_verified_at": "2026-10-30T13:12:50.051361Z",
+        "session_completed": false
+      }
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "reason": "正式审查等待新返修安全门，保留原授权和全部未决，不补造通过",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-request.json",
+      "changed_at": "2026-10-30T18:27:10.720871+00:00",
+      "path": "adversarial_review.6",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Blocked",
+        "recorded_at": "2026-10-30T18:27:10.720871+00:00",
+        "reason": "第四轮运行中断已按Incomplete保存；UIDVALIDITY缺口已修复并完成76项与真实3030验证，但新返修的security-privacy-review尚待本次验证版本真实人工决定，不能以旧结果计新版本干净轮次。父Accepted审查授权仍有效，未停止或撤销。",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-request.json",
+          ".runtime/daily-automation-20261030/imap-identity-repair/delivery-manifest.json",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-REPAIR-20261031-01/release/handoff.md"
+        ]
+      }
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "reason": "保持真实门待审并显式保存新UID未解决项与离线修订候选，不声称完整审查已通过",
+      "basis": ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+      "changed_at": "2026-10-30T18:39:47.274227+00:00",
+      "path": "adversarial_review.7",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Blocked",
+        "recorded_at": "2026-10-30T18:39:47.274227+00:00",
+        "reason": "安全隐私门仍待实际人类决定，IMAP修复验证绑定2c3da673不变。局部UID独立复核另确认UID-NAMESPACE-001（103199/103290/103337仅有数字，不能确认为游戏UID）及UID-ROLE-001（7封明确角色丢失）。离线逐封候选已保存，已确认单值143降为140，其余邮件/分组/原件ZIP不变；正式7d64报告尚未修改。两项新增确认问题仍未正式修复，不计完整干净轮次。门通过并保存IMAP返修后，按原审查授权以另一个来源绑定、完整归档的返修处理，再进行完整轮次。",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/imap-identity-repair/security-gate-request.json",
+          ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/independent-uid-review.json",
+          ".runtime/daily-automation-20261030/imap-identity-repair/uid-check/offline-candidate/proposal-summary.json",
+          ".runtime/daily-automation-20261030/imap-identity-repair/gate-wait-state.json"
+        ]
+      }
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "reason": "第五轮完整独立审查新增首发证据及4封UID角色问题；旧4项已用新反例复验Fixed，连续计数仍为0",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-05.md",
+      "changed_at": "2026-10-30T19:54:41.413649+00:00",
+      "path": "adversarial_review.8",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-05-DISCOVERY",
+        "started_at": "2026-10-31T03:20:30.018853+08:00",
+        "recorded_at": "2026-10-30T19:54:41.413649+00:00",
+        "reviewer": "/root/adversarial_round05（新只读独立Agent）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-02",
+        "subject_sha256": "8b5d1ed66f1cbe8fd53c4bc11fc9f3ac4d8f4a82f428143745fa34d8a0126ddd",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-05.md",
+        "coverage": "Complete",
+        "unreviewed_items": [],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-05/coverage.json",
+          ".runtime/daily-automation-20261030/review-05/source-quotes.json",
+          ".runtime/daily-automation-20261030/review-05/initial-binding.json",
+          ".runtime/daily-automation-20261030/review-05/final-binding.json",
+          ".runtime/daily-automation-20261030/review-05/data-audit.json",
+          ".runtime/daily-automation-20261030/review-05/uid-reader-audit.json",
+          ".runtime/daily-automation-20261030/review-05/forward-result.json",
+          ".runtime/daily-automation-20261030/review-05/boundary-result.json",
+          ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+          ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+          ".runtime/daily-automation-20261030/review-05/ui-filter-all.json",
+          ".runtime/daily-automation-20261030/review-05/ui-sort-comparison.json",
+          ".runtime/daily-automation-20261030/review-05/ui-dates.json",
+          ".runtime/daily-automation-20261030/review-05/wrapper-results.json",
+          ".runtime/daily-automation-20261030/review-05/independent-report.md"
+        ],
+        "findings": [
+          {
+            "id": "R05-PUBLISH-01",
+            "summary": "首发未复核附件manifest，删除、错绑快照或撤回身份认证后仍发布成功",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/forward_probe.py",
+              ".runtime/daily-automation-20261030/review-05/forward-result.json"
+            ]
+          },
+          {
+            "id": "R05-UID-ROLE-01",
+            "summary": "4封原文明示现/主账号的UID仍丢失角色，真实RFC继承未保持来源语义",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/uid-additional-role-gaps.json",
+              ".runtime/daily-automation-20261030/review-05/role-proposals.json",
+              ".runtime/daily-automation-20261030/review-05/uid-all-evidence.json"
+            ]
+          }
+        ],
+        "resolutions": [
+          {
+            "finding_id": "R03-PREVIEW-01",
+            "disposition": "Fixed",
+            "reason": "新原件PNG/log分别注入有效无关JPEG/文本、空JPEG，候选重新生成正确颜色/文字；PDF缺renderer旧缓存拒签回归通过。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+              ".runtime/daily-automation-20261030/review-05/tests-bounded.log"
+            ]
+          },
+          {
+            "finding_id": "R03-HISTORY-01",
+            "disposition": "Fixed",
+            "reason": "原文map transitions明确；真实RFC两封补件归统一performance-controls/scene-loading-stuck；GUI补图不改变阶段，当前三封同子组。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+              ".runtime/daily-automation-20261030/review-05/ui-r03-map.png"
+            ]
+          },
+          {
+            "finding_id": "R03-HISTORY-02",
+            "disposition": "Fixed",
+            "reason": "本轮逐图看到相同启动脚本初始化失败的英文/日文弹窗，当前同一子ID、计数2。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/registered-history-rechecks.json",
+              ".runtime/daily-automation-20261030/review-05/ui-r03-english.png",
+              ".runtime/daily-automation-20261030/review-05/ui-r03-japanese.png"
+            ]
+          },
+          {
+            "finding_id": "R04-IMAP-01",
+            "disposition": "Fixed",
+            "reason": "6组全新内存MIME控制：同folder/epoch正例，第二封错误epoch、切夹、断线重连正确/错误epoch均符合预期；错误epoch未FETCH/保存/认证。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-05/registered-rechecks.json",
+              ".runtime/daily-automation-20261030/review-05/tests-bounded.log"
+            ]
+          }
+        ],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "5504727919d616952f571935034a23d6df01072b2b94efa178a2effc0fc81627",
+        "delivery_completed_at": "2026-10-30T19:19:29.565679Z",
+        "delivery_verified_at": "2026-10-30T19:19:29.258189Z",
+        "session_completed": false
+      }
+    },
+    {
+      "from_revision": 10,
+      "to_revision": 11,
+      "reason": "补充失败输入证明同一首发完整性前提仍可绕过，保留实际版本与反例后继续修复",
+      "basis": "D:\\LFEN_project\\dev_project\\complaint-insights\\.runtime\\daily-automation-20261030\\publication-followup-probe\\blocked.json",
+      "changed_at": "2026-10-30T20:15:07.257871+00:00",
+      "path": "adversarial_review.9",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Blocked",
+        "recorded_at": "2026-10-30T20:15:07.257871+00:00",
+        "reason": "R05-PUBLISH-01补充反例：源/清单声明就绪，但报告ready=false使原件验证跳过，删除原图片并保持quality摘要一致后仍可发布且复用validated；同范围完整性修复尚未完成，当前不进入干净轮次。root局部复核不计完整一轮，正式c515与资源未改。",
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/publication-followup-probe/result.json"
+        ]
+      }
+    },
+    {
+      "from_revision": 11,
+      "to_revision": 12,
+      "reason": "第六轮独立完整读取88项原话并新增5项问题；真实运行目标未验而诚实记Incomplete，旧两项有新证据支持Fixed，不计干净轮次",
+      "basis": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-06.md",
+      "changed_at": "2026-10-30T20:53:32.044831+00:00",
+      "path": "adversarial_review.10",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Round",
+        "round_id": "ROUND-06-DISCOVERY",
+        "started_at": "2026-10-30T20:23:22.394857+00:00",
+        "recorded_at": "2026-10-30T20:53:32.044831+00:00",
+        "reviewer": "/root/adversarial_round06（新只读独立Agent）",
+        "delivery_task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-04",
+        "subject_sha256": "e2a4d063b9181d5a154df300e01b93c2228af7e38b959bc253467c888217a844",
+        "requirements_sha256": "ab5e7393462e3376c9e4afc7829f3332da44c9222ce4858279e331b103e3e7cd",
+        "report_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-AUTO-20261030-01/evidence/round-06.md",
+        "coverage": "Incomplete",
+        "unreviewed_items": [
+          "真实10/30完整日报、首次真实00:30成功、当前生产全量一致与持续一小时时效未验证；离线反例不替代运行目标。"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-automation-20261030/review-06/requirement-matrix.json",
+          ".runtime/daily-automation-20261030/review-06/condition-cases.json",
+          ".runtime/daily-automation-20261030/review-06/probe-results.json",
+          ".runtime/daily-automation-20261030/review-06/extra-probes.json",
+          ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+          ".runtime/daily-automation-20261030/review-06/actual-audit.json",
+          ".runtime/daily-automation-20261030/review-06/metadata-audit.json",
+          ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json",
+          ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+          ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+          ".runtime/daily-automation-20261030/review-06/residual-review.json",
+          ".runtime/daily-automation-20261030/review-06/residual-neighbor-source.json",
+          ".runtime/daily-automation-20261030/review-06/gui-observations.json",
+          ".runtime/daily-automation-20261030/review-06/sort-verification.json",
+          ".runtime/daily-automation-20261030/review-06/manifest-before.json",
+          ".runtime/daily-automation-20261030/review-06/manifest-after.json",
+          ".runtime/daily-automation-20261030/review-06/independent-report.md"
+        ],
+        "findings": [
+          {
+            "id": "R06-ZIP-SOURCE-01",
+            "summary": "ZIP内包不与原件内容/归属交叉核对，错包仍可完整发布",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/probe.py",
+              ".runtime/daily-automation-20261030/review-06/probe-results.json",
+              ".runtime/daily-automation-20261030/review-06/zip-wrong-original",
+              ".runtime/daily-automation-20261030/review-06/zip-wrong-owner",
+              ".runtime/daily-automation-20261030/review-06/actual-audit.json"
+            ]
+          },
+          {
+            "id": "R06-SUBZIP-BIND-01",
+            "summary": "有原日志的子组丢失下载绑定仍可完整发布，页面禁用下载",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/probe.py",
+              ".runtime/daily-automation-20261030/review-06/probe-results.json",
+              ".runtime/daily-automation-20261030/review-06/subgroup-download-lost",
+              "assets/daily-board.js:118"
+            ]
+          },
+          {
+            "id": "R06-REVIEW-SOURCE-01",
+            "summary": "review快照错绑仅build阻断，完整目录check/publish可接受",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/probe.py",
+              ".runtime/daily-automation-20261030/review-06/probe-results.json",
+              ".runtime/daily-automation-20261030/review-06/review-bind-cross-entry.json",
+              ".runtime/daily-automation-20261030/review-06/review-source-mismatch"
+            ]
+          },
+          {
+            "id": "R06-UID-NAMESPACE-01",
+            "summary": "103506仅昵称旁数字，缺游戏UID命名空间及真实链仍确认为单值",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json",
+              ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+              ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+              ".runtime/daily-automation-20261030/review-06/gui-observations.json"
+            ]
+          },
+          {
+            "id": "R06-FOLLOWUP-SCOPE-01",
+            "summary": "103048/103071/103072可定位未解决跟进误作纯咨询，客诉至少少计3封",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/semantic-counterexamples.json",
+              ".runtime/daily-automation-20261030/review-06/condition-cases.json",
+              ".runtime/daily-reports/2026-10-29/report.json"
+            ]
+          }
+        ],
+        "resolutions": [
+          {
+            "finding_id": "R05-PUBLISH-01",
+            "disposition": "Fixed",
+            "reason": "原清单缺失/错快照/身份撤回与复制后暂存同类反例均拒绝；低报未就绪补充反例也拒绝。新发现的ZIP来源、导航绑定和review内容绑定是另列关系校验缺口。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+              ".runtime/daily-automation-20261030/review-06/probe-results.json",
+              ".runtime/daily-automation-20261030/review-06/regressions.log"
+            ]
+          },
+          {
+            "finding_id": "R05-UID-ROLE-01",
+            "disposition": "Fixed",
+            "reason": "103106/103259的current_account与103398/103775的primary_or_keep_account均按完整原文和真实RFC来源保留；数字和状态不变。",
+            "evidence_refs": [
+              ".runtime/daily-automation-20261030/review-06/registered-rechecks.json",
+              ".runtime/daily-automation-20261030/review-06/uid-graph.json",
+              ".runtime/daily-automation-20261030/review-06/uid-candidate-contexts.json"
+            ]
+          }
+        ],
+        "review_contract_version": "report-bound-v2",
+        "report_sha256": "207114e55b815c27bb0255622d1ac7947ebb1d798bfd8fe3db7cebb135bea4e1",
+        "delivery_completed_at": "2026-10-30T20:21:50.772303Z",
+        "delivery_verified_at": "2026-10-30T20:21:50.465383Z",
+        "session_completed": false
+      }
+    }
+  ],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "097ced6551b77011ceff7cf7bb00a4106768e28883cb975100057bd4cfed9233",
+    "scope_sha256": "96458b659fdaad3e5c3c85e8e735a3b79b8148ce85939387595ae23efb1e06eb",
+    "delivery_sha256": "86d2246bc85f7836e46ba21443596793a00240c09875add4adfa166b587765cd",
+    "report_sha256": "4ffcc285079207b113868ef879baef310187d697f35a01d4d45113c724082a2f"
+  }
+}

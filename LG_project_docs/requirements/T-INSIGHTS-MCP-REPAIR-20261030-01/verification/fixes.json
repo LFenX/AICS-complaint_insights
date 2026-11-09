@@ -1,0 +1,43 @@
+{
+  "verified_at": "2026-10-29T19:49:17.171825+00:00",
+  "findings": [
+    {
+      "id": "R1-01",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_token_desk.py",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "同Cookie512次刷新复用；清Cookie第9活跃挑战429；另一peer登录303；601秒恢复"
+    },
+    {
+      "id": "R1-02",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_token_desk.py",
+        ".runtime/mcp-portal-repair-tests-A02.log"
+      ],
+      "actual": "registry损坏网页登录303、管理200有撤销表单、发放400、撤销303，授权归零且原损坏文件保留"
+    },
+    {
+      "id": "R1-03",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json"
+      ],
+      "actual": "原始HTTP错误JSON类型、日期和额外参数isError，夹具后端零调用；真实服务相同拒绝"
+    },
+    {
+      "id": "R1-04",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/verification/results.json"
+      ],
+      "actual": "未知工具顶层error.code=-32602、原请求id保留、无result"
+    }
+  ],
+  "test_count": 30,
+  "live_check_count": 13
+}

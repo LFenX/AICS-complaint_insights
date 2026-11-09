@@ -1,0 +1,17 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-LEGACY-MAP",
+  "view_kind": "legacy-profile-mapping",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:12.811854Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "71e7bf1c7d252b261f307db08bec61c73c04becd982d3541e2831a373d68b9e2",
+  "sources": [
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\norms\\05_记录与登记册\\V6.3_跨规范产物归属索引.md",
+    "C:\\Users\\Administrator\\.lfenskills\\skills\\product-engineering\\run-governed-product-workflow\\assets\\runtime\\mappings\\profile-meta-map.json"
+  ],
+  "content_ref": ".project-governance/generated/matrices/legacy-137-to-meta-types.md",
+  "integrity_status": "Complete"
+}

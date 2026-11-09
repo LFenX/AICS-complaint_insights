@@ -1,0 +1,451 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "carrier_version": "minimal-task-record-v1",
+  "carrier_mode": "Minimal",
+  "meta_types": [
+    "TaskContract",
+    "RunLedger",
+    "TaskOutcome"
+  ],
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-LAYOUT-20261030-01",
+  "ordinal": 15,
+  "depends_on": [
+    "T-INSIGHTS-GITHUB-20261030-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "revision": 10,
+  "lifecycle_state": "Completed",
+  "created_at": "2026-10-30T06:39:45.269994Z",
+  "completed_at": "2026-10-30T06:50:46.040569Z",
+  "selection": {
+    "source": "automatic",
+    "basis": [
+      "script default: omitted non-blocking Minimal fields were populated by manage_minimal_task.py."
+    ],
+    "authority_refs": [
+      ".runtime/daily-layout-20261030/request.txt"
+    ]
+  },
+  "eligibility": {
+    "risk_level": "Low",
+    "reversible": true,
+    "single_scope": true,
+    "external_system_effect": false,
+    "production_release": false,
+    "security_privacy_impact": false,
+    "extension_triggers": {
+      "E01": "Inactive",
+      "E02": "Inactive",
+      "E03": "Inactive",
+      "E04": "Inactive",
+      "E05": "Inactive"
+    },
+    "blocking_unknowns": [],
+    "special_gates": [],
+    "evidence_refs": [
+      ".runtime/daily-layout-20261030/survey.md",
+      ".runtime/daily-layout-20261030/before/assets/daily-board.js",
+      ".runtime/daily-layout-20261030/request.txt",
+      ".runtime/daily-layout-20261030/no-external-effect.json",
+      ".runtime/daily-layout-20261030/no-production-release.json"
+    ]
+  },
+  "task_contract": {
+    "objective": "将截图标记的三个补充指标及两张收件图移动到原信明细底部",
+    "request_snapshot": {
+      "language": "zh",
+      "text": "请将图中叉掉的部分下移到底部",
+      "captured_at": "2026-10-30T06:39:45.268159Z"
+    },
+    "requirement_items": [
+      {
+        "id": "R-001",
+        "source": "request_snapshot",
+        "quote": "请将图中叉掉的部分下移到底部",
+        "reading": "截图叉号的三个指标与两张图移到原信表格之后，顶部只保留前三项；移动而非删除，原筛选联动继续可用",
+        "state": "Covered",
+        "evidence_refs": [
+          ".runtime/daily-layout-20261030/verification.json",
+          ".runtime/daily-layout-20261030/top-final.jpg",
+          ".runtime/daily-layout-20261030/bottom-test-final.jpg"
+        ],
+        "acceptance_refs": [
+          0
+        ],
+        "review": {
+          "source_sha256": "8ba9bc43cadcf7a7be8a4ab682783e49f952c6b25add5a66eb9f6e2dee19c984",
+          "conditions": [],
+          "cases": [
+            {
+              "condition": null,
+              "branch": "Unconditional",
+              "input": "用户截图的三个叉号指标及整行两图；加载新版3030页面并操作18时柱和重置",
+              "expected": "前三指标留顶部，三个补充指标和两图位于原信及分页后，无重复缺失，小时筛选继续可用",
+              "actual": "真实DOM顺序为结论/核心指标/排行/原信/补充指标/图表；两组各3指标，图表15与24柱；18时筛选79封，重置634封。报告与后端/网络摘要未变。",
+              "result": "Passed",
+              "evidence_refs": [
+                ".runtime/daily-layout-20261030/verification.json",
+                ".runtime/daily-layout-20261030/top-final.jpg",
+                ".runtime/daily-layout-20261030/bottom-test-final.jpg"
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "decisions": [
+      {
+        "id": "D-LAYOUT-DIRECTIVE",
+        "kind": "Proceed",
+        "presented": "按截图将后三个指标和两张收件图移动到原信明细之后，顶部保留前三项指标",
+        "response": "请将图中叉掉的部分下移到底部",
+        "decided_by": "user",
+        "decided_at": "2026-10-30T06:39:45.155448+00:00",
+        "evidence_ref": ".runtime/daily-layout-20261030/request.txt",
+        "outcome": "Approved"
+      }
+    ],
+    "clarification": {
+      "state": "Settled",
+      "mode": "Skipped",
+      "notice": "截图和当前代码一致，本次无需补充确认。页面顺序将调整为：结论与前三项指标 → 问题排行 → 原信明细 → 补充指标与收件图。",
+      "survey_refs": [
+        ".runtime/daily-layout-20261030/survey.md"
+      ],
+      "rounds": [],
+      "basis": "截图标记与现有模块一一对应；仅可逆布局调整，无数据/权限/生产未知",
+      "reopened_by": []
+    },
+    "scope": "3030日报现有模块的展示顺序与三列响应式布局调整",
+    "out_of_scope": [
+      "统计口径、数据、API、分类、访问边界、MCP、生产和GitHub推送"
+    ],
+    "allowed_paths": [
+      "assets/daily-board.js",
+      "assets/daily-board.css",
+      "assets/daily-board.html",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-20261030-01/prd/daily-report.md",
+      ".runtime/daily-layout-20261030/**",
+      "update_log/2026-10-30-daily-layout.md",
+      ".project-governance/tasks/T-INSIGHTS-LAYOUT-20261030-01/**"
+    ],
+    "forbidden_actions": [
+      "script default: files outside allowed_paths are forbidden."
+    ],
+    "acceptance": "顶部仅来信量、日环比及前7日均值对比三项；问题排行与原信明细在前，后三指标及两图位于分页之后且无重复/缺失；小时点击仍筛选原信，634封报告SHA、下载和访问边界不变；真实浏览器截图及布局核验留档。",
+    "task_profile": {
+      "delivery_scenario": "DS-03",
+      "development_type": "DT-08",
+      "change_surface": "UI/UX",
+      "risk_level": "Low",
+      "extension_triggers": {
+        "E01": "Inactive",
+        "E02": "Inactive",
+        "E03": "Inactive",
+        "E04": "Inactive",
+        "E05": "Inactive"
+      }
+    },
+    "plan": {
+      "selected_approach": "移动现有模板片段至原信明细之后，kpis改三列，保持原组件ID和图表事件",
+      "alternative_rejected": "仅用CSS视觉排序会令DOM阅读顺序和用户期望不同；删除或折叠不符合下移要求",
+      "steps": [
+        "移动模板片段、更新三列响应式和资源版本，同步现有PRD实现状态",
+        "真实浏览器检查顶部/底部顺序、图表和小时筛选，核对报告及后端摘要"
+      ],
+      "verification": "JS语法、真实DOM顺序和截图、小时点击及筛选、读取模型和后端/网络配置SHA",
+      "rollback": "恢复.runtime/daily-layout-20261030/before中的四个同名文件；静态服务无需重启"
+    },
+    "first_principles_analysis": {
+      "outcome": "将截图标记的三个补充指标及两张收件图移动到原信明细底部",
+      "facts": [
+        "当前六指标和图表位于排行与原信之前，截图叉号对应后三指标和两图"
+      ],
+      "constraints": [
+        "白色主题、原ID/事件、报告SHA和安全边界保持原样"
+      ],
+      "assumptions": [
+        "script default: Minimal eligibility facts remain valid; upgrade if a hard boundary is crossed."
+      ],
+      "unknowns": [],
+      "fundamentals": [
+        "主要问题和原信证据优先，补充统计在页面末尾保留",
+        "script default: the change is confined to the recorded allowed_paths.",
+        "script default: the change is reversible, which is the eligibility fact that permits the Minimal carrier."
+      ],
+      "causal_chain": [
+        "移动真实DOM片段并使用三列容器，可同时满足视觉顺序、键盘阅读顺序与原图表复用"
+      ],
+      "alternatives": [
+        "移动现有模板片段至原信明细之后，kpis改三列，保持原组件ID和图表事件",
+        "仅用CSS视觉排序会令DOM阅读顺序和用户期望不同；删除或折叠不符合下移要求"
+      ],
+      "decision_criteria": [
+        "五个标记模块完整下移，首屏直接显示排行，无新增空白占位"
+      ],
+      "selected_approach": "移动现有模板片段至原信明细之后，kpis改三列，保持原组件ID和图表事件",
+      "validation": "JS语法、真实DOM顺序和截图、小时点击及筛选、读取模型和后端/网络配置SHA"
+    },
+    "source_snapshot": {
+      "repository": "complaint-insights",
+      "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+      "vcs": "unavailable",
+      "captured_at": "2026-10-30T06:39:45.270615Z"
+    }
+  },
+  "run_ledger": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-10-30T06:39:45.810522Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0001",
+      "attempt_id": "attempt-001",
+      "event_type": "run_started",
+      "summary": "按用户明确截图指令移动后三项指标和两图，采用Low可逆单一UI范围；备份和读取模型/后端摘要已保存。",
+      "status": "started",
+      "evidence_refs": []
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-10-30T06:41:13.040883Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0002",
+      "attempt_id": "attempt-001",
+      "event_type": "mutation",
+      "summary": "后三指标和两图已移动到原信及分页之后，顶部三列、窄屏单列；保留原图表ID和点击事件，更新资源版本与现有PRD实现状态。JS语法检查通过。",
+      "status": "succeeded",
+      "evidence_refs": [
+        "assets/daily-board.js"
+      ]
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-10-30T06:49:16.085098Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0003",
+      "attempt_id": "attempt-001",
+      "event_type": "failure",
+      "summary": "首次刷新后即时DOM探查早于异步模板完成，main为null；没有观察到产品渲染错误。该工具探查失败保留，后续显式等待可见标题再检查。",
+      "status": "failed",
+      "evidence_refs": [
+        ".runtime/daily-layout-20261030/survey.md"
+      ]
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-10-30T06:49:16.186972Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0004",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "retry",
+      "summary": "显式等待Top10出现后在独立隐藏页核验真实顺序和图表点击，不再操作用户已打开的详情；同范围只读验证，无新增权限或副作用。",
+      "status": "started",
+      "evidence_refs": [
+        ".runtime/daily-layout-20261030/browser-verification.json"
+      ]
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-10-30T06:49:16.958169Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0005",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "verification",
+      "summary": "真实浏览器已验证顶部3指标、原信/分页之后3指标及2图；15/24柱渲染，18时筛选79封、重置634封。两地址新版资源一致，报告和后端/网络SHA未变；截图和逐项结果已保存。",
+      "status": "succeeded",
+      "evidence_refs": [
+        ".runtime/daily-layout-20261030/verification.json"
+      ]
+    },
+    {
+      "sequence": 6,
+      "timestamp": "2026-10-30T06:50:46.040569Z",
+      "run_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001",
+      "event_id": "T-INSIGHTS-LAYOUT-20261030-01-run-001-E0006",
+      "attempt_id": "attempt-001-retry-004",
+      "event_type": "run_finished",
+      "summary": "Minimal task closed as Implemented.",
+      "status": "succeeded",
+      "evidence_refs": [
+        ".runtime/daily-layout-20261030/verification.json"
+      ]
+    }
+  ],
+  "task_outcome": {
+    "status": "Implemented",
+    "user_decision": {
+      "outcome": "Pending"
+    },
+    "adversarial_review": [
+      {
+        "event": "Offer",
+        "prompt": "本轮布局调整已完成并保存，顶部三指标、底部三指标与两图，以及小时筛选均已验证。是否启动本轮的可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查没有发现问题。",
+        "evidence_ref": ".runtime/daily-layout-20261030/review-choice.json",
+        "recorded_at": "2026-10-30T06:53:13.749897+00:00"
+      },
+      {
+        "event": "Decision",
+        "outcome": "Declined",
+        "response": "不需要",
+        "decided_by": "user",
+        "evidence_ref": ".runtime/daily-layout-20261030/review-choice.json",
+        "recorded_at": "2026-10-30T06:53:13.958379+00:00"
+      }
+    ],
+    "established_facts": [
+      "截图叉掉的三个指标和两图均已移动至原信明细及分页之后，顶部保留前三指标；图表小时筛选和重置实际通过。"
+    ],
+    "actual_changes": [
+      "仅调整现有模板顺序、三列与窄屏布局、资源版本及现有PRD实施状态；原ID/事件、数据、后端和访问边界不变。"
+    ],
+    "verification": [
+      {
+        "result": "Passed",
+        "summary": "真实浏览器顺序/截图、15与24柱、18时79封/重置634封及两地址资源SHA核验通过",
+        "evidence_refs": [
+          ".runtime/daily-layout-20261030/verification.json"
+        ]
+      }
+    ],
+    "incomplete_items": [],
+    "completed_at": "2026-10-30T06:50:46.040569Z"
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-LAYOUT-20261030-01/task-record.json",
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-LAYOUT-20261030-01/task-record.json",
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "action": "Create/Revise",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-LAYOUT-20261030-01/task-record.json",
+      "outcome": "Created"
+    }
+  ],
+  "upgrade": {
+    "required": false,
+    "triggered_at": null,
+    "reason": null,
+    "basis": null,
+    "full_carrier_ref": null
+  },
+  "amendments": [
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "changes": [
+        {
+          "path": "task_contract.requirement_items",
+          "old_value": [
+            {
+              "id": "R-001",
+              "source": "request_snapshot",
+              "quote": "请将图中叉掉的部分下移到底部",
+              "reading": "截图叉号的三个指标与两张图移到原信表格之后，顶部只保留前三项；移动而非删除，原筛选联动继续可用",
+              "state": "Open",
+              "evidence_refs": [],
+              "acceptance_refs": [
+                0
+              ]
+            }
+          ],
+          "new_value": [
+            {
+              "id": "R-001",
+              "source": "request_snapshot",
+              "quote": "请将图中叉掉的部分下移到底部",
+              "reading": "截图叉号的三个指标与两张图移到原信表格之后，顶部只保留前三项；移动而非删除，原筛选联动继续可用",
+              "state": "Covered",
+              "evidence_refs": [
+                ".runtime/daily-layout-20261030/verification.json",
+                ".runtime/daily-layout-20261030/top-final.jpg",
+                ".runtime/daily-layout-20261030/bottom-test-final.jpg"
+              ],
+              "acceptance_refs": [
+                0
+              ],
+              "review": {
+                "source_sha256": "8ba9bc43cadcf7a7be8a4ab682783e49f952c6b25add5a66eb9f6e2dee19c984",
+                "conditions": [],
+                "cases": [
+                  {
+                    "condition": null,
+                    "branch": "Unconditional",
+                    "input": "用户截图的三个叉号指标及整行两图；加载新版3030页面并操作18时柱和重置",
+                    "expected": "前三指标留顶部，三个补充指标和两图位于原信及分页后，无重复缺失，小时筛选继续可用",
+                    "actual": "真实DOM顺序为结论/核心指标/排行/原信/补充指标/图表；两组各3指标，图表15与24柱；18时筛选79封，重置634封。报告与后端/网络摘要未变。",
+                    "result": "Passed",
+                    "evidence_refs": [
+                      ".runtime/daily-layout-20261030/verification.json",
+                      ".runtime/daily-layout-20261030/top-final.jpg",
+                      ".runtime/daily-layout-20261030/bottom-test-final.jpg"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "reason": "按用户原文及截图逐一核对3指标与2图的移动、保留和筛选行为",
+      "basis": ".runtime/daily-layout-20261030/verification.json",
+      "changed_at": "2026-10-30T06:50:45.935191Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "reason": "记录当前本轮真实询问及用户不需要的选择，不开展审查",
+      "basis": ".runtime/daily-layout-20261030/review-choice.json",
+      "changed_at": "2026-10-30T06:53:13.749897+00:00",
+      "changes": [
+        {
+          "path": "task_outcome.adversarial_review.0",
+          "old_value": {
+            "$missing": true
+          },
+          "new_value": {
+            "event": "Offer",
+            "prompt": "本轮布局调整已完成并保存，顶部三指标、底部三指标与两图，以及小时筛选均已验证。是否启动本轮的可选多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查没有发现问题。",
+            "evidence_ref": ".runtime/daily-layout-20261030/review-choice.json",
+            "recorded_at": "2026-10-30T06:53:13.749897+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "reason": "记录当前本轮真实询问及用户不需要的选择，不开展审查",
+      "basis": ".runtime/daily-layout-20261030/review-choice.json",
+      "changed_at": "2026-10-30T06:53:13.958379+00:00",
+      "changes": [
+        {
+          "path": "task_outcome.adversarial_review.1",
+          "old_value": {
+            "$missing": true
+          },
+          "new_value": {
+            "event": "Decision",
+            "outcome": "Declined",
+            "response": "不需要",
+            "decided_by": "user",
+            "evidence_ref": ".runtime/daily-layout-20261030/review-choice.json",
+            "recorded_at": "2026-10-30T06:53:13.958379+00:00"
+          }
+        }
+      ]
+    }
+  ]
+}

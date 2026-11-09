@@ -1,0 +1,3681 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskContract",
+  "project_id": "complaint-insights",
+  "work_item_id": "COMPLAINT-DAILY-REPORT",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01",
+  "ordinal": 26,
+  "revision": 12,
+  "lifecycle_state": "Frozen",
+  "created_at": "2026-11-02T09:31:29.296732Z",
+  "frozen_at": "2026-11-02T09:32:58.927018Z",
+  "objective": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+  "request_snapshot": {
+    "language": "zh",
+    "text": "补生成31号和1号的日报",
+    "captured_at": "2026-11-02T09:31:29.224447Z"
+  },
+  "clarification": {
+    "state": "Settled",
+    "mode": "Asked",
+    "notice": "两天的本地邮件数据均未同步，生成流程都被完整性检查拦住；这不代表当天没有来信。上次只读补采授权仅限 10 月 30 日，本次需要覆盖这两天的新授权。",
+    "survey_refs": [
+      ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+      ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+    ],
+    "rounds": [
+      {
+        "ordinal": 1,
+        "asked_at": "2026-11-02T09:23:56.851Z",
+        "exchanges": [
+          {
+            "question": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+            "changes": "Authority",
+            "recommended_default": "允许这两天的一次性只读补采（推荐）",
+            "answer": "允许这两天的一次性只读补采（推荐）",
+            "answer_state": "Answered"
+          }
+        ]
+      },
+      {
+        "ordinal": 2,
+        "asked_at": "2026-11-02T09:27:49.501Z",
+        "exchanges": [
+          {
+            "question": "是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+            "changes": "Scope",
+            "recommended_default": "允许本次并行审阅（推荐）",
+            "answer": "允许本次并行审阅（推荐）",
+            "answer_state": "Answered"
+          }
+        ]
+      }
+    ],
+    "basis": "本地缺口已实测，用户已分别明确授权指定两日读取及最多3个本机只读审阅者，现有最终质量和布局沿用，无新待决项；7z格式兼容是既有全部日志下载要求内的实现修正，日期/授权/外部接口/质量不变，无新阻断未知，不补造新问答。",
+    "reopened_by": [
+      "amendment:scope"
+    ]
+  },
+  "requirement_items": [
+    {
+      "id": "R-001",
+      "source": "request_snapshot",
+      "quote": "补生成31号和1号的日报",
+      "reading": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+        ".runtime/daily-work/2026-10-31/independent-published-audit.json",
+        ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "补生成31号和1号的日报",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "两日期RECEIVED完整集合与只读来源闭合，本地副本冻结并保留长期隔离。",
+            "actual": "一次只读捕获关闭连接；本地26版本冻结600/520邮件及581/575原件，source SHA及闭合日证明由正式独立审计复核，global stream caught up=false。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+              ".runtime/daily-work/2026-10-31/independent-published-audit.json",
+              ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-002",
+      "source": "request_snapshot",
+      "quote": "补生成31号和1号的日报",
+      "reading": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-31/review.json",
+        ".runtime/daily-work/2026-11-01/review.json",
+        ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-10-31.json",
+        ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-11-01.json",
+        ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "补生成31号和1号的日报",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "沿已安装日报skill对两个完整日期逐封分析、核UID与真实附件、全部主组及残余复核后生成可追溯报告。",
+            "actual": "1120封全部实际正文/HTML与必要真实RFC分工审阅；1156原件齐全，根端语义归并保留轨迹；20/33残余均复核，未强拼；两日source/review/quality绑定及54/54 ZIP、138/143日志原件字节检查通过。视频与日志实际范围、3预览限制和未翻译源文本明确保留。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-31/review.json",
+              ".runtime/daily-work/2026-11-01/review.json",
+              ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-10-31.json",
+              ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-11-01.json",
+              ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-003",
+      "source": "request_snapshot",
+      "quote": "补生成31号和1号的日报",
+      "reading": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/2026-10-31/publish-run.log",
+        ".runtime/daily-work/2026-11-01/publish-run.log",
+        ".runtime/daily-work/2026-10-31/published-http-verification.json",
+        ".runtime/daily-work/2026-11-01/published-http-verification.json",
+        ".runtime/daily-work/backfill-20261031-20261101/static-assets-and-ui-limit.json"
+      ],
+      "acceptance_refs": [
+        2
+      ],
+      "review": {
+        "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "补生成31号和1号的日报",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "两个指定日期首次原子发布到现有3030，可按日期读取，保持原历史及访问边界。",
+            "actual": "正式日期均published，默认昨天为11/1 generated；回环全部1120详情/1156原件HEAD/全部可用预览/108 ZIP及日期版本反例通过，LAN页面数据详情图片ZIP实测通过；29/30指纹不变。未改UI；实际浏览器交互因Work禁用未执行，另列未验项，不冒称通过。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/2026-10-31/publish-run.log",
+              ".runtime/daily-work/2026-11-01/publish-run.log",
+              ".runtime/daily-work/2026-10-31/published-http-verification.json",
+              ".runtime/daily-work/2026-11-01/published-http-verification.json",
+              ".runtime/daily-work/backfill-20261031-20261101/static-assets-and-ui-limit.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-004",
+      "source": "clarification:r1.e1",
+      "quote": "允许这两天的一次性只读补采（推荐）",
+      "reading": "按真实问题所限定日期和边界执行：是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+        ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+        ".runtime/daily-work/backfill-20261031-20261101/local-import-result.json",
+        ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+      ],
+      "acceptance_refs": [
+        0
+      ],
+      "review": {
+        "source_sha256": "68285cfc3eb6b6a5e13510c86a336cafc0c896e4d2415723431d6f433a44f534",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "允许这两天的一次性只读补采（推荐）",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "仅按真实授权的问题范围使用现有账号做两日一次性生产只读补采，不重启或改变长期隔离。",
+            "actual": "真实答复回绑源会话事件；限定两天邮件和必要RFC/辅助统计在只读RR事务中捕获，source connection closed=true、persistent config changed=false；最终allow_production_read=false，未启watch。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+              ".runtime/daily-work/backfill-20261031-20261101/local-import-result.json",
+              ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-005",
+      "source": "clarification:r2.e1",
+      "quote": "允许本次并行审阅（推荐）",
+      "reading": "按真实问题所限定日期和边界执行：是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+        ".runtime/daily-work/backfill-20261031-20261101/semantic-review-a/delivery-b-text-2026-11-01.json",
+        ".runtime/daily-work/backfill-20261031-20261101/semantic-review-b/completion-2026-10-31.json",
+        ".runtime/daily-work/backfill-20261031-20261101/semantic-review-c/delivery-manifest.json",
+        ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "d0a43f36be7281e32b04bd8c4c1b33c435a1071e21d7b431e83bc83a00d467b1",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "允许本次并行审阅（推荐）",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "最多三个获明确授权的只读子Agent读取冻结本地数据，根端统一裁决并发布。",
+            "actual": "仅A/B/C三个语义分工；源快照与最终子分片SHA保存，A额外113文本转C、B的Nov1文本转A及附件转root均留交接；1120唯一PK全覆盖；正式review/发布由root执行。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/semantic-review-a/delivery-b-text-2026-11-01.json",
+              ".runtime/daily-work/backfill-20261031-20261101/semantic-review-b/completion-2026-10-31.json",
+              ".runtime/daily-work/backfill-20261031-20261101/semantic-review-c/delivery-manifest.json",
+              ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-006",
+      "source": "request_snapshot",
+      "quote": "补生成31号和1号的日报",
+      "reading": "实际7z日志原包与其他已审阅日志包同样保持原件字节并纳入全子问题日志ZIP，来源/owner/成员观察均核对，错误魔数或缺证据拒绝，不修改页面和权限",
+      "state": "Covered",
+      "evidence_refs": [
+        ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+        ".runtime/daily-work/backfill-20261031-20261101/sevenzip-code-verification.json",
+        ".runtime/daily-work/backfill-20261031-20261101/root-review/log-packages.json",
+        ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+      ],
+      "acceptance_refs": [
+        1
+      ],
+      "review": {
+        "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+        "conditions": [],
+        "cases": [
+          {
+            "condition": null,
+            "branch": "Unconditional",
+            "input": {
+              "request_text": "补生成31号和1号的日报",
+              "business_dates": [
+                "2026-10-31",
+                "2026-11-01"
+              ],
+              "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+            },
+            "expected": "真实已审阅7z日志原件被同日子问题ZIP收录，错误扩展名/魔数拒绝且原件字节不改。",
+            "actual": "62190安全两成员日志观察与原包SHA绑定；最小支持7z格式和精确魔数，70相关测试含7z原字节正例及魔数负例通过；Nov1正式ZIP逐件检查含此原包。",
+            "result": "Passed",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-code-verification.json",
+              ".runtime/daily-work/backfill-20261031-20261101/root-review/log-packages.json",
+              ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D-BACKFILL-2D-PROCEED",
+      "kind": "Proceed",
+      "presented": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+      "response": "允许这两天的一次性只读补采（推荐）",
+      "decided_by": "user",
+      "decided_at": "2026-11-02T09:27:24.190Z",
+      "evidence_ref": ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+      "outcome": "Approved"
+    }
+  ],
+  "depends_on": [
+    "T-INSIGHTS-DAILY-AUTO-20261030-01",
+    "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+  ],
+  "supersedes": [],
+  "blocked_by": [],
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-11-02T09:31:29.258806Z"
+  },
+  "scope": {
+    "in_scope": [
+      "两日限定一次源捕获、本地数据整合与冻结证明",
+      "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+      "沿现有3030日期发布、验证及证据留存",
+      "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+    ],
+    "out_of_scope": [
+      "生产写入/重启/watch，长期配置/全局水位游标/其他日期报告/页面代码/权限/网络/MCP/令牌台/调度修改或Git推送；生成器和测试/格式说明仅允许7z原包兼容的局部修改"
+    ],
+    "allowed_paths": [
+      ".runtime/daily-work/backfill-20261031-20261101/**",
+      ".runtime/daily-work/2026-10-31/**",
+      ".runtime/daily-work/2026-11-01/**",
+      ".runtime/daily-reports/2026-10-31/**",
+      ".runtime/daily-reports/2026-11-01/**",
+      ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+      "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+      ".project-governance/generated/**",
+      ".project-governance/project-state.json",
+      ".project-governance/README.md",
+      "update_log/2026-11-02-daily-20261031-20261101-backfill.md",
+      "insights/daily_generation.py",
+      "tests/test_daily_generation.py",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+      "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/execution.md"
+    ],
+    "forbidden_actions": [
+      "超出两日授权源访问，推进全局游标或伪造READY，未经具体答复跳过缺件，覆写已发布日期"
+    ]
+  },
+  "authority": {
+    "execution_permissions": [
+      "read",
+      "edit-in-scope",
+      "validate"
+    ],
+    "required_gates": [],
+    "stop_conditions": [
+      "scope-expansion",
+      "authority-conflict",
+      "critical-evidence-missing"
+    ],
+    "authority_references": [
+      ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+    ],
+    "authority_assessments": [
+      {
+        "reference": ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+        "source_kind": "UserDirective",
+        "status": "Valid",
+        "scope_refs": [
+          "两日限定一次源捕获、本地数据整合与冻结证明",
+          "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+          "沿现有3030日期发布、验证及证据留存",
+          "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+        ],
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+          ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+          ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+        ],
+        "verified_at": "2026-11-02T09:30:44.776683+00:00",
+        "expires_at": null
+      }
+    ]
+  },
+  "acceptance": {
+    "criteria": [
+      "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+      "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+      "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+    ],
+    "decision_owner": "task-initiator"
+  },
+  "plan": {
+    "steps": [
+      "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+      "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+      "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+      "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+      "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面"
+    ],
+    "verification": [
+      "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+      "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+      "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+    ],
+    "rollback": [
+      "导入前保存受影响镜像及投影/全局状态前像，本地事务异常全部回滚；发布前日期保持未生成，发布目录首次校验后原子创建，不覆盖历史，必要纠偏另建追溯修订"
+    ]
+  },
+  "first_principles_analysis": {
+    "method_version": "first-principles-v1",
+    "depth": "Standard",
+    "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+    "facts": [
+      {
+        "id": "F1",
+        "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+        ]
+      },
+      {
+        "id": "F2",
+        "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+          ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+        ]
+      },
+      {
+        "id": "F3",
+        "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+        ]
+      }
+    ],
+    "constraints": [
+      {
+        "id": "C1",
+        "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      {
+        "id": "C2",
+        "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+        ]
+      },
+      {
+        "id": "C3",
+        "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      }
+    ],
+    "assumptions": [],
+    "unknowns": [],
+    "fundamentals": [
+      {
+        "id": "P1",
+        "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+        "derived_from": [
+          "F1",
+          "C1"
+        ]
+      },
+      {
+        "id": "P2",
+        "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+        "derived_from": [
+          "C2"
+        ]
+      }
+    ],
+    "causal_links": [
+      {
+        "from_ref": "P1",
+        "to_ref": "O1",
+        "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      {
+        "from_ref": "P2",
+        "to_ref": "O1",
+        "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+        "evidence_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      }
+    ],
+    "alternatives": [
+      {
+        "id": "O0",
+        "description": "维持未生成直到本地自然同步",
+        "status": "Rejected",
+        "derived_from": [
+          "F1"
+        ],
+        "tradeoffs": [
+          "无需新取数",
+          "当前同步隔离，无法完成已明确补报"
+        ]
+      },
+      {
+        "id": "O1",
+        "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+        "status": "Selected",
+        "derived_from": [
+          "P1",
+          "P2",
+          "F2"
+        ],
+        "tradeoffs": [
+          "可在现有边界内完成补报",
+          "需完整核验实际附件和所有语义"
+        ]
+      },
+      {
+        "id": "O2",
+        "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+        "status": "Rejected",
+        "derived_from": [
+          "P1",
+          "C1"
+        ],
+        "tradeoffs": [
+          "不需要本机连接生产",
+          "需等待外部操作者提供包，用户已选择直接只读补采"
+        ]
+      }
+    ],
+    "decision_criteria": [
+      {
+        "id": "K1",
+        "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      {
+        "id": "K2",
+        "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      {
+        "id": "K3",
+        "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      }
+    ],
+    "selected_approach": "O1",
+    "derivation": [
+      {
+        "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      },
+      {
+        "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      },
+      {
+        "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      },
+      {
+        "plan_step": "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+        "derived_from": [
+          "P2"
+        ],
+        "supports": [
+          "K2"
+        ]
+      },
+      {
+        "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+        "derived_from": [
+          "P1",
+          "P2"
+        ],
+        "supports": [
+          "K1",
+          "K2",
+          "K3"
+        ]
+      }
+    ],
+    "validation_refs": [
+      "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+      "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+      "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+    ],
+    "source_refs": [
+      ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+      ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+    ]
+  },
+  "task_profile": {
+    "delivery_scenario": "DS-03",
+    "development_types": [
+      "DT-05",
+      "DT-06",
+      "DT-08"
+    ],
+    "primary_development_type": "DT-05",
+    "development_type_scopes": {
+      "DT-06": [
+        "沿现有3030日期发布、验证及证据留存"
+      ],
+      "DT-08": [
+        "两日限定一次源捕获、本地数据整合与冻结证明",
+        "两日完整逐封语义、UID和真实附件/日志ZIP审阅"
+      ],
+      "DT-05": [
+        "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+      ]
+    },
+    "change_surfaces": [
+      "AI/Data Governance",
+      "Agent/Collaboration",
+      "UI/UX"
+    ],
+    "risk_level": "Medium",
+    "extension_triggers": {
+      "E01": "Active",
+      "E02": "Active",
+      "E03": "Active",
+      "E04": "Active",
+      "E05": "Active"
+    },
+    "extension_evidence_refs": {
+      "E01": [
+        ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+      ],
+      "E02": [
+        ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+      ],
+      "E03": [
+        ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+      ],
+      "E04": [
+        ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+      ],
+      "E05": [
+        ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+      ]
+    },
+    "baseline_inheritance": [
+      "Reference"
+    ],
+    "mode": "Normal",
+    "confidence": "Medium",
+    "basis": [
+      ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+    ],
+    "open_questions": [],
+    "applicability_facts": {
+      "product_intent_change": "No",
+      "initiative_scope_change": "No",
+      "requirement_change": "No",
+      "external_behavior_change": "Yes",
+      "design_change": "No",
+      "architecture_impact": "No",
+      "security_privacy_impact": "No",
+      "data_ai_impact": "Yes",
+      "formal_knowledge_records": "Yes",
+      "operations_impact": "No",
+      "production_release": "No",
+      "irreversible_change": "No",
+      "actual_execution": "Yes",
+      "authority_available": "Yes",
+      "migration_retirement": "No",
+      "external_system_effect": "No",
+      "formal_review_or_gate": "No"
+    }
+  },
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-11-02T09:31:29.258806Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-11-02T09:31:29.258806Z",
+      "human_confirmation_refs": []
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-DAILY-BACKFILL-20261102-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-11-02T09:31:29.258806Z",
+      "human_confirmation_refs": []
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-08"
+        ],
+        "primary_development_type": "DT-08",
+        "development_type_scopes": {
+          "DT-08": [
+            "两日限定一次源捕获、本地数据整合与冻结证明",
+            "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+            "沿现有3030日期发布、验证及证据留存"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "Agent/Collaboration"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "Yes",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "沿现有3030日期发布、验证及证据留存"
+          ],
+          "DT-08": [
+            "两日限定一次源捕获、本地数据整合与冻结证明",
+            "两日完整逐封语义、UID和真实附件/日志ZIP审阅"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "Agent/Collaboration",
+          "UI/UX"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "Yes",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "修正任务类型映射：实际日报数据发布改变现有页面可见结果，DT-06覆盖原3030日期发布，DT-08覆盖数据整合，不增范围",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+      "changed_at": "2026-11-02T09:32:13.565234Z"
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "path": "scope",
+      "old_value": {
+        "in_scope": [
+          "两日限定一次源捕获、本地数据整合与冻结证明",
+          "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+          "沿现有3030日期发布、验证及证据留存"
+        ],
+        "out_of_scope": [
+          "生产写入/重启/watch，长期配置/全局水位游标/其他日期报告/页面代码/skill/权限/网络/MCP/令牌台/调度修改或Git推送"
+        ],
+        "allowed_paths": [
+          ".runtime/daily-work/backfill-20261031-20261101/**",
+          ".runtime/daily-work/2026-10-31/**",
+          ".runtime/daily-work/2026-11-01/**",
+          ".runtime/daily-reports/2026-10-31/**",
+          ".runtime/daily-reports/2026-11-01/**",
+          ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+          ".project-governance/generated/**",
+          ".project-governance/project-state.json",
+          ".project-governance/README.md",
+          "update_log/2026-11-02-daily-20261031-20261101-backfill.md"
+        ],
+        "forbidden_actions": [
+          "超出两日授权源访问，推进全局游标或伪造READY，未经具体答复跳过缺件，覆写已发布日期"
+        ]
+      },
+      "new_value": {
+        "in_scope": [
+          "两日限定一次源捕获、本地数据整合与冻结证明",
+          "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+          "沿现有3030日期发布、验证及证据留存",
+          "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+        ],
+        "out_of_scope": [
+          "生产写入/重启/watch，长期配置/全局水位游标/其他日期报告/页面代码/权限/网络/MCP/令牌台/调度修改或Git推送；生成器和测试/格式说明仅允许7z原包兼容的局部修改"
+        ],
+        "allowed_paths": [
+          ".runtime/daily-work/backfill-20261031-20261101/**",
+          ".runtime/daily-work/2026-10-31/**",
+          ".runtime/daily-work/2026-11-01/**",
+          ".runtime/daily-reports/2026-10-31/**",
+          ".runtime/daily-reports/2026-11-01/**",
+          ".project-governance/tasks/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+          "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261102-01/**",
+          ".project-governance/generated/**",
+          ".project-governance/project-state.json",
+          ".project-governance/README.md",
+          "update_log/2026-11-02-daily-20261031-20261101-backfill.md",
+          "insights/daily_generation.py",
+          "tests/test_daily_generation.py",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/SKILL.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/review-contract.md",
+          "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/execution.md"
+        ],
+        "forbidden_actions": [
+          "超出两日授权源访问，推进全局游标或伪造READY，未经具体答复跳过缺件，覆写已发布日期"
+        ]
+      },
+      "reason": "真实补报输入暴露7z日志包兼容缺口；在原全部日志ZIP要求内补齐最小格式兼容和回归，不改变日期、验收或授权边界",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:49:29.337787Z"
+    },
+    {
+      "from_revision": 3,
+      "to_revision": 4,
+      "path": "task_profile",
+      "old_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-06",
+        "development_type_scopes": {
+          "DT-06": [
+            "沿现有3030日期发布、验证及证据留存"
+          ],
+          "DT-08": [
+            "两日限定一次源捕获、本地数据整合与冻结证明",
+            "两日完整逐封语义、UID和真实附件/日志ZIP审阅"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "Agent/Collaboration",
+          "UI/UX"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "Yes",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "new_value": {
+        "delivery_scenario": "DS-03",
+        "development_types": [
+          "DT-05",
+          "DT-06",
+          "DT-08"
+        ],
+        "primary_development_type": "DT-05",
+        "development_type_scopes": {
+          "DT-06": [
+            "沿现有3030日期发布、验证及证据留存"
+          ],
+          "DT-08": [
+            "两日限定一次源捕获、本地数据整合与冻结证明",
+            "两日完整逐封语义、UID和真实附件/日志ZIP审阅"
+          ],
+          "DT-05": [
+            "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+          ]
+        },
+        "change_surfaces": [
+          "AI/Data Governance",
+          "Agent/Collaboration",
+          "UI/UX"
+        ],
+        "risk_level": "Medium",
+        "extension_triggers": {
+          "E01": "Active",
+          "E02": "Active",
+          "E03": "Active",
+          "E04": "Active",
+          "E05": "Active"
+        },
+        "extension_evidence_refs": {
+          "E01": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E02": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E03": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E04": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ],
+          "E05": [
+            ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+          ]
+        },
+        "baseline_inheritance": [
+          "Reference"
+        ],
+        "mode": "Normal",
+        "confidence": "Medium",
+        "basis": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "open_questions": [],
+        "applicability_facts": {
+          "product_intent_change": "No",
+          "initiative_scope_change": "No",
+          "requirement_change": "No",
+          "external_behavior_change": "Yes",
+          "design_change": "No",
+          "architecture_impact": "No",
+          "security_privacy_impact": "No",
+          "data_ai_impact": "Yes",
+          "formal_knowledge_records": "Yes",
+          "operations_impact": "No",
+          "production_release": "No",
+          "irreversible_change": "No",
+          "actual_execution": "Yes",
+          "authority_available": "Yes",
+          "migration_retirement": "No",
+          "external_system_effect": "No",
+          "formal_review_or_gate": "No"
+        }
+      },
+      "reason": "真实补报输入暴露7z日志包兼容缺口；在原全部日志ZIP要求内补齐最小格式兼容和回归，不改变日期、验收或授权边界",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:49:29.337831Z"
+    },
+    {
+      "from_revision": 4,
+      "to_revision": 5,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "reason": "真实补报输入暴露7z日志包兼容缺口；在原全部日志ZIP要求内补齐最小格式兼容和回归，不改变日期、验收或授权边界",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:49:29.337890Z"
+    },
+    {
+      "from_revision": 5,
+      "to_revision": 6,
+      "path": "authority",
+      "old_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "authority_assessments": [
+          {
+            "reference": ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "两日限定一次源捕获、本地数据整合与冻结证明",
+              "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+              "沿现有3030日期发布、验证及证据留存"
+            ],
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ],
+            "verified_at": "2026-11-02T09:30:44.776683+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "new_value": {
+        "execution_permissions": [
+          "read",
+          "edit-in-scope",
+          "validate"
+        ],
+        "required_gates": [],
+        "stop_conditions": [
+          "scope-expansion",
+          "authority-conflict",
+          "critical-evidence-missing"
+        ],
+        "authority_references": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md"
+        ],
+        "authority_assessments": [
+          {
+            "reference": ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+            "source_kind": "UserDirective",
+            "status": "Valid",
+            "scope_refs": [
+              "两日限定一次源捕获、本地数据整合与冻结证明",
+              "两日完整逐封语义、UID和真实附件/日志ZIP审阅",
+              "沿现有3030日期发布、验证及证据留存",
+              "为本次真实7z附件补齐既有生成器日志原包格式校验、负例测试和日报skill格式说明，仅原件不解包进入现有ZIP能力"
+            ],
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ],
+            "verified_at": "2026-11-02T09:30:44.776683+00:00",
+            "expires_at": null
+          }
+        ]
+      },
+      "reason": "对齐原完整日志ZIP要求下的最小格式兼容计划和有效任务范围，无新授权事项",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:51:37.107496Z"
+    },
+    {
+      "from_revision": 6,
+      "to_revision": 7,
+      "path": "plan",
+      "old_value": {
+        "steps": [
+          "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+          "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+          "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+          "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面"
+        ],
+        "verification": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "rollback": [
+          "导入前保存受影响镜像及投影/全局状态前像，本地事务异常全部回滚；发布前日期保持未生成，发布目录首次校验后原子创建，不覆盖历史，必要纠偏另建追溯修订"
+        ]
+      },
+      "new_value": {
+        "steps": [
+          "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+          "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+          "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+          "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+          "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面"
+        ],
+        "verification": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "rollback": [
+          "导入前保存受影响镜像及投影/全局状态前像，本地事务异常全部回滚；发布前日期保持未生成，发布目录首次校验后原子创建，不覆盖历史，必要纠偏另建追溯修订"
+        ]
+      },
+      "reason": "对齐原完整日志ZIP要求下的最小格式兼容计划和有效任务范围，无新授权事项",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:51:37.107530Z"
+    },
+    {
+      "from_revision": 7,
+      "to_revision": 8,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+            "derived_from": [
+              "P2",
+              "F3",
+              "C3"
+            ],
+            "supports": [
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "reason": "对齐原完整日志ZIP要求下的最小格式兼容计划和有效任务范围，无新授权事项",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:51:37.107593Z"
+    },
+    {
+      "from_revision": 8,
+      "to_revision": 9,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "clarification:r1.e1",
+          "quote": "允许这两天的一次性只读补采（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "clarification:r2.e1",
+          "quote": "允许本次并行审阅（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "clarification:r1.e1",
+          "quote": "允许这两天的一次性只读补采（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "clarification:r2.e1",
+          "quote": "允许本次并行审阅（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "实际7z日志原包与其他已审阅日志包同样保持原件字节并纳入全子问题日志ZIP，来源/owner/成员观察均核对，错误魔数或缺证据拒绝，不修改页面和权限",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        }
+      ],
+      "reason": "对齐原完整日志ZIP要求下的最小格式兼容计划和有效任务范围，无新授权事项",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:51:37.107624Z"
+    },
+    {
+      "from_revision": 9,
+      "to_revision": 10,
+      "path": "clarification",
+      "old_value": {
+        "state": "Open",
+        "mode": "Asked",
+        "notice": "两天的本地邮件数据均未同步，生成流程都被完整性检查拦住；这不代表当天没有来信。上次只读补采授权仅限 10 月 30 日，本次需要覆盖这两天的新授权。",
+        "survey_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+          ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-11-02T09:23:56.851Z",
+            "exchanges": [
+              {
+                "question": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+                "changes": "Authority",
+                "recommended_default": "允许这两天的一次性只读补采（推荐）",
+                "answer": "允许这两天的一次性只读补采（推荐）",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 2,
+            "asked_at": "2026-11-02T09:27:49.501Z",
+            "exchanges": [
+              {
+                "question": "是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+                "changes": "Scope",
+                "recommended_default": "允许本次并行审阅（推荐）",
+                "answer": "允许本次并行审阅（推荐）",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "本地缺口已实测，用户已分别明确授权指定两日读取及最多3个本机只读审阅者，现有最终质量和布局沿用，无新待决项",
+        "reopened_by": [
+          "amendment:scope"
+        ]
+      },
+      "new_value": {
+        "state": "Settled",
+        "mode": "Asked",
+        "notice": "两天的本地邮件数据均未同步，生成流程都被完整性检查拦住；这不代表当天没有来信。上次只读补采授权仅限 10 月 30 日，本次需要覆盖这两天的新授权。",
+        "survey_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+          ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+        ],
+        "rounds": [
+          {
+            "ordinal": 1,
+            "asked_at": "2026-11-02T09:23:56.851Z",
+            "exchanges": [
+              {
+                "question": "是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+                "changes": "Authority",
+                "recommended_default": "允许这两天的一次性只读补采（推荐）",
+                "answer": "允许这两天的一次性只读补采（推荐）",
+                "answer_state": "Answered"
+              }
+            ]
+          },
+          {
+            "ordinal": 2,
+            "asked_at": "2026-11-02T09:27:49.501Z",
+            "exchanges": [
+              {
+                "question": "是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+                "changes": "Scope",
+                "recommended_default": "允许本次并行审阅（推荐）",
+                "answer": "允许本次并行审阅（推荐）",
+                "answer_state": "Answered"
+              }
+            ]
+          }
+        ],
+        "basis": "本地缺口已实测，用户已分别明确授权指定两日读取及最多3个本机只读审阅者，现有最终质量和布局沿用，无新待决项；7z格式兼容是既有全部日志下载要求内的实现修正，日期/授权/外部接口/质量不变，无新阻断未知，不补造新问答。",
+        "reopened_by": [
+          "amendment:scope"
+        ]
+      },
+      "reason": "按已有明确授权及真实勘察结束实现方式修订，无新待决事项",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/task-survey.md",
+      "changed_at": "2026-11-02T09:51:37.334737Z"
+    },
+    {
+      "from_revision": 10,
+      "to_revision": 11,
+      "path": "first_principles_analysis",
+      "old_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+            "derived_from": [
+              "P2",
+              "F3",
+              "C3"
+            ],
+            "supports": [
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "new_value": {
+        "method_version": "first-principles-v1",
+        "depth": "Standard",
+        "outcome": "补齐并发布10月31日与11月1日有完整真实证据的日报，保持长期生产隔离",
+        "facts": [
+          {
+            "id": "F1",
+            "statement": "本地未同步两日数据且prepare拒绝，不等于零封",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/readiness.json"
+            ]
+          },
+          {
+            "id": "F2",
+            "statement": "用户已明确允许这两日的一次性只读补采与最多3只读审阅者",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+              ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json"
+            ]
+          },
+          {
+            "id": "F3",
+            "statement": "11月1日源元数据确有Player-prev.7z，现有生成器对本地创建的有效7z日志包实际拒绝INVALID_LOG_PACKAGE_REVIEW；该日原件内容仍待实际核验",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json"
+            ]
+          }
+        ],
+        "constraints": [
+          {
+            "id": "C1",
+            "statement": "限定日期及用途，不生产写入/重启/watch，不改全局游标、水位、长期开关、其他服务或历史报告",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "C2",
+            "statement": "完整阅读、独立语义、UID/实际附件/ZIP证据及白底最终布局必须满足既有质量标准，不能复制旧日结论或缺件豁免",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              "C:/Users/Administrator/.codex/skills/complaint-daily-report/references/final-standard.md"
+            ]
+          },
+          {
+            "id": "C3",
+            "statement": "仅扩展已审阅日志原包的7z后缀与魔数校验，原件不变、不解包进入HTTP，原RAR/ZIP仍通过；页面和身份/权限/网络不变",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "assumptions": [],
+        "unknowns": [],
+        "fundamentals": [
+          {
+            "id": "P1",
+            "statement": "闭日日报由完整源集合及真实证据组成，触发或状态改名不能代替数据",
+            "derived_from": [
+              "F1",
+              "C1"
+            ]
+          },
+          {
+            "id": "P2",
+            "statement": "逐封现象与诉求形成业务主组和具体子问题，所有归类/账号/附件证据需要可追溯",
+            "derived_from": [
+              "C2"
+            ]
+          }
+        ],
+        "causal_links": [
+          {
+            "from_ref": "P1",
+            "to_ref": "O1",
+            "rationale": "本次日期限定读取和局部闭合证明能补报且不声称全局同步恢复",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "from_ref": "P2",
+            "to_ref": "O1",
+            "rationale": "独立逐封审阅及根端统一分组后再生成读取模型，维持质量基准",
+            "evidence_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "alternatives": [
+          {
+            "id": "O0",
+            "description": "维持未生成直到本地自然同步",
+            "status": "Rejected",
+            "derived_from": [
+              "F1"
+            ],
+            "tradeoffs": [
+              "无需新取数",
+              "当前同步隔离，无法完成已明确补报"
+            ]
+          },
+          {
+            "id": "O1",
+            "description": "按新授权一次受限只读捕获，局部导入及逐封审阅后逐日发布",
+            "status": "Selected",
+            "derived_from": [
+              "P1",
+              "P2",
+              "F2"
+            ],
+            "tradeoffs": [
+              "可在现有边界内完成补报",
+              "需完整核验实际附件和所有语义"
+            ]
+          },
+          {
+            "id": "O2",
+            "description": "由生产操作者导出精确范围离线包，再以同等标准核验导入",
+            "status": "Rejected",
+            "derived_from": [
+              "P1",
+              "C1"
+            ],
+            "tradeoffs": [
+              "不需要本机连接生产",
+              "需等待外部操作者提供包，用户已选择直接只读补采"
+            ]
+          }
+        ],
+        "decision_criteria": [
+          {
+            "id": "K1",
+            "statement": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K2",
+            "statement": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          },
+          {
+            "id": "K3",
+            "statement": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+            "source_refs": [
+              ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+              ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+            ]
+          }
+        ],
+        "selected_approach": "O1",
+        "derivation": [
+          {
+            "plan_step": "保存真实授权与原读取模型指纹，单一只读RR源事务捕获两日集合及必要上下文",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "保存受影响本地前像后事务导入，验证源字节/集合并保留全局未追平事实，分别reader冻结",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "最多3个获授权本机只读审阅者逐封分析，根端统一业务粒度并复核全部主组、残余及UID，取得全部附件证据",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          },
+          {
+            "plan_step": "修复已核实兼容缺口：只对已审阅原件增加7z扩展名和魔数支持，原件不改、不展开，运行正负例及既有发布/网络回归，同步格式说明",
+            "derived_from": [
+              "P2"
+            ],
+            "supports": [
+              "K2"
+            ]
+          },
+          {
+            "plan_step": "构建并校验两日候选，独立核对ZIP原始字节/子组归属和review源绑定，逐日原子发布并验证真实页面",
+            "derived_from": [
+              "P1",
+              "P2"
+            ],
+            "supports": [
+              "K1",
+              "K2",
+              "K3"
+            ]
+          }
+        ],
+        "validation_refs": [
+          "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending"
+        ],
+        "source_refs": [
+          ".runtime/daily-work/backfill-20261031-20261101/task-source.md",
+          ".runtime/daily-work/backfill-20261031-20261101/task-survey.md"
+        ]
+      },
+      "reason": "修正derivation引用类型：只引用基础要素P2，已知事实与约束保留原字段",
+      "basis": ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+      "changed_at": "2026-11-02T09:51:56.476547Z"
+    },
+    {
+      "from_revision": 11,
+      "to_revision": 12,
+      "path": "requirement_items",
+      "old_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            2
+          ]
+        },
+        {
+          "id": "R-004",
+          "source": "clarification:r1.e1",
+          "quote": "允许这两天的一次性只读补采（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            0
+          ]
+        },
+        {
+          "id": "R-005",
+          "source": "clarification:r2.e1",
+          "quote": "允许本次并行审阅（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "实际7z日志原包与其他已审阅日志包同样保持原件字节并纳入全子问题日志ZIP，来源/owner/成员观察均核对，错误魔数或缺证据拒绝，不修改页面和权限",
+          "state": "Open",
+          "evidence_refs": [],
+          "acceptance_refs": [
+            1
+          ]
+        }
+      ],
+      "new_value": [
+        {
+          "id": "R-001",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "仅按本次明确授权一次性只读捕获两日完整RECEIVED集合、必要真实RFC上下文和15日统计/分类辅助数据，保存只读源身份与源指纹，取数结束断开；局部本地入库保存前像和完整性证明，不推进全局游标/水位、不改持久隔离配置、不写或重启生产",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+            ".runtime/daily-work/2026-10-31/independent-published-audit.json",
+            ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "补生成31号和1号的日报",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "两日期RECEIVED完整集合与只读来源闭合，本地副本冻结并保留长期隔离。",
+                "actual": "一次只读捕获关闭连接；本地26版本冻结600/520邮件及581/575原件，source SHA及闭合日证明由正式独立审计复核，global stream caught up=false。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+                  ".runtime/daily-work/2026-10-31/independent-published-audit.json",
+                  ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-002",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "分别逐封阅读全文和实际附件，保留独立中文摘要、原分类、主子问题与依据、UID命名空间/来源角色、收发及实际送达、原译文；全部主组与残余复核，同问题归并且不同现象保留子问题，真实附件和全子组日志ZIP完整绑定本日快照；无授权缺件不发布",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-31/review.json",
+            ".runtime/daily-work/2026-11-01/review.json",
+            ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-10-31.json",
+            ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-11-01.json",
+            ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "补生成31号和1号的日报",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "沿已安装日报skill对两个完整日期逐封分析、核UID与真实附件、全部主组及残余复核后生成可追溯报告。",
+                "actual": "1120封全部实际正文/HTML与必要真实RFC分工审阅；1156原件齐全，根端语义归并保留轨迹；20/33残余均复核，未强拼；两日source/review/quality绑定及54/54 ZIP、138/143日志原件字节检查通过。视频与日志实际范围、3预览限制和未翻译源文本明确保留。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-31/review.json",
+                  ".runtime/daily-work/2026-11-01/review.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-10-31.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/curation-lineage-2026-11-01.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-003",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "复用既有3030白底最终布局原子发布2026-10-31及2026-11-01两日报告，独立核对来源/计数/增长/全部附件和ZIP及实际页面关键交互；默认昨天为11月1日，历史29/30字节不变，不更改页面/调度/MCP或其他服务，留存实际验证和限制，用户验收Pending",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/2026-10-31/publish-run.log",
+            ".runtime/daily-work/2026-11-01/publish-run.log",
+            ".runtime/daily-work/2026-10-31/published-http-verification.json",
+            ".runtime/daily-work/2026-11-01/published-http-verification.json",
+            ".runtime/daily-work/backfill-20261031-20261101/static-assets-and-ui-limit.json"
+          ],
+          "acceptance_refs": [
+            2
+          ],
+          "review": {
+            "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "补生成31号和1号的日报",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "两个指定日期首次原子发布到现有3030，可按日期读取，保持原历史及访问边界。",
+                "actual": "正式日期均published，默认昨天为11/1 generated；回环全部1120详情/1156原件HEAD/全部可用预览/108 ZIP及日期版本反例通过，LAN页面数据详情图片ZIP实测通过；29/30指纹不变。未改UI；实际浏览器交互因Work禁用未执行，另列未验项，不冒称通过。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/2026-10-31/publish-run.log",
+                  ".runtime/daily-work/2026-11-01/publish-run.log",
+                  ".runtime/daily-work/2026-10-31/published-http-verification.json",
+                  ".runtime/daily-work/2026-11-01/published-http-verification.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/static-assets-and-ui-limit.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-004",
+          "source": "clarification:r1.e1",
+          "quote": "允许这两天的一次性只读补采（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否授权使用现有只读账号，经 10.8.45.155:5432 一次性补采 2026-10-31、2026-11-01 两天日报所需的邮件、分类、附件元数据及必要会话和统计数据？不写入或重启生产库，不启动常驻采集，不改变长期隔离开关；取数完成即断开。上次授权仅限 10 月 30 日。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+            ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+            ".runtime/daily-work/backfill-20261031-20261101/local-import-result.json",
+            ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+          ],
+          "acceptance_refs": [
+            0
+          ],
+          "review": {
+            "source_sha256": "68285cfc3eb6b6a5e13510c86a336cafc0c896e4d2415723431d6f433a44f534",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "允许这两天的一次性只读补采（推荐）",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "仅按真实授权的问题范围使用现有账号做两日一次性生产只读补采，不重启或改变长期隔离。",
+                "actual": "真实答复回绑源会话事件；限定两天邮件和必要RFC/辅助统计在只读RR事务中捕获，source connection closed=true、persistent config changed=false；最终allow_production_read=false，未启watch。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/backfill-20261031-20261101/source-read-authorization.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/source-capture-result.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/local-import-result.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-005",
+          "source": "clarification:r2.e1",
+          "quote": "允许本次并行审阅（推荐）",
+          "reading": "按真实问题所限定日期和边界执行：是否允许启用最多 3 个只读审阅子 Agent，并行复核这次 10 月 31 日、11 月 1 日的冻结邮件？它们只读本机数据，由我统一归类、复核并发布；不连接生产、不修改正式报告。等待答复期间我继续取数和本地核验。",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+            ".runtime/daily-work/backfill-20261031-20261101/semantic-review-a/delivery-b-text-2026-11-01.json",
+            ".runtime/daily-work/backfill-20261031-20261101/semantic-review-b/completion-2026-10-31.json",
+            ".runtime/daily-work/backfill-20261031-20261101/semantic-review-c/delivery-manifest.json",
+            ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "d0a43f36be7281e32b04bd8c4c1b33c435a1071e21d7b431e83bc83a00d467b1",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "允许本次并行审阅（推荐）",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "最多三个获明确授权的只读子Agent读取冻结本地数据，根端统一裁决并发布。",
+                "actual": "仅A/B/C三个语义分工；源快照与最终子分片SHA保存，A额外113文本转C、B的Nov1文本转A及附件转root均留交接；1120唯一PK全覆盖；正式review/发布由root执行。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/backfill-20261031-20261101/parallel-review-authorization.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/semantic-review-a/delivery-b-text-2026-11-01.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/semantic-review-b/completion-2026-10-31.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/semantic-review-c/delivery-manifest.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "R-006",
+          "source": "request_snapshot",
+          "quote": "补生成31号和1号的日报",
+          "reading": "实际7z日志原包与其他已审阅日志包同样保持原件字节并纳入全子问题日志ZIP，来源/owner/成员观察均核对，错误魔数或缺证据拒绝，不修改页面和权限",
+          "state": "Covered",
+          "evidence_refs": [
+            ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+            ".runtime/daily-work/backfill-20261031-20261101/sevenzip-code-verification.json",
+            ".runtime/daily-work/backfill-20261031-20261101/root-review/log-packages.json",
+            ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+          ],
+          "acceptance_refs": [
+            1
+          ],
+          "review": {
+            "source_sha256": "21b6808d8e2140da1bab9683c475ef03b6e6989e547cf13b9c239aa3397fe183",
+            "conditions": [],
+            "cases": [
+              {
+                "condition": null,
+                "branch": "Unconditional",
+                "input": {
+                  "request_text": "补生成31号和1号的日报",
+                  "business_dates": [
+                    "2026-10-31",
+                    "2026-11-01"
+                  ],
+                  "delivery_proof": ".runtime/daily-work/backfill-20261031-20261101/delivery-summary.json"
+                },
+                "expected": "真实已审阅7z日志原件被同日子问题ZIP收录，错误扩展名/魔数拒绝且原件字节不改。",
+                "actual": "62190安全两成员日志观察与原包SHA绑定；最小支持7z格式和精确魔数，70相关测试含7z原字节正例及魔数负例通过；Nov1正式ZIP逐件检查含此原包。",
+                "result": "Passed",
+                "evidence_refs": [
+                  ".runtime/daily-work/backfill-20261031-20261101/sevenzip-compatibility/before-reproduction.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/sevenzip-code-verification.json",
+                  ".runtime/daily-work/backfill-20261031-20261101/root-review/log-packages.json",
+                  ".runtime/daily-work/2026-11-01/independent-published-audit.json"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "reason": "逐条对照用户补报原话及两项真实授权，将两日报告正式发布和实际来源/附件/ZIP/HTTP验证回绑；浏览器禁用保留未验项，用户验收Pending",
+      "basis": "LG_project_docs/requirements/T-INSIGHTS-DAILY-BACKFILL-20261102-01/release/handoff.md",
+      "changed_at": "2026-11-02T11:58:58.093546Z"
+    }
+  ],
+  "tailoring_resolution": {
+    "rule_set_id": "VC-PPG-TAIL-001",
+    "rule_set_version": "6.3 Candidate",
+    "rule_set_status": "In Review",
+    "rule_set_sha256": "d7abae34423493620a86aa8f1533a977dbe4b3e612f773fadea4ec83fc6d6eee",
+    "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+    "resolver_sha256": "add9aff766c9b5ddb3eed0cdf5da8f7e464707648f5ea4870c98a462002ae153",
+    "task_contract_schema_sha256": "ad3db51c243bee235546c3093cba400fdb2227e7fc7e97dc2a4fc2d055672045",
+    "input_digest": "74ebd40fdb4d19ebe69406c30dfface2e19fb508124bf2795c843b331d7c1a1f",
+    "stage": "S5",
+    "applicable_standards": [
+      "C02",
+      "C03",
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "pending_standards": [],
+    "stage_context_standards": [
+      "C04",
+      "C05",
+      "C06",
+      "C07",
+      "C08",
+      "C09",
+      "C10",
+      "C11",
+      "C12",
+      "E01",
+      "E02",
+      "E03",
+      "E04",
+      "E05"
+    ],
+    "control_strength": "standard",
+    "independent_review": false,
+    "explicit_human_gate": false,
+    "blocking_reasons": [],
+    "rule_ids": [
+      "VC-PPG-TAIL-001:always_applicable",
+      "VC-PPG-TAIL-001:applicability_facts:actual_execution=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:authority_available=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:data_ai_impact=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:external_behavior_change=Yes",
+      "VC-PPG-TAIL-001:applicability_facts:formal_knowledge_records=Yes",
+      "VC-PPG-TAIL-001:baseline_inheritance:Reference",
+      "VC-PPG-TAIL-001:change_surfaces:AI/Data Governance",
+      "VC-PPG-TAIL-001:change_surfaces:Agent/Collaboration",
+      "VC-PPG-TAIL-001:change_surfaces:UI/UX",
+      "VC-PPG-TAIL-001:delivery_scenarios:DS-03",
+      "VC-PPG-TAIL-001:development_types:DT-05",
+      "VC-PPG-TAIL-001:development_types:DT-06",
+      "VC-PPG-TAIL-001:development_types:DT-08",
+      "VC-PPG-TAIL-001:execution_modes:Normal",
+      "VC-PPG-TAIL-001:extension_resolution:E01:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E02:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E03:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E04:Active",
+      "VC-PPG-TAIL-001:extension_resolution:E05:Active",
+      "VC-PPG-TAIL-001:risk_levels:Medium"
+    ],
+    "source_sections": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sections": [
+          "2",
+          "10",
+          "12"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "22",
+          "23"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sections": [
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sections": [
+          "7",
+          "9",
+          "10",
+          "13",
+          "16",
+          "17"
+        ]
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sections": [
+          "2",
+          "3",
+          "4",
+          "9"
+        ]
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "12",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sections": [
+          "3",
+          "7",
+          "8",
+          "10",
+          "13",
+          "15",
+          "17",
+          "18"
+        ]
+      }
+    ],
+    "complete_source_files": [
+      {
+        "source_id": "VC-PPG-COM-001",
+        "path": "references/01_治理基线/Vibe_Coding_公共术语与规范性用语基线_V6.3.md",
+        "sha256": "79fd8f6eaf64bf8f153afa2ae75bcf97c1479f31553ce6b218bb64fe6b1696e0"
+      },
+      {
+        "source_id": "VC-PPG-COM-002",
+        "path": "references/01_治理基线/Vibe_Coding_受控产物目录与状态模型_V6.3.md",
+        "sha256": "c1a4d23a10810d47cff41620e3d305597106b71fbd0365136277159ff3e5eece"
+      },
+      {
+        "source_id": "VC-PPG-DEC-001",
+        "path": "references/01_治理基线/Vibe_Coding_P2裁剪与扩展规范适用性决议_V6.3.md",
+        "sha256": "30ea3d582201f35b1cb0e408129eb439bd49d94c6ec521dbc6682cb58ad517bd"
+      },
+      {
+        "source_id": "VC-PPG-PRO-001",
+        "path": "references/01_治理基线/Vibe_Coding_任务类型裁剪与统一执行流程规范_V6.3.md",
+        "sha256": "548a810a1cbce4fc7970f87778c71f56c9d0921e3ba385a73d085b8ed0276329"
+      },
+      {
+        "source_id": "C02",
+        "path": "references/02_核心规范/C02_Initiative_and_Scope_Standard.md",
+        "sha256": "41a07e3f463fc41086114782bb6805a83ba0fd3a6968a4d8bdf1b7330a91a850"
+      },
+      {
+        "source_id": "C03",
+        "path": "references/02_核心规范/C03_PRD_and_Feature_Standard.md",
+        "sha256": "3a758c17120b4af03786ee86c842b6a4c03eed7a2103f2b376f0ab595dcb9107"
+      },
+      {
+        "source_id": "C04",
+        "path": "references/02_核心规范/C04_Atomic_Requirement_and_Evolution_Standard.md",
+        "sha256": "fcd2ddd5b49b3dd16f66efb4bb4355eab21d0f4612f4b3e340446fcca60a08b2"
+      },
+      {
+        "source_id": "C05",
+        "path": "references/02_核心规范/C05_Acceptance_Verification_and_Validation_Standard.md",
+        "sha256": "7973bcb4ea442030772e36b7418cc1e03f55e0b3aaa6072f4ec1c198d1b537c7"
+      },
+      {
+        "source_id": "C06",
+        "path": "references/02_核心规范/C06_UX_and_Technical_Design_Standard.md",
+        "sha256": "8b87093accc35af8562178dc095e388aef6b8468bed6e3615cdb695eb0392906"
+      },
+      {
+        "source_id": "C07",
+        "path": "references/02_核心规范/C07_Human_Agent_Collaboration_Standard.md",
+        "sha256": "a1fc4e903d8b690f938d6e8fdf45a57abff2e94bcefbdb9729db1914804f016a"
+      },
+      {
+        "source_id": "C08",
+        "path": "references/02_核心规范/C08_Agent_Context_Governance_Standard.md",
+        "sha256": "262f2a190f130cb97955e58fca57d2216e2edf949d2f271413e5dff5d6faeb6d"
+      },
+      {
+        "source_id": "C09",
+        "path": "references/02_核心规范/C09_Agent_Execution_and_Evidence_Standard.md",
+        "sha256": "6897694e362bf48cb3a13bb4e68d79d7173945daad2ba3e8f0b6c75be944c01e"
+      },
+      {
+        "source_id": "C10",
+        "path": "references/02_核心规范/C10_Decision_Traceability_and_Lineage_Standard.md",
+        "sha256": "0eba391e52d509b37f7e6882b631729627eee8d27a887ccf391c58cc8e6a7534"
+      },
+      {
+        "source_id": "C11",
+        "path": "references/02_核心规范/C11_Configuration_Version_Baseline_and_Change_Standard.md",
+        "sha256": "88ec56f78f6d3da6f94b1684c7b1296ed1825bfcc961f0f8d3636c8c6a26f7e1"
+      },
+      {
+        "source_id": "C12",
+        "path": "references/02_核心规范/C12_Review_Quality_Gate_and_Product_Health_Standard.md",
+        "sha256": "508ab6263bb1db5b1568cb16233ce7413a51da2f73bbe9eb39a56c9ad08d5565"
+      },
+      {
+        "source_id": "E01",
+        "path": "references/03_扩展规范/E01_Architecture_Governance_Extension_Standard.md",
+        "sha256": "ff37e13d26782b9d926835f82c84bb73719c81ffa6b835cf3e2ac742e90e611a"
+      },
+      {
+        "source_id": "E02",
+        "path": "references/03_扩展规范/E02_Security_Privacy_and_Compliance_Extension_Standard.md",
+        "sha256": "7353dcc98f73b6f68d9fb90ab1d0ed4e9ede362d1fcd9c4106685d68b7f57ebd"
+      },
+      {
+        "source_id": "E03",
+        "path": "references/03_扩展规范/E03_Data_and_AI_Data_Governance_Extension_Standard.md",
+        "sha256": "bb6a10422c6e672f3f67e6dc109c5bfaa594b195924758b21911fe44a18c603b"
+      },
+      {
+        "source_id": "E04",
+        "path": "references/03_扩展规范/E04_Knowledge_and_Records_Governance_Extension_Standard.md",
+        "sha256": "8cb8a7b01cec9b1c868a1cba27352fef1c6314ff85f1956072af6dee9eeabdf0"
+      },
+      {
+        "source_id": "E05",
+        "path": "references/03_扩展规范/E05_Product_Operations_and_Service_Management_Extension_Standard.md",
+        "sha256": "326d746628fd6b214527cd28ca71b5ea7b12148d4a0c102efcb0fb43f5c677da"
+      },
+      {
+        "source_id": "VC-PPG-IDX-001",
+        "path": "references/05_记录与登记册/V6.3_跨规范产物归属索引.md",
+        "sha256": "7de946e2b8804e84de13871719fa603598d93a6880cdbf25f127a5cc124a7682"
+      }
+    ],
+    "profile_coverage_digest": {
+      "applicable": 131,
+      "total": 137,
+      "sha256": "6a71eb6fc549be5d7ccf30eeb9d685b7eb9c0a428d379fd8d0c9c7f75140a020"
+    }
+  }
+}

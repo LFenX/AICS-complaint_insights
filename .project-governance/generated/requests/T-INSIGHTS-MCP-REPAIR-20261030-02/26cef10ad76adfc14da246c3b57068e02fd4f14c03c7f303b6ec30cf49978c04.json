@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "通过SDK公开工具元数据禁用字符串二次解析，客户端在空文件上先限权并清理失败，规范化HTTP400的非法信封错误；保留首轮四项修复、正常MCP和用户持续授权",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "80328c656a2055433719b362475931fd2a392d0fa837cc17304bf99a5309b067",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-02"
+}

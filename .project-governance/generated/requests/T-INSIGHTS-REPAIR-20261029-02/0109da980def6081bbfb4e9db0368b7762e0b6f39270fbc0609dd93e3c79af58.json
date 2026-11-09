@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "核对隐式目的地拒绝和显式连接串回归测试",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "b0bc0e03e101f19bece8d36dfd9f2746227b9be335b55bccd431efbc04f3b997",
+  "task_id": "T-INSIGHTS-REPAIR-20261029-02"
+}

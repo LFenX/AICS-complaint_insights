@@ -1,0 +1,12 @@
+[
+  {
+    "id": "D-REPAIR-PROCEED",
+    "kind": "Proceed",
+    "presented": "第二轮已确认：省略主机或端口时 PGHOST/PGPORT 改变实际连接地址，原校验仍按 localhost:5432 放行。修复要求连接串写明主机、端口和数据库名，并保持显式配置不受环境默认值影响。",
+    "response": "先把修复做了呗",
+    "decided_by": "lfenink",
+    "decided_at": "2026-10-29T12:15:02.311854+00:00",
+    "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+    "outcome": "Approved"
+  }
+]

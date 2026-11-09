@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存真实10月30日补报工程结果与来源指纹、逐条原文覆盖和限制，已发布921封752原件5明确缺件40完整ZIP、68测试及实际HTTP/GUI；用户验收Pending，既有原多轮审查仍未完成。核对范围、不可变交付、账本和后续归属后关闭本次执行，不新增门禁或伪造批准。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "211a7a0a42cc5f4baab4bf09864e23f6ea1183d8b2e5b06704f4f652787bd131",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

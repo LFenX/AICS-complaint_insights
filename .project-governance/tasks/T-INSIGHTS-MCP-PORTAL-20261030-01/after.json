@@ -1,0 +1,193 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "MCP-PORTAL",
+  "task_id": "T-INSIGHTS-MCP-PORTAL-20261030-01",
+  "revision": 1,
+  "status": "Deferred",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [],
+  "completed_at": "2026-10-29T19:25:15.059060Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T19:23:25.404140+00:00",
+    "file_manifest": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/delivery-files.json",
+    "file_manifest_sha256": "113a89cba1c2e264d5ac1b11e1a2997f38e6d15d2194972414f5f72de8234d46"
+  },
+  "established_facts": [
+    "3029内网HTTPS门户与独立owner令牌管理已运行，11工具和14类原始表读取通过，生产隔离保留",
+    "用户验收及正式独立/安全审查Pending；异机路由未实测"
+  ],
+  "actual_changes": [
+    "交付完整协议、逐工具schema参考、无凭据通用包及安全发放撤销与运维交接"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "25项单元与契约边界测试通过",
+      "evidence_refs": [
+        ".runtime/mcp-portal-tests-A06.log"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "12组真实HTTPS检查、11工具14表、签发使用撤销、下载及22页客户端遍历通过",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "完整原话和权限条件逐条覆盖",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/coverage.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "reason": "另一台内网电脑路由、浏览器CA及接收人客户端未实测",
+      "impact": "服务端通过内网IP严格TLS已验证，异机路径仍须接收人复验",
+      "owner": "接收人",
+      "reentry_condition": "接收人在其电脑按门户快速开始取得11工具与查询结果",
+      "summary": "另一台内网电脑路由、浏览器CA及接收人客户端未实测"
+    },
+    {
+      "reason": "independent-review与security-privacy-review尚无真实通过决定",
+      "impact": "功能与工程验证已交付，正式门禁保持Pending，结果不得标为门禁通过",
+      "owner": "用户或有权独立审查者",
+      "reentry_condition": "对当前交付与证据作出真实可核对的独立和安全审查决定",
+      "summary": "independent-review与security-privacy-review尚无真实通过决定"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/report.md"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-PORTAL-20261030-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T18:46:46.185306Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-PORTAL-20261030-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T18:46:46.185306Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-MCP-PORTAL-20261030-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T18:46:46.185306Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "PRD",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-prd",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/prd/portal.md",
+      "reason": "本次MCP门户需求、权限、验证与交接的实际载体",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T19:23:25.404140+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "TDS",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-tds",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/design/technical-design.md",
+      "reason": "本次MCP门户需求、权限、验证与交接的实际载体",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T19:23:25.404140+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "VER",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-ver",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/results.json",
+      "reason": "本次MCP门户需求、权限、验证与交接的实际载体",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T19:23:25.404140+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": "RCR",
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-rcr",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/verification/coverage.json",
+      "reason": "本次MCP门户需求、权限、验证与交接的实际载体",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T19:23:25.404140+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Generated"
+    },
+    {
+      "meta_type": "AuthorityAsset",
+      "legacy_kind": "RLC",
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-MCP-PORTAL-20261030-01-rlc",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-MCP-PORTAL-20261030-01/release/operator-handoff.md",
+      "reason": "本次MCP门户需求、权限、验证与交接的实际载体",
+      "rule_reference": "C03/C05/C06/C09/C11/C12",
+      "owner": "当前任务用户",
+      "source_snapshot": "2026-10-29T19:23:25.404140+00:00",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    }
+  ],
+  "amendments": [],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "e424fb4cd10972d644d72047b6fd8c96b50c8404477743978ce6cf7043b1a1a4",
+    "scope_sha256": "3e94387657df0b1d651810d89bbd8e75a54fc81ba31ab0be02bb9df484efb2ec",
+    "delivery_sha256": "c55effcf7ee6ef8e1c905382afaa6774b06d3c455ceedb536557bbf0a51677ff",
+    "report_sha256": "4eafa905a3a8522fca40095b4a4e060f8d4e8c36f48e6270ce36a6d5fc7bb8f0"
+  }
+}

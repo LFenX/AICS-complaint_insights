@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "在已授权范围修正同步错误状态、libpq真实地址校验和客户端依赖说明，所有数据权限、认证、监听及生产边界不变",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3abe87bcbb78087efa3ca546fccd12ae06332792e98ec39820521aea8b62033f",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

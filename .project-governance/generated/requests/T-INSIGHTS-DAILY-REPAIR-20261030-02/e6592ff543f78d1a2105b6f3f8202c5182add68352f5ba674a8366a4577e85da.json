@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存第二次审查返修73项验证后的稳定版本，绑定四项边界修复和安装skill 1.0.2，归属原父审查并保持用户验收Pending",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "011316e2d866b6e6acc88c157e6b5f36d916d5031641ead7161eb570e93ba179",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-02"
+}

@@ -1,0 +1,5 @@
+{
+  "table": "messages",
+  "limit": 20,
+  "source_id": "production-ai-customer"
+}

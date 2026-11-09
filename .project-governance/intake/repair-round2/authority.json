@@ -1,0 +1,16 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "连接前拒绝缺少主机、端口或数据库名的连接串"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-REPAIR-20261029-02/discovery/survey.md",
+      ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-2-results.json"
+    ],
+    "verified_at": "2026-10-29T12:15:02.311854+00:00",
+    "expires_at": null
+  }
+]

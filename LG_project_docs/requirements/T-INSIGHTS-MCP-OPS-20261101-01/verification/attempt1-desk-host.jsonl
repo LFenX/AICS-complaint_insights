@@ -1,0 +1,6 @@
+{"at":"2026-10-31T17:08:09.0180016+00:00","host_pid":284800,"event":"host_started","port":3029,"service":"desk","account":"HZPCC1360433\\Administrator"}
+{"at":"2026-10-31T17:08:09.6479513+00:00","host_pid":284800,"event":"worker_started","port":3029,"service":"desk","wrapper_pid":158908}
+{"at":"2026-10-31T17:08:09.6599216+00:00","host_pid":284800,"event":"worker_start_failed","service":"desk","error_type":"MethodInvocationException","retry_after_seconds":10}
+{"host_pid":284800,"error_type":"MethodInvocationException","service":"desk","event":"host_failed","at":"2026-10-31T17:08:09.6628520+00:00"}
+{"at":"2026-10-31T17:09:03.3617854+00:00","host_pid":285188,"event":"host_started","port":3029,"service":"desk","account":"HZPCC1360433\\Administrator"}
+{"host_pid":285188,"error_type":"MethodInvocationException","service":"desk","event":"host_failed","at":"2026-10-31T17:09:03.4002993+00:00"}

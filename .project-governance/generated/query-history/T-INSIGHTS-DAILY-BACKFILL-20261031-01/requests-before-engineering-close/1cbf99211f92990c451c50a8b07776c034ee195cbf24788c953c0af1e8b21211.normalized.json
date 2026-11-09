@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "核验已发布10月30日补报：只读日终捕获与全局隔离、921逐封与全部主子组/UID/残余、752原件及用户指定五缺件、40完整ZIP、实际HTTP/GUI与默认昨天和历史缺报；留存原文逐条覆盖与实际限制，最终用户验收Pending。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3b906cc0f8fa7687584709aeb39d2fd57308142fb85660594d64ea5ed9bbd199",
+  "task_id": "T-INSIGHTS-DAILY-BACKFILL-20261031-01"
+}

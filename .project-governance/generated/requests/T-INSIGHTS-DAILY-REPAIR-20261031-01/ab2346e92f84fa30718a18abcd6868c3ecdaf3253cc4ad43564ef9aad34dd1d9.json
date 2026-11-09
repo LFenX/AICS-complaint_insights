@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "恢复先前已授权的3030原配置服务，读取当前PID并仅启动board，隔离生产与其他服务，记录失败重验和同范围安全审查证据",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "19bf3975efe8bea4a3e18e9200eabe273b3ca7aba28c9cc52a82cf7723fe695a",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-01"
+}

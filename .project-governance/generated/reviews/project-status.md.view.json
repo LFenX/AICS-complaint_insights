@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-complaint-insights-STATUS",
+  "view_kind": "project-status-review",
+  "legacy_kind": null,
+  "generated_at": "2026-11-02T12:05:11.066534Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "d5664c508a29e79a1de80bf635069246e94ed2aadc59a282a1d4cddb169680ae",
+  "sources": [
+    ".project-governance/project-state.json"
+  ],
+  "content_ref": ".project-governance/generated/reviews/project-status.md",
+  "integrity_status": "Complete"
+}

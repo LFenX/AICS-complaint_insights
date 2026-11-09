@@ -1,0 +1,10 @@
+{
+  "observed_at": "2026-10-29T10:20:32.180339+00:00",
+  "action": "adversarial_review Offer registration",
+  "result": "Refused",
+  "reason": "offer adversarial review only after an Implemented engineering result is saved",
+  "current_engineering_record_status": "Deferred",
+  "actual_offer_was_shown": true,
+  "review_started": false,
+  "next_condition": "A genuine required Gate decision and eligible engineering result; do not fabricate approval or overwrite the saved outcome"
+}

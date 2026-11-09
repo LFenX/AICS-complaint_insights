@@ -1,0 +1,32 @@
+"""Standalone feature, permission ancestry, action and audit contracts."""
+PERMISSIONS = {
+    "insights": None,
+    "insights.read": "insights",
+    "insights.taxonomy.read": "insights.read",
+    "insights.mail.read": "insights.read",
+    "insights.report_context.read": "insights.read",
+    "insights.sync_status.read": "insights.read",
+    "insights.source_records.read": "insights.read",
+    "insights.daily_report.read": "insights.read",
+    "insights.attachments.read": "insights.mail.read",
+    "insights.attachments.logs.export": "insights.attachments.read",
+    "insights.admin": "insights",
+    "insights.daily_report.generate": "insights.admin",
+    "insights.tokens.manage": "insights.admin",
+}
+CAPABILITIES = {
+    "taxonomy": {"permission":"insights.taxonomy.read","action":"taxonomy.read","risk":"LOW","scope":"RESOURCE","audit":"metadata"},
+    "mails": {"permission":"insights.mail.read","action":"mail.read","risk":"MEDIUM","scope":"RESOURCE","audit":"metadata"},
+    "daily": {"permission":"insights.report_context.read","action":"daily.read","risk":"MEDIUM","scope":"RESOURCE","audit":"metadata"},
+    "report_context": {"permission":"insights.report_context.read","action":"report-context.read","risk":"MEDIUM","scope":"RESOURCE","audit":"metadata"},
+    "sync_status": {"permission":"insights.sync_status.read","action":"sync-status.read","risk":"LOW","scope":"RESOURCE","audit":"technical endpoint; authenticated, metadata only"},
+    "source_tables": {"permission":"insights.source_records.read","action":"source-tables.read","risk":"LOW","scope":"RESOURCE","audit":"metadata"},
+    "source_records": {"permission":"insights.source_records.read","action":"source-records.read","risk":"MEDIUM","scope":"RESOURCE","audit":"metadata"},
+    "mcp": {"permission":"insights.read","action":"mcp.read","risk":"MEDIUM","scope":"RESOURCE","audit":"dedicated bearer identity, tool name/status/duration; no arguments or content"},
+    "daily_board": {"permission":"insights.daily_report.read","action":"daily-report.read","risk":"MEDIUM","scope":"RESOURCE","audit":"date-scoped published local read models; local OS operator or explicitly allowed RFC1918 TCP peer; exact Host; Origin absent, same as Host, or an exact configured frame ancestor; action/business_date/peer/identity/status/duration only; INSIGHTS_DAILY_BOARD_ENABLED=0 disables"},
+    "daily_generation": {"permission":"insights.daily_report.generate","action":"daily-report.generate","risk":"MEDIUM","scope":"RESOURCE","audit":"local OS task operator only, no HTTP/MCP mutation route; explicit local reader profile, source-bound reviews and closed-day checks; immutable dated directory; action/business_date/status only"},
+    "attachment_preview": {"permission":"insights.attachments.read","action":"attachment.read","risk":"MEDIUM","scope":"RESOURCE","audit":"local report allowlist and verified file ID; no filesystem path input; covered by daily-report.read audit"},
+    "daily_log_archive": {"permission":"insights.attachments.logs.export","action":"log-archive.read","risk":"MEDIUM","scope":"RESOURCE","audit":"local OS operator or explicitly allowed RFC1918 TCP peer; exact Host; Origin absent, same as Host, or an exact configured frame ancestor; report version and archive allowlist; action/resource/peer/identity/status/duration only; INSIGHTS_DAILY_LOG_ARCHIVE_ENABLED=0 disables"},
+    "token_issue": {"permission":"insights.tokens.manage","action":"token.issue","risk":"HIGH","scope":"GLOBAL","audit":"independent owner login; HTTPS/private peer/Host/Origin/session/CSRF; admin and target identity/status only, never credential; not callable by MCP bearer"},
+    "token_revoke": {"permission":"insights.tokens.manage","action":"token.revoke","risk":"HIGH","scope":"GLOBAL","audit":"independent owner login; HTTPS/private peer/Host/Origin/session/CSRF and explicit confirmation; no credentials in audit; not callable by MCP bearer"},
+}

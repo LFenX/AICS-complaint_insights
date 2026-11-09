@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存默认上一自然日日报及4项已复验修复，直接归属已授权父审查；保持用户决定Pending与生产隔离",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "0094d5075cff3428cc0c75cab15c19d4fbffff6385285998d516c248ddee76e3",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261030-01"
+}

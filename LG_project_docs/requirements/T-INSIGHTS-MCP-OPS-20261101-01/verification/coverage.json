@@ -1,0 +1,47 @@
+[
+  {
+    "id": "R-01",
+    "source": "request_snapshot",
+    "quote": "把MCP和门户服务启动起来，查一下为什么停了。",
+    "reading": "恢复两个服务",
+    "actual": "门户首页/登录/指南200，严格CA原密钥MCP协商、11工具发现、14表目录和邮件样本成功，无密钥401；自动恢复后再次调用通过",
+    "state": "Covered",
+    "result": "Passed",
+    "investigation_executed": null,
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+    ]
+  },
+  {
+    "id": "R-02",
+    "source": "request_snapshot",
+    "quote": "把MCP和门户服务启动起来，查一下为什么停了。",
+    "reading": "调查停止原因并保留事实/未知",
+    "actual": "旧日志、系统启动记录、应用事件与Security审计已检查；无独立托管/恢复已确认，直接停止触发证据不足明确Unknown",
+    "state": "Deferred",
+    "result": "NotRun",
+    "investigation_executed": true,
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+    ]
+  },
+  {
+    "id": "R-03",
+    "source": "request_snapshot",
+    "quote": "脱离ChatGPT绘画独立运行。",
+    "reading": "服务脱离ChatGPT会话由Windows独立托管",
+    "actual": "S4U当前账户Limited任务Running，父链到Windows服务；两服务自动恢复，MCP自有worker退出码-1被记录并11.81秒恢复",
+    "state": "Covered",
+    "result": "Passed",
+    "investigation_executed": null,
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/results.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/independent-hosts.json",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-OPS-20261101-01/verification/final-runtime.json"
+    ]
+  }
+]

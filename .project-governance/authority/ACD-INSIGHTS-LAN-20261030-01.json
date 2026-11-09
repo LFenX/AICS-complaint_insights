@@ -1,0 +1,41 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "AuthorityAsset",
+  "project_id": "complaint-insights",
+  "asset_id": "ACD-INSIGHTS-LAN-20261030-01",
+  "legacy_kind": "ACD",
+  "profile_state_model": "DEC",
+  "title": "3030内网看板安全隐私门禁决定",
+  "owner": "user",
+  "state": "Approved",
+  "revision": "1",
+  "source": [
+    "本会话直接用户回复，通过本轮门禁；questionItemId=[\"request_user_input_async\",\"call_a8e489ad167441fbaa38ececba23e3b1\",0]"
+  ],
+  "scope": [
+    "本轮3030内网只读看板的安全隐私门禁，采用提问中展示的监听、访问范围和验证限制"
+  ],
+  "trace_links": [
+    {
+      "relation": "references",
+      "target": "T-INSIGHTS-GITHUB-20261030-01"
+    }
+  ],
+  "native_format": "json",
+  "content_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/security-gate-decision.json",
+  "access_classification": "internal",
+  "retention_rule": "follow-source-asset",
+  "history_ref": "本会话原始回复及TaskOutcome Amendment历史",
+  "profile_fields": {
+    "decision_scope": [
+      "本轮3030内网只读看板的安全隐私门禁，采用提问中展示的监听、访问范围和验证限制"
+    ],
+    "gate_id": "security-privacy-review",
+    "outcome": "Approved",
+    "response": "通过本轮门禁",
+    "recorded_at": "2026-10-30T14:14:06.678441+08:00",
+    "engineering_subject_sha256": "6f3559562f876b46d52758a878f5cfeb3d1055415a42547d5e6654df03e8ab88",
+    "source_commit": "d36486b27f1a9a92edb35aa825df09a8dd0edb5b",
+    "evidence_ref": "LG_project_docs/requirements/T-INSIGHTS-GITHUB-20261030-01/verification/security-gate-decision.json"
+  }
+}

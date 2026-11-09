@@ -1,0 +1,18 @@
+[
+  {
+    "reference": "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md",
+    "source_kind": "UserDirective",
+    "status": "Valid",
+    "scope_refs": [
+      "修复第二轮确认的原始字符串、客户端凭据创建与非法信封协议边界，回归两轮全部七项问题",
+      "同步真实Schema、公开指南和无凭据包，只部署desk/mcp并验证全部原始MCP需求",
+      "保存新交付版本，沿用用户多轮审查授权与正式人类门禁Pending，不改旧结果"
+    ],
+    "evidence_refs": [
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/discovery/survey.md",
+      "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-01/discovery/survey.md"
+    ],
+    "verified_at": "2026-10-29T20:05:05.628409+00:00",
+    "expires_at": null
+  }
+]

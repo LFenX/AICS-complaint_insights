@@ -1,0 +1,575 @@
+{
+  "started_at": "2026-10-29T11:13:29.447245+00:00",
+  "checks": [
+    {
+      "name": "baseline-63-files",
+      "passed": true,
+      "actual": {
+        "files": 63,
+        "mismatches": [],
+        "manifest_sha256": "d798e80d7b0dddcf96f4ed165903024d875c0d29a9a354fd501f83a008043bfb"
+      }
+    },
+    {
+      "name": "real-source-transaction-readonly",
+      "passed": true
+    },
+    {
+      "name": "three-catalog-files-byte-hashes",
+      "passed": true,
+      "actual": {
+        "count": 3
+      }
+    },
+    {
+      "name": "real-source-ready",
+      "passed": true,
+      "actual": {
+        "source_id": "development-local",
+        "status": "READY",
+        "data_version": 3
+      }
+    },
+    {
+      "name": "all-14-current-source-row-sha256",
+      "passed": true,
+      "actual": {
+        "tables": 14,
+        "equal": 14
+      }
+    },
+    {
+      "name": "fixture-initial-14-tables",
+      "passed": true,
+      "actual": {
+        "tables": 14
+      }
+    },
+    {
+      "name": "beijing-midnight-and-per-row-legacy-offset",
+      "passed": false
+    },
+    {
+      "name": "all-current-mail-retained-null-date-bigint-and-direction",
+      "passed": true,
+      "actual": {
+        "count": 9
+      }
+    },
+    {
+      "name": "manual-classification-excluded-raw-ai-retained",
+      "passed": true
+    },
+    {
+      "name": "full-original-ai-html-and-attachment-metadata",
+      "passed": true
+    },
+    {
+      "name": "incomplete-ai-keeps-pending-bucket",
+      "passed": true
+    },
+    {
+      "name": "all-issues-parent-dedup-and-exclusive-end",
+      "passed": false,
+      "actual": {
+        "rows": 2,
+        "mail_count": 2,
+        "issue_count": 3
+      }
+    },
+    {
+      "name": "report-date-category-structure-and-explicit-body",
+      "passed": true
+    },
+    {
+      "name": "mails-pagination-null-date-and-bigint-lossless",
+      "passed": true
+    },
+    {
+      "name": "taxonomy-pagination-retains-dynamic-and-legacy",
+      "passed": true,
+      "actual": {
+        "categories": 105
+      }
+    },
+    {
+      "name": "all-14-source-record-pagination-including-orphan-ai",
+      "passed": true
+    },
+    {
+      "name": "all-14-complete-source-record-payloads",
+      "passed": true
+    },
+    {
+      "name": "api-parameter-rejection",
+      "passed": true,
+      "actual": [
+        422,
+        422,
+        422,
+        422,
+        422,
+        422
+      ]
+    },
+    {
+      "name": "api-auth-all-registered-query-types",
+      "passed": true
+    },
+    {
+      "name": "api-no-write-method",
+      "passed": true
+    },
+    {
+      "name": "sql-injection-value-is-data",
+      "passed": true
+    },
+    {
+      "name": "archive-not-double-counted-and-410",
+      "passed": true
+    },
+    {
+      "name": "query-uses-target-with-source-disconnected",
+      "passed": true
+    },
+    {
+      "name": "api-capability-parent-chain-and-disabled-source",
+      "passed": true
+    },
+    {
+      "name": "sql-reader-privileges-after-readonly-disabled",
+      "passed": true,
+      "actual": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "name": "source-connection-write-blocked",
+      "passed": true
+    },
+    {
+      "name": "cursor-source-and-filter-binding",
+      "passed": true
+    },
+    {
+      "name": "sql-repeatable-read-retains-published-snapshot",
+      "passed": true
+    },
+    {
+      "name": "event-incremental-iud",
+      "passed": true
+    },
+    {
+      "name": "cursor-version-conflict",
+      "passed": true
+    },
+    {
+      "name": "source-namespace-no-cross-update",
+      "passed": true
+    },
+    {
+      "name": "deleted-source-tombstone-keeps-original-payload",
+      "passed": true
+    },
+    {
+      "name": "empty-poll-no-version-increase",
+      "passed": true
+    },
+    {
+      "name": "late-ai-completion-original-business-day",
+      "passed": true
+    },
+    {
+      "name": "no-event-aux-update-delete-and-catalog-state",
+      "passed": true
+    },
+    {
+      "name": "late-commit-new-counterexample",
+      "passed": true
+    },
+    {
+      "name": "outside-tail-recovered-by-due-full-reconcile",
+      "passed": true
+    },
+    {
+      "name": "pruned-reset-log-full-recovery",
+      "passed": true
+    },
+    {
+      "name": "atomic-failure-no-data-or-watermark-publish",
+      "passed": true
+    },
+    {
+      "name": "fresh-process-restart-resumes-persisted-watermark",
+      "passed": true,
+      "actual": {
+        "status": "READY",
+        "data_version": 9,
+        "mode": "INCREMENTAL",
+        "changed_rows": 1
+      }
+    },
+    {
+      "name": "missing-catalog-degraded-preserves-published-version",
+      "passed": true
+    },
+    {
+      "name": "catalog-restoration-recovers-ready",
+      "passed": true
+    },
+    {
+      "name": "schema-contract-drift-stops-publication",
+      "passed": true
+    },
+    {
+      "name": "schema-contract-restoration-recovers",
+      "passed": true
+    },
+    {
+      "name": "R2-01-implicit-environment-destination-reproduced",
+      "passed": true,
+      "actual": {
+        "validated_identity": {
+          "host": "localhost",
+          "port": "5432",
+          "dbname": "complaint_insights_r2_source_test_e9bfd144fd26"
+        },
+        "actual_local_connection": {
+          "host": "127.0.0.1",
+          "port": "15433",
+          "dbname": "complaint_insights_r2_source_test_e9bfd144fd26"
+        },
+        "offline_remote_validation": {
+          "accepted": true,
+          "identity": {
+            "host": "localhost",
+            "port": "5432",
+            "dbname": "synthetic"
+          },
+          "effective_host": "203.0.113.1",
+          "effective_port": "6543",
+          "connection_attempted": false
+        }
+      }
+    },
+    {
+      "name": "real-https-mcp-11-readonly-structured-tools",
+      "passed": true,
+      "actual": {
+        "count": 11
+      }
+    },
+    {
+      "name": "real-https-all-11-tools-called",
+      "passed": true,
+      "actual": {
+        "called": 11,
+        "tables": 14
+      }
+    },
+    {
+      "name": "real-mcp-invalid-parameters-and-cursor",
+      "passed": true,
+      "actual": {
+        "rejected": 5
+      }
+    },
+    {
+      "name": "real-mcp-guide-resource",
+      "passed": true
+    },
+    {
+      "name": "real-https-token-host-origin-and-proxy-host",
+      "passed": true,
+      "actual": {
+        "wrong-token": 401,
+        "api-token-cannot-auth-mcp": 401,
+        "bad-host": 421,
+        "bad-origin": 403,
+        "proxy-host-spoof": 421
+      }
+    },
+    {
+      "name": "actual-peer-and-scheme-asgi-branch-tests",
+      "passed": true,
+      "actual": [
+        200,
+        403,
+        403
+      ]
+    },
+    {
+      "name": "server-private-ca-required",
+      "passed": false
+    },
+    {
+      "name": "handoff-exact-11-allowlisted-files-and-integrity",
+      "passed": true,
+      "actual": {
+        "count": 11
+      }
+    },
+    {
+      "name": "handoff-public-file-hashes-current",
+      "passed": true
+    },
+    {
+      "name": "handoff-token-current-no-db-password-or-private-key",
+      "passed": true
+    },
+    {
+      "name": "production-config-disabled-isolated-source-verify-full",
+      "passed": true
+    },
+    {
+      "name": "baseline-63-files",
+      "passed": true,
+      "actual": {
+        "files": 63,
+        "mismatches": [],
+        "manifest_sha256": "d798e80d7b0dddcf96f4ed165903024d875c0d29a9a354fd501f83a008043bfb"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "R2-01",
+      "summary": "省略主机/端口时忽略 PGHOST/PGPORT 环境目的地址，生产门禁和来源绑定与实际连接脱离"
+    }
+  ],
+  "baseline": {
+    "files": 63,
+    "mismatches": [],
+    "manifest_sha256": "d798e80d7b0dddcf96f4ed165903024d875c0d29a9a354fd501f83a008043bfb"
+  },
+  "real_parity": [
+    {
+      "table": "mailboxes",
+      "source": {
+        "count": 8,
+        "sha256": "63a61fb2e314e15468ba3ea47bcb67f547c1a05c327d0c63ddae60e394b913ba"
+      },
+      "mirror": {
+        "count": 8,
+        "sha256": "63a61fb2e314e15468ba3ea47bcb67f547c1a05c327d0c63ddae60e394b913ba"
+      },
+      "equal": true
+    },
+    {
+      "table": "folders",
+      "source": {
+        "count": 59,
+        "sha256": "1008798c598dfdd4663b70778b76ff3a6784f79124623c96fe1f4a217c0b0fc3"
+      },
+      "mirror": {
+        "count": 59,
+        "sha256": "1008798c598dfdd4663b70778b76ff3a6784f79124623c96fe1f4a217c0b0fc3"
+      },
+      "equal": true
+    },
+    {
+      "table": "messages",
+      "source": {
+        "count": 53119,
+        "sha256": "7e4392d4162bcd634061362b95b48fd892a873ee5e1e2e355d996d5dec5487a9"
+      },
+      "mirror": {
+        "count": 53119,
+        "sha256": "7e4392d4162bcd634061362b95b48fd892a873ee5e1e2e355d996d5dec5487a9"
+      },
+      "equal": true
+    },
+    {
+      "table": "attachments",
+      "source": {
+        "count": 21974,
+        "sha256": "e59003254419c8a157cad5a7b528503a6c07663d10032f8a3e0f054e740d4754"
+      },
+      "mirror": {
+        "count": 21974,
+        "sha256": "e59003254419c8a157cad5a7b528503a6c07663d10032f8a3e0f054e740d4754"
+      },
+      "equal": true
+    },
+    {
+      "table": "imap_reconcile_archive",
+      "source": {
+        "count": 91,
+        "sha256": "c2eafbac1624324f3cdb9d91afcde74abd62433b5dab58a8d1116202ac429842"
+      },
+      "mirror": {
+        "count": 91,
+        "sha256": "c2eafbac1624324f3cdb9d91afcde74abd62433b5dab58a8d1116202ac429842"
+      },
+      "equal": true
+    },
+    {
+      "table": "InboundMail",
+      "source": {
+        "count": 41723,
+        "sha256": "3f0c6696a4120197d5c5a978a2dd0ced3264d074cd2a89f5152b1625d6aa8e91"
+      },
+      "mirror": {
+        "count": 41723,
+        "sha256": "3f0c6696a4120197d5c5a978a2dd0ced3264d074cd2a89f5152b1625d6aa8e91"
+      },
+      "equal": true
+    },
+    {
+      "table": "MailAiArtifact",
+      "source": {
+        "count": 35544,
+        "sha256": "e0ceee86fe058a0e3daf2522327adbda827fb07b04d05a3cd9bb4061ea9e59d9"
+      },
+      "mirror": {
+        "count": 35544,
+        "sha256": "e0ceee86fe058a0e3daf2522327adbda827fb07b04d05a3cd9bb4061ea9e59d9"
+      },
+      "equal": true
+    },
+    {
+      "table": "MailIssueBinding",
+      "source": {
+        "count": 18396,
+        "sha256": "ae3fe1648ea5fc1cab174c55ce013bf9758421f05253192221b82c1401481908"
+      },
+      "mirror": {
+        "count": 18396,
+        "sha256": "ae3fe1648ea5fc1cab174c55ce013bf9758421f05253192221b82c1401481908"
+      },
+      "equal": true
+    },
+    {
+      "table": "TaxonomyCandidate",
+      "source": {
+        "count": 2435,
+        "sha256": "2361d3b621037b71778dfa10fe9301f558a353d5b729f6fe15b2762ae085f4cb"
+      },
+      "mirror": {
+        "count": 2435,
+        "sha256": "2361d3b621037b71778dfa10fe9301f558a353d5b729f6fe15b2762ae085f4cb"
+      },
+      "equal": true
+    },
+    {
+      "table": "IssueTypeProposal",
+      "source": {
+        "count": 6357,
+        "sha256": "37fea3aa77ef27ce967de5d3b2b92658ca48303cd4279555e8fdeaade04d7e31"
+      },
+      "mirror": {
+        "count": 6357,
+        "sha256": "37fea3aa77ef27ce967de5d3b2b92658ca48303cd4279555e8fdeaade04d7e31"
+      },
+      "equal": true
+    },
+    {
+      "table": "TaxonomyCandidateSupport",
+      "source": {
+        "count": 6122,
+        "sha256": "f51d6b31424624435fa1fd1055bbab30daa55d31a778e9d43c3f8cf85b73f379"
+      },
+      "mirror": {
+        "count": 6122,
+        "sha256": "f51d6b31424624435fa1fd1055bbab30daa55d31a778e9d43c3f8cf85b73f379"
+      },
+      "equal": true
+    },
+    {
+      "table": "IssueTypeRegistry",
+      "source": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mirror": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "table": "IssueTypeAlias",
+      "source": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mirror": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    },
+    {
+      "table": "IssueGroupLifecycle",
+      "source": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "mirror": {
+        "count": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "equal": true
+    }
+  ],
+  "fixture": {
+    "databases": [
+      "complaint_insights_r2_source_test_e9bfd144fd26",
+      "complaint_insights_r2_target_test_e9bfd144fd26"
+    ],
+    "cluster_role_mutations_skipped": 5,
+    "test_only": true,
+    "destroyed": 2
+  },
+  "destination_environment": {
+    "validated_identity": {
+      "host": "localhost",
+      "port": "5432",
+      "dbname": "complaint_insights_r2_source_test_e9bfd144fd26"
+    },
+    "actual_local_connection": {
+      "host": "127.0.0.1",
+      "port": "15433",
+      "dbname": "complaint_insights_r2_source_test_e9bfd144fd26"
+    },
+    "offline_remote_validation": {
+      "accepted": true,
+      "identity": {
+        "host": "localhost",
+        "port": "5432",
+        "dbname": "synthetic"
+      },
+      "effective_host": "203.0.113.1",
+      "effective_port": "6543",
+      "connection_attempted": false
+    }
+  },
+  "handoff": {
+    "file_count": 11,
+    "ca_der_sha256": "6ae4dee46fcebdf1c2d2137973a8c655b871b216aaf6fecb9e6a9ccae053c879",
+    "endpoint_keys": [
+      "url",
+      "transport",
+      "allowed_networks",
+      "ca_certificate",
+      "ca_sha256",
+      "server_certificate_sha256",
+      "server_certificate_expires_at",
+      "credentials_file"
+    ]
+  },
+  "completed_at": "2026-10-29T11:14:01.962026+00:00",
+  "summary": {
+    "passed": 54,
+    "checks": 57,
+    "failed_checks": [
+      "beijing-midnight-and-per-row-legacy-offset",
+      "all-issues-parent-dedup-and-exclusive-end",
+      "server-private-ca-required"
+    ],
+    "findings": 1
+  }
+}

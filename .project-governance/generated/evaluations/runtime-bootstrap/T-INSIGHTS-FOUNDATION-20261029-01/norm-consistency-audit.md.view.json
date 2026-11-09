@@ -1,0 +1,16 @@
+{
+  "schema_version": "6.3-candidate",
+  "meta_type": "DerivedView",
+  "project_id": "complaint-insights",
+  "view_id": "DV-T-INSIGHTS-FOUNDATION-20261029-01-NORM-AUDIT-MD",
+  "view_kind": "norm-consistency-audit-review",
+  "legacy_kind": null,
+  "generated_at": "2026-10-29T08:27:19.392207Z",
+  "generator": "run-governed-product-workflow/scripts/governance_artifacts.py",
+  "source_snapshot": "acf4b56cd3a104183aff14466cb061beae4c01bb8c7f26b930ca9af9724998f1",
+  "sources": [
+    ".project-governance/generated/evaluations/runtime-bootstrap/T-INSIGHTS-FOUNDATION-20261029-01/norm-consistency-audit.json"
+  ],
+  "content_ref": ".project-governance/generated/evaluations/runtime-bootstrap/T-INSIGHTS-FOUNDATION-20261029-01/norm-consistency-audit.md",
+  "integrity_status": "Complete"
+}

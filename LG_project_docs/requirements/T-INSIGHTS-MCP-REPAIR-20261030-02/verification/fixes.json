@@ -1,0 +1,70 @@
+{
+  "verified_at": "2026-10-29T20:14:54.222387+00:00",
+  "findings": [
+    {
+      "id": "R1-01",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_token_desk.py",
+        ".runtime/mcp-portal-repair2-tests-A01.log"
+      ],
+      "actual": "同Cookie512次刷新复用；清Cookie第9活跃挑战429；另一peer登录303；601秒恢复"
+    },
+    {
+      "id": "R1-02",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_token_desk.py",
+        ".runtime/mcp-portal-repair2-tests-A01.log"
+      ],
+      "actual": "registry损坏网页登录303、管理200有撤销表单、发放400、撤销303，授权归零且原损坏文件保留"
+    },
+    {
+      "id": "R1-03",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ],
+      "actual": "原始HTTP错误JSON类型、日期和额外参数isError，夹具后端零调用；真实服务相同拒绝"
+    },
+    {
+      "id": "R1-04",
+      "result": "Fixed",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ],
+      "actual": "未知工具顶层error.code=-32602、原请求id保留、无result"
+    },
+    {
+      "id": "R2-01",
+      "result": "Fixed",
+      "actual": "合法null/[]/{}/[1]/引号/false/数字字符串原样传递；真实source_id字符串null为NOT_FOUND，不再查默认源",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ]
+    },
+    {
+      "id": "R2-02",
+      "result": "Fixed",
+      "actual": "真实Windows合成Users可读父目录中首次写入前已移除Users读取；完整/部分写入和fsync/ACL故障后无文件；已有配置保留",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/client-acl-results.json"
+      ]
+    },
+    {
+      "id": "R2-03",
+      "result": "Fixed",
+      "actual": "非法信封-32600、破损JSON-32700、未知方法-32601、协议参数/未知工具-32602、业务参数isError均通过，非法信封不回显输入",
+      "evidence_refs": [
+        "tests/test_mcp.py",
+        "LG_project_docs/requirements/T-INSIGHTS-MCP-REPAIR-20261030-02/verification/results.json"
+      ]
+    }
+  ],
+  "test_count": 36,
+  "live_check_count": 15
+}

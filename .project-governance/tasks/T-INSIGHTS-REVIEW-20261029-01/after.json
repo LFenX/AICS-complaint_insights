@@ -1,0 +1,191 @@
+{
+  "schema_version": "6.3-candidate",
+  "proof_contract_version": "implemented-proof-v1",
+  "meta_type": "TaskOutcome",
+  "project_id": "complaint-insights",
+  "work_item_id": "LOCAL-ANALYTICS-FOUNDATION",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01",
+  "revision": 3,
+  "status": "Implemented",
+  "user_decision": {
+    "outcome": "Pending"
+  },
+  "adversarial_review": [
+    {
+      "event": "Offer",
+      "prompt": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+      "evidence_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+      "recorded_at": "2026-10-29T11:04:47.043791+00:00"
+    },
+    {
+      "event": "Decision",
+      "outcome": "Accepted",
+      "response": "启动多轮对抗性审查",
+      "decided_by": "当前聊天用户",
+      "evidence_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+      "recorded_at": "2026-10-29T11:04:47.247898+00:00"
+    }
+  ],
+  "completed_at": "2026-10-29T11:04:11.644114Z",
+  "source_snapshot": {
+    "repository": "complaint-insights",
+    "root": "D:\\LFEN_project\\dev_project\\complaint-insights",
+    "vcs": "unavailable",
+    "captured_at": "2026-10-29T11:04:11.644405Z"
+  },
+  "established_facts": [
+    "本地开发副本及MCP运行，三项预审缺陷已修复，原隐私门禁真实批准保留；最终人工验收Pending"
+  ],
+  "actual_changes": [
+    "修复分类文件失败状态、拒绝libpq隐式目的地址覆盖、交接Python最低版本3.11；原数据库结构、认证、监听和读取范围不变"
+  ],
+  "verification": [
+    {
+      "result": "Passed",
+      "summary": "50项单元、真实隔离PostgreSQL与MCP协议/权限契约测试通过；三个预审缺陷回归通过",
+      "evidence_refs": [
+        ".runtime/unittest-review-fixes.log",
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/verification/fix-results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "严格HTTPS发现11个工具，修复后来源READY；更新交接包11文件且Python下限3.11",
+      "evidence_refs": [
+        "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/verification/fix-results.json"
+      ]
+    },
+    {
+      "result": "Passed",
+      "summary": "14表开发源与本地副本逐行内容SHA256一致；独立预审的分页/断线/迟提交/归档等实体反例成功",
+      "evidence_refs": [
+        ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/round-1-results.json"
+      ]
+    }
+  ],
+  "incomplete_items": [
+    {
+      "summary": "真实生产接入未执行",
+      "reason": "尚未接通生产，用户没有授予重启权限",
+      "impact": "当前仅为development-local开发副本",
+      "owner": "用户与生产服务器agent",
+      "reentry_condition": "生产监听、凭据及证书就绪并具备只读接入授权"
+    },
+    {
+      "summary": "另一台内网电脑验收未执行",
+      "reason": "未取得接收方电脑执行环境",
+      "impact": "已验证服务端及通过内网IP的真实HTTPS协议，未证明接收方实际路由",
+      "owner": "接收方",
+      "reentry_condition": "按交接手册在接收方验证网络、CA、令牌与客户端"
+    }
+  ],
+  "legacy_issues": [],
+  "decisions": [],
+  "evidence_refs": [
+    "LG_project_docs/requirements/T-INSIGHTS-REVIEW-20261029-01/verification/delivery-manifest.json"
+  ],
+  "next_tasks": [],
+  "artifact_manifest": [
+    {
+      "meta_type": "TaskContract",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-before",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/before.json",
+      "reason": "freeze execution input",
+      "rule_reference": "VC-PPG-PRO-001 §8.1",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "RunLedger",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-run",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/run.jsonl",
+      "reason": "record material execution events",
+      "rule_reference": "VC-PPG-PRO-001 §8.2",
+      "owner": "execution-agent",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    },
+    {
+      "meta_type": "TaskOutcome",
+      "legacy_kind": null,
+      "action": "Create/Revise",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-after",
+      "content_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/after.json",
+      "reason": "record terminal facts and residue",
+      "rule_reference": "VC-PPG-PRO-001 §8.3",
+      "owner": "task-initiator",
+      "source_snapshot": "2026-10-29T08:27:18.290309Z",
+      "human_confirmation_refs": [],
+      "outcome": "Created"
+    },
+    {
+      "meta_type": "DerivedView",
+      "legacy_kind": null,
+      "action": "Generate",
+      "asset_id": "T-INSIGHTS-REVIEW-20261029-01-adopted-source-manifest",
+      "content_ref": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/delivery-manifest.json",
+      "reason": "引用原59个实际交付文件的不可变摘要清单；本次只承接工程，不声明已完成审查",
+      "rule_reference": "C09 execution evidence; C05 verification",
+      "owner": "execution-agent",
+      "source_snapshot": "LG_project_docs/requirements/T-INSIGHTS-FOUNDATION-20261029-01/verification/results.json",
+      "human_confirmation_refs": [],
+      "outcome": "Revised"
+    }
+  ],
+  "amendments": [
+    {
+      "from_revision": 1,
+      "to_revision": 2,
+      "reason": "登记已真实收到且持续覆盖同范围返修复验的审查问题与同意，不重新发问",
+      "basis": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+      "changed_at": "2026-10-29T11:04:47.043791+00:00",
+      "path": "adversarial_review.0",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Offer",
+        "prompt": "本地数据库与内网 MCP 工程结果已保存，47 项测试和实际 HTTPS 调用通过。是否启动多轮对抗性审查？发现问题会修复并复验，直到同一版本连续两轮完整审查未发现问题。",
+        "evidence_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+        "recorded_at": "2026-10-29T11:04:47.043791+00:00"
+      }
+    },
+    {
+      "from_revision": 2,
+      "to_revision": 3,
+      "reason": "登记已真实收到且持续覆盖同范围返修复验的审查问题与同意，不重新发问",
+      "basis": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+      "changed_at": "2026-10-29T11:04:47.247898+00:00",
+      "path": "adversarial_review.1",
+      "old_value": {
+        "$missing": true
+      },
+      "new_value": {
+        "event": "Decision",
+        "outcome": "Accepted",
+        "response": "启动多轮对抗性审查",
+        "decided_by": "当前聊天用户",
+        "evidence_ref": ".project-governance/tasks/T-INSIGHTS-REVIEW-20261029-01/evidence/review-authorization.md",
+        "recorded_at": "2026-10-29T11:04:47.247898+00:00"
+      }
+    }
+  ],
+  "scope_reconciliation": {
+    "status": "Skipped",
+    "reason": "no Git baseline in source_snapshot; nothing independent to reconcile against",
+    "out_of_scope": [],
+    "undeclared_untouched": [],
+    "changed_count": 0,
+    "baseline_sha256": "05fb1eecbf89ed95781c77027c159daa4a87590db325773246ee4a47c10fc4d3",
+    "scope_sha256": "ddec508c99ee7a733a83c4d1624682bf44f626ae5037d78d293bdda7cc5b3221",
+    "delivery_sha256": "d62c6da897def597fb40afa80577c74dc82d4d8b6d4ef1c5d7dca90f6ba6d3c4",
+    "report_sha256": "d27bae4c3912b22b20859c985a26d532064e9a2f3fc2d19b5719e8779c5a7d64"
+  }
+}

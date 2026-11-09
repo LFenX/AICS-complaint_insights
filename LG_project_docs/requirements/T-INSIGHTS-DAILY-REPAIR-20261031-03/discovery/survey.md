@@ -1,0 +1,9 @@
+# 首次发布证据门禁勘察
+
+R05-PUBLISH-01，见review-05/independent-report.md及forward-result.json。独立9封新邮件先build，正常首发和复用成功；build后删附件manifest、改其source SHA或置identity_verified=false，首发仍返回published且日期可见，而复用的audit_published_report均拒绝。daily_generation.publish只调用audit_report核对报告和资源字节，未复用正式目录的完整来源/review/quality/附件身份清单校验；复制后暂存也有同一遗漏。
+
+目标是首次发布前与暂存复制后均执行已有完整目录校验，仅完全通过的目录可以rename为正式日期。保持已有目录审计、同日报告不可覆盖、原子切换及失败清理。新增真正失败输入和复制中漂移反例，验证失败时日期不可见且不写成功状态，正常及零附件输入仍可首发/复用。
+
+R05-UID-ROLE-01：103106与103259的真实历史原文明确current账号，103398与103775明确主账号；root已读取4封当前原文、102517/102898/57049/102704必要历史原文及完整UID差异，认可保守提案只补current或primary角色。独立role-proposals.json保存完整current/proposed UID及来源、RFC路径与634行传播闭包，额外当日目标为空。当前单值140/冲突7/待核验5，不需改变UID数字、证据支持状态或分类。完整归档829de9现版815文件后仅修订4封UID及来源元数据，新增确定SHA兼容并更新安装skill基准，不扩大旧格式兼容条件。
+
+数据/AI产物完整性有影响；无新的身份、访问、凭据、权限、隐私数据范围或网络变化，security_privacy_impact=No。界面布局与服务无需改动或重启。生产保持隔离，不连接真实IMAP/数据库/外部模型，不恢复其他服务。沿用Full返修的E01–E05检查覆盖，扩展检查不表示新增外部操作。

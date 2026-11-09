@@ -1,0 +1,10 @@
+{
+  "attempt": 1,
+  "result": "Failed",
+  "reasons": [
+    "覆盖Amendment后active query stale，需要重新编译当前context",
+    "RCR属于DerivedView，不能作为AuthorityAsset收尾"
+  ],
+  "service_effect": "无服务变动，无凭据变动，工程验证结论保留",
+  "correction": "正确标注RCR元类型并刷新收尾查询后重试；结束的Run不补写事件"
+}

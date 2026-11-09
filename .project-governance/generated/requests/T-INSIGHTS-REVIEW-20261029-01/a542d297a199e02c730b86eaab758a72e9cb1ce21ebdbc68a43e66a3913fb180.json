@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "归档第一轮已完成的独立审查报告和探针证据，仅保存既有结论，不修改业务，不审查新版本",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "3abe87bcbb78087efa3ca546fccd12ae06332792e98ec39820521aea8b62033f",
+  "task_id": "T-INSIGHTS-REVIEW-20261029-01"
+}

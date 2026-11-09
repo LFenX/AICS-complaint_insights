@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "保存三个原始要求的真实验证：两服务恢复、停止原因调查及证据不足、脱离ChatGPT的S4U独立托管与受控故障自动恢复。保留首次托管失败、修复、原日志、未重启整机限制和其它服务/凭据不变证据。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S6",
+  "tailoring_resolution_sha256": "5ada1446d85e005c8a0777db0246564fe549da5ba1c6d35b6e6e0a950517b4f1",
+  "task_id": "T-INSIGHTS-MCP-OPS-20261101-01"
+}

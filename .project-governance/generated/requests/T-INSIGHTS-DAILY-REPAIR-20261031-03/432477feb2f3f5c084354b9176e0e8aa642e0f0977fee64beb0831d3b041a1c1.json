@@ -1,0 +1,15 @@
+{
+  "action": "close_task",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "四封原文角色与815文件归档已发布c5150286，首发与复制后暂存统一证据门禁，78回归/11负例与正常分支/双地址14UID及真实GUI通过，保存新工程版本归父Accepted完整审查，用户最终验收Pending，保留真实数据和首次调度未验限制",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S8",
+  "tailoring_resolution_sha256": "ab682fbed96613be906f86709c8ab94285cc1af8f96ddc6a093e86c4c058b6d0",
+  "task_id": "T-INSIGHTS-DAILY-REPAIR-20261031-03"
+}

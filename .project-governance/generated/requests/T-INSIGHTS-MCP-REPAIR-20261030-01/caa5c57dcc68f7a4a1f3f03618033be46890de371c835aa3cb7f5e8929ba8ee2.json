@@ -1,0 +1,15 @@
+{
+  "action": "edit_in_scope",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "更新接收人指南的Schema额外参数、未知工具协议错误和管理员故障撤销说明，为真实验证增加反例并重建发布材料",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "20f9dff475e76d0ed074eb54dcf3043792b3dc66155df8c97d4f699a6423db86",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-01"
+}

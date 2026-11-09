@@ -1,0 +1,15 @@
+{
+  "action": "validate_change",
+  "budget_profile": "standard",
+  "modes": [
+    "exact",
+    "fts"
+  ],
+  "normative_sources_sha256": "43c0990e110fec3ae97a99bd2fc7b43a31c5786e21f9ce7b8876811c87efb3ac",
+  "query_text": "运行管理员轮换竞态、MCP请求ID精度与消息类别、请求分块超限断连、五分页空cursor反例及全部旧测试，随后真实严格CA验证。",
+  "requested_additional_control_types": [],
+  "schema_version": "6.3-candidate",
+  "stage": "S5",
+  "tailoring_resolution_sha256": "1de1168cd651ae9e72eac7b20d69211a98613d3d5d74d2599c60f5eeccc9446f",
+  "task_id": "T-INSIGHTS-MCP-REPAIR-20261030-03"
+}
