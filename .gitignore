@@ -6,3 +6,4 @@ __pycache__/
 *.env.local
 *.env.production
 .pytest_cache/
+.project-governance/runtime-cache/
